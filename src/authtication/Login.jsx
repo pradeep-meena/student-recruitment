@@ -13,8 +13,8 @@ const Login = () => {
     <>
       <main>
         <div className="login-container">
-          <h1 className="fw-bold">ProcXa-AI</h1>
-          <p className="text-start text-secondary mb-5">Welcome!</p>
+          <h1 className="fw-bold">STUDENT RECRUITMENT</h1>
+          <h4 className="text-center  mb-5 " style={{fontFamily:"bold"}}>Welcome!</h4>
 
           {!showSignUp ? (
             // Login Form
@@ -42,7 +42,7 @@ const Login = () => {
                   Forgot Password?
                 </a>
               </div>
-              <div className="d-flex">
+              <div className="d-flex" style={{justifyContent:"center"}}>
                 <Link style={{ color: "white" }} to="/dashboard">
                   <button
                     type="submit"
@@ -133,7 +133,7 @@ const Login = () => {
                   className="form-input"
                 />
               </div>
-              <div className="d-flex">
+              <div className="d-flex" style={{justifyContent:"center"}}>
                 <button
                   type="submit"
                   className="px-4 py-2 ms-1 btn-primary shadow" style={{border:'none'}}>
