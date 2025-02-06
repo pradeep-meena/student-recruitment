@@ -36,26 +36,17 @@ const Sidebar = ({ collapsed , menuItemClick}) => {
           </li>
 
           {/* Intake Management Section */}
-          <li className={`menu-item ${isSubmenuActive(["/intakemanagement", "/intakecateedit"]) ? "active" : ""}`}>
-            <div className="menu-link menu-i" onClick={() => toggleSubmenu("intakemanagement")}>
-              <i className="fa-solid fa-list-check"></i>
-              <span className="menu-text">Intake Management</span>
-              <i className={`fa-solid fa-chevron-down submenu-arrow ${openSubmenu === "intakemanagement" ? "rotated" : ""}`}></i>
+          <li
+            className={`menu-item ${
+              isActive("/contracttemplate") ? "active" : ""
+            }`}>
+            <div
+              className="menu-link menu-i"
+              onClick={() => {navigate("/contracttemplate");menuItemClick();}}>
+              <i className="fa-solid fa-file-contract"></i>
+              <span className="menu-text">Student Profile Managemen</span>
             </div>
           </li>
-          <ul className={`submenu ${openSubmenu === "intakemanagement" ? "expanded" : "collapsed"}`}>
-            <li className={`submenu-item ${isActive("/intakemanagement") ? "active" : ""}`}
-              onClick={() => {navigate("/intakemanagement");setOpenSubmenu(null);menuItemClick();}}>
-              <i className="fa-solid fa-arrow-trend-up"></i>Student Profile Management
-            </li>
-            <li className={`submenu-item ${isActive("/intakecateedit") ? "active" : ""}`}
-              onClick={() => {
-                navigate("/intakecateedit");
-                setOpenSubmenu(null);menuItemClick();
-              }}>
-              <i className="fa-solid fa-arrow-trend-up"></i> Edit Category
-            </li>
-          </ul>
           {/* Contract Template Section */}
           <li
             className={`menu-item ${
@@ -70,108 +61,17 @@ const Sidebar = ({ collapsed , menuItemClick}) => {
           </li>
 
           {/* Cost Saving Opportunities Section */}
-          <li className={`menu-item ${isSubmenuActive(["/volumedisc","/suppliercons","/serviceswo","/honoring","/additionalcomp","/pricecomp","/multiyear","/others"]) ? "active" : ""}`}>
+          <li
+            className={`menu-item ${
+              isActive("/contracttemplate") ? "active" : ""
+            }`}>
             <div
               className="menu-link menu-i"
-              onClick={() => toggleSubmenu("costSaving")}>
-              <i className="fa-solid fa-arrow-trend-up"></i>
+              onClick={() => {navigate("/contracttemplate");menuItemClick();}}>
+              <i className="fa-solid fa-file-contract"></i>
               <span className="menu-text">Payment & Invoice Management</span>
-              <i
-                className={`fa-solid fa-chevron-down submenu-arrow ${
-                  openSubmenu === "costSaving" ? "rotated" : ""
-                }`}></i>
             </div>
           </li>
-          <ul
-            className={`submenu ${
-              openSubmenu === "costSaving" ? "expanded" : "collapsed"
-            }`}>
-            <li
-              className={`submenu-item ${
-                isActive("/volumedisc") ? "active" : ""
-              }`}
-              onClick={() => {
-                navigate("/volumedisc");
-                setOpenSubmenu(null); menuItemClick();
-              }}>
-              <i className="fa-solid fa-arrow-trend-up"></i> Volume Discounts
-            </li>
-            <li
-              className={`submenu-item ${
-                isActive("/suppliercons") ? "active" : ""
-              }`}
-              onClick={() => {
-                navigate("/suppliercons");
-                setOpenSubmenu(null); menuItemClick();
-              }}>
-              <i className="fa-solid fa-arrow-trend-up"></i> Supplier
-              Consolidation
-            </li>
-            <li
-              className={`submenu-item ${
-                isActive("/serviceswo") ? "active" : ""
-              }`}
-              onClick={() => {
-                navigate("/serviceswo");
-                setOpenSubmenu(null); menuItemClick();
-              }}>
-              <i className="fa-solid fa-arrow-trend-up"></i> Service/SOW
-              Consolidation
-            </li>
-            <li
-              className={`submenu-item ${
-                isActive("/honoring") ? "active" : ""
-              }`}
-              onClick={() => {
-                navigate("/honoring");
-                setOpenSubmenu(null); menuItemClick();
-              }}>
-              <i className="fa-solid fa-arrow-trend-up"></i> Honoring Old
-              Pricing
-            </li>
-            <li
-              className={`submenu-item ${
-                isActive("/additionalcomp") ? "active" : ""
-              }`}
-              onClick={() => {
-                navigate("/additionalcomp");
-                setOpenSubmenu(null); menuItemClick();
-              }}>
-              <i className="fa-solid fa-arrow-trend-up"></i>{" "}
-              Additional/Complementary Service
-            </li>
-            <li
-              className={`submenu-item ${
-                isActive("/pricecomp") ? "active" : ""
-              }`}
-              onClick={() => {
-                navigate("/pricecomp");
-                setOpenSubmenu(null); menuItemClick();
-              }}>
-              <i className="fa-solid fa-arrow-trend-up"></i> Price Comparisons
-            </li>
-            <li
-              className={`submenu-item ${
-                isActive("/multiyear") ? "active" : ""
-              }`}
-              onClick={() => {
-                navigate("/multiyear");
-                setOpenSubmenu(null); menuItemClick();
-              }}>
-              <i className="fa-solid fa-arrow-trend-up"></i> Multi-Year
-              Contracting
-            </li>
-            <li
-              className={`submenu-item ${
-                isActive("/others") ? "active" : ""
-              }`}
-              onClick={() => {
-                navigate("/others");
-                setOpenSubmenu(null); menuItemClick();
-              }}>
-              <i className="fa-solid fa-arrow-trend-up"></i> Others
-            </li>
-          </ul>
 
           {/* Approval Workflow Section */}
           <li
