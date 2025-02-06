@@ -46,7 +46,7 @@ const Sidebar = ({ collapsed , menuItemClick}) => {
           <ul className={`submenu ${openSubmenu === "intakemanagement" ? "expanded" : "collapsed"}`}>
             <li className={`submenu-item ${isActive("/intakemanagement") ? "active" : ""}`}
               onClick={() => {navigate("/intakemanagement");setOpenSubmenu(null);menuItemClick();}}>
-              <i className="fa-solid fa-arrow-trend-up"></i> Intake Management Dashboard
+              <i className="fa-solid fa-arrow-trend-up"></i>Student Profile Management
             </li>
             <li className={`submenu-item ${isActive("/intakecateedit") ? "active" : ""}`}
               onClick={() => {
@@ -65,7 +65,7 @@ const Sidebar = ({ collapsed , menuItemClick}) => {
               className="menu-link menu-i"
               onClick={() => {navigate("/contracttemplate");menuItemClick();}}>
               <i className="fa-solid fa-file-contract"></i>
-              <span className="menu-text">Contract Template</span>
+              <span className="menu-text">Application & Admission Tracking</span>
             </div>
           </li>
 
@@ -75,7 +75,7 @@ const Sidebar = ({ collapsed , menuItemClick}) => {
               className="menu-link menu-i"
               onClick={() => toggleSubmenu("costSaving")}>
               <i className="fa-solid fa-arrow-trend-up"></i>
-              <span className="menu-text">Cost Saving Opportunities</span>
+              <span className="menu-text">Payment & Invoice Management</span>
               <i
                 className={`fa-solid fa-chevron-down submenu-arrow ${
                   openSubmenu === "costSaving" ? "rotated" : ""
