@@ -7,6 +7,7 @@ import { useState } from "react";
 
 
 import Login from "./authtication/Login";
+import Dashbord from "./components/dashbord/Dashbord";
 
 function App() {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
@@ -44,6 +45,7 @@ function App() {
             {/* login signup */}
 
             {/* dashbord */}
+            <Route path="/dashboard" element={<Dashbord />} />
            
             {/* dashbord */}
 
