@@ -1,4 +1,4 @@
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Route,  Routes, useLocation } from "react-router-dom";
 import "./App.css";
 
 import Navbar from "./layout/Navbar";
@@ -7,6 +7,8 @@ import { useState } from "react";
 
 
 import Login from "./authtication/Login";
+import Dashboard from "./components/dashbord/Dashbord";
+import Profile from "./components/Profile/Profile";
 
 function App() {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
@@ -44,10 +46,10 @@ function App() {
             {/* login signup */}
 
             {/* dashbord */}
-           
+           <Route path="/dashboard" element={<Dashboard/>} />
             {/* dashbord */}
 
-          
+             <Route path="/Profile" element={<Profile/>}/>
           </Routes>
         </div>
         {/* right end  */}
@@ -55,4 +57,5 @@ function App() {
     </>
   );
 }
+
 export default App;
