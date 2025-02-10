@@ -38,13 +38,13 @@ const Sidebar = ({ collapsed , menuItemClick}) => {
           {/* Intake Management Section */}
           <li
             className={`menu-item ${
-              isActive("/contracttemplate") ? "active" : ""
+              isActive("/Profile") ? "active" : ""
             }`}>
             <div
               className="menu-link menu-i"
-              onClick={() => {navigate("/contracttemplate");menuItemClick();}}>
+              onClick={() => {navigate("/Profile");menuItemClick();}}>
               <i className="fa-solid fa-file-contract"></i>
-              <span className="menu-text">Student Profile Managemen</span>
+              <span className="menu-text">Student Profile Management</span>
             </div>
           </li>
           {/* Contract Template Section */}

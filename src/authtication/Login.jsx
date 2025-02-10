@@ -11,10 +11,10 @@ const Login = () => {
 
   return (
     <>
-      <main>
-        <div className="login-container">
+      <main >
+        <div className="login-container justify-content-center">
           <h1 className="fw-bold">STUDENT RECRUITMENT</h1>
-          <h4 className="text-center  mb-5 " style={{fontFamily:"bold"}}>Welcome!</h4>
+          <h4 className="text-center  mb-5 ">Welcome!</h4>
 
           {!showSignUp ? (
             // Login Form
