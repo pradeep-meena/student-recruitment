@@ -9,6 +9,14 @@ import { useState } from "react";
 import Login from "./authtication/Login";
 import Dashboard from "./components/dashbord/Dashbord";
 import Profile from "./components/Profile/Profile";
+import LeadInquiryManagement from "./components/Lead & Inquiry Management/LeadInquiryManagement";
+import AdmissionTracking from "./components/AdmissionTracking/AdmissionTracking";
+import TaskCalendarManagement from "./components/Task Calendar Management/TaskCalendarManagement";
+import CourseUniversityDatabase from "./components/CourseUniversityDatabase/CourseUniversityDatabase";
+import PaymentInvoiceManagement from "./components/PaymentInvoiceManagement/PaymentInvoiceManagement";
+import ReportingAnalytics from "./components/ReportingAnalytics/ReportingAnalytics";
+import UserRolesAccessControl from "./components/UserRolesAccessControl/UserRolesAccessControl";
+import CommunicationFollowupManagement from "./components/CommunicationFollowupManagement/CommunicationFollowupManagement";
 
 function App() {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
@@ -50,6 +58,40 @@ function App() {
             {/* dashbord */}
 
              <Route path="/Profile" element={<Profile/>}/>
+
+             {/* LeadInquiryManagement */}
+             <Route path="/LeadInquiryManagement" element= {<LeadInquiryManagement/>}/>
+
+             {/* AdmissionTracking */}
+
+             <Route path="/AdmissionTracking" element= {<AdmissionTracking/>}/>
+
+             {/* TaskCalendarManagement */}
+
+             <Route path="/TaskCalendarManagement" element={<TaskCalendarManagement/>}/>
+
+             {/* CourseUniversityDatabase */}
+
+             <Route path="/CourseUniversityDatabase"element={<CourseUniversityDatabase/>}/>
+
+             {/* PaymentInvoiceManagement */}
+
+             <Route path="/PaymentInvoiceManagement" element={<PaymentInvoiceManagement/>}/>
+
+             {/* ReportingAnalytics */}
+
+             <Route path="/ReportingAnalytics" element={<ReportingAnalytics/>}/>
+
+
+             {/* UserRolesAccessControl */}
+
+             <Route path="/UserRolesAccessControl" element={<UserRolesAccessControl/>}/>
+
+
+
+             {/* CommunicationFollowupManagement          */}
+
+             <Route path="/CommunicationFollowupManagement" element={<CommunicationFollowupManagement/>}/>
           </Routes>
         </div>
         {/* right end  */}
