@@ -1,14 +1,15 @@
-import { Route,  Routes, useLocation } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 
 import Navbar from "./layout/Navbar";
 import Sidebar from "./layout/Sidebar";
 import { useState } from "react";
 
-
 import Login from "./authtication/Login";
 import Dashboard from "./components/dashbord/Dashbord";
+import ChatBox from "./components/CommunicationFollowupManagement/ChatBox";
 import Profile from "./components/Profile/Profile";
+import ProfileDetails from "./components/Profile/ProfileDetails";
 import LeadInquiryManagement from "./components/Lead & Inquiry Management/LeadInquiryManagement";
 import AdmissionTracking from "./components/AdmissionTracking/AdmissionTracking";
 import TaskCalendarManagement from "./components/Task Calendar Management/TaskCalendarManagement";
@@ -45,53 +46,80 @@ function App() {
         )}
         {/* sidebar end */}
         {/* right side  */}
-        <div className={`right-side-content ${
+        <div
+          className={`right-side-content ${
             isSidebarCollapsed ? "collapsed " : ""
-          }`}>
+          }`}
+        >
           <Routes>
             {/* login signup */}
             <Route path="/" element={<Login />} />
             {/* login signup */}
 
             {/* dashbord */}
-           <Route path="/dashboard" element={<Dashboard/>} />
+            <Route path="/dashboard" element={<Dashboard />} />
             {/* dashbord */}
 
-             <Route path="/Profile" element={<Profile/>}/>
+            <Route path="/Profile" element={<Profile />} />
+            <Route
+              path="/Profiledetails"
+              element={<ProfileDetails></ProfileDetails>}
+            ></Route>
 
-             {/* LeadInquiryManagement */}
-             <Route path="/LeadInquiryManagement" element= {<LeadInquiryManagement/>}/>
+            {/* LeadInquiryManagement */}
+            <Route
+              path="/LeadInquiryManagement"
+              element={<LeadInquiryManagement />}
+            />
 
-             {/* AdmissionTracking */}
+            {/* AdmissionTracking */}
 
-             <Route path="/AdmissionTracking" element= {<AdmissionTracking/>}/>
+            <Route path="/AdmissionTracking" element={<AdmissionTracking />} />
 
-             {/* TaskCalendarManagement */}
+            {/* TaskCalendarManagement */}
 
-             <Route path="/TaskCalendarManagement" element={<TaskCalendarManagement/>}/>
+            <Route
+              path="/TaskCalendarManagement"
+              element={<TaskCalendarManagement />}
+            />
 
-             {/* CourseUniversityDatabase */}
+            {/* CourseUniversityDatabase */}
 
-             <Route path="/CourseUniversityDatabase"element={<CourseUniversityDatabase/>}/>
+            <Route
+              path="/CourseUniversityDatabase"
+              element={<CourseUniversityDatabase />}
+            />
 
-             {/* PaymentInvoiceManagement */}
+            {/* PaymentInvoiceManagement */}
 
-             <Route path="/PaymentInvoiceManagement" element={<PaymentInvoiceManagement/>}/>
+            <Route
+              path="/PaymentInvoiceManagement"
+              element={<PaymentInvoiceManagement />}
+            />
 
-             {/* ReportingAnalytics */}
+            {/* ReportingAnalytics */}
 
-             <Route path="/ReportingAnalytics" element={<ReportingAnalytics/>}/>
+            <Route
+              path="/ReportingAnalytics"
+              element={<ReportingAnalytics />}
+            />
 
+            {/* UserRolesAccessControl */}
 
-             {/* UserRolesAccessControl */}
+            <Route
+              path="/UserRolesAccessControl"
+              element={<UserRolesAccessControl />}
+            />
 
-             <Route path="/UserRolesAccessControl" element={<UserRolesAccessControl/>}/>
+            {/* CommunicationFollowupManagement          */}
 
+            <Route
+              path="/CommunicationFollowupManagement"
+              element={<CommunicationFollowupManagement />}
+            />
 
-
-             {/* CommunicationFollowupManagement          */}
-
-             <Route path="/CommunicationFollowupManagement" element={<CommunicationFollowupManagement/>}/>
+            {/* chatbox route */}
+            <Route path="/chatbox" element={<ChatBox />} />
           </Routes>
         </div>
         {/* right end  */}

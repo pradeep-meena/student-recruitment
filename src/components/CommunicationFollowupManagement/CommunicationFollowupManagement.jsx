@@ -1,5 +1,8 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { FaEnvelope } from "react-icons/fa";
+import EmailModal from "./EmailModel";
+import { Link } from "react-router-dom";
 
 const CommunicationFollowupManagement = () => {
   const sendEmail = (email) => {
@@ -38,18 +41,18 @@ const CommunicationFollowupManagement = () => {
               <td>john@example.com</td>
               <td>+1234567890</td>
               <td>
-                <button className="btn btn-primary me-2" onClick={() => sendEmail("john@example.com")}>
-                  📧 Email
+                <button
+                  className="btn btn-primary me-2"
+                  data-bs-toggle="modal"
+                  data-bs-target="#emailModal"
+                >
+                  <FaEnvelope className="me-2" />
+                  Email
                 </button>
-                <button className="btn btn-success me-2" onClick={() => sendSMS("+1234567890")}>
-                  📩 SMS
-                </button>
-                <button className="btn btn-info me-2" onClick={() => sendWhatsApp("+1234567890")}>
-                  📲 WhatsApp
-                </button>
-                <button className="btn btn-warning" onClick={openChat}>
+                <EmailModal></EmailModal>
+                <Link to={"/chatbox"} className="btn btn-warning">
                   💬 Chat
-                </button>
+                </Link>
               </td>
             </tr>
             <tr>
@@ -57,18 +60,18 @@ const CommunicationFollowupManagement = () => {
               <td>john@example.com</td>
               <td>+1234567890</td>
               <td>
-                <button className="btn btn-primary me-2" onClick={() => sendEmail("john@example.com")}>
-                  📧 Email
+                <button
+                  className="btn btn-primary me-2"
+                  data-bs-toggle="modal"
+                  data-bs-target="#emailModal"
+                >
+                  <FaEnvelope className="me-2" />
+                  Email
                 </button>
-                <button className="btn btn-success me-2" onClick={() => sendSMS("+1234567890")}>
-                  📩 SMS
-                </button>
-                <button className="btn btn-info me-2" onClick={() => sendWhatsApp("+1234567890")}>
-                  📲 WhatsApp
-                </button>
-                <button className="btn btn-warning" onClick={openChat}>
+                <EmailModal></EmailModal>
+                <Link to={"/chatbox"} className="btn btn-warning">
                   💬 Chat
-                </button>
+                </Link>
               </td>
             </tr>
             <tr>
@@ -76,18 +79,18 @@ const CommunicationFollowupManagement = () => {
               <td>john@example.com</td>
               <td>+1234567890</td>
               <td>
-                <button className="btn btn-primary me-2" onClick={() => sendEmail("john@example.com")}>
-                  📧 Email
+                <button
+                  className="btn btn-primary me-2"
+                  data-bs-toggle="modal"
+                  data-bs-target="#emailModal"
+                >
+                  <FaEnvelope className="me-2" />
+                  Email
                 </button>
-                <button className="btn btn-success me-2" onClick={() => sendSMS("+1234567890")}>
-                  📩 SMS
-                </button>
-                <button className="btn btn-info me-2" onClick={() => sendWhatsApp("+1234567890")}>
-                  📲 WhatsApp
-                </button>
-                <button className="btn btn-warning" onClick={openChat}>
+                <EmailModal></EmailModal>
+                <Link to={"/chatbox"} className="btn btn-warning">
                   💬 Chat
-                </button>
+                </Link>
               </td>
             </tr>
             <tr>
@@ -95,18 +98,18 @@ const CommunicationFollowupManagement = () => {
               <td>john@example.com</td>
               <td>+1234567890</td>
               <td>
-                <button className="btn btn-primary me-2" onClick={() => sendEmail("john@example.com")}>
-                  📧 Email
+                <button
+                  className="btn btn-primary me-2"
+                  data-bs-toggle="modal"
+                  data-bs-target="#emailModal"
+                >
+                  <FaEnvelope className="me-2" />
+                  Email
                 </button>
-                <button className="btn btn-success me-2" onClick={() => sendSMS("+1234567890")}>
-                  📩 SMS
-                </button>
-                <button className="btn btn-info me-2" onClick={() => sendWhatsApp("+1234567890")}>
-                  📲 WhatsApp
-                </button>
-                <button className="btn btn-warning" onClick={openChat}>
+                <EmailModal></EmailModal>
+                <Link to={"/chatbox"} className="btn btn-warning">
                   💬 Chat
-                </button>
+                </Link>
               </td>
             </tr>
             <tr>
@@ -114,102 +117,101 @@ const CommunicationFollowupManagement = () => {
               <td>john@example.com</td>
               <td>+1234567890</td>
               <td>
-                <button className="btn btn-primary me-2" onClick={() => sendEmail("john@example.com")}>
-                  📧 Email
+                <button
+                  className="btn btn-primary me-2"
+                  data-bs-toggle="modal"
+                  data-bs-target="#emailModal"
+                >
+                  <FaEnvelope className="me-2" />
+                  Email
                 </button>
-                <button className="btn btn-success me-2" onClick={() => sendSMS("+1234567890")}>
-                  📩 SMS
-                </button>
-                <button className="btn btn-info me-2" onClick={() => sendWhatsApp("+1234567890")}>
-                  📲 WhatsApp
-                </button>
-                <button className="btn btn-warning" onClick={openChat}>
+                <EmailModal></EmailModal>
+                <Link to={"/chatbox"} className="btn btn-warning">
                   💬 Chat
-                </button>
+                </Link>
               </td>
             </tr>
             <tr>
               <td>Jane Smith</td>
               <td>jane@example.com</td>
               <td>+9876543210</td>
-              
+
               <td>
-                <button className="btn btn-primary me-2" onClick={() => sendEmail("jane@example.com")}>
-                  📧 Email
+                <button
+                  className="btn btn-primary me-2"
+                  data-bs-toggle="modal"
+                  data-bs-target="#emailModal"
+                >
+                  <FaEnvelope className="me-2" />
+                  Email
                 </button>
-                <button className="btn btn-success me-2" onClick={() => sendSMS("+9876543210")}>
-                  📩 SMS
-                </button>
-                <button className="btn btn-info me-2" onClick={() => sendWhatsApp("+9876543210")}>
-                  📲 WhatsApp
-                </button>
-                <button className="btn btn-warning" onClick={openChat}>
+                <EmailModal></EmailModal>
+                <Link to={"/chatbox"} className="btn btn-warning">
                   💬 Chat
-                </button>
+                </Link>
               </td>
             </tr>
             <tr>
               <td>Jane Smith</td>
               <td>jane@example.com</td>
               <td>+9876543210</td>
-              
+
               <td>
-                <button className="btn btn-primary me-2" onClick={() => sendEmail("jane@example.com")}>
-                  📧 Email
+                <button
+                  className="btn btn-primary me-2"
+                  data-bs-toggle="modal"
+                  data-bs-target="#emailModal"
+                >
+                  <FaEnvelope className="me-2" />
+                  Email
                 </button>
-                <button className="btn btn-success me-2" onClick={() => sendSMS("+9876543210")}>
-                  📩 SMS
-                </button>
-                <button className="btn btn-info me-2" onClick={() => sendWhatsApp("+9876543210")}>
-                  📲 WhatsApp
-                </button>
-                <button className="btn btn-warning" onClick={openChat}>
+                <EmailModal></EmailModal>
+                <Link to={"/chatbox"} className="btn btn-warning">
                   💬 Chat
-                </button>
+                </Link>
               </td>
             </tr>
             <tr>
               <td>Jane Smith</td>
               <td>jane@example.com</td>
               <td>+9876543210</td>
-              
+
               <td>
-                <button className="btn btn-primary me-2" onClick={() => sendEmail("jane@example.com")}>
-                  📧 Email
+                <button
+                  className="btn btn-primary me-2"
+                  data-bs-toggle="modal"
+                  data-bs-target="#emailModal"
+                >
+                  <FaEnvelope className="me-2" />
+                  Email
                 </button>
-                <button className="btn btn-success me-2" onClick={() => sendSMS("+9876543210")}>
-                  📩 SMS
-                </button>
-                <button className="btn btn-info me-2" onClick={() => sendWhatsApp("+9876543210")}>
-                  📲 WhatsApp
-                </button>
-                <button className="btn btn-warning" onClick={openChat}>
+                <EmailModal></EmailModal>
+
+                <Link to={"/chatbox"} className="btn btn-warning">
                   💬 Chat
-                </button>
+                </Link>
               </td>
             </tr>
             <tr>
               <td>Jane Smith</td>
               <td>jane@example.com</td>
               <td>+9876543210</td>
-              
+
               <td>
-                <button className="btn btn-primary me-2" onClick={() => sendEmail("jane@example.com")}>
-                  📧 Email
+                <button
+                  className="btn btn-primary me-2"
+                  data-bs-toggle="modal"
+                  data-bs-target="#emailModal"
+                >
+                  <FaEnvelope className="me-2" />
+                  Email
                 </button>
-                <button className="btn btn-success me-2" onClick={() => sendSMS("+9876543210")}>
-                  📩 SMS
-                </button>
-                <button className="btn btn-info me-2" onClick={() => sendWhatsApp("+9876543210")}>
-                  📲 WhatsApp
-                </button>
-                <button className="btn btn-warning" onClick={openChat}>
+                <EmailModal></EmailModal>
+                <Link to={"/chatbox"} className="btn btn-warning">
                   💬 Chat
-                </button>
+                </Link>
               </td>
             </tr>
-          
-            
           </tbody>
         </table>
       </div>

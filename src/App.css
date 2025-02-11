@@ -2,14 +2,14 @@
   margin: 0px;
   padding: 0px;
 }
-.container{
+.container {
   margin-top: 10px;
   margin-bottom: 10px;
 }
 @font-face {
-  font-family: 'Unbanist';
-  src: url('path-to-your-font/Unbanist.woff2') format('woff2'),
-    url('path-to-your-font/Unbanist.woff') format('woff');
+  font-family: "Unbanist";
+  src: url("path-to-your-font/Unbanist.woff2") format("woff2"),
+    url("path-to-your-font/Unbanist.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -37,7 +37,7 @@ main {
   /* height: 100vh; */
 }
 
-@media (min-width: 320px) and  (max-width: 365px) {
+@media (min-width: 320px) and (max-width: 365px) {
   main {
     top: -30px;
     left: -326px;
@@ -45,9 +45,8 @@ main {
     /* height: 100vh; */
     position: relative;
   }
-
 }
-@media (min-width: 375px) and  (max-width: 768px) {
+@media (min-width: 375px) and (max-width: 768px) {
   main {
     top: 15px;
     left: 40px;
@@ -55,9 +54,8 @@ main {
     height: 25vh;
     position: fixed;
   }
-
 }
-@media (min-width: 768px) and (max-width: 884px){
+@media (min-width: 768px) and (max-width: 884px) {
   main {
     top: 220px !important;
     left: 150px !important;
@@ -81,6 +79,13 @@ main {
   font-weight: 600;
   color: #578e7e;
   margin-bottom: 20px;
+}
+.btn-custom:hover {
+  background-color: gray !important;
+  color: white !important;
+}
+.custom-shadow {
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2) !important;
 }
 
 .login-container .btn-primary {
@@ -189,7 +194,6 @@ select.form-input {
   color: #4a766e;
   border: 1px solid gray;
   margin-right: 380px;
-
 }
 
 .siignup-button:hover {
@@ -275,7 +279,7 @@ select.form-input {
 }
 
 .nav-brand {
-  color: #578E7E;
+  color: #578e7e;
   line-height: 54.46px;
   font-size: 45px;
   font-weight: 700;
@@ -297,7 +301,7 @@ select.form-input {
 }
 
 .nav-brand:hover {
-  color: #578E7E;
+  color: #578e7e;
 }
 
 .nav-content {
@@ -319,11 +323,11 @@ select.form-input {
 }
 
 .nav-taggle-icon a {
-  color: #578E7E;
+  color: #578e7e;
 }
 
 .nav-taggle-icon a:hover {
-  color: #578E7E;
+  color: #578e7e;
 }
 
 .nav-main-icon {
@@ -346,11 +350,11 @@ select.form-input {
 }
 
 .user-icon {
-  color: #578E7E;
+  color: #578e7e;
 }
 
 .user-icon:hover {
-  color: #578E7E;
+  color: #578e7e;
 }
 
 /* navbar end  */
@@ -369,7 +373,6 @@ select.form-input {
   .right-side-content.collapsed {
     padding-left: 80px !important;
   }
-
 }
 
 .right-side-content.collapsed {
@@ -481,7 +484,6 @@ select.form-input {
   margin-top: 30px;
 }
 
-
 .section-title {
   font-size: 18px;
   font-weight: bold;
@@ -513,7 +515,6 @@ select.form-input {
   color: #333;
 }
 
-
 /* Responsive Design */
 @media (max-width: 768px) {
   .contract-details-container {
@@ -525,7 +526,6 @@ select.form-input {
     align-items: flex-start;
     gap: 10px;
   }
-
 
   .back-button {
     font-size: 5px;
@@ -607,61 +607,61 @@ select.form-input {
   cursor: pointer;
   transition: all 1s linear;
 }
-.fa-arrow-right{
+.fa-arrow-right {
   content: "\f061";
   position: relative;
   left: -20px;
   top: 80px;
 }
 @media screen and (min-width: 320px) and (max-width: 768px) {
-  .fa-arrow-right{
-    display: none ;
+  .fa-arrow-right {
+    display: none;
   }
 }
 .workflow-line {
   width: 4px;
   margin: auto;
 }
-.workflow-card:hover{
+.workflow-card:hover {
   transform: scale(1.1);
 }
-.fa-check{
+.fa-check {
   cursor: pointer;
   transition: all 0.5 linear;
 }
-.fa-circle-check:hover{
+.fa-circle-check:hover {
   color: green;
   text-shadow: 1px 1px 20px green, 1px 1px 20px green;
   transform: scale(1.5);
 }
-.fa-xmark{
+.fa-xmark {
   cursor: pointer;
   transition: all 0.5 linear;
 }
-.fa-xmark:hover{
+.fa-xmark:hover {
   color: red;
   text-shadow: 1px 1px 20px red, 1px 1px 20px red;
   transform: scale(1.5);
 }
-.p-dialog-title{
+.p-dialog-title {
   padding: 15px;
-  color: #578E7E;
+  color: #578e7e;
   font-weight: bold;
 }
-.p-dialog-content{
+.p-dialog-content {
   padding-left: 20px;
 }
-.p-dialog-footer{
+.p-dialog-footer {
   padding: 20px !important;
 }
-.p-confirm-dialog-accept{
+.p-confirm-dialog-accept {
   padding: 0px 10px;
   border-radius: 5px;
-  background-color: #578E7E;
+  background-color: #578e7e;
   border: none;
   margin-left: 5px;
 }
-.p-button-label{
+.p-button-label {
   color: black;
 }
 .workflow-card {
@@ -672,7 +672,6 @@ select.form-input {
   margin-bottom: 20px;
   position: relative;
 }
-
 
 .workflow-line i {
   font-size: 1.5rem;
@@ -685,7 +684,6 @@ select.form-input {
 /* approvialworkfolw */
 /* renewalmanage */
 .btn-renewal {
-
   color: #ff6f00;
 
   border: 1px solid #ff6f00;
@@ -697,47 +695,39 @@ select.form-input {
   padding: 5px 10px;
 
   border-radius: 6px;
-
 }
 
-
-
 .btn-renewal:hover {
-
   background-color: #ff6f00;
 
   color: #fff;
   -webkit-box-shadow: 0px 0px 20px 0px #ff6f00;
-
 }
 
 .renewaldownload {
-
   color: green;
   transition: all 0.5 linear;
-
 }
-
 
 .renewaldownload:hover {
   color: green;
   text-shadow: 1px 1px 20px green, 1px 1px 20px green;
-  transform: scale(1.5)
+  transform: scale(1.5);
 }
-.fa-pen-to-square:hover{
+.fa-pen-to-square:hover {
   color: #624de3 !important;
   text-shadow: 1px 1px 20px #624de3, 1px 1px 20px #624de3;
-  transform: scale(1.5)
+  transform: scale(1.5);
 }
-.fa-eye:hover{
+.fa-eye:hover {
   color: rgb(13, 153, 255) !important;
   text-shadow: 1px 1px 20px rgb(13, 153, 255), 1px 1px 20px rgb(13, 153, 255);
-  transform: scale(1.5)
+  transform: scale(1.5);
 }
-.fa-comment:hover{
+.fa-comment:hover {
   color: rgb(13, 153, 255) !important;
   text-shadow: 1px 1px 20px rgb(13, 153, 255), 1px 1px 20px rgb(13, 153, 255);
-  transform: scale(1.5)
+  transform: scale(1.5);
 }
 /* renewalmanage */
 /* contractmanage */
@@ -752,17 +742,17 @@ select.form-input {
   color: #0d99ff;
   cursor: pointer;
 }
- .activebadge {
+.activebadge {
   background-color: #39bf1b;
 }
- .expiredbadge {
+.expiredbadge {
   background-color: #ff0000;
 }
 .renewalbadge {
   padding: 4px 30px !important;
   background-color: #ff9318;
 }
-.terminatedbadge{
+.terminatedbadge {
   padding: 4px 40px !important;
   background-color: #ff0000;
 }
@@ -870,7 +860,6 @@ select.form-input {
 }
 
 @media (max-width: 768px) {
-
   .notifi-button-group {
     padding: 0px !important;
   }
@@ -970,4 +959,3 @@ select.form-input {
   flex-wrap: nowrap;
   justify-content: space-between;
 }
-

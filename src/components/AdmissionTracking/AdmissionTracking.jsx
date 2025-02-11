@@ -1,31 +1,94 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-
-
-
+import { FaBell, FaClock, FaCalendarCheck } from "react-icons/fa";
 
 // Sample data for applicants and their progress
 const initialApplicants = [
-  { id: 1, name: "Alice Johnson", email: "alice@example.com", stage: "Application Submitted" },
+  {
+    id: 1,
+    name: "Alice Johnson",
+    email: "alice@example.com",
+    stage: "Application Submitted",
+  },
   { id: 2, name: "Bob Smith", email: "bob@example.com", stage: "Under Review" },
-  { id: 3, name: "Charlie Brown", email: "charlie@example.com", stage: "Interview Scheduled" },
+  {
+    id: 3,
+    name: "Charlie Brown",
+    email: "charlie@example.com",
+    stage: "Interview Scheduled",
+  },
   { id: 4, name: "David Lee", email: "david@example.com", stage: "Accepted" },
   { id: 5, name: "Emily Davis", email: "emily@example.com", stage: "Rejected" },
-  { id: 6, name: "Alice Johnson", email: "alice@example.com", stage: "Application Submitted" },
+  {
+    id: 6,
+    name: "Alice Johnson",
+    email: "alice@example.com",
+    stage: "Application Submitted",
+  },
   { id: 7, name: "Bob Smith", email: "bob@example.com", stage: "Under Review" },
-  { id: 8, name: "Charlie Brown", email: "charlie@example.com", stage: "Interview Scheduled" },
+  {
+    id: 8,
+    name: "Charlie Brown",
+    email: "charlie@example.com",
+    stage: "Interview Scheduled",
+  },
   { id: 9, name: "David Lee", email: "david@example.com", stage: "Accepted" },
-  { id: 10, name: "Emily Davis", email: "emily@example.com", stage: "Rejected" },
-  { id: 11, name: "Alice Johnson", email: "alice@example.com", stage: "Application Submitted" },
-  { id: 12, name: "Bob Smith", email: "bob@example.com", stage: "Under Review" },
-  { id: 13, name: "Charlie Brown", email: "charlie@example.com", stage: "Interview Scheduled" },
+  {
+    id: 10,
+    name: "Emily Davis",
+    email: "emily@example.com",
+    stage: "Rejected",
+  },
+  {
+    id: 11,
+    name: "Alice Johnson",
+    email: "alice@example.com",
+    stage: "Application Submitted",
+  },
+  {
+    id: 12,
+    name: "Bob Smith",
+    email: "bob@example.com",
+    stage: "Under Review",
+  },
+  {
+    id: 13,
+    name: "Charlie Brown",
+    email: "charlie@example.com",
+    stage: "Interview Scheduled",
+  },
   { id: 14, name: "David Lee", email: "david@example.com", stage: "Accepted" },
-  { id: 15, name: "Emily Davis", email: "emily@example.com", stage: "Rejected" },
-  { id: 16, name: "Alice Johnson", email: "alice@example.com", stage: "Application Submitted" },
-  { id: 17, name: "Bob Smith", email: "bob@example.com", stage: "Under Review" },
-  { id: 18, name: "Charlie Brown", email: "charlie@example.com", stage: "Interview Scheduled" },
+  {
+    id: 15,
+    name: "Emily Davis",
+    email: "emily@example.com",
+    stage: "Rejected",
+  },
+  {
+    id: 16,
+    name: "Alice Johnson",
+    email: "alice@example.com",
+    stage: "Application Submitted",
+  },
+  {
+    id: 17,
+    name: "Bob Smith",
+    email: "bob@example.com",
+    stage: "Under Review",
+  },
+  {
+    id: 18,
+    name: "Charlie Brown",
+    email: "charlie@example.com",
+    stage: "Interview Scheduled",
+  },
   { id: 19, name: "David Lee", email: "david@example.com", stage: "Accepted" },
-  { id: 20, name: "Emily Davis", email: "emily@example.com", stage: "Rejected" },
+  {
+    id: 20,
+    name: "Emily Davis",
+    email: "emily@example.com",
+    stage: "Rejected",
+  },
 ];
 
 // Application stages in order
@@ -124,20 +187,9 @@ function AdmissionTracking() {
                     {applicant.stage}
                   </span>
                 </td>
-                <td>
-                  {applicant.stage !== "Accepted" && applicant.stage !== "Rejected" && (
-                    <button
-                      className="btn btn-primary btn-sm me-2 m-1"
-                      onClick={() => moveToNextStage(applicant.id)}
-                    >
-                      ➡ Next Stage
-                    </button>
-                  )}
-                  {applicant.stage !== "Rejected" && (
-                    <button className="btn btn-danger btn-sm m-1" onClick={() => rejectApplication(applicant.id)}>
-                      ❌ Reject
-                    </button>
-                  )}
+                <td className="text-center">
+                  <FaCalendarCheck />
+                  {/* Calendar with Check for Scheduled Reminder */}
                 </td>
               </tr>
             ))}
