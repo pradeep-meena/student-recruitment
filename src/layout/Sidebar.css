@@ -1,6 +1,6 @@
 .sidebar-container {
-  width: 320px;
-  background-color: white;
+  width: 300px;
+  background-color: rgb(38, 29, 167);
   height: 89vh;
   overflow-y: auto;
   transition: width 0.3s ease;
@@ -43,7 +43,7 @@
   align-items: center;
   padding: 10px;
   text-decoration: none;
-  color: #578E7E;
+  color: white;
   cursor: pointer;
   transition: background 0.3s ease;
 }
@@ -69,7 +69,7 @@
   max-height: 410px;
   visibility: visible;
   font-size: 17px;
-  background-color: #fff9f1;
+  background-color: #c9c5c1;
   font-weight: 700;
   padding-left: 10px;
 }
@@ -94,8 +94,8 @@
   transform: rotate(360deg);
 }
 .menu-item.active .menu-link {
-  background-color: #578E7E; /* Highlight active menu item */
-  color: white; /* Active text color */
+  background-color: white; /* Highlight active menu item */
+  color: black; /* Active text color */
   border-radius: 12px;
 }
 .sidebar-container.collapsed .submenu .submenu-item i{
@@ -105,7 +105,7 @@
 }
 
 .submenu-item.active {
-  background-color: #578E7E;
+  background-color: #3e4bbb;
   color: white;
   border-radius: 12px;
   padding-left: 20px;

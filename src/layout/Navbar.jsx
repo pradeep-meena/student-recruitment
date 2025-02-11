@@ -3,22 +3,22 @@ import { Link } from "react-router-dom";
 const Navbar = ({ toggleSidebar }) => {
   return (
     <>
-      <nav className="navbar navbar-light" style={{position:"fixed"}}>
+      <nav className="navbar navbar-light" style={{position:"fixed", background:" rgb(38, 29, 167)"}}>
         <div className="container-fluid nav-conte">
           <div className="nav-content">
             <div className="nav-bran">
-              <a className="nav-brand" href="#">
+              <a className="nav-brand text-white" href="#" >
               LOGO
               </a>
-              <div className="nav-taggle-icon" onClick={toggleSidebar}>
-                <a href="#">
-                  <i className="fa fa-bars" aria-hidden="true"></i>
+              <div className="nav-taggle-icon text-white" onClick={toggleSidebar}>
+                <a href="#" >
+                  <i className="fa fa-bars text-white" aria-hidden="true"></i>
                 </a>
               </div>
             </div>
             <div className="nav-main-icon">
               <a className="bell-icon" href="#">
-                <i className="fa-regular fa-bell"></i>
+                <i className="fa-regular fa-bell text-white"></i>
               </a>
               <div className="dropdown profile-elemen">
                 <div
@@ -27,13 +27,13 @@ const Navbar = ({ toggleSidebar }) => {
                   data-bs-toggle="dropdown"
                   aria-expanded="false">
                   <div className="profile-element">
-                    <div className="avatar online">
-                      <i className="fa-solid user-icon fa-circle-user"></i>
+                    <div className="avatar online ">
+                      <i className="fa-solid user-icon fa-circle-user text-white"></i>
                       <span className="text-dark ms-2"></span>
                     </div>
                   </div>
                 </div>
-                <ul className="dropdown-menu dropdown-menu-end">
+                <ul className="dropdown-menu dropdown-menu-end ">
                   <li>
                     <Link className="dropdown-item" to="/">
                       Update Profile
