@@ -12,6 +12,7 @@ const Navbar = ({ toggleSidebar }) => {
               alt=""
              height={"90px"}
              width={"140px"}
+             style={{marginTop:"-16px"}}
              />
               <div className="nav-taggle-icon text-white" onClick={toggleSidebar}>
                 <a href="#" >
