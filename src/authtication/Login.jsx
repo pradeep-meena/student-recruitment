@@ -142,7 +142,7 @@ const Login = () => {
                 <button
                   type="button"
                   onClick={toggleForm}
-                  className="px-4 py-2 ms-4 "style={{border:'2px solid #578e7e', color:'#578e7e'}}>
+                  className="px-4 py-2 ms-4 "style={{border:'2px solid  blue', color:'#578e7e'}}>
                    Login
                 </button>
               </div>

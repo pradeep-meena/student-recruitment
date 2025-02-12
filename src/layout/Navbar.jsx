@@ -7,9 +7,12 @@ const Navbar = ({ toggleSidebar }) => {
         <div className="container-fluid nav-conte">
           <div className="nav-content">
             <div className="nav-bran">
-              <a className="nav-brand text-white" href="#" >
-              LOGO
-              </a>
+            <img 
+             src="./img/logo.png"
+              alt=""
+             height={"90px"}
+             width={"140px"}
+             />
               <div className="nav-taggle-icon text-white" onClick={toggleSidebar}>
                 <a href="#" >
                   <i className="fa fa-bars text-white" aria-hidden="true"></i>
