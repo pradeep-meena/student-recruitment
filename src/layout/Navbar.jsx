@@ -11,18 +11,16 @@ const Navbar = ({ toggleSidebar }) => {
         <div className="container-fluid nav-conte">
           <div className="nav-content">
             <div className="nav-bran">
-              <img
-                src="./img/logo.png"
-                alt=""
-                height={"90px"}
-                width={"140px"}
-                style={{ marginTop: "-16px" }}
-              />
-              <div
-                className="nav-taggle-icon text-white"
-                onClick={toggleSidebar}
-              >
-                <a href="#">
+
+            <img 
+             src="./img/logo.png"
+              alt=""
+             height={"90px"}
+             width={"140px"}
+             style={{marginTop:"-16px"}}
+             />
+              <div className="nav-taggle-icon text-white" onClick={toggleSidebar}>
+                <a href="#" >
                   <i className="fa fa-bars text-white" aria-hidden="true"></i>
                 </a>
               </div>
