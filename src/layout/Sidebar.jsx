@@ -75,7 +75,7 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
                   onClick={() => navigate("/inquiry")}
                 >
                   <FaRegFileAlt className="submenu-icon me-1" />
-                  Inquiry
+                  <span>Inquiry</span>
                 </li>
                 <li
                   className={`menu-item submenu-item ${
@@ -84,7 +84,7 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
                   onClick={() => navigate("/lead")}
                 >
                   <BsFillPersonLinesFill className="submenu-icon me-1" />
-                  Lead
+                  <span>Lead</span>
                 </li>
                 <li
                   className={`menu-item submenu-item ${
@@ -93,7 +93,7 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
                   onClick={() => navigate("/deal")}
                 >
                   <FaUsers className="submenu-icon me-1" />
-                  Deal
+                  <span>Deal</span>
                 </li>
               </ul>
             )}
