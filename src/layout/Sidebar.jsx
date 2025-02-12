@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./Sidebar.css";
+import { FaUsers, FaRegFileAlt } from "react-icons/fa"; // FontAwesome
+import { BsFillPersonLinesFill } from "react-icons/bs"; // Bootstrap
 
 const Sidebar = ({ collapsed, menuItemClick }) => {
   const [openSubmenu, setOpenSubmenu] = useState(null); // Tracks the open submenu
@@ -41,7 +43,14 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
           {/* Lead & Inquiry Management */}
           <li
             className={`menu-item ${
-              isSubmenuActive(["/inquiry", "/lead", "/deal"]) ? "active" : ""
+              isSubmenuActive([
+                "/LeadInquiryManagement",
+                "/inquiry",
+                "/lead",
+                "/deal",
+              ])
+                ? "active"
+                : ""
             }`}
           >
             <div
@@ -58,30 +67,33 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
             </div>
 
             {openSubmenu === "leadInquiry" && (
-              <ul className="submenu">
-                <li>
-                  <div
-                    className="submenu-item"
-                    onClick={() => navigate("/inquiry")}
-                  >
-                    Inquiry
-                  </div>
+              <ul className={`submenu `}>
+                <li
+                  className={`menu-item submenu-item ${
+                    isActive("/inquiry") ? "active" : ""
+                  }`}
+                  onClick={() => navigate("/inquiry")}
+                >
+                  <FaRegFileAlt className="submenu-icon me-1" />
+                  Inquiry
                 </li>
-                <li>
-                  <div
-                    className="submenu-item"
-                    onClick={() => navigate("/lead")}
-                  >
-                    Lead
-                  </div>
+                <li
+                  className={`menu-item submenu-item ${
+                    isActive("/lead") ? "active" : ""
+                  }`}
+                  onClick={() => navigate("/lead")}
+                >
+                  <BsFillPersonLinesFill className="submenu-icon me-1" />
+                  Lead
                 </li>
-                <li>
-                  <div
-                    className="submenu-item"
-                    onClick={() => navigate("/deal")}
-                  >
-                    Deal
-                  </div>
+                <li
+                  className={`menu-item submenu-item ${
+                    isActive("/deal") ? "active" : ""
+                  }`}
+                  onClick={() => navigate("/deal")}
+                >
+                  <FaUsers className="submenu-icon me-1" />
+                  Deal
                 </li>
               </ul>
             )}
@@ -95,7 +107,7 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
                 menuItemClick();
               }}
             >
-              <i className="fa-solid fa-file-contract"></i>
+              <i className="fa fa-graduation-cap" aria-hidden="true"></i>
               <span className="menu-text">Student Profile Management</span>
             </div>
           </li>
@@ -112,7 +124,7 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
                 menuItemClick();
               }}
             >
-              <i className="fa-solid fa-file-contract"></i>
+              <i className="fa fa-user" aria-hidden="true"></i>
               <span className="menu-text">
                 {" "}
                 Application & Admission Tracking
@@ -132,7 +144,7 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
                 menuItemClick();
               }}
             >
-              <i className="fa-solid fa-file-contract"></i>
+              <i className="fa-solid fa-comments"></i>
               <span className="menu-text">
                 Communication & Follow-up Management
               </span>
@@ -151,7 +163,7 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
                 menuItemClick();
               }}
             >
-              <i className="fa-solid fa-file-contract"></i>
+              <i className="fa-solid fa-calendar-check"></i>
               <span className="menu-text">Task & Calendar Management</span>
             </div>
           </li>
@@ -168,7 +180,7 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
                 menuItemClick();
               }}
             >
-              <i className="fa-solid fa-file-contract"></i>
+              <i className="fa-solid fa-university "></i>
               <span className="menu-text"> Course & University Database</span>
             </div>
           </li>
@@ -185,7 +197,7 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
                 menuItemClick();
               }}
             >
-              <i className="fa-solid fa-file-contract"></i>
+              <i className="fa-solid fa-chart-line "></i>
               <span className="menu-text">Reporting & Analytics</span>
             </div>
           </li>
@@ -202,7 +214,7 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
                 menuItemClick();
               }}
             >
-              <i className="fa-solid fa-file-contract"></i>
+              <i className="fa-solid fa-receipt"></i>
               <span className="menu-text"> Payment & Invoice Management</span>
             </div>
           </li>
@@ -219,7 +231,7 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
                 menuItemClick();
               }}
             >
-              <i className="fa-solid fa-file-contract"></i>
+              <i className="fa-solid fa-users-cog "></i>
               <span className="menu-text"> User Roles & Access Control</span>
             </div>
           </li>
