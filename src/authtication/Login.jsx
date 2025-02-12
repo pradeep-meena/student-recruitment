@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Login = () => {
@@ -148,10 +148,6 @@ const Login = () => {
                 <button
                   type="button"
                   onClick={toggleForm}
-<<<<<<< HEAD
-                  className="px-4 py-2 ms-4 "style={{border:'2px solid  blue', color:'#578e7e'}}>
-                   Login
-=======
                   className="px-4 py-2 ms-4 "
                   style={{
                     border: "2px solid rgb(38, 29, 167)",
@@ -159,7 +155,6 @@ const Login = () => {
                   }}
                 >
                   Login
->>>>>>> 68693c0 (colorchange)
                 </button>
               </div>
             </form>

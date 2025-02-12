@@ -11,30 +11,18 @@ const Navbar = ({ toggleSidebar }) => {
         <div className="container-fluid nav-conte">
           <div className="nav-content">
             <div className="nav-bran">
-<<<<<<< HEAD
-            <img 
-             src="./img/logo.png"
-              alt=""
-             height={"90px"}
-             width={"140px"}
-             style={{marginTop:"-16px"}}
-             />
-              <div className="nav-taggle-icon text-white" onClick={toggleSidebar}>
-                <a href="#" >
-=======
-              <a className="nav-brand text-white" href="#">
-                <img
-                  src={logo}
-                  alt=""
-                  style={{ width: "80px", height: "50px" }}
-                />
-              </a>
+              <img
+                src="./img/logo.png"
+                alt=""
+                height={"90px"}
+                width={"140px"}
+                style={{ marginTop: "-16px" }}
+              />
               <div
                 className="nav-taggle-icon text-white"
                 onClick={toggleSidebar}
               >
                 <a href="#">
->>>>>>> 68693c0 (colorchange)
                   <i className="fa fa-bars text-white" aria-hidden="true"></i>
                 </a>
               </div>
