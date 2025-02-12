@@ -76,7 +76,7 @@ const Dashboard = () => {
             <div className="card shadow-sm border-0">
               <div className="card-body">
                 <h5 className="card-title">{metric.label}</h5>
-                <p className="display-6 fw-bold text-primary">{metric.value}</p>
+                <p className="display-6 fw-bold " style={{color:"rgb(38 29 167)"}}>{metric.value}</p>
               </div>
             </div>
           </div>
