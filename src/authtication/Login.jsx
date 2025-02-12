@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-
 const Login = () => {
   const [showSignUp, setShowSignUp] = useState(false);
 
@@ -11,9 +10,11 @@ const Login = () => {
 
   return (
     <>
-      <main >
-        <div className="login-container justify-content-center">
-          <h1 className="fw-bold">STUDENT RECRUITMENT</h1>
+      <main>
+        <div className="login-container justify-content-center border">
+          <h1 className="fw-bold" style={{ color: "rgb(38, 29, 167)" }}>
+            STUDENT RECRUITMENT
+          </h1>
           <h4 className="text-center  mb-5 ">Welcome!</h4>
 
           {!showSignUp ? (
@@ -42,18 +43,21 @@ const Login = () => {
                   Forgot Password?
                 </a>
               </div>
-              <div className="d-flex" style={{justifyContent:"center"}}>
+              <div className="d-flex" style={{ justifyContent: "center" }}>
                 <Link style={{ color: "white" }} to="/dashboard">
                   <button
                     type="submit"
-                    className="px-4 py-2 ms-1 btn-primary shadow">
+                    className="px-4 py-2 ms-1 shadow text-white border border-primary"
+                    style={{ backgroundColor: "rgb(38, 29, 167)" }}
+                  >
                     Login
                   </button>
                 </Link>
                 <button
                   type="button"
                   onClick={toggleForm}
-                  className="px-4 py-2 ms-4 btn-outline-primary">
+                  className="px-4 py-2 ms-4 border border-primary"
+                >
                   Sign Up
                 </button>
               </div>
@@ -133,17 +137,29 @@ const Login = () => {
                   className="form-input"
                 />
               </div>
-              <div className="d-flex" style={{justifyContent:"center"}}>
+              <div className="d-flex" style={{ justifyContent: "center" }}>
                 <button
                   type="submit"
-                  className="px-4 py-2 ms-1 btn-primary shadow" style={{border:'none'}}>
+                  className="px-4 py-2 ms-1 btn-primary shadow"
+                  style={{ border: "none" }}
+                >
                   Sign Up
                 </button>
                 <button
                   type="button"
                   onClick={toggleForm}
+<<<<<<< HEAD
                   className="px-4 py-2 ms-4 "style={{border:'2px solid  blue', color:'#578e7e'}}>
                    Login
+=======
+                  className="px-4 py-2 ms-4 "
+                  style={{
+                    border: "2px solid rgb(38, 29, 167)",
+                    color: "rgb(38, 29, 167)",
+                  }}
+                >
+                  Login
+>>>>>>> 68693c0 (colorchange)
                 </button>
               </div>
             </form>
