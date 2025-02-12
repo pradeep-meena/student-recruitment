@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
 const Profile = () => {
@@ -37,8 +36,8 @@ const Profile = () => {
     },
   ];
   return (
-    <div className="mt-5 border">
-      <table class="table table-striped">
+    <div className="container p-5 mt-5">
+      <table className="table table-striped">
         <thead>
           <tr>
             <th>Id</th>
