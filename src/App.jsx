@@ -10,6 +10,7 @@ import Dashboard from "./components/dashbord/Dashbord";
 import ChatBox from "./components/CommunicationFollowupManagement/ChatBox";
 import Profile from "./components/Profile/Profile";
 import Lead from "./components/Lead & Inquiry Management/Lead";
+import Contact from "./components/Lead & Inquiry Management/Contact";
 import Deal from "./components/Lead & Inquiry Management/Deal";
 import ProfileDetails from "./components/Profile/ProfileDetails";
 import LeadInquiryManagement from "./components/Lead & Inquiry Management/LeadInquiryManagement";
@@ -81,6 +82,9 @@ function App() {
 
             {/* deal */}
             <Route path="/deal" element={<Deal></Deal>}></Route>
+
+            {/* contact */}
+            <Route path="/contact" element={<Contact></Contact>}></Route>
             {/* AdmissionTracking */}
 
             <Route path="/AdmissionTracking" element={<AdmissionTracking />} />

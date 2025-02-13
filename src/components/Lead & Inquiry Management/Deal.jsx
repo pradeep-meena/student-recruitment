@@ -129,7 +129,7 @@ const Deal  = () => {
                     <img key={i} src={user} alt="User" className="rounded-circle" width="30" height="30" />
                   ))}
                 </td>
-                <td>
+                <td className="text-nowrap">
                   <Button variant="warning" className="me-1">
                     👁
                   </Button>

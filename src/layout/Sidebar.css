@@ -1,6 +1,6 @@
 .sidebar-container {
   width: 300px;
-  background-color: rgb(38, 29, 167);
+  /* background-color: rgb(38, 29, 167); */
   height: 89vh;
   overflow-y: auto;
   transition: width 0.3s ease;
@@ -18,7 +18,7 @@
   margin-left: 10px;
   cursor: pointer;
   font-size: 17px;
-  color: #fff !important;
+  color: black !important;
   display: block;
   padding: 7px !important;
 }
@@ -65,7 +65,7 @@
   align-items: center;
   padding: 10px;
   text-decoration: none;
-  color: white;
+  color: black;
   cursor: pointer;
   transition: background 0.3s ease;
 }
