@@ -48,6 +48,8 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
                 "/inquiry",
                 "/lead",
                 "/deal",
+                "/dashboard",
+                "/contact",
               ])
                 ? "active"
                 : ""
@@ -58,7 +60,7 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
               onClick={() => toggleSubmenu("leadInquiry")}
             >
               <i className="fa-solid fa-file-contract"></i>
-              <span className="menu-text">Lead & Inquiry Management</span>
+              <span className="menu-text">CRM</span>
               <i
                 className={`fa-solid fa-chevron-${
                   openSubmenu === "leadInquiry" ? "up" : "down"
@@ -68,6 +70,22 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
 
             {openSubmenu === "leadInquiry" && (
               <ul className={`submenu `}>
+                <li
+                  className={`menu-item submenu-item ${
+                    isActive("/dashboard") ? "active" : ""
+                  }`}
+                  onClick={() => navigate("/dashboard")}
+                >
+                  Dashboard
+                </li>
+                <li
+                  className={`menu-item submenu-item ${
+                    isActive("/contact") ? "active" : ""
+                  }`}
+                  onClick={() => navigate("/contact")}
+                >
+                  Contact
+                </li>
                 <li
                   className={`menu-item submenu-item ${
                     isActive("/inquiry") ? "active" : ""

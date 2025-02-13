@@ -172,7 +172,7 @@ const Inquriy = () => {
       </div>
 
       <Table responsive bordered hover className="text-center">
-        <thead className="table-light">
+        <thead className="table-light text-nowrap">
           <tr>
             <th>NAME</th>
             <th>Phone</th>

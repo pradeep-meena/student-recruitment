@@ -79,6 +79,12 @@ main {
   color: #578e7e;
   margin-bottom: 20px;
 }
+.req {
+  color: red;
+  font-weight: bold;
+  margin-left: 2px;
+}
+
 .btn-custom:hover {
   background-color: gray !important;
   color: white !important;
