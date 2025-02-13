@@ -9,6 +9,8 @@ import Login from "./authtication/Login";
 import Dashboard from "./components/dashbord/Dashbord";
 import ChatBox from "./components/CommunicationFollowupManagement/ChatBox";
 import Profile from "./components/Profile/Profile";
+import Lead from "./components/Lead & Inquiry Management/Lead";
+import Deal from "./components/Lead & Inquiry Management/Deal";
 import ProfileDetails from "./components/Profile/ProfileDetails";
 import LeadInquiryManagement from "./components/Lead & Inquiry Management/LeadInquiryManagement";
 import AdmissionTracking from "./components/AdmissionTracking/AdmissionTracking";
@@ -18,6 +20,7 @@ import PaymentInvoiceManagement from "./components/PaymentInvoiceManagement/Paym
 import ReportingAnalytics from "./components/ReportingAnalytics/ReportingAnalytics";
 import UserRolesAccessControl from "./components/UserRolesAccessControl/UserRolesAccessControl";
 import CommunicationFollowupManagement from "./components/CommunicationFollowupManagement/CommunicationFollowupManagement";
+import Inquriy from "./components/Lead & Inquiry Management/Inquriy";
 
 function App() {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
@@ -71,7 +74,13 @@ function App() {
               path="/LeadInquiryManagement"
               element={<LeadInquiryManagement />}
             />
+            {/* Inquriy */}
+            <Route path="/inquiry" element={<Inquriy></Inquriy>}></Route>
+            {/* lead   */}
+            <Route path="/lead" element={<Lead></Lead>}></Route>
 
+            {/* deal */}
+            <Route path="/deal" element={<Deal></Deal>}></Route>
             {/* AdmissionTracking */}
 
             <Route path="/AdmissionTracking" element={<AdmissionTracking />} />

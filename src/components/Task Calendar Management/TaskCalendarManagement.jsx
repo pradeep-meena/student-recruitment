@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
-import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction"; // Enables drag & click
 
-const MyCalendar = () => {
+const TaskCalendarManagement = () => {
   const [events, setEvents] = useState([
     { title: "Meeting", date: "2025-02-12" },
     { title: "Project Deadline", date: "2025-02-15" },
@@ -33,4 +32,4 @@ const MyCalendar = () => {
   );
 };
 
-export default MyCalendar;
+export default TaskCalendarManagement;

@@ -45,6 +45,27 @@ const CommunicationFollowupManagement = () => {
                   className="btn btn-primary me-2"
                   data-bs-toggle="modal"
                   data-bs-target="#emailModal"
+                  style={{background:"rgb(38 29 167)"}}
+                >
+                  <FaEnvelope className="me-2" />
+                  Email
+                </button>
+                <EmailModal></EmailModal>
+                <Link to={"/chatbox"} className="btn btn-warning"  >
+                  💬 Chat
+                </Link>
+              </td>
+            </tr>
+            <tr>
+              <td>John Doe</td>
+              <td>john@example.com</td>
+              <td>+1234567890</td>
+              <td>
+                <button
+                  className="btn btn-primary me-2"
+                  data-bs-toggle="modal"
+                  data-bs-target="#emailModal"
+                  style={{background:"rgb(38 29 167)"}}
                 >
                   <FaEnvelope className="me-2" />
                   Email
@@ -63,7 +84,7 @@ const CommunicationFollowupManagement = () => {
                 <button
                   className="btn btn-primary me-2"
                   data-bs-toggle="modal"
-                  data-bs-target="#emailModal"
+                  data-bs-target="#emailModal" style={{background:"rgb(38 29 167)"}}
                 >
                   <FaEnvelope className="me-2" />
                   Email
@@ -82,7 +103,7 @@ const CommunicationFollowupManagement = () => {
                 <button
                   className="btn btn-primary me-2"
                   data-bs-toggle="modal"
-                  data-bs-target="#emailModal"
+                  data-bs-target="#emailModal" style={{background:"rgb(38 29 167)"}}
                 >
                   <FaEnvelope className="me-2" />
                   Email
@@ -101,8 +122,8 @@ const CommunicationFollowupManagement = () => {
                 <button
                   className="btn btn-primary me-2"
                   data-bs-toggle="modal"
-                  data-bs-target="#emailModal"
-                >
+                  data-bs-target="#emailModal" style={{background:"rgb(38 29 167)"}}
+                > 
                   <FaEnvelope className="me-2" />
                   Email
                 </button>
@@ -113,14 +134,15 @@ const CommunicationFollowupManagement = () => {
               </td>
             </tr>
             <tr>
-              <td>John Doe</td>
-              <td>john@example.com</td>
-              <td>+1234567890</td>
+              <td>Jane Smith</td>
+              <td>jane@example.com</td>
+              <td>+9876543210</td>
+
               <td>
                 <button
                   className="btn btn-primary me-2"
                   data-bs-toggle="modal"
-                  data-bs-target="#emailModal"
+                  data-bs-target="#emailModal" style={{background:"rgb(38 29 167)"}}
                 >
                   <FaEnvelope className="me-2" />
                   Email
@@ -140,7 +162,7 @@ const CommunicationFollowupManagement = () => {
                 <button
                   className="btn btn-primary me-2"
                   data-bs-toggle="modal"
-                  data-bs-target="#emailModal"
+                  data-bs-target="#emailModal" style={{background:"rgb(38 29 167)"}}
                 >
                   <FaEnvelope className="me-2" />
                   Email
@@ -160,27 +182,7 @@ const CommunicationFollowupManagement = () => {
                 <button
                   className="btn btn-primary me-2"
                   data-bs-toggle="modal"
-                  data-bs-target="#emailModal"
-                >
-                  <FaEnvelope className="me-2" />
-                  Email
-                </button>
-                <EmailModal></EmailModal>
-                <Link to={"/chatbox"} className="btn btn-warning">
-                  💬 Chat
-                </Link>
-              </td>
-            </tr>
-            <tr>
-              <td>Jane Smith</td>
-              <td>jane@example.com</td>
-              <td>+9876543210</td>
-
-              <td>
-                <button
-                  className="btn btn-primary me-2"
-                  data-bs-toggle="modal"
-                  data-bs-target="#emailModal"
+                  data-bs-target="#emailModal" style={{background:"rgb(38 29 167)"}}
                 >
                   <FaEnvelope className="me-2" />
                   Email
@@ -200,8 +202,8 @@ const CommunicationFollowupManagement = () => {
               <td>
                 <button
                   className="btn btn-primary me-2"
-                  data-bs-toggle="modal"
-                  data-bs-target="#emailModal"
+                  data-bs-toggle="modal" 
+                  data-bs-target="#emailModal" style={{background:"rgb(38 29 167)"}}
                 >
                   <FaEnvelope className="me-2" />
                   Email

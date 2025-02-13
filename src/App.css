@@ -74,7 +74,6 @@ main {
   max-width: 500px;
   width: 100%;
 }
-
 .login-container h1 {
   font-weight: 600;
   color: #578e7e;
@@ -300,9 +299,9 @@ select.form-input {
   }
 }
 
-.nav-brand:hover {
+/* .nav-brand:hover {
   color: #578e7e;
-}
+} */
 
 .nav-content {
   width: 100%;
@@ -323,12 +322,12 @@ select.form-input {
 }
 
 .nav-taggle-icon a {
-  color: #578e7e;
+  color: #949494;
 }
 
-.nav-taggle-icon a:hover {
+/* .nav-taggle-icon a:hover {
   color: #578e7e;
-}
+} */
 
 .nav-main-icon {
   font-size: 30px;
@@ -350,11 +349,11 @@ select.form-input {
 }
 
 .user-icon {
-  color: #578e7e;
+  color: #949494;
 }
 
 .user-icon:hover {
-  color: #578e7e;
+  color: #949494;
 }
 
 /* navbar end  */
