@@ -95,7 +95,7 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
               </ul>
             )}
           </li>
-          {/* Student Profile Management */}
+          {/* Learner Profile Management */}
           <li className={`menu-item ${isActive("/Profile") ? "active" : ""}`}>
             <div
               className="menu-link menu-i"
@@ -105,7 +105,7 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
               }}
             >
               <i className="fa fa-graduation-cap" aria-hidden="true"></i>
-              <span className="menu-text">Student Profile Management</span>
+              <span className="menu-text">Learner Profile Management</span>
             </div>
           </li>
           {/*  Application & Admission Tracking */}

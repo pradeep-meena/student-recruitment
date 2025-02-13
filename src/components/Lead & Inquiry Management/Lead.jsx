@@ -116,11 +116,11 @@ const Lead = () => {
       <Table responsive bordered hover className="text-center">
         <thead className="table-light">
           <tr>
-            <th style={{background:"rgb(38 29 167)", color:"white"}}>NAME</th>
-            <th style={{background:"rgb(38 29 167)", color:"white"}}>SUBJECT</th>
-            <th style={{background:"rgb(38 29 167)", color:"white"}}>STAGE</th>
-            <th style={{background:"rgb(38 29 167)", color:"white"}}>USERS</th>
-            <th style={{background:"rgb(38 29 167)", color:"white"}}>ACTION</th>
+            <th >NAME</th>
+            <th>SUBJECT</th>
+            <th >STAGE</th>
+            <th >USERS</th>
+            <th >ACTION</th>
           </tr>
         </thead>
         <tbody>
@@ -141,9 +141,9 @@ const Lead = () => {
                 ))}
               </td>
               <td>
-                <Button variant="warning" size="sm" className="me-1">👁️</Button>
-                <Button variant="info" size="sm" className="me-1">✏️</Button>
-                <Button variant="danger" size="sm" onClick={() => handleDelete(index)}>🗑️</Button>
+                <Button variant="warning" size="sm" className="btn btn-light btn-sm me-1">👁️</Button>
+                <Button variant="info" className="btn btn-light btn-sm me-1">✏️</Button>
+                <Button className="btn btn-light btn-sm me-1" variant="danger" size="sm" onClick={() => handleDelete(index)}>🗑️</Button>
               </td>
             </tr>
           ))}

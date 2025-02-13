@@ -195,9 +195,9 @@ const Inquriy = () => {
               <td>{item.nextdate}</td>
               <td>{item.status}</td>
               <td>
-                <Button variant="warning" size="sm" className="me-1">👁️</Button>
-                <Button variant="info" size="sm" className="me-1">✏️</Button>
-                <Button variant="danger" size="sm" onClick={() => handleDelete(index)}>🗑️</Button>
+                 <Button className="btn btn-light btn-sm me-1">👁️</Button>
+                 <Button className="btn btn-light btn-sm me-1">✎</Button>
+                <Button className="btn btn-light btn-sm me-1" size="sm" onClick={() => handleDelete(index)}>🗑️</Button>
               </td>
             </tr>
           ))}

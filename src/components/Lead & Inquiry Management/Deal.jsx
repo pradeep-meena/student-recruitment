@@ -130,13 +130,13 @@ const Deal  = () => {
                   ))}
                 </td>
                 <td>
-                  <Button variant="warning" className="me-1">
+                  <Button className="btn btn-light btn-sm me-1">
                     👁
                   </Button>
-                  <Button variant="info" className="me-1">
+                  <Button className="btn btn-light btn-sm me-1">
                     ✏
                   </Button>
-                  <Button variant="danger" onClick={() => handleDelete(index)}>
+                  <Button className="btn btn-light btn-sm me-1" onClick={() => handleDelete(index)}>
                     🗑
                   </Button>
                 </td>

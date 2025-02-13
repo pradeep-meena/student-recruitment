@@ -68,7 +68,7 @@ function ReportingAnalytics() {
       <table className="table table-bordered">
         <thead className="table-light">
           <tr>
-            <th>Student Name</th>
+            <th>Learner Name</th>
             <th>Course</th>
             <th>Inquiries</th>
             <th>Applications</th>

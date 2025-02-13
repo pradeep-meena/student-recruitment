@@ -13,7 +13,7 @@ const Login = () => {
       <main>
         <div className="login-container justify-content-center border">
           <h1 className="fw-bold" style={{ color: "rgb(38, 29, 167)" }}>
-            STUDENT RECRUITMENT
+            Student RECRUITMENT
           </h1>
           <h4 className="text-center  mb-5 ">Welcome!</h4>
 

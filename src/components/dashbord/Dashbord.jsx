@@ -67,7 +67,7 @@ const Dashboard = () => {
 
   return (
     <div className="container mt-5">
-      <h2 className="text-center mb-4">📊  Student Recruitment Dashboard</h2>
+      <h2 className="text-center mb-4">📊  Learner Recruitment Dashboard</h2>
 
       {/* Metrics Overview */}
       <div className="row text-center">
