@@ -1,6 +1,6 @@
 .sidebar-container {
   width: 300px;
-  background-color: rgb(38, 29, 167);
+  /* background-color: rgb(38, 29, 167); */
   height: 89vh;
   overflow-y: auto;
   transition: width 0.3s ease;
@@ -18,7 +18,7 @@
   margin-left: 10px;
   cursor: pointer;
   font-size: 17px;
-  color: #fff !important;
+  color: black !important;
   display: block;
   padding: 7px !important;
 }
@@ -36,15 +36,8 @@
 .sidebar-container.collapsed {
   width: 80px;
 }
-
-.sidebar-container.collapsed .submenu .submenu-item {
-  /* opacity: 0; */
-  visibility: visible !important;
-  opacity: 1 !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
+.sidebar-container.collapsed .submenu {
+  display: none;
 }
 .sidebar-container.collapsed .menu .menu-text {
   opacity: 0;
@@ -72,7 +65,7 @@
   align-items: center;
   padding: 10px;
   text-decoration: none;
-  color: white;
+  color: black;
   cursor: pointer;
   transition: background 0.3s ease;
 }
@@ -84,7 +77,7 @@
 .submenu {
   list-style-type: none;
   margin: 0;
-  padding-left: 20px;
+  padding-left: 10px;
   overflow: hidden;
   transition: max-height 0.3s ease;
 }
@@ -128,23 +121,9 @@
   border-radius: 12px;
 }
 .sidebar-container.collapsed .submenu .submenu-item i {
-  font-size: 18px;
-  margin-right: 10px;
-  color: white;
+  display: hidden;
 }
-.sidebar-container.collapsed .submenu .submenu-icon {
-  font-size: 20px;
-  margin-right: 0px;
-  color: white;
-}
-.sidebar-container.collapsed .submenu .submenu-item {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-.sidebar-container.collapsed .submenu .submenu-text {
-  display: none;
-}
+
 .submenu-item.active {
   background-color: #3e4bbb;
   color: white;

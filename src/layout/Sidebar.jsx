@@ -27,7 +27,7 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
     <div className={`sidebar-container ${collapsed ? "collapsed" : ""}`}>
       <div className="sidebar">
         <ul className="menu">
-          {/* Dashboard Section */}``
+          {/* Dashboard Section */}
           <li className={`menu-item ${isActive("/dashboard") ? "active" : ""}`}>
             <div
               className="menu-link menu-i"
@@ -74,7 +74,6 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
                   }`}
                   onClick={() => navigate("/inquiry")}
                 >
-                  <FaRegFileAlt className="submenu-icon me-1" />
                   Inquiry
                 </li>
                 <li
@@ -83,7 +82,6 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
                   }`}
                   onClick={() => navigate("/lead")}
                 >
-                  <BsFillPersonLinesFill className="submenu-icon me-1" />
                   Lead
                 </li>
                 <li
@@ -92,7 +90,6 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
                   }`}
                   onClick={() => navigate("/deal")}
                 >
-                  <FaUsers className="submenu-icon me-1" />
                   Deal
                 </li>
               </ul>
