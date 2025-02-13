@@ -27,7 +27,7 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
     <div className={`sidebar-container ${collapsed ? "collapsed" : ""}`}>
       <div className="sidebar">
         <ul className="menu">
-          {/* Dashboard Section */}``
+          {/* Dashboard Section */}
           <li className={`menu-item ${isActive("/dashboard") ? "active" : ""}`}>
             <div
               className="menu-link menu-i"
@@ -48,6 +48,10 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
                 "/inquiry",
                 "/lead",
                 "/deal",
+                "/dashboard",
+                "/contact",
+                "/quotes",
+                "/analytics",
               ])
                 ? "active"
                 : ""
@@ -58,7 +62,7 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
               onClick={() => toggleSubmenu("leadInquiry")}
             >
               <i className="fa-solid fa-file-contract"></i>
-              <span className="menu-text">Lead & Inquiry Management</span>
+              <span className="menu-text">CRM</span>
               <i
                 className={`fa-solid fa-chevron-${
                   openSubmenu === "leadInquiry" ? "up" : "down"
@@ -68,6 +72,22 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
 
             {openSubmenu === "leadInquiry" && (
               <ul className={`submenu `}>
+                <li
+                  className={`menu-item submenu-item ${
+                    isActive("/dashboard") ? "active" : ""
+                  }`}
+                  onClick={() => navigate("/dashboard")}
+                >
+                  Dashboard
+                </li>
+                <li
+                  className={`menu-item submenu-item ${
+                    isActive("/contact") ? "active" : ""
+                  }`}
+                  onClick={() => navigate("/contract")}
+                >
+                  Contact
+                </li>
                 <li
                   className={`menu-item submenu-item ${
                     isActive("/inquiry") ? "active" : ""
@@ -91,6 +111,22 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
                   onClick={() => navigate("/deal")}
                 >
                   Deal
+                </li>
+                <li
+                  className={`menu-item submenu-item ${
+                    isActive("/quotes") ? "active" : ""
+                  }`}
+                  onClick={() => navigate("/quotes")}
+                >
+                  Quotes
+                </li>
+                <li
+                  className={`menu-item submenu-item ${
+                    isActive("/analytics") ? "active" : ""
+                  }`}
+                  onClick={() => navigate("/analytics")}
+                >
+                  Analytics
                 </li>
               </ul>
             )}

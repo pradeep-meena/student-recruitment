@@ -8,10 +8,12 @@ import { useState } from "react";
 import Login from "./authtication/Login";
 import Dashboard from "./components/dashbord/Dashbord";
 import ChatBox from "./components/CommunicationFollowupManagement/ChatBox";
+import Contract from "./components/Lead & Inquiry Management/Contract";
 import Profile from "./components/Profile/Profile";
 import Lead from "./components/Lead & Inquiry Management/Lead";
 import Deal from "./components/Lead & Inquiry Management/Deal";
 import ProfileDetails from "./components/Profile/ProfileDetails";
+import Analytics from "./components/Lead & Inquiry Management/Analytics";
 import LeadInquiryManagement from "./components/Lead & Inquiry Management/LeadInquiryManagement";
 import AdmissionTracking from "./components/AdmissionTracking/AdmissionTracking";
 import TaskCalendarManagement from "./components/Task Calendar Management/TaskCalendarManagement";
@@ -21,6 +23,7 @@ import ReportingAnalytics from "./components/ReportingAnalytics/ReportingAnalyti
 import UserRolesAccessControl from "./components/UserRolesAccessControl/UserRolesAccessControl";
 import CommunicationFollowupManagement from "./components/CommunicationFollowupManagement/CommunicationFollowupManagement";
 import Inquriy from "./components/Lead & Inquiry Management/Inquriy";
+import Quotes from "./components/Lead & Inquiry Management/Quotes";
 
 function App() {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
@@ -81,6 +84,12 @@ function App() {
 
             {/* deal */}
             <Route path="/deal" element={<Deal></Deal>}></Route>
+
+            <Route path="/contract" element={<Contract></Contract>}></Route>
+
+            <Route path="/analytics" element={<Analytics></Analytics>}></Route>
+
+            <Route path="/quotes" element={<Quotes></Quotes>}></Route>
             {/* AdmissionTracking */}
 
             <Route path="/AdmissionTracking" element={<AdmissionTracking />} />
