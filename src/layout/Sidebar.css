@@ -36,15 +36,8 @@
 .sidebar-container.collapsed {
   width: 80px;
 }
-
-.sidebar-container.collapsed .submenu .submenu-item {
-  /* opacity: 0; */
-  visibility: visible !important;
-  opacity: 1 !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
+.sidebar-container.collapsed .submenu {
+  display: none;
 }
 .sidebar-container.collapsed .menu .menu-text {
   opacity: 0;
@@ -128,33 +121,9 @@
   border-radius: 12px;
 }
 .sidebar-container.collapsed .submenu .submenu-item i {
-  font-size: 28px !important; /* Increase icon size */
-  width: 28px !important; /* Ensure proper width */
-  height: 28px !important; /* Ensure proper height */
-  display: flex !important; /* Center align */
-  align-items: center !important;
-  justify-content: center !important;
-  color: white !important; /* Ensure correct color */
+  display: hidden;
 }
-.sidebar-container.collapsed .submenu .submenu-icon {
-  font-size: 20px;
-  margin-right: 0px;
-  color: white;
-}
-.sidebar-container.collapsed .submenu .submenu-item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px;
-  visibility: visible !important;
-  width: 100%;
-}
-.sidebar-container.collapsed .submenu .submenu-text {
-  display: none;
-}
-.sidebar-container.collapsed .submenu .submenu-item span {
-  display: none !important;
-}
+
 .submenu-item.active {
   background-color: #3e4bbb;
   color: white;
