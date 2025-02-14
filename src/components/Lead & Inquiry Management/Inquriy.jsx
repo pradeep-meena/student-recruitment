@@ -1,5 +1,5 @@
 import { Dropdown, Button, Table, Modal, Form } from "react-bootstrap";
-import React, { useState } from "react";
+import { useState } from "react";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -83,7 +83,6 @@ const Inquriy = () => {
       source: "",
       name: "",
       enquirydate: "",
-      phone: "",
     });
     handleClose();
   };
