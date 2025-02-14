@@ -11,17 +11,17 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, ArcElement, Tooltip, Le
 
 const Dashboard = () => {
   const metrics = [
-    { label: "Total Applicants", value: 122 },
-    { label: "Shortlisted Candidates", value: 77 },
-    { label: "Hired Candidates", value: 16 },
-    { label: "Rejected Candidates", value: 29 },
+    { label: "Total  Learner", value: 122 },
+    { label: "Shortlisted  Learner", value: 77 },
+    { label: "Hired  Learner", value: 16 },
+    { label: "Rejected  Learner", value: 29 },
   ];
 
   const barChartData = {
     labels: metrics.map((metric) => metric.label),
     datasets: [
       {
-        label: "Candidates",
+        label: " Learner",
         data: metrics.map((metric) => metric.value),
         backgroundColor: ["#007bff", "#28a745", "#ffc107", "#dc3545"],
         borderWidth: 1,
@@ -87,7 +87,7 @@ const Dashboard = () => {
       <div className="row">
         <div className="col-md-8">
           <div className="card shadow-sm p-3">
-            <h5 className="text-center">📌 Candidates Overview</h5>
+            <h5 className="text-center">📌  Learner Overview</h5>
             <Bar data={barChartData} />
           </div>
         </div>
@@ -104,7 +104,7 @@ const Dashboard = () => {
         {/* Total Leads */}
         <div className="col-md-6">
           <div className="card p-3 shadow-sm hover-effect">
-            <h5>Total Leads <span className="badge bg-primary">{data.leads}</span></h5>
+            <h5>Total Learner <span className="badge bg-primary">{data.leads}</span></h5>
             <div className="mt-3">
               <div className="d-flex align-items-center mb-2">
                 <div className="icon-box me-2"><i className="bi bi-briefcase-fill"></i></div>
