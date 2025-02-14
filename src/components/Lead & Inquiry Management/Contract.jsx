@@ -1,7 +1,14 @@
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap-icons/font/bootstrap-icons.css";
-import { Table, Button, Form, Breadcrumb, Row, Col, Modal } from "react-bootstrap";
+import {
+  Table,
+  Button,
+  Form,
+  Breadcrumb,
+  Row,
+  Col,
+} from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 
 const Contract = () => {
   const [show, setShowModal] = useState(false);
@@ -94,7 +101,9 @@ const Contract = () => {
   const handleUpdate = () => {
     setContracts(
       contracts.map((contract) =>
-        contract.id === selectedContract.id ? { ...contract, ...contractData } : contract
+        contract.id === selectedContract.id
+          ? { ...contract, ...contractData }
+          : contract
       )
     );
     handleClose();
@@ -117,8 +126,13 @@ const Contract = () => {
           <h5 className="fw-bold">Manage Contract</h5>
         </Col>
         <Col className="text-end">
-          <Button variant="outline-dark" className="me-2">+ Info</Button>
-          <Button variant="outline-dark" onClick={handleShow}>+ Add</Button>
+          <Button variant="outline-dark" className="me-2 gap-1">
+            Info
+          </Button>
+
+          <Button variant="outline-dark" onClick={handleShow}>
+            + Add
+          </Button>
         </Col>
       </Row>
 
@@ -141,7 +155,11 @@ const Contract = () => {
         <tbody>
           {contracts.map((contract) => (
             <tr key={contract.id}>
-              <td><span className="badge bg-success text-white">{contract.id}</span></td>
+              <td>
+                <span className="badge bg-success text-white">
+                  {contract.id}
+                </span>
+              </td>
               <td>{contract.subject}</td>
               <td>{contract.client}</td>
               <td>{contract.project}</td>
@@ -150,10 +168,24 @@ const Contract = () => {
               <td>{contract.startDate}</td>
               <td>{contract.endDate}</td>
               <td>{contract.description}</td>
-              <td>
-                <Button size="sm" className="btn btn-light btn-sm me-1">👁️</Button>
-                <Button size="sm" className="btn btn-light btn-sm me-1" onClick={() => handleEdit(contract)}>✏️</Button>
-                <Button size="sm" className="btn btn-light btn-sm me-1" onClick={() => handleDelete(contract.id)}>🗑️</Button>
+              <td className="text-nowrap">
+                <Button size="sm" className="btn btn-light btn-sm me-1">
+                  👁️
+                </Button>
+                <Button
+                  size="sm"
+                  className="btn btn-light btn-sm me-1"
+                  onClick={() => handleEdit(contract)}
+                >
+                  ✏️
+                </Button>
+                <Button
+                  size="sm"
+                  className="btn btn-light btn-sm me-1"
+                  onClick={() => handleDelete(contract.id)}
+                >
+                  🗑️
+                </Button>
               </td>
             </tr>
           ))}
@@ -163,7 +195,9 @@ const Contract = () => {
       {/* Modal */}
       <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
-          <Modal.Title>{selectedContract ? "Edit Contract" : "Create New Contract"}</Modal.Title>
+          <Modal.Title>
+            {selectedContract ? "Edit Contract" : "Create New Contract"}
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
@@ -207,7 +241,11 @@ const Contract = () => {
               <Col md={6}>
                 <Form.Group>
                   <Form.Label>Contract Type*</Form.Label>
-                  <Form.Select name="contractType" value={contractData.contractType} onChange={handleChange}>
+                  <Form.Select
+                    name="contractType"
+                    value={contractData.contractType}
+                    onChange={handleChange}
+                  >
                     <option>Marketing</option>
                     <option>Planning</option>
                     <option>Consulting</option>
@@ -268,8 +306,13 @@ const Contract = () => {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>Cancel</Button>
-          <Button variant="success" onClick={selectedContract ? handleUpdate : handleData}>
+          <Button variant="secondary" onClick={handleClose}>
+            Cancel
+          </Button>
+          <Button
+            variant="success"
+            onClick={selectedContract ? handleUpdate : handleData}
+          >
             {selectedContract ? "Update" : "Create"}
           </Button>
         </Modal.Footer>
