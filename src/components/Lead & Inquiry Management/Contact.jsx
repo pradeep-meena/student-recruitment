@@ -75,9 +75,10 @@ const Contact  = () => {
 
         {/* Action Buttons */}
         <Col className="text-end">
-          <Button variant="info" className="me-2">
+          <Button variant="info" className="me-2 gap-1" style={{marginBottom:"15px"}}>
             <i className="bi bi-grid-3x3-gap"></i>
           </Button>
+          
           <Button variant="primary" onClick={handleShow}>
             + Add
           </Button>

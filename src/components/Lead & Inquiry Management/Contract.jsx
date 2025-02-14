@@ -1,6 +1,5 @@
 import  { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap-icons/font/bootstrap-icons.css";
 import {
   Table,
   Button,
@@ -114,9 +113,10 @@ const Contract = () => {
 
         {/* Action Buttons */}
         <Col className="text-end">
-          <Button variant="outline-dark" className="me-2">
-            + Info
+          <Button variant="outline-dark" className="me-2 gap-1" style={{marginBottom:"15px"}}>
+             Info
           </Button>
+          
           <Button variant="outline-dark" onClick={handleShow}>
             + Add
           </Button>
