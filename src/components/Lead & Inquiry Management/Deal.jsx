@@ -5,23 +5,85 @@ import { Modal, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const dealsData = [
-  { title: "Total Deals", amount: "$232,000.00", color: "text-success", iconBg: "bg-success" },
-  { title: "This Month Total Deals", amount: "$0.00", color: "text-primary", iconBg: "bg-primary" },
-  { title: "This Week Total Deals", amount: "$0.00", color: "text-warning", iconBg: "bg-warning" },
-  { title: "Last 30 Days Total Deals", amount: "$71,000.00", color: "text-danger", iconBg: "bg-danger" },
+  {
+    title: "Total Deals",
+    amount: "$232,000.00",
+    color: "text-success",
+    iconBg: "bg-success",
+  },
+  {
+    title: "This Month Total Deals",
+    amount: "$0.00",
+    color: "text-primary",
+    iconBg: "bg-primary",
+  },
+  {
+    title: "This Week Total Deals",
+    amount: "$0.00",
+    color: "text-warning",
+    iconBg: "bg-warning",
+  },
+  {
+    title: "Last 30 Days Total Deals",
+    amount: "$71,000.00",
+    color: "text-danger",
+    iconBg: "bg-danger",
+  },
 ];
 
 const initialData = [
-  { name: "Smart Agriculture Project", price: "$50,000.00", stage: "Open", tasks: "0/0", users: ["https://via.placeholder.com/30"] },
-  { name: "Hybrid", price: "$40,000.00", stage: "Proposal", tasks: "4/3", users: ["https://via.placeholder.com/30", "https://via.placeholder.com/30"] },
-  { name: "Stella", price: "$35,000.00", stage: "Meeting", tasks: "3/0", users: ["https://via.placeholder.com/30", "https://via.placeholder.com/30"] },
-  { name: "Refocus", price: "$30,000.00", stage: "Close", tasks: "3/1", users: ["https://via.placeholder.com/30", "https://via.placeholder.com/30"] },
-  { name: "Whitecoat", price: "$25,000.00", stage: "Initial Contact", tasks: "4/2", users: ["https://via.placeholder.com/30", "https://via.placeholder.com/30"] },
-  { name: "Tailwinds", price: "$15,000.00", stage: "Initial Contact", tasks: "4/2", users: ["https://via.placeholder.com/30"] },
-  { name: "Discover Financial", price: "$10,000.00", stage: "Close", tasks: "0/0", users: ["https://via.placeholder.com/30"] },
+  {
+    name: "Smart Agriculture Project",
+    price: "$50,000.00",
+    stage: "Open",
+    tasks: "0/0",
+    users: ["https://via.placeholder.com/30"],
+  },
+  {
+    name: "Hybrid",
+    price: "$40,000.00",
+    stage: "Proposal",
+    tasks: "4/3",
+    users: ["https://via.placeholder.com/30", "https://via.placeholder.com/30"],
+  },
+  {
+    name: "Stella",
+    price: "$35,000.00",
+    stage: "Meeting",
+    tasks: "3/0",
+    users: ["https://via.placeholder.com/30", "https://via.placeholder.com/30"],
+  },
+  {
+    name: "Refocus",
+    price: "$30,000.00",
+    stage: "Close",
+    tasks: "3/1",
+    users: ["https://via.placeholder.com/30", "https://via.placeholder.com/30"],
+  },
+  {
+    name: "Whitecoat",
+    price: "$25,000.00",
+    stage: "Initial Contact",
+    tasks: "4/2",
+    users: ["https://via.placeholder.com/30", "https://via.placeholder.com/30"],
+  },
+  {
+    name: "Tailwinds",
+    price: "$15,000.00",
+    stage: "Initial Contact",
+    tasks: "4/2",
+    users: ["https://via.placeholder.com/30"],
+  },
+  {
+    name: "Discover Financial",
+    price: "$10,000.00",
+    stage: "Close",
+    tasks: "0/0",
+    users: ["https://via.placeholder.com/30"],
+  },
 ];
 
-const Deal  = () => {
+const Deal = () => {
   const [dealName, setDealName] = useState("");
   const [phone, setPhone] = useState("");
   const [price, setPrice] = useState(0);
@@ -81,7 +143,7 @@ const Deal  = () => {
                 <Dropdown.Item href="#">Enterprise</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
-            <Button variant="outline-dark" onClick={handleShow} style={{background:"rgb(38 29 167)", color:"white"}}>
+            <Button variant="outline-dark" onClick={handleShow}>
               + Add
             </Button>
           </div>
@@ -106,15 +168,15 @@ const Deal  = () => {
           <FormControl placeholder="Search..." />
         </InputGroup>
 
-        <Table responsive bordered hover className="table">
-          <thead className="table">
+        <Table responsive bordered hover className="table text-center">
+          <thead className="table-light">
             <tr>
-              <th style={{background:"rgb(38 29 167)", color:"white"}}>Name</th>
-              <th style={{background:"rgb(38 29 167)", color:"white"}}>Price</th>
-              <th style={{background:"rgb(38 29 167)", color:"white"}}>Stage</th>
-              <th style={{background:"rgb(38 29 167)", color:"white"}}>Tasks</th>
-              <th style={{background:"rgb(38 29 167)", color:"white"}}>Users</th>
-              <th style={{background:"rgb(38 29 167)", color:"white"}}>Action</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Stage</th>
+              <th>Tasks</th>
+              <th>Users</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -126,18 +188,29 @@ const Deal  = () => {
                 <td>{row.tasks}</td>
                 <td>
                   {row.users.map((user, i) => (
-                    <img key={i} src={user} alt="User" className="rounded-circle" width="30" height="30" />
+                    <img
+                      key={i}
+                      src={user}
+                      alt="User"
+                      className="rounded-circle"
+                      width="30"
+                      height="30"
+                    />
                   ))}
                 </td>
                 <td className="text-nowrap">
                   <Button  className="btn btn-light btn-sm me-1">
                     👁
                   </Button>
-                  <Button className="btn btn-light btn-sm me-1">
-                    ✏
+                  <Button size="sm" className="btn btn-light btn-sm me-1">
+                    ✏️
                   </Button>
-                  <Button className="btn btn-light btn-sm me-1" onClick={() => handleDelete(index)}>
-                    🗑
+                  <Button
+                    size="sm"
+                    className="btn btn-light btn-sm me-1"
+                    onClick={() => handleDelete(index)}
+                  >
+                    🗑️
                   </Button>
                 </td>
               </tr>
@@ -185,7 +258,11 @@ const Deal  = () => {
               </Form.Group>
 
               <div className="d-flex justify-content-end">
-                <Button variant="secondary" onClick={handleClose} className="me-2">
+                <Button
+                  variant="secondary"
+                  onClick={handleClose}
+                  className="me-2"
+                >
                   Cancel
                 </Button>
                 <Button type="submit" variant="success">
@@ -201,4 +278,3 @@ const Deal  = () => {
 };
 
 export default Deal;
-  

@@ -1,7 +1,7 @@
 import { Dropdown, Button, Table, Modal, Form } from "react-bootstrap";
-import React, { useState } from "react";
+import { useState } from "react";
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const Inquriy = () => {
   const initialData = [
@@ -9,48 +9,46 @@ const Inquriy = () => {
       name: "Encoure",
       phone: 890567673,
       source: "Admission Campaign",
-      enquirydate:"	02/24/2025",
-      lastdate:"02/12/2025",
-      nextdate:"03/01/2025",
-      status:"Active",
+      enquirydate: "	02/24/2025",
+      lastdate: "02/12/2025",
+      nextdate: "03/01/2025",
+      status: "Active",
     },
     {
       name: "Alexandria",
       phone: 789806786,
       source: "	Online Front Site",
-      enquirydate:"	02/24/2025",
-      lastdate:"02/12/2025",
-      nextdate:"03/01/2025",
-      status:"Active",
-      
+      enquirydate: "	02/24/2025",
+      lastdate: "02/12/2025",
+      nextdate: "03/01/2025",
+      status: "Active",
     },
     {
       name: "Netpoints",
       phone: 789806786,
       source: "	Google Ads",
-      enquirydate:"	02/24/2025",
-      lastdate:"02/12/2025",
-      nextdate:"03/01/2025",
-      status:"Active",
+      enquirydate: "	02/24/2025",
+      lastdate: "02/12/2025",
+      nextdate: "03/01/2025",
+      status: "Active",
     },
     {
       name: "Starburst",
       phone: 789806786,
       source: "Front Office",
-      enquirydate:"	02/24/2025",
-      lastdate:"02/12/2025",
-      nextdate:"03/01/2025",
-      status:"Active",
+      enquirydate: "	02/24/2025",
+      lastdate: "02/12/2025",
+      nextdate: "03/01/2025",
+      status: "Active",
     },
     {
       name: "Sophia Francis",
       phone: 789806786,
       source: "Google Ads",
-      enquirydate:"	02/24/2025",
-      lastdate:"02/12/2025",
-      nextdate:"03/01/2025",
-      status:"Active",
-      
+      enquirydate: "	02/24/2025",
+      lastdate: "02/12/2025",
+      nextdate: "03/01/2025",
+      status: "Active",
     },
   ];
 
@@ -61,7 +59,6 @@ const Inquriy = () => {
     source: "",
     enquirydate: "",
     email: "",
-  
   });
 
   const handleClose = () => setShowModal(false);
@@ -86,7 +83,6 @@ const Inquriy = () => {
       source: "",
       name: "",
       enquirydate: "",
-      phone: "",
     });
     handleClose();
   };
@@ -100,13 +96,17 @@ const Inquriy = () => {
     <div className="container p-3">
       <h4 className="fw-bold">Admission Enquiry</h4>
       <nav aria-label="breadcrumb">
-          <ol className="breadcrumb">
-            <li className="breadcrumb-item">
-              <a href="/" className="text-success text-decoration-none">Home</a>
-            </li>
-            <li className="breadcrumb-item active" aria-current="page">Leads</li>
-          </ol>
-        </nav>
+        <ol className="breadcrumb">
+          <li className="breadcrumb-item">
+            <a href="/" className="text-success text-decoration-none">
+              Home
+            </a>
+          </li>
+          <li className="breadcrumb-item active" aria-current="page">
+            Leads
+          </li>
+        </ol>
+      </nav>
       <div className="row g-2">
         <div className="col-md-2">
           <label className="form-label">Class</label>
@@ -146,11 +146,8 @@ const Inquriy = () => {
         </div>
       </div>
 
-      <div className="d-flex justify-content-between align-items-center flex-wrap">
-        
-        
-      </div>
-      <br/>
+      <div className="d-flex justify-content-between align-items-center flex-wrap"></div>
+      <br />
       <div className="d-flex justify-content-between align-items-center mb-3">
         <Form.Select className="w-auto">
           <option>10</option>
@@ -159,16 +156,19 @@ const Inquriy = () => {
         </Form.Select>
         <div className="d-flex gap-2">
           <Dropdown>
-            <Dropdown.Toggle variant="light" className="border">Plan</Dropdown.Toggle>
+            <Dropdown.Toggle variant="light" className="border">
+              Plan
+            </Dropdown.Toggle>
             <Dropdown.Menu>
               <Dropdown.Item href="#">Basic</Dropdown.Item>
               <Dropdown.Item href="#">Premium</Dropdown.Item>
               <Dropdown.Item href="#">Enterprise</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
-          <Button variant="outline-dark" onClick={handleShow}>+ Add</Button>
+          <Button variant="outline-dark" onClick={handleShow}>
+            + Add
+          </Button>
         </div>
-       
       </div>
 
       <Table responsive bordered hover className="text-center">
@@ -178,8 +178,8 @@ const Inquriy = () => {
             <th>Phone</th>
             <th>Source</th>
             <th>Enquiry Date</th>
-            <th>Last Follow Up Date	</th>
-            <th>Next Follow Up Date	</th>
+            <th>Last Follow Up Date </th>
+            <th>Next Follow Up Date </th>
             <th>Status</th>
             <th>Action</th>
           </tr>
@@ -195,9 +195,19 @@ const Inquriy = () => {
               <td>{item.nextdate}</td>
               <td>{item.status}</td>
               <td>
-                 <Button className="btn btn-light btn-sm me-1">👁️</Button>
-                 <Button className="btn btn-light btn-sm me-1">✎</Button>
-                <Button className="btn btn-light btn-sm me-1" size="sm" onClick={() => handleDelete(index)}>🗑️</Button>
+                <Button size="sm" className="btn btn-light btn-sm me-1">
+                  👁️
+                </Button>
+                <Button size="sm" className="btn btn-light btn-sm me-1">
+                  ✏️
+                </Button>
+                <Button
+                  size="sm"
+                  className="btn btn-light btn-sm me-1"
+                  onClick={() => handleDelete(index)}
+                >
+                  🗑️
+                </Button>
               </td>
             </tr>
           ))}
@@ -213,7 +223,9 @@ const Inquriy = () => {
             <div className="row">
               <div className="col-md-6">
                 <Form.Group className="mb-3">
-                  <Form.Label>Phone<span className="text-danger">*</span></Form.Label>
+                  <Form.Label>
+                    Phone<span className="text-danger">*</span>
+                  </Form.Label>
                   <Form.Control
                     type="number"
                     name="phone"
@@ -226,8 +238,15 @@ const Inquriy = () => {
               </div>
               <div className="col-md-6">
                 <Form.Group className="mb-3">
-                  <Form.Label>source<span className="text-danger">*</span></Form.Label>
-                  <Form.Select name="source" value={formData.source} onChange={handleChange} required>
+                  <Form.Label>
+                    source<span className="text-danger">*</span>
+                  </Form.Label>
+                  <Form.Select
+                    name="source"
+                    value={formData.source}
+                    onChange={handleChange}
+                    required
+                  >
                     <option value="">Select source</option>
                     <option value="source1">source 1</option>
                     <option value="source">source 2</option>
@@ -236,7 +255,9 @@ const Inquriy = () => {
               </div>
               <div className="col-md-6">
                 <Form.Group className="mb-3">
-                  <Form.Label>Name<span className="text-danger">*</span></Form.Label>
+                  <Form.Label>
+                    Name<span className="text-danger">*</span>
+                  </Form.Label>
                   <Form.Control
                     type="text"
                     name="name"
@@ -249,7 +270,9 @@ const Inquriy = () => {
               </div>
               <div className="col-md-6">
                 <Form.Group className="mb-3">
-                  <Form.Label>Enquiry date<span className="text-danger">*</span></Form.Label>
+                  <Form.Label>
+                    Enquiry date<span className="text-danger">*</span>
+                  </Form.Label>
                   <Form.Control
                     type="date"
                     name="date"
@@ -262,7 +285,9 @@ const Inquriy = () => {
               </div>
               <div className="col-md-6">
                 <Form.Group className="mb-3">
-                  <Form.Label>Phone No<span className="text-danger">*</span></Form.Label>
+                  <Form.Label>
+                    Phone No<span className="text-danger">*</span>
+                  </Form.Label>
                   <Form.Control
                     type="text"
                     name="phone"
@@ -277,8 +302,12 @@ const Inquriy = () => {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>Cancel</Button>
-          <Button variant="success" onClick={handleSubmit}>Create</Button>
+          <Button variant="secondary" onClick={handleClose}>
+            Cancel
+          </Button>
+          <Button variant="success" onClick={handleSubmit}>
+            Create
+          </Button>
         </Modal.Footer>
       </Modal>
     </div>

@@ -1,7 +1,7 @@
 import { Dropdown, Button, Table, Modal, Form } from "react-bootstrap";
-import React, { useState } from "react";
+import { useState } from "react";
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const Lead = () => {
   const initialData = [
@@ -86,24 +86,32 @@ const Lead = () => {
         <nav aria-label="breadcrumb">
           <ol className="breadcrumb">
             <li className="breadcrumb-item">
-              <a href="/" className="text-success text-decoration-none">Home</a>
+              <a href="/" className="text-success text-decoration-none">
+                Home
+              </a>
             </li>
-            <li className="breadcrumb-item active" aria-current="page">Leads</li>
+            <li className="breadcrumb-item active" aria-current="page">
+              Leads
+            </li>
           </ol>
         </nav>
         <div className="d-flex gap-2">
           <Dropdown>
-            <Dropdown.Toggle variant="light" className="border">Plan</Dropdown.Toggle>
+            <Dropdown.Toggle variant="light" className="border">
+              Plan
+            </Dropdown.Toggle>
             <Dropdown.Menu>
               <Dropdown.Item href="#">Basic</Dropdown.Item>
               <Dropdown.Item href="#">Premium</Dropdown.Item>
               <Dropdown.Item href="#">Enterprise</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
-          <Button variant="outline-dark" onClick={handleShow} style={{background:"rgb(38 29 167)", color:"white"}}>+ Add</Button>
+          <Button variant="outline-dark" onClick={handleShow}>
+            + Add
+          </Button>
         </div>
       </div>
-      <br/>
+      <br />
       <div className="d-flex justify-content-between align-items-center mb-3">
         <Form.Select className="w-auto">
           <option>10</option>
@@ -116,11 +124,11 @@ const Lead = () => {
       <Table responsive bordered hover className="text-center">
         <thead className="table-light">
           <tr>
-            <th >NAME</th>
+            <th>NAME</th>
             <th>SUBJECT</th>
-            <th >STAGE</th>
-            <th >USERS</th>
-            <th >ACTION</th>
+            <th>STAGE</th>
+            <th>USERS</th>
+            <th>ACTION</th>
           </tr>
         </thead>
         <tbody>
@@ -141,9 +149,19 @@ const Lead = () => {
                 ))}
               </td>
               <td>
-                <Button variant="warning" size="sm" className="btn btn-light btn-sm me-1">👁️</Button>
-                <Button variant="info" className="btn btn-light btn-sm me-1">✏️</Button>
-                <Button className="btn btn-light btn-sm me-1" variant="danger" size="sm" onClick={() => handleDelete(index)}>🗑️</Button>
+                <Button size="sm" className="btn btn-light btn-sm me-1">
+                  👁️
+                </Button>
+                <Button size="sm" className="me-1 btn btn-light btn-sm">
+                  ✏️
+                </Button>
+                <Button
+                  size="sm"
+                  className="btn btn-light btn-sm me-1"
+                  onClick={() => handleDelete(index)}
+                >
+                  🗑️
+                </Button>
               </td>
             </tr>
           ))}
@@ -159,7 +177,9 @@ const Lead = () => {
             <div className="row">
               <div className="col-md-6">
                 <Form.Group className="mb-3">
-                  <Form.Label>Subject<span className="text-danger">*</span></Form.Label>
+                  <Form.Label>
+                    Subject<span className="text-danger">*</span>
+                  </Form.Label>
                   <Form.Control
                     type="text"
                     name="subject"
@@ -172,8 +192,15 @@ const Lead = () => {
               </div>
               <div className="col-md-6">
                 <Form.Group className="mb-3">
-                  <Form.Label>User<span className="text-danger">*</span></Form.Label>
-                  <Form.Select name="user" value={formData.user} onChange={handleChange} required>
+                  <Form.Label>
+                    User<span className="text-danger">*</span>
+                  </Form.Label>
+                  <Form.Select
+                    name="user"
+                    value={formData.user}
+                    onChange={handleChange}
+                    required
+                  >
                     <option value="">Select User</option>
                     <option value="User1">User 1</option>
                     <option value="User2">User 2</option>
@@ -182,7 +209,9 @@ const Lead = () => {
               </div>
               <div className="col-md-6">
                 <Form.Group className="mb-3">
-                  <Form.Label>Name<span className="text-danger">*</span></Form.Label>
+                  <Form.Label>
+                    Name<span className="text-danger">*</span>
+                  </Form.Label>
                   <Form.Control
                     type="text"
                     name="name"
@@ -195,7 +224,9 @@ const Lead = () => {
               </div>
               <div className="col-md-6">
                 <Form.Group className="mb-3">
-                  <Form.Label>Email<span className="text-danger">*</span></Form.Label>
+                  <Form.Label>
+                    Email<span className="text-danger">*</span>
+                  </Form.Label>
                   <Form.Control
                     type="email"
                     name="email"
@@ -208,7 +239,9 @@ const Lead = () => {
               </div>
               <div className="col-md-6">
                 <Form.Group className="mb-3">
-                  <Form.Label>Phone No<span className="text-danger">*</span></Form.Label>
+                  <Form.Label>
+                    Phone No<span className="text-danger">*</span>
+                  </Form.Label>
                   <Form.Control
                     type="text"
                     name="phone"
@@ -223,12 +256,16 @@ const Lead = () => {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>Cancel</Button>
-          <Button variant="success" onClick={handleSubmit}>Create</Button>
+          <Button variant="secondary" onClick={handleClose}>
+            Cancel
+          </Button>
+          <Button variant="success" onClick={handleSubmit}>
+            Create
+          </Button>
         </Modal.Footer>
       </Modal>
     </div>
   );
 };
 
-export default  Lead;
+export default Lead;

@@ -50,6 +50,8 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
                 "/deal",
                 "/dashboard",
                 "/contact",
+                "/quotes",
+                "/analytics",
               ])
                 ? "active"
                 : ""
@@ -80,9 +82,9 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
                 </li>
                 <li
                   className={`menu-item submenu-item ${
-                    isActive("/contact") ? "active" : ""
+                    isActive("/contract") ? "active" : ""
                   }`}
-                  onClick={() => navigate("/contact")}
+                  onClick={() => navigate("/contract")}
                 >
                   Contact
                 </li>
@@ -109,6 +111,22 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
                   onClick={() => navigate("/deal")}
                 >
                   Deal
+                </li>
+                <li
+                  className={`menu-item submenu-item ${
+                    isActive("/quotes") ? "active" : ""
+                  }`}
+                  onClick={() => navigate("/quotes")}
+                >
+                  Quotes
+                </li>
+                <li
+                  className={`menu-item submenu-item ${
+                    isActive("/analytics") ? "active" : ""
+                  }`}
+                  onClick={() => navigate("/analytics")}
+                >
+                  Analytics
                 </li>
               </ul>
             )}
