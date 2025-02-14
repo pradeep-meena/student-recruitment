@@ -1,13 +1,6 @@
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import {
-  Table,
-  Button,
-  Form,
-  Breadcrumb,
-  Row,
-  Col,
-} from "react-bootstrap";
+import { Table, Button, Form, Breadcrumb, Row, Col } from "react-bootstrap";
 import { Modal } from "react-bootstrap";
 
 const Contract = () => {
@@ -23,8 +16,8 @@ const Contract = () => {
       project: "Bootstrap Framework",
       type: "Marketing",
       value: "USD 80,000",
-      startDate: "07-10-2024",
-      endDate: "08-12-2024",
+      startDate: "2024-05-20",
+      endDate: "2024-05-20",
       description: "Contract for software development services.",
     },
     {
@@ -34,8 +27,8 @@ const Contract = () => {
       project: "Website Redesign",
       type: "Planning",
       value: "USD 5,000",
-      startDate: "08-10-2024",
-      endDate: "21-01-2025",
+      startDate: "2024-09-20",
+      endDate: "2024-03-23",
       description: "Agreement for marketing campaign execution.",
     },
   ]);
@@ -261,7 +254,7 @@ const Contract = () => {
                   <Form.Control
                     type="text"
                     name="contractValue"
-                    value={contractData.contractValue}
+                    value={contractData.value}
                     onChange={handleChange}
                   />
                 </Form.Group>
