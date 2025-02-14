@@ -199,8 +199,8 @@ const Deal = () => {
                   ))}
                 </td>
                 <td className="text-nowrap">
-                  <Button size="sm" className="btn btn-light btn-sm me-1">
-                    👁️
+                  <Button variant="warning" className="me-1">
+                    👁
                   </Button>
                   <Button size="sm" className="btn btn-light btn-sm me-1">
                     ✏️

@@ -50,8 +50,11 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
                 "/deal",
                 "/dashboard",
                 "/contact",
+<<<<<<< HEAD
                 "/quotes",
                 "/analytics",
+=======
+>>>>>>> 58f504e102da5b2480621a0b490c9f7c22812bee
               ])
                 ? "active"
                 : ""
@@ -84,7 +87,11 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
                   className={`menu-item submenu-item ${
                     isActive("/contact") ? "active" : ""
                   }`}
+<<<<<<< HEAD
                   onClick={() => navigate("/contract")}
+=======
+                  onClick={() => navigate("/contact")}
+>>>>>>> 58f504e102da5b2480621a0b490c9f7c22812bee
                 >
                   Contact
                 </li>
@@ -131,157 +138,6 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
               </ul>
             )}
           </li>
-          {/* Student Profile Management */}
-          <li className={`menu-item ${isActive("/Profile") ? "active" : ""}`}>
-            <div
-              className="menu-link menu-i"
-              onClick={() => {
-                navigate("/Profile");
-                menuItemClick();
-              }}
-            >
-              <i className="fa fa-graduation-cap" aria-hidden="true"></i>
-              <span className="menu-text">Student Profile Management</span>
-            </div>
-          </li>
-          {/*  Application & Admission Tracking */}
-          <li
-            className={`menu-item ${
-              isActive("/AdmissionTracking") ? "active" : ""
-            }`}
-          >
-            <div
-              className="menu-link menu-i"
-              onClick={() => {
-                navigate("/AdmissionTracking");
-                menuItemClick();
-              }}
-            >
-              <i className="fa fa-user" aria-hidden="true"></i>
-              <span className="menu-text">
-                {" "}
-                Application & Admission Tracking
-              </span>
-            </div>
-          </li>
-          {/* Communication & Follow-up Management */}
-          <li
-            className={`menu-item ${
-              isActive("/CommunicationFollowupManagement") ? "active" : ""
-            }`}
-          >
-            <div
-              className="menu-link menu-i"
-              onClick={() => {
-                navigate("/CommunicationFollowupManagement");
-                menuItemClick();
-              }}
-            >
-              <i className="fa-solid fa-comments"></i>
-              <span className="menu-text">
-                Communication & Follow-up Management
-              </span>
-            </div>
-          </li>
-          {/* Task & Calendar Management */}
-          <li
-            className={`menu-item ${
-              isActive("/TaskCalendarManagement") ? "active" : ""
-            }`}
-          >
-            <div
-              className="menu-link menu-i"
-              onClick={() => {
-                navigate("/TaskCalendarManagement");
-                menuItemClick();
-              }}
-            >
-              <i className="fa-solid fa-calendar-check"></i>
-              <span className="menu-text">Task & Calendar Management</span>
-            </div>
-          </li>
-          {/* Course & University Database */}
-          <li
-            className={`menu-item ${
-              isActive("/CourseUniversityDatabase") ? "active" : ""
-            }`}
-          >
-            <div
-              className="menu-link menu-i"
-              onClick={() => {
-                navigate("/CourseUniversityDatabase");
-                menuItemClick();
-              }}
-            >
-              <i className="fa-solid fa-university "></i>
-              <span className="menu-text"> Course & University Database</span>
-            </div>
-          </li>
-          {/* Reporting & Analytics */}
-          <li
-            className={`menu-item ${
-              isActive("/ReportingAnalytics") ? "active" : ""
-            }`}
-          >
-            <div
-              className="menu-link menu-i"
-              onClick={() => {
-                navigate("/ReportingAnalytics");
-                menuItemClick();
-              }}
-            >
-              <i className="fa-solid fa-chart-line "></i>
-              <span className="menu-text">Reporting & Analytics</span>
-            </div>
-          </li>
-          {/* Payment & Invoice Management */}
-          <li
-            className={`menu-item ${
-              isActive("/PaymentInvoiceManagement") ? "active" : ""
-            }`}
-          >
-            <div
-              className="menu-link menu-i"
-              onClick={() => {
-                navigate("/PaymentInvoiceManagement");
-                menuItemClick();
-              }}
-            >
-              <i className="fa-solid fa-receipt"></i>
-              <span className="menu-text"> Payment & Invoice Management</span>
-            </div>
-          </li>
-          {/* User Roles & Access Control */}
-          <li
-            className={`menu-item ${
-              isActive("/UserRolesAccessControl") ? "active" : ""
-            }`}
-          >
-            <div
-              className="menu-link menu-i"
-              onClick={() => {
-                navigate("/UserRolesAccessControl");
-                menuItemClick();
-              }}
-            >
-              <i className="fa-solid fa-users-cog "></i>
-              <span className="menu-text"> User Roles & Access Control</span>
-            </div>
-          </li>
-          {/* Cloud & Mobile Accessibility */}
-          {/* <li
-            className={`menu-item ${
-              isActive("/") ? "active" : ""
-            }`}>
-            <div
-              className="menu-link menu-i"
-              onClick={() => {navigate("/dashboard");menuItemClick();}}>
-              <i className="fa-solid fa-file-contract"></i>
-              <span className="menu-text"> Cloud & Mobile Accessibility
-
-              </span>
-            </div>
-          </li> */}
         </ul>
       </div>
     </div>
