@@ -14,7 +14,7 @@ const Contract = () => {
       subject: "Software Development Contract",
       client: "Mick Aston",
       project: "Bootstrap Framework",
-      type: "Marketing",
+      contractType: "Marketing",
       value: "USD 80,000",
       startDate: "2024-05-20",
       endDate: "2024-05-20",
@@ -25,7 +25,7 @@ const Contract = () => {
       subject: "Marketing Campaign Project Agreement",
       client: "Jennifer Ellison",
       project: "Website Redesign",
-      type: "Planning",
+      contractType: "Planning",
       value: "USD 5,000",
       startDate: "2024-09-20",
       endDate: "2024-03-23",
@@ -38,7 +38,7 @@ const Contract = () => {
     client: "",
     project: "",
     contractType: "Marketing",
-    contractValue: "",
+    value: "",
     startDate: "",
     endDate: "",
     description: "",
@@ -49,7 +49,6 @@ const Contract = () => {
     setContractData({ ...contractData, [e.target.name]: e.target.value });
   };
 
-  // Handle Opening Modal
   const handleShow = () => {
     setSelectedContract(null);
     setContractData({
@@ -57,7 +56,7 @@ const Contract = () => {
       client: "",
       project: "",
       contractType: "Marketing",
-      contractValue: "",
+      value: "",
       startDate: "",
       endDate: "",
       description: "",
@@ -77,7 +76,14 @@ const Contract = () => {
       ...contracts,
       {
         id: `CON000${contracts.length + 1}`,
-        ...contractData,
+        subject: contractData.subject,
+        client: contractData.client,
+        project: contractData.project,
+        contractType: contractData.contractType,
+        value: contractData.value,
+        startDate: contractData.startDate,
+        endDate: contractData.endDate,
+        description: contractData.description,
       },
     ]);
     handleClose();
@@ -110,19 +116,27 @@ const Contract = () => {
   return (
     <div className="container p-3">
       {/* Breadcrumb Navigation */}
+      <h4 className="fw-bold">Contact</h4>
+      <nav aria-label="breadcrumb">
+        <ol className="breadcrumb">
+          <li className="breadcrumb-item">
+            <a href="/" className="text-success text-decoration-none">
+              Home
+            </a>
+          </li>
+          <li className="breadcrumb-item active" aria-current="page">
+            Leads
+          </li>
+        </ol>
+      </nav>
       <Row className="mb-3">
-        <Col>
-          <Breadcrumb>
-            <Breadcrumb.Item href="#">Dashboard</Breadcrumb.Item>
-            <Breadcrumb.Item active>Contract</Breadcrumb.Item>
-          </Breadcrumb>
-          <h5 className="fw-bold">Manage Contract</h5>
-        </Col>
-        <Col className="text-end">
-          <Button variant="outline-dark" className="me-2 gap-1">
-            Info
-          </Button>
+        <Form.Select className="w-auto">
+          <option>10</option>
+          <option>20</option>
+          <option>50</option>
+        </Form.Select>
 
+        <Col className="text-end gap-2">
           <Button variant="outline-dark" onClick={handleShow}>
             + Add
           </Button>
@@ -135,10 +149,10 @@ const Contract = () => {
           <tr>
             <th>#</th>
             <th>SUBJECT</th>
-            <th>CLIENT</th>
+            <th>LEARNER</th>
             <th>PROJECT</th>
-            <th>CONTRACT TYPE</th>
-            <th>CONTRACT VALUE</th>
+            <th>TYPE</th>
+            <th>PAYMENT</th>
             <th>START DATE</th>
             <th>END DATE</th>
             <th>DESCRIPTION</th>
@@ -156,7 +170,7 @@ const Contract = () => {
               <td>{contract.subject}</td>
               <td>{contract.client}</td>
               <td>{contract.project}</td>
-              <td>{contract.type}</td>
+              <td>{contract.contractType}</td>
               <td>{contract.value}</td>
               <td>{contract.startDate}</td>
               <td>{contract.endDate}</td>
@@ -252,8 +266,8 @@ const Contract = () => {
                 <Form.Group>
                   <Form.Label>Contract Value*</Form.Label>
                   <Form.Control
-                    type="text"
-                    name="contractValue"
+                    type="number"
+                    name="value"
                     value={contractData.value}
                     onChange={handleChange}
                   />

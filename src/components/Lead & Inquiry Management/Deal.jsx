@@ -36,83 +36,103 @@ const initialData = [
     name: "Smart Agriculture Project",
     price: "$50,000.00",
     stage: "Open",
-    tasks: "0/0",
+    tasks: "0",
     users: ["https://via.placeholder.com/30"],
   },
   {
     name: "Hybrid",
     price: "$40,000.00",
     stage: "Proposal",
-    tasks: "4/3",
+    tasks: "4",
     users: ["https://via.placeholder.com/30", "https://via.placeholder.com/30"],
   },
   {
     name: "Stella",
     price: "$35,000.00",
     stage: "Meeting",
-    tasks: "3/0",
+    tasks: "3",
     users: ["https://via.placeholder.com/30", "https://via.placeholder.com/30"],
   },
   {
     name: "Refocus",
     price: "$30,000.00",
     stage: "Close",
-    tasks: "3/1",
+    tasks: "3",
     users: ["https://via.placeholder.com/30", "https://via.placeholder.com/30"],
   },
   {
     name: "Whitecoat",
     price: "$25,000.00",
     stage: "Initial Contact",
-    tasks: "4/2",
+    tasks: "4",
     users: ["https://via.placeholder.com/30", "https://via.placeholder.com/30"],
-  },
-  {
-    name: "Tailwinds",
-    price: "$15,000.00",
-    stage: "Initial Contact",
-    tasks: "4/2",
-    users: ["https://via.placeholder.com/30"],
-  },
-  {
-    name: "Discover Financial",
-    price: "$10,000.00",
-    stage: "Close",
-    tasks: "0/0",
-    users: ["https://via.placeholder.com/30"],
   },
 ];
 
 const Deal = () => {
   const [dealName, setDealName] = useState("");
-  const [phone, setPhone] = useState("");
+  const [tasks, setTasks] = useState("");
+  const [stage, setStage] = useState("");
   const [price, setPrice] = useState(0);
   const [showModal, setShowModal] = useState(false);
-  const [data, setData] = useState(initialData); // Manage data with state
+  const [data, setData] = useState(initialData);
+  const [editIndex, setEditIndex] = useState(null);
+  const [showEditModal, setShowEditModal] = useState(false);
 
   const handleShow = () => setShowModal(true);
   const handleClose = () => setShowModal(false);
 
+  const handleShowEditModal = (index) => {
+    setEditIndex(index);
+    setDealName(data[index].name);
+    setStage(data[index].stage);
+    setTasks(data[index].tasks);
+    console.log(data[index].tasks);
+    setPrice(parseFloat(data[index].price.replace("$", "").replace(",", "")));
+    setShowEditModal(true);
+  };
+
+  const handleCloseEditModal = () => {
+    setShowEditModal(false);
+    setEditIndex(null);
+    setDealName("");
+    setStage("");
+    setPrice(0);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add new deal to the data array
     const newDeal = {
       name: dealName,
       price: `$${price}.00`,
-      stage: "Open", // Default stage
-      tasks: "0/0", // Default tasks
-      users: ["https://via.placeholder.com/30"], // Default user
+      stage: stage,
+      tasks: tasks,
+      users: ["https://via.placeholder.com/30"],
     };
-    setData([...data, newDeal]); // Update data state
-    setDealName(""); // Reset form fields
-    setPhone("");
+    setData([...data, newDeal]);
+    setDealName("");
+    setStage("");
     setPrice(0);
-    handleClose(); // Close modal
+    handleClose();
+  };
+
+  const handleEditSubmit = (e) => {
+    e.preventDefault();
+    const updatedData = [...data];
+    updatedData[editIndex] = {
+      ...updatedData[editIndex],
+      name: dealName,
+      price: `$${price}.00`,
+      stage: stage,
+      tasks: tasks,
+    };
+    setData(updatedData);
+    handleCloseEditModal();
   };
 
   const handleDelete = (index) => {
-    const updatedData = data.filter((_, i) => i !== index); // Remove the deal at the specified index
-    setData(updatedData); // Update data state
+    const updatedData = data.filter((_, i) => i !== index);
+    setData(updatedData);
   };
 
   return (
@@ -199,10 +219,12 @@ const Deal = () => {
                   ))}
                 </td>
                 <td className="text-nowrap">
-                  <Button  className="btn btn-light btn-sm me-1">
-                    👁
-                  </Button>
-                  <Button size="sm" className="btn btn-light btn-sm me-1">
+                  <Button className="btn btn-light btn-sm me-1">👁</Button>
+                  <Button
+                    size="sm"
+                    className="btn btn-light btn-sm me-1"
+                    onClick={() => handleShowEditModal(index)}
+                  >
                     ✏️
                   </Button>
                   <Button
@@ -225,7 +247,7 @@ const Deal = () => {
           <Modal.Body>
             <Form onSubmit={handleSubmit}>
               <Form.Group className="mb-3">
-                <Form.Label>Deal Name</Form.Label>
+                <Form.Label>Name</Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="Enter Deal Name"
@@ -236,12 +258,23 @@ const Deal = () => {
               </Form.Group>
 
               <Form.Group className="mb-3">
-                <Form.Label>Phone No</Form.Label>
+                <Form.Label>Stage</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Enter Phone No"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
+                  placeholder="Enter Stage"
+                  value={stage}
+                  onChange={(e) => setStage(e.target.value)}
+                  required
+                />
+              </Form.Group>
+
+              <Form.Group className="mb-3">
+                <Form.Label>Tasks</Form.Label>
+                <Form.Control
+                  type="number"
+                  placeholder="Enter Tasks"
+                  value={tasks}
+                  onChange={(e) => setTasks(e.target.value)}
                   required
                 />
               </Form.Group>
@@ -267,6 +300,72 @@ const Deal = () => {
                 </Button>
                 <Button type="submit" variant="success">
                   Create
+                </Button>
+              </div>
+            </Form>
+          </Modal.Body>
+        </Modal>
+
+        <Modal show={showEditModal} onHide={handleCloseEditModal} centered>
+          <Modal.Header closeButton>
+            <Modal.Title>Edit Deal</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Form onSubmit={handleEditSubmit}>
+              <Form.Group className="mb-3">
+                <Form.Label>Deal Name</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter Deal Name"
+                  value={dealName}
+                  onChange={(e) => setDealName(e.target.value)}
+                  required
+                />
+              </Form.Group>
+
+              <Form.Group className="mb-3">
+                <Form.Label>Price</Form.Label>
+                <Form.Control
+                  type="number"
+                  placeholder="Enter Price"
+                  value={price}
+                  onChange={(e) => setPrice(e.target.value)}
+                  required
+                />
+              </Form.Group>
+
+              <Form.Group className="mb-3">
+                <Form.Label>Stage</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter Stage"
+                  value={stage}
+                  onChange={(e) => setStage(e.target.value)}
+                  required
+                />
+              </Form.Group>
+
+              <Form.Group className="mb-3">
+                <Form.Label>Tasks</Form.Label>
+                <Form.Control
+                  type="number"
+                  placeholder="Enter Tasks"
+                  value={tasks}
+                  onChange={(e) => setTasks(e.target.value)}
+                  required
+                />
+              </Form.Group>
+
+              <div className="d-flex justify-content-end">
+                <Button
+                  variant="secondary"
+                  onClick={handleCloseEditModal}
+                  className="me-2"
+                >
+                  Cancel
+                </Button>
+                <Button type="submit" variant="success">
+                  Save Changes
                 </Button>
               </div>
             </Form>

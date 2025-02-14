@@ -1,37 +1,24 @@
 import { Dropdown, Button, Table, Modal, Form } from "react-bootstrap";
 import { useState } from "react";
-
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Lead = () => {
   const initialData = [
     {
       name: "Encoure",
-      subject: "Encoure",
+      subject: "sagar",
       stage: "Sent",
       users: ["user1.jpg", "user2.jpg", "user3.jpg"],
     },
     {
       name: "Alexandria",
-      subject: "Alexandria",
+      subject: "Aakash",
       stage: "Open",
       users: ["user1.jpg", "user2.jpg", "user3.jpg"],
     },
     {
       name: "Netpoints",
-      subject: "Netpoints",
-      stage: "Sent",
-      users: ["user1.jpg", "user2.jpg", "user3.jpg"],
-    },
-    {
-      name: "Starburst",
-      subject: "Starburst",
-      stage: "Sent",
-      users: ["user1.jpg", "user2.jpg", "user3.jpg"],
-    },
-    {
-      name: "Sophia Francis",
-      subject: "Tasha Sanford",
+      subject: "lavkush",
       stage: "Sent",
       users: ["user1.jpg", "user2.jpg", "user3.jpg"],
     },
@@ -43,11 +30,21 @@ const Lead = () => {
     subject: "",
     user: "",
     name: "",
-    email: "",
-    phone: "",
+    stage: "",
   });
+  const [editIndex, setEditIndex] = useState(null); // Track the index of the lead being edited
 
-  const handleClose = () => setShowModal(false);
+  const handleClose = () => {
+    setShowModal(false);
+    setEditIndex(null); // Reset edit index when modal is closed
+    setFormData({
+      subject: "",
+      user: "",
+      name: "",
+      stage: "",
+    });
+  };
+
   const handleShow = () => setShowModal(true);
 
   const handleChange = (e) => {
@@ -59,16 +56,25 @@ const Lead = () => {
     const newLead = {
       name: formData.name,
       subject: formData.subject,
-      stage: "Open", // Default stage for new leads
+      stage: formData.stage, // Default stage for new leads
       users: ["user1.jpg", "user2.jpg", "user3.jpg"], // Default users for new leads
     };
-    setData([...data, newLead]);
+
+    if (editIndex !== null) {
+      // If editing an existing lead
+      const updatedData = [...data];
+      updatedData[editIndex] = newLead;
+      setData(updatedData);
+    } else {
+      // If adding a new lead
+      setData([...data, newLead]);
+    }
+
     setFormData({
       subject: "",
       user: "",
       name: "",
-      email: "",
-      phone: "",
+      stage: "",
     });
     handleClose();
   };
@@ -76,6 +82,18 @@ const Lead = () => {
   const handleDelete = (index) => {
     const updatedData = data.filter((_, i) => i !== index); // Remove the lead at the specified index
     setData(updatedData);
+  };
+
+  const handleEdit = (index) => {
+    const lead = data[index];
+    setFormData({
+      subject: lead.subject,
+      user: "", // You can set this if you have user data in the lead
+      name: lead.name,
+      stage: lead.stage,
+    });
+    setEditIndex(index);
+    handleShow();
   };
 
   return (
@@ -152,7 +170,11 @@ const Lead = () => {
                 <Button size="sm" className="btn btn-light btn-sm me-1">
                   👁️
                 </Button>
-                <Button size="sm" className="me-1 btn btn-light btn-sm">
+                <Button
+                  size="sm"
+                  className="me-1 btn btn-light btn-sm"
+                  onClick={() => handleEdit(index)}
+                >
                   ✏️
                 </Button>
                 <Button
@@ -170,7 +192,9 @@ const Lead = () => {
 
       <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
-          <Modal.Title>Create Lead</Modal.Title>
+          <Modal.Title>
+            {editIndex !== null ? "Edit Lead" : "Create Lead"}
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
@@ -225,28 +249,13 @@ const Lead = () => {
               <div className="col-md-6">
                 <Form.Group className="mb-3">
                   <Form.Label>
-                    Email<span className="text-danger">*</span>
-                  </Form.Label>
-                  <Form.Control
-                    type="email"
-                    name="email"
-                    placeholder="Enter Email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                  />
-                </Form.Group>
-              </div>
-              <div className="col-md-6">
-                <Form.Group className="mb-3">
-                  <Form.Label>
-                    Phone No<span className="text-danger">*</span>
+                    Stage<span className="text-danger">*</span>
                   </Form.Label>
                   <Form.Control
                     type="text"
-                    name="phone"
-                    placeholder="Enter Phone No"
-                    value={formData.phone}
+                    name=" stage"
+                    placeholder="Enter Stage"
+                    value={formData.stage}
                     onChange={handleChange}
                     required
                   />
@@ -260,7 +269,7 @@ const Lead = () => {
             Cancel
           </Button>
           <Button variant="success" onClick={handleSubmit}>
-            Create
+            {editIndex !== null ? "Update" : "Create"}
           </Button>
         </Modal.Footer>
       </Modal>
