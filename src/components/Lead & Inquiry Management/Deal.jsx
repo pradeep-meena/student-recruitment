@@ -129,13 +129,8 @@ const Deal  = () => {
                     <img key={i} src={user} alt="User" className="rounded-circle" width="30" height="30" />
                   ))}
                 </td>
-<<<<<<< HEAD
-                <td>
-                  <Button className="btn btn-light btn-sm me-1">
-=======
                 <td className="text-nowrap">
-                  <Button variant="warning" className="me-1">
->>>>>>> 58f504e102da5b2480621a0b490c9f7c22812bee
+                  <Button  className="btn btn-light btn-sm me-1">
                     👁
                   </Button>
                   <Button className="btn btn-light btn-sm me-1">
