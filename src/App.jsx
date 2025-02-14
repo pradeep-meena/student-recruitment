@@ -86,16 +86,11 @@ function App() {
             {/* deal */}
             <Route path="/deal" element={<Deal></Deal>}></Route>
 
-<<<<<<< HEAD
             <Route path="/contract" element={<Contract></Contract>}></Route>
 
             <Route path="/analytics" element={<Analytics></Analytics>}></Route>
 
             <Route path="/quotes" element={<Quotes></Quotes>}></Route>
-=======
-            {/* contact */}
-            <Route path="/contact" element={<Contact></Contact>}></Route>
->>>>>>> 58f504e102da5b2480621a0b490c9f7c22812bee
             {/* AdmissionTracking */}
 
             <Route path="/AdmissionTracking" element={<AdmissionTracking />} />

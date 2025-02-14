@@ -50,11 +50,8 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
                 "/deal",
                 "/dashboard",
                 "/contact",
-<<<<<<< HEAD
                 "/quotes",
                 "/analytics",
-=======
->>>>>>> 58f504e102da5b2480621a0b490c9f7c22812bee
               ])
                 ? "active"
                 : ""
@@ -87,11 +84,7 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
                   className={`menu-item submenu-item ${
                     isActive("/contact") ? "active" : ""
                   }`}
-<<<<<<< HEAD
                   onClick={() => navigate("/contract")}
-=======
-                  onClick={() => navigate("/contact")}
->>>>>>> 58f504e102da5b2480621a0b490c9f7c22812bee
                 >
                   Contact
                 </li>
