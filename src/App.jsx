@@ -11,7 +11,6 @@ import ChatBox from "./components/CommunicationFollowupManagement/ChatBox";
 import Contract from "./components/Lead & Inquiry Management/Contract";
 import Profile from "./components/Profile/Profile";
 import Lead from "./components/Lead & Inquiry Management/Lead";
-import Contact from "./components/Lead & Inquiry Management/Contact";
 import Deal from "./components/Lead & Inquiry Management/Deal";
 import ProfileDetails from "./components/Profile/ProfileDetails";
 import Analytics from "./components/Lead & Inquiry Management/Analytics";
