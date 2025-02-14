@@ -1,6 +1,5 @@
 import { Dropdown, Button, Table, Modal, Form } from "react-bootstrap";
 import { useState } from "react";
-
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Inquriy = () => {
@@ -9,7 +8,7 @@ const Inquriy = () => {
       name: "Encoure",
       phone: 890567673,
       source: "Admission Campaign",
-      enquirydate: "	02/24/2025",
+      enquirydate: "02/24/2025",
       lastdate: "02/12/2025",
       nextdate: "03/01/2025",
       status: "Active",
@@ -17,8 +16,8 @@ const Inquriy = () => {
     {
       name: "Alexandria",
       phone: 789806786,
-      source: "	Online Front Site",
-      enquirydate: "	02/24/2025",
+      source: "Online Front Site",
+      enquirydate: "02/24/2025",
       lastdate: "02/12/2025",
       nextdate: "03/01/2025",
       status: "Active",
@@ -26,8 +25,8 @@ const Inquriy = () => {
     {
       name: "Netpoints",
       phone: 789806786,
-      source: "	Google Ads",
-      enquirydate: "	02/24/2025",
+      source: "Google Ads",
+      enquirydate: "02/24/2025",
       lastdate: "02/12/2025",
       nextdate: "03/01/2025",
       status: "Active",
@@ -36,7 +35,7 @@ const Inquriy = () => {
       name: "Starburst",
       phone: 789806786,
       source: "Front Office",
-      enquirydate: "	02/24/2025",
+      enquirydate: "02/24/2025",
       lastdate: "02/12/2025",
       nextdate: "03/01/2025",
       status: "Active",
@@ -45,7 +44,7 @@ const Inquriy = () => {
       name: "Sophia Francis",
       phone: 789806786,
       source: "Google Ads",
-      enquirydate: "	02/24/2025",
+      enquirydate: "02/24/2025",
       lastdate: "02/12/2025",
       nextdate: "03/01/2025",
       status: "Active",
@@ -55,13 +54,24 @@ const Inquriy = () => {
   const [data, setData] = useState(initialData);
   const [show, setShowModal] = useState(false);
   const [formData, setFormData] = useState({
+    name: "",
     phone: "",
     source: "",
     enquirydate: "",
-    email: "",
   });
+  const [editIndex, setEditIndex] = useState(null); // Track the index of the inquiry being edited
 
-  const handleClose = () => setShowModal(false);
+  const handleClose = () => {
+    setShowModal(false);
+    setEditIndex(null); // Reset edit index when modal is closed
+    setFormData({
+      name: "",
+      phone: "",
+      source: "",
+      enquirydate: "",
+    });
+  };
+
   const handleShow = () => setShowModal(true);
 
   const handleChange = (e) => {
@@ -70,26 +80,50 @@ const Inquriy = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newLead = {
+    const newInquiry = {
       name: formData.name,
       phone: formData.phone,
-      stage: "Open", // Default stage for new leads
-      source: "Google Ads", // Default users for new leads
-      enquirydate: formData.date,
+      source: formData.source,
+      enquirydate: formData.enquirydate,
+      lastdate: "02/12/2025", // Default value
+      nextdate: "03/01/2025", // Default value
+      status: "Active", // Default value
     };
-    setData([...data, newLead]);
+
+    if (editIndex !== null) {
+      // If editing an existing inquiry
+      const updatedData = [...data];
+      updatedData[editIndex] = newInquiry;
+      setData(updatedData);
+    } else {
+      // If adding a new inquiry
+      setData([...data, newInquiry]);
+    }
+
     setFormData({
+      name: "",
       phone: "",
       source: "",
-      name: "",
       enquirydate: "",
     });
     handleClose();
   };
 
   const handleDelete = (index) => {
-    const updatedData = data.filter((_, i) => i !== index); // Remove the lead at the specified index
+    const updatedData = data.filter((_, i) => i !== index); // Remove the inquiry at the specified index
     setData(updatedData);
+  };
+
+  const handleEdit = (index) => {
+    const inquiry = data[index];
+    setFormData({
+      name: inquiry.name,
+      phone: inquiry.phone,
+      source: inquiry.source,
+      enquirydate: inquiry.enquirydate,
+    });
+    setEditIndex(index);
+    handleShow();
   };
 
   return (
@@ -198,7 +232,11 @@ const Inquriy = () => {
                 <Button size="sm" className="btn btn-light btn-sm me-1">
                   👁️
                 </Button>
-                <Button size="sm" className="btn btn-light btn-sm me-1">
+                <Button
+                  size="sm"
+                  className="btn btn-light btn-sm me-1"
+                  onClick={() => handleEdit(index)}
+                >
                   ✏️
                 </Button>
                 <Button
@@ -216,11 +254,26 @@ const Inquriy = () => {
 
       <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
-          <Modal.Title>Create Lead</Modal.Title>
+          <Modal.Title>{editIndex !== null ? "Edit Inquiry" : "Create Inquiry"}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
             <div className="row">
+              <div className="col-md-6">
+                <Form.Group className="mb-3">
+                  <Form.Label>
+                    Name<span className="text-danger">*</span>
+                  </Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="name"
+                    placeholder="Enter Name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                  />
+                </Form.Group>
+              </div>
               <div className="col-md-6">
                 <Form.Group className="mb-3">
                   <Form.Label>
@@ -239,7 +292,7 @@ const Inquriy = () => {
               <div className="col-md-6">
                 <Form.Group className="mb-3">
                   <Form.Label>
-                    source<span className="text-danger">*</span>
+                    Source<span className="text-danger">*</span>
                   </Form.Label>
                   <Form.Select
                     name="source"
@@ -247,52 +300,23 @@ const Inquriy = () => {
                     onChange={handleChange}
                     required
                   >
-                    <option value="">Select source</option>
-                    <option value="source1">source 1</option>
-                    <option value="source">source 2</option>
+                    <option value="">Select Source</option>
+                    <option value="Admission Campaign">Admission Campaign</option>
+                    <option value="Online Front Site">Online Front Site</option>
+                    <option value="Google Ads">Google Ads</option>
+                    <option value="Front Office">Front Office</option>
                   </Form.Select>
                 </Form.Group>
               </div>
               <div className="col-md-6">
                 <Form.Group className="mb-3">
                   <Form.Label>
-                    Name<span className="text-danger">*</span>
-                  </Form.Label>
-                  <Form.Control
-                    type="text"
-                    name="name"
-                    placeholder="Enter Lead Name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                  />
-                </Form.Group>
-              </div>
-              <div className="col-md-6">
-                <Form.Group className="mb-3">
-                  <Form.Label>
-                    Enquiry date<span className="text-danger">*</span>
+                    Enquiry Date<span className="text-danger">*</span>
                   </Form.Label>
                   <Form.Control
                     type="date"
-                    name="date"
-                    placeholder="Enter Enquirydate"
-                    value={formData.date}
-                    onChange={handleChange}
-                    required
-                  />
-                </Form.Group>
-              </div>
-              <div className="col-md-6">
-                <Form.Group className="mb-3">
-                  <Form.Label>
-                    Phone No<span className="text-danger">*</span>
-                  </Form.Label>
-                  <Form.Control
-                    type="text"
-                    name="phone"
-                    placeholder="Enter Phone No"
-                    value={formData.phone}
+                    name="enquirydate"
+                    value={formData.enquirydate}
                     onChange={handleChange}
                     required
                   />
@@ -306,7 +330,7 @@ const Inquriy = () => {
             Cancel
           </Button>
           <Button variant="success" onClick={handleSubmit}>
-            Create
+            {editIndex !== null ? "Update" : "Create"}
           </Button>
         </Modal.Footer>
       </Modal>

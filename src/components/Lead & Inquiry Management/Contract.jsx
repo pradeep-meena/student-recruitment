@@ -117,19 +117,28 @@ const Contract = () => {
   return (
     <div className="container p-3">
       {/* Breadcrumb Navigation */}
+      <h4 className="fw-bold">Contact</h4>
+      <nav aria-label="breadcrumb">
+        <ol className="breadcrumb">
+          <li className="breadcrumb-item">
+            <a href="/" className="text-success text-decoration-none">
+              Home
+            </a>
+          </li>
+          <li className="breadcrumb-item active" aria-current="page">
+            Leads
+          </li>
+        </ol>
+      </nav>
       <Row className="mb-3">
-        <Col>
-          <Breadcrumb>
-            <Breadcrumb.Item href="#">Dashboard</Breadcrumb.Item>
-            <Breadcrumb.Item active>Contract</Breadcrumb.Item>
-          </Breadcrumb>
-          <h5 className="fw-bold">Manage Contract</h5>
-        </Col>
-        <Col className="text-end">
-          <Button variant="outline-dark" className="me-2 gap-1">
-            Info
-          </Button>
-
+      <Form.Select className="w-auto">
+          <option>10</option>
+          <option>20</option>
+          <option>50</option>
+        </Form.Select>
+        
+        <Col className="text-end gap-2">
+          
           <Button variant="outline-dark" onClick={handleShow}>
             + Add
           </Button>

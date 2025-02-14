@@ -1,6 +1,5 @@
 import { Dropdown, Button, Table, Modal, Form } from "react-bootstrap";
 import { useState } from "react";
-
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Lead = () => {
@@ -46,8 +45,20 @@ const Lead = () => {
     email: "",
     phone: "",
   });
+  const [editIndex, setEditIndex] = useState(null); // Track the index of the lead being edited
 
-  const handleClose = () => setShowModal(false);
+  const handleClose = () => {
+    setShowModal(false);
+    setEditIndex(null); // Reset edit index when modal is closed
+    setFormData({
+      subject: "",
+      user: "",
+      name: "",
+      email: "",
+      phone: "",
+    });
+  };
+
   const handleShow = () => setShowModal(true);
 
   const handleChange = (e) => {
@@ -62,7 +73,17 @@ const Lead = () => {
       stage: "Open", // Default stage for new leads
       users: ["user1.jpg", "user2.jpg", "user3.jpg"], // Default users for new leads
     };
-    setData([...data, newLead]);
+
+    if (editIndex !== null) {
+      // If editing an existing lead
+      const updatedData = [...data];
+      updatedData[editIndex] = newLead;
+      setData(updatedData);
+    } else {
+      // If adding a new lead
+      setData([...data, newLead]);
+    }
+
     setFormData({
       subject: "",
       user: "",
@@ -76,6 +97,19 @@ const Lead = () => {
   const handleDelete = (index) => {
     const updatedData = data.filter((_, i) => i !== index); // Remove the lead at the specified index
     setData(updatedData);
+  };
+
+  const handleEdit = (index) => {
+    const lead = data[index];
+    setFormData({
+      subject: lead.subject,
+      user: "", // You can set this if you have user data in the lead
+      name: lead.name,
+      email: "", // You can set this if you have email data in the lead
+      phone: "", // You can set this if you have phone data in the lead
+    });
+    setEditIndex(index);
+    handleShow();
   };
 
   return (
@@ -152,7 +186,11 @@ const Lead = () => {
                 <Button size="sm" className="btn btn-light btn-sm me-1">
                   👁️
                 </Button>
-                <Button size="sm" className="me-1 btn btn-light btn-sm">
+                <Button
+                  size="sm"
+                  className="me-1 btn btn-light btn-sm"
+                  onClick={() => handleEdit(index)}
+                >
                   ✏️
                 </Button>
                 <Button
@@ -170,7 +208,9 @@ const Lead = () => {
 
       <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
-          <Modal.Title>Create Lead</Modal.Title>
+          <Modal.Title>
+            {editIndex !== null ? "Edit Lead" : "Create Lead"}
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
@@ -260,7 +300,7 @@ const Lead = () => {
             Cancel
           </Button>
           <Button variant="success" onClick={handleSubmit}>
-            Create
+            {editIndex !== null ? "Update" : "Create"}
           </Button>
         </Modal.Footer>
       </Modal>
