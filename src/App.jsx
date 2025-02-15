@@ -15,6 +15,9 @@ import Deal from "./components/Lead & Inquiry Management/Deal";
 import ProfileDetails from "./components/Profile/ProfileDetails";
 import Analytics from "./components/Lead & Inquiry Management/Analytics";
 import LeadInquiryManagement from "./components/Lead & Inquiry Management/LeadInquiryManagement";
+import StudentDetails from "./components/Profile/StudentDetails";
+import Admission from "./components/Profile/Admission";
+import Communication from "./components/Profile/Communication";
 import AdmissionTracking from "./components/AdmissionTracking/AdmissionTracking";
 import TaskCalendarManagement from "./components/Task Calendar Management/TaskCalendarManagement";
 import CourseUniversityDatabase from "./components/CourseUniversityDatabase/CourseUniversityDatabase";
@@ -90,6 +93,17 @@ function App() {
             <Route path="/analytics" element={<Analytics></Analytics>}></Route>
 
             <Route path="/quotes" element={<Quotes></Quotes>}></Route>
+
+            {/* student management */}
+            <Route
+              path="/studentDetails"
+              element={<StudentDetails></StudentDetails>}
+            ></Route>
+            <Route path="/admission" element={<Admission></Admission>}></Route>
+            <Route
+              path="/communication"
+              element={<Communication></Communication>}
+            ></Route>
             {/* AdmissionTracking */}
 
             <Route path="/AdmissionTracking" element={<AdmissionTracking />} />

@@ -1,4 +1,4 @@
-import  { useState } from "react";
+import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./Sidebar.css";
 import { FaUsers, FaRegFileAlt } from "react-icons/fa"; // FontAwesome
@@ -131,18 +131,59 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
               </ul>
             )}
           </li>
-          {/* Learner Profile Management */}
-          <li className={`menu-item ${isActive("/Profile") ? "active" : ""}`}>
+          {/* Student Management */}
+          <li
+            className={`menu-item ${
+              isSubmenuActive([
+                "/studentDetails",
+                "/admission",
+                "/communication",
+              ])
+                ? "active"
+                : ""
+            }`}
+          >
             <div
               className="menu-link menu-i"
-              onClick={() => {
-                navigate("/Profile");
-                menuItemClick();
-              }}
+              onClick={() => toggleSubmenu("student")}
             >
               <i className="fa fa-graduation-cap" aria-hidden="true"></i>
-              <span className="menu-text">Student Management</span>
+              <span className="menu-text text-nowrap">Student Management</span>
+              <i
+                className={`fa-solid fa-chevron-${
+                  openSubmenu === "student" ? "up" : "down"
+                } submenu-arrow`}
+              ></i>
             </div>
+
+            {openSubmenu === "student" && (
+              <ul className={`submenu `}>
+                <li
+                  className={`menu-item submenu-item ${
+                    isActive("/studentDetails") ? "active" : ""
+                  }`}
+                  onClick={() => navigate("/studentDetails")}
+                >
+                  Student Details
+                </li>
+                <li
+                  className={`menu-item submenu-item ${
+                    isActive("/admission") ? "active" : ""
+                  }`}
+                  onClick={() => navigate("/admission")}
+                >
+                  Student Admission
+                </li>
+                <li
+                  className={`menu-item submenu-item ${
+                    isActive("/communication") ? "active" : ""
+                  }`}
+                  onClick={() => navigate("/communication")}
+                >
+                  Communication
+                </li>
+              </ul>
+            )}
           </li>
           {/*  Application & Admission Tracking */}
           <li
@@ -158,10 +199,7 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
               }}
             >
               <i className="fa fa-user" aria-hidden="true"></i>
-              <span className="menu-text">
-                {" "}
-                Applications & Admissions
-              </span>
+              <span className="menu-text"> Applications & Admissions</span>
             </div>
           </li>
           {/* Communication & Follow-up Management */}
@@ -178,9 +216,7 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
               }}
             >
               <i className="fa-solid fa-comments"></i>
-              <span className="menu-text">
-              Communication 
-              </span>
+              <span className="menu-text">Communication</span>
             </div>
           </li>
           {/* Task & Calendar Management */}
