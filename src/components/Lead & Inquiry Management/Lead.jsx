@@ -7,71 +7,96 @@ const Lead = () => {
     {
       name: "Encoure",
       subject: "Encoure",
-      stage: "Sent",
-      users: ["user1.jpg", "user2.jpg", "user3.jpg"],
+      stage: "Open",
+      learner: "Ravi, Rihan, Ram",
+      leadsource:"Watsapp",
     },
     {
       name: "Alexandria",
       subject: "Alexandria",
       stage: "Open",
-      users: ["user1.jpg", "user2.jpg", "user3.jpg"],
+      learner: "Ravi, Rihan, Ram",
+      leadsource:"Watsapp",
     },
     {
       name: "Netpoints",
       subject: "Netpoints",
-      stage: "Sent",
-      users: ["user1.jpg", "user2.jpg", "user3.jpg"],
+      stage: "Open",
+      learner: "Ravi, Rihan, Ram",
+      leadsource:"Watsapp",
     },
     {
       name: "Starburst",
       subject: "Starburst",
-      stage: "Sent",
-      users: ["user1.jpg", "user2.jpg", "user3.jpg"],
+      stage: "Open",
+      learner: "Ravi, Rihan, Ram",
+      leadsource:"Watsapp",
     },
     {
       name: "Sophia Francis",
-      subject: "Tasha Sanford",
-      stage: "Sent",
-      users: ["user1.jpg", "user2.jpg", "user3.jpg"],
+      course: "Tasha Sanford",
+      stage: "Open",
+      learner: "Ravi, Rihan, Ram",
+      leadsource:"Watsapp",
     },
   ];
 
   const [data, setData] = useState(initialData);
-  const [show, setShowModal] = useState(false);
+  const [showLeadModal, setShowLeadModal] = useState(false); // State for Create/Edit Lead modal
+  const [showLeadSourceModal, setShowLeadSourceModal] = useState(false); // State for Create Lead Source modal
   const [formData, setFormData] = useState({
-    subject: "",
+    course: "",
     user: "",
     name: "",
-    email: "",
+    stage: "",
     phone: "",
+    leadsource: "",
+    learner:"",
   });
   const [editIndex, setEditIndex] = useState(null); // Track the index of the lead being edited
+  const [leadSourceName, setLeadSourceName] = useState(""); // State for Lead Source Name
+  const [leadSources, setLeadSources] = useState(["whatsaap", "facebook"]); // State for Lead Sources
 
-  const handleClose = () => {
-    setShowModal(false);
+  // Handle modal open/close for Create/Edit Lead modal
+  const handleCloseLeadModal = () => {
+    setShowLeadModal(false);
     setEditIndex(null); // Reset edit index when modal is closed
     setFormData({
-      subject: "",
+      course: "",
       user: "",
       name: "",
-      email: "",
+      stage: "",
       phone: "",
+      leadsource: "",
+      learner:""
     });
   };
 
-  const handleShow = () => setShowModal(true);
+  const handleShowLeadModal = () => setShowLeadModal(true);
 
+  // Handle modal open/close for Create Lead Source modal
+  const handleCloseLeadSourceModal = () => {
+    setShowLeadSourceModal(false);
+    setLeadSourceName(""); // Reset lead source name when modal is closed
+  };
+
+  const handleShowLeadSourceModal = () => setShowLeadSourceModal(true);
+
+  // Handle form input changes
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // Handle form submission for Create/Edit Lead modal
   const handleSubmit = (e) => {
     e.preventDefault();
     const newLead = {
       name: formData.name,
-      subject: formData.subject,
-      stage: "Open", // Default stage for new leads
-      users: ["user1.jpg", "user2.jpg", "user3.jpg"], // Default users for new leads
+      course: formData.course,
+      stage: formData.stage, // Default stage for new leads
+      users: "", // Default users for new leads
+      leadsource: formData.leadsource,
+      learner: formData.learner,
     };
 
     if (editIndex !== null) {
@@ -85,31 +110,44 @@ const Lead = () => {
     }
 
     setFormData({
-      subject: "",
+      course: "",
       user: "",
       name: "",
-      email: "",
+      stage: "",
       phone: "",
+      leadsource: "",
+      learner:"", 
     });
-    handleClose();
+    handleCloseLeadModal();
   };
 
+  // Handle form submission for Create Lead Source modal
+  const handleSubmitLeadSource = (e) => {
+    e.preventDefault();
+    setLeadSources([...leadSources, leadSourceName]); // Add the new lead source to the state
+    setLeadSourceName(""); // Reset lead source name
+    handleCloseLeadSourceModal(); // Close the modal after submission
+  };
+
+  // Handle delete lead
   const handleDelete = (index) => {
     const updatedData = data.filter((_, i) => i !== index); // Remove the lead at the specified index
     setData(updatedData);
   };
 
+  // Handle edit lead
   const handleEdit = (index) => {
     const lead = data[index];
     setFormData({
-      subject: lead.subject,
+      course: lead.course,
       user: "", // You can set this if you have user data in the lead
       name: lead.name,
-      email: "", // You can set this if you have email data in the lead
+      stage: "", // You can set this if you have email data in the lead
       phone: "", // You can set this if you have phone data in the lead
+      leadsource: lead.leadsource,
     });
     setEditIndex(index);
-    handleShow();
+    handleShowLeadModal();
   };
 
   return (
@@ -140,7 +178,7 @@ const Lead = () => {
               <Dropdown.Item href="#">Enterprise</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
-          <Button variant="outline-dark" onClick={handleShow}>
+          <Button variant="outline-dark" onClick={handleShowLeadModal}>
             + Add
           </Button>
         </div>
@@ -159,9 +197,10 @@ const Lead = () => {
         <thead className="table-light">
           <tr>
             <th>NAME</th>
-            <th>SUBJECT</th>
+            <th>Course</th>
             <th>STAGE</th>
-            <th>USERS</th>
+            <th>Lead Source</th>
+            <th>Learner</th>
             <th>ACTION</th>
           </tr>
         </thead>
@@ -169,19 +208,10 @@ const Lead = () => {
           {data.map((item, index) => (
             <tr key={index}>
               <td>{item.name}</td>
-              <td>{item.subject}</td>
+              <td>{item.course}</td>
               <td>{item.stage}</td>
-              <td>
-                {item.users.map((user, idx) => (
-                  <img
-                    key={idx}
-                    src={`https://via.placeholder.com/30`}
-                    alt="user"
-                    className="rounded-circle me-1"
-                    style={{ width: 30, height: 30 }}
-                  />
-                ))}
-              </td>
+              <td>{item.leadsource}</td>
+              <td>{item.learner}</td>
               <td>
                 <Button size="sm" className="btn btn-light btn-sm me-1">
                   👁️
@@ -206,7 +236,8 @@ const Lead = () => {
         </tbody>
       </Table>
 
-      <Modal show={show} onHide={handleClose} centered>
+      {/* Modal for Create/Edit Lead */}
+      <Modal show={showLeadModal} onHide={handleCloseLeadModal} centered>
         <Modal.Header closeButton>
           <Modal.Title>
             {editIndex !== null ? "Edit Lead" : "Create Lead"}
@@ -218,13 +249,13 @@ const Lead = () => {
               <div className="col-md-6">
                 <Form.Group className="mb-3">
                   <Form.Label>
-                    Subject<span className="text-danger">*</span>
+                  course<span className="text-danger">*</span>
                   </Form.Label>
                   <Form.Control
                     type="text"
-                    name="subject"
-                    placeholder="Enter Subject Name"
-                    value={formData.subject}
+                    name="course"
+                    placeholder="Enter  course Name"
+                    value={formData.course}
                     onChange={handleChange}
                     required
                   />
@@ -233,18 +264,16 @@ const Lead = () => {
               <div className="col-md-6">
                 <Form.Group className="mb-3">
                   <Form.Label>
-                    User<span className="text-danger">*</span>
+                  Learner<span className="text-danger">*</span>
                   </Form.Label>
-                  <Form.Select
-                    name="user"
-                    value={formData.user}
+                  <Form.Control
+                    type="text"
+                    name="learner"
+                    placeholder="Enter learner Name"
+                    value={formData.learner}
                     onChange={handleChange}
                     required
-                  >
-                    <option value="">Select User</option>
-                    <option value="User1">User 1</option>
-                    <option value="User2">User 2</option>
-                  </Form.Select>
+                  />
                 </Form.Group>
               </div>
               <div className="col-md-6">
@@ -262,21 +291,7 @@ const Lead = () => {
                   />
                 </Form.Group>
               </div>
-              <div className="col-md-6">
-                <Form.Group className="mb-3">
-                  <Form.Label>
-                    Email<span className="text-danger">*</span>
-                  </Form.Label>
-                  <Form.Control
-                    type="email"
-                    name="email"
-                    placeholder="Enter Email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                  />
-                </Form.Group>
-              </div>
+             
               <div className="col-md-6">
                 <Form.Group className="mb-3">
                   <Form.Label>
@@ -292,11 +307,54 @@ const Lead = () => {
                   />
                 </Form.Group>
               </div>
+              <div className="col-md-6">
+                <Form.Group className="mb-3">
+                  <Form.Label>
+                  stage<span className="text-danger">*</span>
+                  </Form.Label>
+                  <Form.Control
+                    type="stage"
+                    name="stage"
+                    placeholder="Enter stage"
+                    value={formData.stage}
+                    onChange={handleChange}
+                    required
+                  />
+                </Form.Group>
+              </div>
+              <div className="col-md-6">
+                <Form.Group className="mb-3">
+                  <Form.Label>
+                    Lead Source<span className="text-danger">*</span>
+                  </Form.Label>
+                  <Button
+                    variant="primary"
+                    style={{ marginLeft: "10px", marginBottom:"10px"}}
+                    onClick={handleShowLeadSourceModal}
+                    
+                  >
+                    +
+                  </Button>
+                  <Form.Select
+                    name="leadsource"
+                    value={formData.leadsource}
+                    onChange={handleChange}
+                    required
+                  >
+                    <option value="">Lead Source</option>
+                    {leadSources.map((source, index) => (
+                      <option key={index} value={source}>
+                        {source}
+                      </option>
+                    ))}
+                  </Form.Select>
+                </Form.Group>
+              </div>
             </div>
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="secondary" onClick={handleCloseLeadModal}>
             Cancel
           </Button>
           <Button variant="success" onClick={handleSubmit}>
@@ -304,8 +362,34 @@ const Lead = () => {
           </Button>
         </Modal.Footer>
       </Modal>
+
+      {/* Modal for Create Lead Source */}
+      <Modal show={showLeadSourceModal} onHide={handleCloseLeadSourceModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Create Lead Source</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form onSubmit={handleSubmitLeadSource}>
+            <Form.Group controlId="leadSourceName">
+              <Form.Label>Lead Source Name</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter lead source name"
+                value={leadSourceName}
+                onChange={(e) => setLeadSourceName(e.target.value)}
+                required
+              />
+            </Form.Group>
+            <div className="mt-3">
+              <Button variant="primary" type="submit">
+                Create
+              </Button>
+            </div>
+          </Form>
+        </Modal.Body>
+      </Modal>
     </div>
   );
 };
 
-export default Lead;
+export default Lead;  

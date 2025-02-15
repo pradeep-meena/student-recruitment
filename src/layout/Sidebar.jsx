@@ -62,7 +62,7 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
               onClick={() => toggleSubmenu("leadInquiry")}
             >
               <i className="fa-solid fa-file-contract"></i>
-              <span className="menu-text">CRM</span>
+              <span className="menu-text">Leads & Inquiries</span>
               <i
                 className={`fa-solid fa-chevron-${
                   openSubmenu === "leadInquiry" ? "up" : "down"
@@ -141,7 +141,7 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
               }}
             >
               <i className="fa fa-graduation-cap" aria-hidden="true"></i>
-              <span className="menu-text">Learner Profile Management</span>
+              <span className="menu-text">Student Management</span>
             </div>
           </li>
           {/*  Application & Admission Tracking */}
@@ -160,7 +160,7 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
               <i className="fa fa-user" aria-hidden="true"></i>
               <span className="menu-text">
                 {" "}
-                Application & Admission Tracking
+                Applications & Admissions
               </span>
             </div>
           </li>
@@ -179,7 +179,7 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
             >
               <i className="fa-solid fa-comments"></i>
               <span className="menu-text">
-                Communication & Follow-up Management
+              Communication 
               </span>
             </div>
           </li>
@@ -197,7 +197,7 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
               }}
             >
               <i className="fa-solid fa-calendar-check"></i>
-              <span className="menu-text">Task & Calendar Management</span>
+              <span className="menu-text">Courses & Universities</span>
             </div>
           </li>
           {/* Course & University Database */}
@@ -214,7 +214,7 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
               }}
             >
               <i className="fa-solid fa-university "></i>
-              <span className="menu-text"> Course & University Database</span>
+              <span className="menu-text"> Reports & Analytics</span>
             </div>
           </li>
           {/* Reporting & Analytics */}
@@ -231,7 +231,7 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
               }}
             >
               <i className="fa-solid fa-chart-line "></i>
-              <span className="menu-text">Reporting & Analytics</span>
+              <span className="menu-text">Payments & Invoices</span>
             </div>
           </li>
           {/* Payment & Invoice Management */}
@@ -248,11 +248,11 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
               }}
             >
               <i className="fa-solid fa-receipt"></i>
-              <span className="menu-text"> Payment & Invoice Management</span>
+              <span className="menu-text"> User Management</span>
             </div>
           </li>
           {/* User Roles & Access Control */}
-          <li
+          {/* <li
             className={`menu-item ${
               isActive("/UserRolesAccessControl") ? "active" : ""
             }`}
@@ -267,7 +267,7 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
               <i className="fa-solid fa-users-cog "></i>
               <span className="menu-text"> User Roles & Access Control</span>
             </div>
-          </li>
+          </li> */}
           {/* Cloud & Mobile Accessibility */}
           {/* <li
             className={`menu-item ${
