@@ -8,45 +8,27 @@ const Inquriy = () => {
       name: "Encoure",
       phone: 890567673,
       source: "Admission Campaign",
-      enquirydate: "02/24/2025",
-      lastdate: "02/12/2025",
-      nextdate: "03/01/2025",
+      enquirydate: "2025-02-11",
+      lastdate: "2025-02-11",
+      nextdate: "2025-02-11",
       status: "Active",
     },
     {
       name: "Alexandria",
       phone: 789806786,
       source: "Online Front Site",
-      enquirydate: "02/24/2025",
-      lastdate: "02/12/2025",
-      nextdate: "03/01/2025",
+      enquirydate: "2025-02-11",
+      lastdate: "2025-02-11",
+      nextdate: "2025-02-11",
       status: "Active",
     },
     {
       name: "Netpoints",
       phone: 789806786,
       source: "Google Ads",
-      enquirydate: "02/24/2025",
-      lastdate: "02/12/2025",
-      nextdate: "03/01/2025",
-      status: "Active",
-    },
-    {
-      name: "Starburst",
-      phone: 789806786,
-      source: "Front Office",
-      enquirydate: "02/24/2025",
-      lastdate: "02/12/2025",
-      nextdate: "03/01/2025",
-      status: "Active",
-    },
-    {
-      name: "Sophia Francis",
-      phone: 789806786,
-      source: "Google Ads",
-      enquirydate: "02/24/2025",
-      lastdate: "02/12/2025",
-      nextdate: "03/01/2025",
+      enquirydate: "2025-02-11",
+      lastdate: "2025-02-11",
+      nextdate: "2025-02-11",
       status: "Active",
     },
   ];
@@ -58,6 +40,9 @@ const Inquriy = () => {
     phone: "",
     source: "",
     enquirydate: "",
+    lastdate: "",
+    nextdate: "",
+    status: "",
   });
   const [editIndex, setEditIndex] = useState(null); // Track the index of the inquiry being edited
 
@@ -85,9 +70,9 @@ const Inquriy = () => {
       phone: formData.phone,
       source: formData.source,
       enquirydate: formData.enquirydate,
-      lastdate: "02/12/2025", // Default value
-      nextdate: "03/01/2025", // Default value
-      status: "Active", // Default value
+      lastdate: formData.lastdate, // Default value
+      nextdate: formData.nextdate, // Default value
+      status: formData.status, // Default value
     };
 
     if (editIndex !== null) {
@@ -116,11 +101,15 @@ const Inquriy = () => {
 
   const handleEdit = (index) => {
     const inquiry = data[index];
+    console.log(inquiry);
     setFormData({
       name: inquiry.name,
       phone: inquiry.phone,
       source: inquiry.source,
       enquirydate: inquiry.enquirydate,
+      lastdate: inquiry.lastdate,
+      nextdate: inquiry.nextdate,
+      status: inquiry.status,
     });
     setEditIndex(index);
     handleShow();
@@ -228,7 +217,7 @@ const Inquriy = () => {
               <td>{item.lastdate}</td>
               <td>{item.nextdate}</td>
               <td>{item.status}</td>
-              <td>
+              <td className="text-nowrap">
                 <Button size="sm" className="btn btn-light btn-sm me-1">
                   👁️
                 </Button>
@@ -254,7 +243,9 @@ const Inquriy = () => {
 
       <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
-          <Modal.Title>{editIndex !== null ? "Edit Inquiry" : "Create Inquiry"}</Modal.Title>
+          <Modal.Title>
+            {editIndex !== null ? "Edit Inquiry" : "Create Inquiry"}
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
@@ -301,7 +292,9 @@ const Inquriy = () => {
                     required
                   >
                     <option value="">Select Source</option>
-                    <option value="Admission Campaign">Admission Campaign</option>
+                    <option value="Admission Campaign">
+                      Admission Campaign
+                    </option>
                     <option value="Online Front Site">Online Front Site</option>
                     <option value="Google Ads">Google Ads</option>
                     <option value="Front Office">Front Office</option>
@@ -320,6 +313,51 @@ const Inquriy = () => {
                     onChange={handleChange}
                     required
                   />
+                </Form.Group>
+              </div>
+              <div className="col-md-6">
+                <Form.Group className="mb-3">
+                  <Form.Label>
+                    Last Follow Up Date<span className="text-danger">*</span>
+                  </Form.Label>
+                  <Form.Control
+                    type="date"
+                    name="lastdate"
+                    value={formData.lastdate}
+                    onChange={handleChange}
+                    required
+                  />
+                </Form.Group>
+              </div>
+              <div className="col-md-6">
+                <Form.Group className="mb-3">
+                  <Form.Label>
+                    Next Follow Up Date<span className="text-danger">*</span>
+                  </Form.Label>
+                  <Form.Control
+                    type="date"
+                    name="nextdate"
+                    value={formData.nextdate}
+                    onChange={handleChange}
+                    required
+                  />
+                </Form.Group>
+              </div>
+              <div className="col-md-6">
+                <Form.Group className="mb-3">
+                  <Form.Label>
+                    Source<span className="text-danger">*</span>
+                  </Form.Label>
+                  <Form.Select
+                    name="status"
+                    value={formData.status}
+                    onChange={handleChange}
+                    required
+                  >
+                    <option value="">Select Status</option>
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                  </Form.Select>
                 </Form.Group>
               </div>
             </div>

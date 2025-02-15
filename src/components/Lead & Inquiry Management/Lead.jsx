@@ -6,38 +6,22 @@ const Lead = () => {
   const initialData = [
     {
       name: "Encoure",
-      subject: "Encoure",
-      stage: "Open",
-      learner: "Ravi, Rihan, Ram",
-      leadsource:"Watsapp",
+      subject: "sagar",
+      stage: "Sent",
+      users: ["user1.jpg", "user2.jpg", "user3.jpg"],
     },
     {
       name: "Alexandria",
-      subject: "Alexandria",
+      subject: "Aakash",
       stage: "Open",
       learner: "Ravi, Rihan, Ram",
       leadsource:"Watsapp",
     },
     {
       name: "Netpoints",
-      subject: "Netpoints",
-      stage: "Open",
-      learner: "Ravi, Rihan, Ram",
-      leadsource:"Watsapp",
-    },
-    {
-      name: "Starburst",
-      subject: "Starburst",
-      stage: "Open",
-      learner: "Ravi, Rihan, Ram",
-      leadsource:"Watsapp",
-    },
-    {
-      name: "Sophia Francis",
-      course: "Tasha Sanford",
-      stage: "Open",
-      learner: "Ravi, Rihan, Ram",
-      leadsource:"Watsapp",
+      subject: "lavkush",
+      stage: "Sent",
+      users: ["user1.jpg", "user2.jpg", "user3.jpg"],
     },
   ];
 
@@ -49,9 +33,6 @@ const Lead = () => {
     user: "",
     name: "",
     stage: "",
-    phone: "",
-    leadsource: "",
-    learner:"",
   });
   const [editIndex, setEditIndex] = useState(null); // Track the index of the lead being edited
   const [leadSourceName, setLeadSourceName] = useState(""); // State for Lead Source Name
@@ -66,9 +47,6 @@ const Lead = () => {
       user: "",
       name: "",
       stage: "",
-      phone: "",
-      leadsource: "",
-      learner:""
     });
   };
 
@@ -92,11 +70,9 @@ const Lead = () => {
     e.preventDefault();
     const newLead = {
       name: formData.name,
-      course: formData.course,
+      subject: formData.subject,
       stage: formData.stage, // Default stage for new leads
-      users: "", // Default users for new leads
-      leadsource: formData.leadsource,
-      learner: formData.learner,
+      users: ["user1.jpg", "user2.jpg", "user3.jpg"], // Default users for new leads
     };
 
     if (editIndex !== null) {
@@ -114,9 +90,6 @@ const Lead = () => {
       user: "",
       name: "",
       stage: "",
-      phone: "",
-      leadsource: "",
-      learner:"", 
     });
     handleCloseLeadModal();
   };
@@ -142,9 +115,7 @@ const Lead = () => {
       course: lead.course,
       user: "", // You can set this if you have user data in the lead
       name: lead.name,
-      stage: "", // You can set this if you have email data in the lead
-      phone: "", // You can set this if you have phone data in the lead
-      leadsource: lead.leadsource,
+      stage: lead.stage,
     });
     setEditIndex(index);
     handleShowLeadModal();
@@ -291,17 +262,16 @@ const Lead = () => {
                   />
                 </Form.Group>
               </div>
-             
               <div className="col-md-6">
                 <Form.Group className="mb-3">
                   <Form.Label>
-                    Phone No<span className="text-danger">*</span>
+                    Stage<span className="text-danger">*</span>
                   </Form.Label>
                   <Form.Control
                     type="text"
-                    name="phone"
-                    placeholder="Enter Phone No"
-                    value={formData.phone}
+                    name=" stage"
+                    placeholder="Enter Stage"
+                    value={formData.stage}
                     onChange={handleChange}
                     required
                   />
@@ -392,4 +362,4 @@ const Lead = () => {
   );
 };
 
-export default Lead;  
+export default Lead;

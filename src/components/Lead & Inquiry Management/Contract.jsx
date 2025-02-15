@@ -1,13 +1,6 @@
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import {
-  Table,
-  Button,
-  Form,
-  Breadcrumb,
-  Row,
-  Col,
-} from "react-bootstrap";
+import { Table, Button, Form, Breadcrumb, Row, Col } from "react-bootstrap";
 import { Modal } from "react-bootstrap";
 
 const Contract = () => {
@@ -21,10 +14,10 @@ const Contract = () => {
       subject: "Software Development Contract",
       client: "Mick Aston",
       project: "Bootstrap Framework",
-      type: "Marketing",
+      contractType: "Marketing",
       value: "USD 80,000",
-      startDate: "07-10-2024",
-      endDate: "08-12-2024",
+      startDate: "2024-05-20",
+      endDate: "2024-05-20",
       description: "Contract for software development services.",
     },
     {
@@ -32,10 +25,10 @@ const Contract = () => {
       subject: "Marketing Campaign Project Agreement",
       client: "Jennifer Ellison",
       project: "Website Redesign",
-      type: "Planning",
+      contractType: "Planning",
       value: "USD 5,000",
-      startDate: "08-10-2024",
-      endDate: "21-01-2025",
+      startDate: "2024-09-20",
+      endDate: "2024-03-23",
       description: "Agreement for marketing campaign execution.",
     },
   ]);
@@ -45,7 +38,7 @@ const Contract = () => {
     client: "",
     project: "",
     contractType: "Marketing",
-    contractValue: "",
+    value: "",
     startDate: "",
     endDate: "",
     description: "",
@@ -56,7 +49,6 @@ const Contract = () => {
     setContractData({ ...contractData, [e.target.name]: e.target.value });
   };
 
-  // Handle Opening Modal
   const handleShow = () => {
     setSelectedContract(null);
     setContractData({
@@ -64,7 +56,7 @@ const Contract = () => {
       client: "",
       project: "",
       contractType: "Marketing",
-      contractValue: "",
+      value: "",
       startDate: "",
       endDate: "",
       description: "",
@@ -84,7 +76,14 @@ const Contract = () => {
       ...contracts,
       {
         id: `CON000${contracts.length + 1}`,
-        ...contractData,
+        subject: contractData.subject,
+        client: contractData.client,
+        project: contractData.project,
+        contractType: contractData.contractType,
+        value: contractData.value,
+        startDate: contractData.startDate,
+        endDate: contractData.endDate,
+        description: contractData.description,
       },
     ]);
     handleClose();
@@ -131,14 +130,13 @@ const Contract = () => {
         </ol>
       </nav>
       <Row className="mb-3">
-      <Form.Select className="w-auto">
+        <Form.Select className="w-auto">
           <option>10</option>
           <option>20</option>
           <option>50</option>
         </Form.Select>
-        
+
         <Col className="text-end gap-2">
-          
           <Button variant="outline-dark" onClick={handleShow}>
             + Add
           </Button>
@@ -151,10 +149,10 @@ const Contract = () => {
           <tr>
             <th>#</th>
             <th>SUBJECT</th>
-            <th>CLIENT</th>
+            <th>LEARNER</th>
             <th>PROJECT</th>
-            <th>CONTRACT TYPE</th>
-            <th>CONTRACT VALUE</th>
+            <th>TYPE</th>
+            <th>PAYMENT</th>
             <th>START DATE</th>
             <th>END DATE</th>
             <th>DESCRIPTION</th>
@@ -172,7 +170,7 @@ const Contract = () => {
               <td>{contract.subject}</td>
               <td>{contract.client}</td>
               <td>{contract.project}</td>
-              <td>{contract.type}</td>
+              <td>{contract.contractType}</td>
               <td>{contract.value}</td>
               <td>{contract.startDate}</td>
               <td>{contract.endDate}</td>
@@ -268,9 +266,9 @@ const Contract = () => {
                 <Form.Group>
                   <Form.Label>Contract Value*</Form.Label>
                   <Form.Control
-                    type="text"
-                    name="contractValue"
-                    value={contractData.contractValue}
+                    type="number"
+                    name="value"
+                    value={contractData.value}
                     onChange={handleChange}
                   />
                 </Form.Group>
