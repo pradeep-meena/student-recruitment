@@ -226,7 +226,7 @@ const Contract = () => {
         </Form.Select>
 
         <Col className="text-end gap-2 w-100">
-          <Button className="add w-25" onClick={handleShow} style={{backgroundColor:" rgb(171, 171, 253)", color:"black"}}>
+          <Button  onClick={handleShow} style={{backgroundColor:" rgb(171, 171, 253)", color:"black"}}>
             + Add
           </Button>
         </Col>

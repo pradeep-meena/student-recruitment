@@ -10,6 +10,7 @@ import Dashboard from "./components/dashbord/Dashbord";
 import ChatBox from "./components/CommunicationFollowupManagement/ChatBox";
 import Contract from "./components/Lead & Inquiry Management/Contract";
 import Profile from "./components/Profile/Profile";
+import StudentDetailsPage from "./components/Profile/StudentDetailsPage";
 import Lead from "./components/Lead & Inquiry Management/Lead";
 import Deal from "./components/Lead & Inquiry Management/Deal";
 import ProfileDetails from "./components/Profile/ProfileDetails";
@@ -31,6 +32,7 @@ import UniversitySubmissions from "./components/AdmissionTracking/UniversitySubm
 import AdmissionDecisions from "./components/AdmissionTracking/AdmissionDecisions";
 import FollowUpScheduling from "./components/CommunicationFollowupManagement/FollowUpScheduling";
 import AutomatedReminders from "./components/CommunicationFollowupManagement/AutomatedReminders";
+import ManaDetails from "./components/Profile/ManaDetails";
 
 function App() {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
@@ -104,8 +106,16 @@ function App() {
               element={<StudentDetails></StudentDetails>}
             ></Route>
             <Route
+              path="/manaDetails"
+              element={<ManaDetails></ManaDetails>}
+            ></Route>
+            <Route
               path="/admission"
               element={<AdmissionTracking></AdmissionTracking>}
+            ></Route>
+            <Route
+              path="/studentProfile/:admissionNo"
+              element={<StudentDetailsPage></StudentDetailsPage>}
             ></Route>
             <Route
               path="/communication"
@@ -127,7 +137,7 @@ function App() {
               element={<UniversitySubmissions></UniversitySubmissions>}
             ></Route>
             <Route
-              path="/admissionDecisions"
+              path="/applications"
               element={<AdmissionDecisions></AdmissionDecisions>}
             ></Route>
             <Route path="/AdmissionTracking" element={<AdmissionTracking />} />
