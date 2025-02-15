@@ -72,14 +72,14 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
 
             {openSubmenu === "leadInquiry" && (
               <ul className={`submenu `}>
-                <li
+                {/* <li
                   className={`menu-item submenu-item ${
                     isActive("/dashboard") ? "active" : ""
                   }`}
                   onClick={() => navigate("/dashboard")}
                 >
                   Dashboard
-                </li>
+                </li> */}
                 <li
                   className={`menu-item submenu-item ${
                     isActive("/contract") ? "active" : ""
@@ -112,7 +112,7 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
                 >
                   Deal
                 </li>
-                <li
+                {/* <li
                   className={`menu-item submenu-item ${
                     isActive("/quotes") ? "active" : ""
                   }`}
@@ -127,7 +127,7 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
                   onClick={() => navigate("/analytics")}
                 >
                   Analytics
-                </li>
+                </li> */}
               </ul>
             )}
           </li>
@@ -188,36 +188,106 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
           {/*  Application & Admission Tracking */}
           <li
             className={`menu-item ${
-              isActive("/AdmissionTracking") ? "active" : ""
+              isSubmenuActive([
+                "/tracker",
+                "/document",
+                "/university",
+                "/admission",
+              ])
+                ? "active"
+                : ""
             }`}
           >
             <div
               className="menu-link menu-i"
-              onClick={() => {
-                navigate("/AdmissionTracking");
-                menuItemClick();
-              }}
+              onClick={() => toggleSubmenu("application")}
             >
               <i className="fa fa-user" aria-hidden="true"></i>
-              <span className="menu-text"> Applications & Admissions</span>
+              <span className="menu-text text-nowrap">Applications</span>
+              <i
+                className={`fa-solid fa-chevron-${
+                  openSubmenu === "student" ? "up" : "down"
+                } submenu-arrow`}
+              ></i>
             </div>
+
+            {openSubmenu === "application" && (
+              <ul className={`submenu `}>
+                <li
+                  className={`menu-item submenu-item ${
+                    isActive("/tracker") ? "active" : ""
+                  }`}
+                  onClick={() => navigate("/tracker")}
+                >
+                  Application Tracker
+                </li>
+                <li
+                  className={`menu-item submenu-item ${
+                    isActive("/document") ? "active" : ""
+                  }`}
+                  onClick={() => navigate("/document")}
+                >
+                  Document Upload
+                </li>
+                <li
+                  className={`menu-item submenu-item ${
+                    isActive("/university") ? "active" : ""
+                  }`}
+                  onClick={() => navigate("/university")}
+                >
+                  University Details
+                </li>
+                <li
+                  className={`menu-item submenu-item ${
+                    isActive("/admission") ? "active" : ""
+                  }`}
+                  onClick={() => navigate("/admissionDecisions")}
+                >
+                  Admission Decision
+                </li>
+              </ul>
+            )}
           </li>
+
           {/* Communication & Follow-up Management */}
           <li
             className={`menu-item ${
-              isActive("/CommunicationFollowupManagement") ? "active" : ""
+              isSubmenuActive(["/followup", "/reminder"]) ? "active" : ""
             }`}
           >
             <div
               className="menu-link menu-i"
-              onClick={() => {
-                navigate("/CommunicationFollowupManagement");
-                menuItemClick();
-              }}
+              onClick={() => toggleSubmenu("communication")}
             >
               <i className="fa-solid fa-comments"></i>
-              <span className="menu-text">Communication</span>
+              <span className="menu-text text-nowrap">Communication</span>
+              <i
+                className={`fa-solid fa-chevron-${
+                  openSubmenu === "communiction" ? "up" : "down"
+                } submenu-arrow`}
+              ></i>
             </div>
+
+            {openSubmenu === "communication" && (
+              <ul className={`submenu `}>
+                <li
+                  className={`menu-item submenu-item ${
+                    isActive("/followup") ? "active" : ""
+                  }`}
+                  onClick={() => navigate("/followup")}
+                >
+                  Follow Up
+                </li>
+                <li
+                  className={`menu-item submenu-item ${
+                    isActive("/reminder") ? "active" : ""
+                  }`}
+                  onClick={() => navigate("/reminder")}
+                >
+                  Reminder
+                </li>
+              </ul>
+            )}
           </li>
           {/* Task & Calendar Management */}
           <li
