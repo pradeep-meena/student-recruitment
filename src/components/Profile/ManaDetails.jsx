@@ -1,8 +1,8 @@
-import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState } from "react";
+import { Row, Col, Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const StudentDetails = () => {
+function ManaDetails() {
   const [show, setShow] = useState(false);
   const [selectedStudent, setSelectedStudent] = useState(null);
 
@@ -10,8 +10,6 @@ const StudentDetails = () => {
     setSelectedStudent(student);
     setShow(true);
   };
-
-  const handleClose = () => setShow(false);
 
   const students = [
     {
@@ -46,39 +44,6 @@ const StudentDetails = () => {
       gender: "Male",
       category: "General",
       mobile: "9067875674",
-    },
-    {
-      admissionNo: 2152,
-      name: "Kaylen",
-      rollNo: "0205",
-      class: "Class 1(A)",
-      fatherName: "Lyndon",
-      dob: "06/19/2019",
-      gender: "Female",
-      category: "General",
-      mobile: "54180185420",
-    },
-    {
-      admissionNo: 7663,
-      name: "Paul S. Bealer",
-      rollNo: "6230",
-      class: "Class 1(A)",
-      fatherName: "McMahon",
-      dob: "08/13/2005",
-      gender: "Male",
-      category: "General",
-      mobile: "789067867",
-    },
-    {
-      admissionNo: 96302,
-      name: "Jacob Bethell",
-      rollNo: "221002",
-      class: "Class 1(A)",
-      fatherName: "Brydon",
-      dob: "08/19/2016",
-      gender: "Male",
-      category: "General",
-      mobile: "065758878",
     },
   ];
 
@@ -121,6 +86,7 @@ const StudentDetails = () => {
           </button>
         </div>
       </div>
+
       <ul className="nav nav-tabs">
         <li className="nav-item">
           <Link className="nav-link active" to="/studentDetails">
@@ -140,62 +106,55 @@ const StudentDetails = () => {
         placeholder="Search..."
       />
 
-      <div className="table-responsive">
-        <table className="table table-striped table-bordered">
-          <thead className="table-light">
-            <tr>
-              <th>Student Name</th>
-              <th>Admission No</th>
-              <th>Roll No.</th>
-              <th>Class</th>
-              <th>Father Name</th>
-              <th>Date of Birth</th>
-              <th>Gender</th>
-              <th>Category</th>
-              <th>Mobile Number</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {students.map((student, index) => (
-              <tr key={index}>
-                <td className="text-center">
-                  <Link
-                    to={{
-                      pathname: `/studentProfile/${student.admissionNo}`,
-                      state: { selectedStudent: student },
+      <Row>
+        {students.map((student) => (
+          <Col md={12} key={student.admissionNo}>
+            <Link
+              to={{
+                pathname: `/studentProfile/${student.admissionNo}`,
+                state: { selectedStudent: student },
+              }}
+              className="text-decoration-none"
+            >
+              <Card className="mb-3 shadow-sm">
+                <Card.Body className="d-flex align-items-center">
+                  <img
+                    src="https://via.placeholder.com/80"
+                    alt="Profile"
+                    className="rounded-circle border me-3"
+                  />
+                  <div className="flex-grow-1">
+                    <h5 className="text-primary">{student.name}</h5>
+                    <p className="mb-1">
+                      <strong>Class:</strong> {student.class}
+                    </p>
+                    <p className="mb-1">
+                      <strong>Admission No:</strong> {student.admissionNo}
+                    </p>
+                    <p className="mb-1">
+                      <strong>Date of Birth:</strong> {student.dob}
+                    </p>
+                    <p className="mb-1">
+                      <strong>Gender:</strong> {student.gender}
+                    </p>
+                  </div>
+                  <Button
+                    variant="info"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleShow(student);
                     }}
-                    className="text-decoration-none text-nowrap"
                   >
-                    {student.name}
-                  </Link>
-                </td>
-                <td>{student.admissionNo}</td>
-
-                <td>{student.rollNo}</td>
-                <td>{student.class}</td>
-                <td>{student.fatherName}</td>
-                <td>{student.dob}</td>
-                <td>{student.gender}</td>
-                <td>{student.category}</td>
-                <td>{student.mobile}</td>
-                <td>
-                  <button
-                    className="btn btn-light btn-sm me-1"
-                    onClick={() => handleShow(student)}
-                  >
-                    ☰
-                  </button>
-                  <button className="btn btn-light btn-sm me-1">✎</button>
-                  <button className="btn btn-light btn-sm">$</button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+                    View Details
+                  </Button>
+                </Card.Body>
+              </Card>
+            </Link>
+          </Col>
+        ))}
+      </Row>
     </div>
   );
-};
+}
 
-export default StudentDetails;
+export default ManaDetails;

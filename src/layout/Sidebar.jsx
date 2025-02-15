@@ -48,8 +48,8 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
                 "/inquiry",
                 "/lead",
                 "/deal",
-                "/dashboard",
-                "/contact",
+                // "/dashboard",
+                "/contract",
                 "/quotes",
                 "/analytics",
               ])
@@ -192,7 +192,7 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
                 "/tracker",
                 "/document",
                 "/university",
-                "/admission",
+                "/applications",
               ])
                 ? "active"
                 : ""
@@ -206,7 +206,7 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
               <span className="menu-text text-nowrap">Applications</span>
               <i
                 className={`fa-solid fa-chevron-${
-                  openSubmenu === "student" ? "up" : "down"
+                  openSubmenu === "application" ? "up" : "down"
                 } submenu-arrow`}
               ></i>
             </div>
@@ -239,9 +239,9 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
                 </li>
                 <li
                   className={`menu-item submenu-item ${
-                    isActive("/admission") ? "active" : ""
+                    isActive("/applications") ? "active" : ""
                   }`}
-                  onClick={() => navigate("/admissionDecisions")}
+                  onClick={() => navigate("/applications")}
                 >
                   Admission Decision
                 </li>
@@ -303,7 +303,7 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
               }}
             >
               <i className="fa-solid fa-calendar-check"></i>
-              <span className="menu-text">Courses & Universities</span>
+              <span className="menu-text">Calender</span>
             </div>
           </li>
           {/* Course & University Database */}
