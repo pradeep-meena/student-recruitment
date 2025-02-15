@@ -5,8 +5,8 @@ const Navbar = ({ toggleSidebar }) => {
   return (
     <>
       <nav
-        className="navbar navbar-light"
-        style={{ position: "fixed", }}
+        className="navbar"
+        style={{ position: "fixed", backgroundColor:"rgb(171, 171, 253)", color:"white" }}
       >
         <div className="container-fluid nav-conte">
           <div className="nav-content">
@@ -21,24 +21,24 @@ const Navbar = ({ toggleSidebar }) => {
              />
               <div className="nav-taggle-icon text-white" onClick={toggleSidebar}>
                 <a href="#" >
-                  <i className="fa fa-bars " aria-hidden="true"></i>
+                  <i className="fa fa-bars " aria-hidden="true" style={{color:"black"}}></i>
                 </a>
               </div>
             </div>
             <div className="nav-main-icon">
-              <a className="bell-icon" href="#">
-                <i className="fa-regular fa-bell"></i>
+              <a className="bell-icon" href="#"  style={{color:"black"}}>
+                <i className="fa-regular fa-bell" ></i>
               </a>
               <div className="dropdown profile-elemen">
                 <div
                   className="me-2 fw-bold p-1 rounded-4 profile d-flex align-items-center"
-                  style={{ cursor: "pointer" }}
+                  style={{ cursor: "pointer", }}
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
                   <div className="profile-element">
                     <div className="avatar online ">
-                      <i className="fa-solid user-icon fa-circle-user "></i>
+                      <i className="fa-solid user-icon fa-circle-user "  style={{color:"black"}}></i>
                       <span className="text-dark ms-2"></span>
                     </div>
                   </div>
