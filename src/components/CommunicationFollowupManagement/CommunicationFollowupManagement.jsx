@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { FaEnvelope } from "react-icons/fa";
 import EmailModal from "./EmailModel";
 import { Link } from "react-router-dom";
+import { FaWhatsapp } from "react-icons/fa";
 
 const CommunicationFollowupManagement = () => {
   const sendEmail = (email) => {
@@ -40,20 +41,56 @@ const CommunicationFollowupManagement = () => {
               <td>John Doe</td>
               <td>john@example.com</td>
               <td>+1234567890</td>
+              <td className="text-nowrap">
+                <button
+                  className="btn btn-primary me-2"
+                  data-bs-toggle="modal"
+                  data-bs-target="#emailModal"
+                  style={{ background: "rgb(38 29 167)" }}
+                >
+                  <FaEnvelope className="me-2" />
+                  Email
+                </button>
+                <EmailModal></EmailModal>
+                <Link to={"/chatbox"} className="btn btn-warning me-2">
+                  💬 Chat
+                </Link>
+                <a
+                  href="https://wa.me/1234567890"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-success px-4 py-1"
+                >
+                  <FaWhatsapp size={30} />
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>John Doe</td>
+              <td>john@example.com</td>
+              <td>+1234567890</td>
               <td>
                 <button
                   className="btn btn-primary me-2"
                   data-bs-toggle="modal"
                   data-bs-target="#emailModal"
-                  style={{background:"rgb(38 29 167)"}}
+                  style={{ background: "rgb(38 29 167)" }}
                 >
                   <FaEnvelope className="me-2" />
                   Email
                 </button>
                 <EmailModal></EmailModal>
-                <Link to={"/chatbox"} className="btn btn-warning"  >
+                <Link to={"/chatbox"} className="btn btn-warning me-2">
                   💬 Chat
                 </Link>
+                <a
+                  href="https://wa.me/1234567890"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-success px-4 py-1"
+                >
+                  <FaWhatsapp size={30} />
+                </a>
               </td>
             </tr>
             <tr>
@@ -65,15 +102,23 @@ const CommunicationFollowupManagement = () => {
                   className="btn btn-primary me-2"
                   data-bs-toggle="modal"
                   data-bs-target="#emailModal"
-                  style={{background:"rgb(38 29 167)"}}
+                  style={{ background: "rgb(38 29 167)" }}
                 >
                   <FaEnvelope className="me-2" />
                   Email
                 </button>
                 <EmailModal></EmailModal>
-                <Link to={"/chatbox"} className="btn btn-warning">
+                <Link to={"/chatbox"} className="btn btn-warning me-2">
                   💬 Chat
                 </Link>
+                <a
+                  href="https://wa.me/1234567890"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-success px-4 py-1"
+                >
+                  <FaWhatsapp size={30} />
+                </a>
               </td>
             </tr>
             <tr>
@@ -84,15 +129,24 @@ const CommunicationFollowupManagement = () => {
                 <button
                   className="btn btn-primary me-2"
                   data-bs-toggle="modal"
-                  data-bs-target="#emailModal" style={{background:"rgb(38 29 167)"}}
+                  data-bs-target="#emailModal"
+                  style={{ background: "rgb(38 29 167)" }}
                 >
                   <FaEnvelope className="me-2" />
                   Email
                 </button>
                 <EmailModal></EmailModal>
-                <Link to={"/chatbox"} className="btn btn-warning">
+                <Link to={"/chatbox"} className="btn btn-warning me-2">
                   💬 Chat
                 </Link>
+                <a
+                  href="https://wa.me/1234567890"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-success px-4 py-1"
+                >
+                  <FaWhatsapp size={30} />
+                </a>
               </td>
             </tr>
             <tr>
@@ -103,34 +157,24 @@ const CommunicationFollowupManagement = () => {
                 <button
                   className="btn btn-primary me-2"
                   data-bs-toggle="modal"
-                  data-bs-target="#emailModal" style={{background:"rgb(38 29 167)"}}
+                  data-bs-target="#emailModal"
+                  style={{ background: "rgb(38 29 167)" }}
                 >
                   <FaEnvelope className="me-2" />
                   Email
                 </button>
                 <EmailModal></EmailModal>
-                <Link to={"/chatbox"} className="btn btn-warning">
+                <Link to={"/chatbox"} className="btn btn-warning me-2">
                   💬 Chat
                 </Link>
-              </td>
-            </tr>
-            <tr>
-              <td>John Doe</td>
-              <td>john@example.com</td>
-              <td>+1234567890</td>
-              <td>
-                <button
-                  className="btn btn-primary me-2"
-                  data-bs-toggle="modal"
-                  data-bs-target="#emailModal" style={{background:"rgb(38 29 167)"}}
-                > 
-                  <FaEnvelope className="me-2" />
-                  Email
-                </button>
-                <EmailModal></EmailModal>
-                <Link to={"/chatbox"} className="btn btn-warning">
-                  💬 Chat
-                </Link>
+                <a
+                  href="https://wa.me/1234567890"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-success px-4 py-1"
+                >
+                  <FaWhatsapp size={30} />
+                </a>
               </td>
             </tr>
             <tr>
@@ -142,15 +186,24 @@ const CommunicationFollowupManagement = () => {
                 <button
                   className="btn btn-primary me-2"
                   data-bs-toggle="modal"
-                  data-bs-target="#emailModal" style={{background:"rgb(38 29 167)"}}
+                  data-bs-target="#emailModal"
+                  style={{ background: "rgb(38 29 167)" }}
                 >
                   <FaEnvelope className="me-2" />
                   Email
                 </button>
                 <EmailModal></EmailModal>
-                <Link to={"/chatbox"} className="btn btn-warning">
+                <Link to={"/chatbox"} className="btn btn-warning me-2">
                   💬 Chat
                 </Link>
+                <a
+                  href="https://wa.me/1234567890"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-success px-4 py-1"
+                >
+                  <FaWhatsapp size={30} />
+                </a>
               </td>
             </tr>
             <tr>
@@ -162,15 +215,24 @@ const CommunicationFollowupManagement = () => {
                 <button
                   className="btn btn-primary me-2"
                   data-bs-toggle="modal"
-                  data-bs-target="#emailModal" style={{background:"rgb(38 29 167)"}}
+                  data-bs-target="#emailModal"
+                  style={{ background: "rgb(38 29 167)" }}
                 >
                   <FaEnvelope className="me-2" />
                   Email
                 </button>
                 <EmailModal></EmailModal>
-                <Link to={"/chatbox"} className="btn btn-warning">
+                <Link to={"/chatbox"} className="btn btn-warning me-2">
                   💬 Chat
                 </Link>
+                <a
+                  href="https://wa.me/1234567890"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-success px-4 py-1"
+                >
+                  <FaWhatsapp size={30} />
+                </a>
               </td>
             </tr>
             <tr>
@@ -182,16 +244,25 @@ const CommunicationFollowupManagement = () => {
                 <button
                   className="btn btn-primary me-2"
                   data-bs-toggle="modal"
-                  data-bs-target="#emailModal" style={{background:"rgb(38 29 167)"}}
+                  data-bs-target="#emailModal"
+                  style={{ background: "rgb(38 29 167)" }}
                 >
                   <FaEnvelope className="me-2" />
                   Email
                 </button>
                 <EmailModal></EmailModal>
 
-                <Link to={"/chatbox"} className="btn btn-warning">
+                <Link to={"/chatbox"} className="btn btn-warning me-2">
                   💬 Chat
                 </Link>
+                <a
+                  href="https://wa.me/1234567890"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-success px-4 py-1"
+                >
+                  <FaWhatsapp size={30} />
+                </a>
               </td>
             </tr>
             <tr>
@@ -202,16 +273,25 @@ const CommunicationFollowupManagement = () => {
               <td>
                 <button
                   className="btn btn-primary me-2"
-                  data-bs-toggle="modal" 
-                  data-bs-target="#emailModal" style={{background:"rgb(38 29 167)"}}
+                  data-bs-toggle="modal"
+                  data-bs-target="#emailModal"
+                  style={{ background: "rgb(38 29 167)" }}
                 >
                   <FaEnvelope className="me-2" />
                   Email
                 </button>
                 <EmailModal></EmailModal>
-                <Link to={"/chatbox"} className="btn btn-warning">
+                <Link to={"/chatbox"} className="btn btn-warning me-2">
                   💬 Chat
                 </Link>
+                <a
+                  href="https://wa.me/1234567890"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-success px-4 py-1"
+                >
+                  <FaWhatsapp size={30} />
+                </a>
               </td>
             </tr>
           </tbody>

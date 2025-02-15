@@ -16,8 +16,6 @@ import ProfileDetails from "./components/Profile/ProfileDetails";
 import Analytics from "./components/Lead & Inquiry Management/Analytics";
 import LeadInquiryManagement from "./components/Lead & Inquiry Management/LeadInquiryManagement";
 import StudentDetails from "./components/Profile/StudentDetails";
-import Admission from "./components/Profile/Admission";
-import Communication from "./components/Profile/Communication";
 import AdmissionTracking from "./components/AdmissionTracking/AdmissionTracking";
 import TaskCalendarManagement from "./components/Task Calendar Management/TaskCalendarManagement";
 import CourseUniversityDatabase from "./components/CourseUniversityDatabase/CourseUniversityDatabase";
@@ -27,6 +25,12 @@ import UserRolesAccessControl from "./components/UserRolesAccessControl/UserRole
 import CommunicationFollowupManagement from "./components/CommunicationFollowupManagement/CommunicationFollowupManagement";
 import Inquriy from "./components/Lead & Inquiry Management/Inquriy";
 import Quotes from "./components/Lead & Inquiry Management/Quotes";
+import ApplicationTracker from "./components/AdmissionTracking/ApplicationTracker";
+import DocumentUpload from "./components/AdmissionTracking/DocumentUpload";
+import UniversitySubmissions from "./components/AdmissionTracking/UniversitySubmissions";
+import AdmissionDecisions from "./components/AdmissionTracking/AdmissionDecisions";
+import FollowUpScheduling from "./components/CommunicationFollowupManagement/FollowUpScheduling";
+import AutomatedReminders from "./components/CommunicationFollowupManagement/AutomatedReminders";
 
 function App() {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
@@ -99,13 +103,33 @@ function App() {
               path="/studentDetails"
               element={<StudentDetails></StudentDetails>}
             ></Route>
-            <Route path="/admission" element={<Admission></Admission>}></Route>
+            <Route
+              path="/admission"
+              element={<AdmissionTracking></AdmissionTracking>}
+            ></Route>
             <Route
               path="/communication"
-              element={<Communication></Communication>}
+              element={
+                <CommunicationFollowupManagement></CommunicationFollowupManagement>
+              }
             ></Route>
             {/* AdmissionTracking */}
-
+            <Route
+              path="/tracker"
+              element={<ApplicationTracker></ApplicationTracker>}
+            ></Route>
+            <Route
+              path="/document"
+              element={<DocumentUpload></DocumentUpload>}
+            ></Route>
+            <Route
+              path="/university"
+              element={<UniversitySubmissions></UniversitySubmissions>}
+            ></Route>
+            <Route
+              path="/admissionDecisions"
+              element={<AdmissionDecisions></AdmissionDecisions>}
+            ></Route>
             <Route path="/AdmissionTracking" element={<AdmissionTracking />} />
 
             {/* TaskCalendarManagement */}
@@ -144,11 +168,14 @@ function App() {
             />
 
             {/* CommunicationFollowupManagement          */}
-
             <Route
-              path="/CommunicationFollowupManagement"
-              element={<CommunicationFollowupManagement />}
-            />
+              path="/followup"
+              element={<FollowUpScheduling></FollowUpScheduling>}
+            ></Route>
+            <Route
+              path="/reminder"
+              element={<AutomatedReminders></AutomatedReminders>}
+            ></Route>
 
             {/* chatbox route */}
             <Route path="/chatbox" element={<ChatBox />} />
