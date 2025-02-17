@@ -194,75 +194,77 @@ const Payments = () => {
                 </Button>
               </div>
 
-              <Table responsive hover>
-                <thead>
-                  <tr>
-                    <th>Invoice ID</th>
-                    <th>Date</th>
-                    <th>Student</th>
-                    <th>Course</th>
-                    <th>Type</th>
-                    <th>Amount</th>
-                    <th>Paid</th>
-                    <th>Method</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {payments.map((payment) => (
-                    <tr key={payment.id}>
-                      <td>{payment.id}</td>
-                      <td>{payment.date}</td>
-                      <td>{payment.studentName}</td>
-                      <td>{payment.course}</td>
-                      <td>{payment.type}</td>
-                      <td>${payment.amount}</td>
-                      <td>${payment.amountPaid}</td>
-                      <td>{payment.paymentMethod}</td>
-                      <td>{getStatusBadge(payment.status)}</td>
-                      <td>
-                        <div className="d-flex gap-2">
-                          <Button
-                            variant="link"
-                            className="p-0"
-                            onClick={() => handleEdit(payment)}
-                            title="Edit"
-                          >
-                            <FaEdit className="text-primary" />
-                          </Button>
-                          <Button
-                            variant="link"
-                            className="p-0"
-                            onClick={() => handleDelete(payment.id)}
-                            title="Delete"
-                          >
-                            <FaTrash className="text-danger" />
-                          </Button>
-                          <Button
-                            variant="link"
-                            className="p-0"
-                            onClick={() => handleGenerateInvoice(payment)}
-                            title="Generate Invoice"
-                          >
-                            <FaDownload className="text-success" />
-                          </Button>
-                          {payment.status !== "Paid" && (
+              <div className="table-responsive">
+                <Table responsive hover>
+                  <thead>
+                    <tr>
+                      <th>Invoice ID</th>
+                      <th>Date</th>
+                      <th>Student</th>
+                      <th>Course</th>
+                      <th>Type</th>
+                      <th>Amount</th>
+                      <th>Paid</th>
+                      <th>Method</th>
+                      <th>Status</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {payments.map((payment) => (
+                      <tr key={payment.id}>
+                        <td>{payment.id}</td>
+                        <td>{payment.date}</td>
+                        <td>{payment.studentName}</td>
+                        <td>{payment.course}</td>
+                        <td>{payment.type}</td>
+                        <td>${payment.amount}</td>
+                        <td>${payment.amountPaid}</td>
+                        <td>{payment.paymentMethod}</td>
+                        <td>{getStatusBadge(payment.status)}</td>
+                        <td>
+                          <div className="d-flex gap-2">
                             <Button
                               variant="link"
                               className="p-0"
-                              onClick={() => handleSendReminder(payment)}
-                              title="Send Reminder"
+                              onClick={() => handleEdit(payment)}
+                              title="Edit"
                             >
-                              <FaEnvelope className="text-warning" />
+                              <FaEdit className="text-primary" />
                             </Button>
-                          )}
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </Table>
+                            <Button
+                              variant="link"
+                              className="p-0"
+                              onClick={() => handleDelete(payment.id)}
+                              title="Delete"
+                            >
+                              <FaTrash className="text-danger" />
+                            </Button>
+                            <Button
+                              variant="link"
+                              className="p-0"
+                              onClick={() => handleGenerateInvoice(payment)}
+                              title="Generate Invoice"
+                            >
+                              <FaDownload className="text-success" />
+                            </Button>
+                            {payment.status !== "Paid" && (
+                              <Button
+                                variant="link"
+                                className="p-0"
+                                onClick={() => handleSendReminder(payment)}
+                                title="Send Reminder"
+                              >
+                                <FaEnvelope className="text-warning" />
+                              </Button>
+                            )}
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </Table>
+              </div>
             </Card.Body>
           </Card>
         </Tab>
@@ -271,7 +273,7 @@ const Payments = () => {
             <Card.Body>
               <h5>Payment Statistics</h5>
               <Row className="g-4 mb-4">
-                <Col md={3}>
+                <Col md={3} sm={6}>
                   <Card className="bg-primary text-white">
                     <Card.Body>
                       <h6>Total Collected</h6>
@@ -281,7 +283,7 @@ const Payments = () => {
                     </Card.Body>
                   </Card>
                 </Col>
-                <Col md={3}>
+                <Col md={3} sm={6}>
                   <Card className="bg-warning text-white">
                     <Card.Body>
                       <h6>Pending Amount</h6>
@@ -295,7 +297,7 @@ const Payments = () => {
                     </Card.Body>
                   </Card>
                 </Col>
-                <Col md={3}>
+                <Col md={3} sm={6}>
                   <Card className="bg-success text-white">
                     <Card.Body>
                       <h6>Paid Invoices</h6>
@@ -305,7 +307,7 @@ const Payments = () => {
                     </Card.Body>
                   </Card>
                 </Col>
-                <Col md={3}>
+                <Col md={3} sm={6}>
                   <Card className="bg-danger text-white">
                     <Card.Body>
                       <h6>Pending Invoices</h6>
@@ -331,7 +333,7 @@ const Payments = () => {
         <Modal.Body>
           <Form onSubmit={formik.handleSubmit}>
             <Row>
-              <Col md={6}>
+              <Col md={6} sm={12}>
                 <Form.Group className="mb-3">
                   <Form.Label>Student Name</Form.Label>
                   <Form.Control
@@ -348,7 +350,7 @@ const Payments = () => {
                   </Form.Control.Feedback>
                 </Form.Group>
               </Col>
-              <Col md={6}>
+              <Col md={6} sm={12}>
                 <Form.Group className="mb-3">
                   <Form.Label>Course</Form.Label>
                   <Form.Control
@@ -366,7 +368,7 @@ const Payments = () => {
             </Row>
 
             <Row>
-              <Col md={6}>
+              <Col md={6} sm={12}>
                 <Form.Group className="mb-3">
                   <Form.Label>Payment Type</Form.Label>
                   <Form.Select
@@ -384,7 +386,7 @@ const Payments = () => {
                   </Form.Control.Feedback>
                 </Form.Group>
               </Col>
-              <Col md={6}>
+              <Col md={6} sm={12}>
                 <Form.Group className="mb-3">
                   <Form.Label>Payment Method</Form.Label>
                   <Form.Select
@@ -409,7 +411,7 @@ const Payments = () => {
             </Row>
 
             <Row>
-              <Col md={6}>
+              <Col md={6} sm={12}>
                 <Form.Group className="mb-3">
                   <Form.Label>Total Amount</Form.Label>
                   <Form.Control
@@ -424,7 +426,7 @@ const Payments = () => {
                   </Form.Control.Feedback>
                 </Form.Group>
               </Col>
-              <Col md={6}>
+              <Col md={6} sm={12}>
                 <Form.Group className="mb-3">
                   <Form.Label>Amount Paid</Form.Label>
                   <Form.Control
@@ -444,7 +446,7 @@ const Payments = () => {
             </Row>
 
             <Row>
-              <Col md={6}>
+              <Col md={6} sm={12}>
                 <Form.Group className="mb-3">
                   <Form.Label>Due Date</Form.Label>
                   <Form.Control

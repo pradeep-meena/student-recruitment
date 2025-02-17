@@ -292,19 +292,52 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
           {/* Task & Calendar Management */}
           <li
             className={`menu-item ${
-              isActive("/TaskCalendarManagement") ? "active" : ""
+              isSubmenuActive(["/addcounselor", "/tasks", "/tasksreminder"])
+                ? "active"
+                : ""
             }`}
           >
             <div
               className="menu-link menu-i"
-              onClick={() => {
-                navigate("/TaskCalendarManagement");
-                menuItemClick();
-              }}
+              onClick={() => toggleSubmenu("tasks")}
             >
               <i className="fa-solid fa-calendar-check"></i>
-              <span className="menu-text">Calender</span>
+              <span className="menu-text text-nowrap">Task Management</span>
+              <i
+                className={`fa-solid fa-chevron-${
+                  openSubmenu === "tasks" ? "up" : "down"
+                } submenu-arrow`}
+              ></i>
             </div>
+
+            {openSubmenu === "tasks" && (
+              <ul className={`submenu `}>
+                <li
+                  className={`menu-item submenu-item ${
+                    isActive("/addcounselor") ? "active" : ""
+                  }`}
+                  onClick={() => navigate("/addcounselor")}
+                >
+                  Counselor
+                </li>
+                <li
+                  className={`menu-item submenu-item ${
+                    isActive("/tasks") ? "active" : ""
+                  }`}
+                  onClick={() => navigate("/tasks")}
+                >
+                  Tasks
+                </li>
+                <li
+                  className={`menu-item submenu-item ${
+                    isActive("/tasksreminder") ? "active" : ""
+                  }`}
+                  onClick={() => navigate("/tasksreminder")}
+                >
+                  Reminder
+                </li>
+              </ul>
+            )}
           </li>
           {/* Course & University Database */}
           <li

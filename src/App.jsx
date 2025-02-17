@@ -33,8 +33,25 @@ import AdmissionDecisions from "./components/AdmissionTracking/AdmissionDecision
 import FollowUpScheduling from "./components/CommunicationFollowupManagement/FollowUpScheduling";
 import AutomatedReminders from "./components/CommunicationFollowupManagement/AutomatedReminders";
 import ManaDetails from "./components/Profile/ManaDetails";
+import AddCounselor from "./components/Task Calendar Management/AddCounselor";
+import TaskAssignment from "./components/Task Calendar Management/TaskAssignment";
+import TaskReminder from "./components/Task Calendar Management/TaskReminder";
+import RolesManagement from "./components/CourseUniversityDatabase/RolesManagement";
 
 function App() {
+  // counseler
+  const [counselors, setCounselors] = useState([]);
+  const [tasks, setTasks] = useState([]);
+
+  const handleAddCounselor = (name) => {
+    setCounselors([...counselors, name]);
+  };
+  // console.log(counselors);
+
+  const handleTaskAssign = (task) => {
+    setTasks([...tasks, task]);
+  };
+
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const menusidebarcollaps = () => {
     setIsSidebarCollapsed(true);
@@ -148,12 +165,31 @@ function App() {
               path="/TaskCalendarManagement"
               element={<TaskCalendarManagement />}
             />
+            <Route
+              path="/addcounselor"
+              element={<AddCounselor onAdd={handleAddCounselor}></AddCounselor>}
+            ></Route>
+
+            <Route
+              path="/tasks"
+              element={
+                <TaskAssignment
+                  counselors={counselors}
+                  onTaskAssign={handleTaskAssign}
+                ></TaskAssignment>
+              }
+            ></Route>
+
+            <Route
+              path="/tasksreminder"
+              element={<TaskReminder tasks={tasks}></TaskReminder>}
+            ></Route>
 
             {/* CourseUniversityDatabase */}
 
             <Route
               path="/CourseUniversityDatabase"
-              element={<CourseUniversityDatabase />}
+              element={<RolesManagement />}
             />
 
             {/* PaymentInvoiceManagement */}
