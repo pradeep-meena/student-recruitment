@@ -8,7 +8,7 @@ const Contract = () => {
   const [selectedContract, setSelectedContract] = useState(null);
 
   // State for contracts
-  const [contracts, setContracts] = useState([
+  const [contracts, setContracts] = useState([              
     {
       id: "CON00001",
       subject: "Software Development Contract",
