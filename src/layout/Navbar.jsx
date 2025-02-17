@@ -10,6 +10,7 @@ const Navbar = ({ toggleSidebar }) => {
           position: "fixed",
           backgroundColor: "rgb(171, 171, 253)",
           color: "white",
+          
         }}
       >
         <div className="container-fluid nav-conte">

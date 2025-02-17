@@ -10,7 +10,7 @@ const Contract = () => {
   // State for contracts
   const [contracts, setContracts] = useState([
     {
-      id: "CON00002",
+      id: "CON00001",
       subject: "Software Development Contract",
       client: "Mick Aston",
       project: "Bootstrap Framework",
@@ -21,7 +21,7 @@ const Contract = () => {
       description: "Contract for software development services.",
     },
     {
-      id: "CON00003",
+      id: "CON000031",
       subject: "Marketing Campaign Project Agreement",
       client: "Jennifer Ellison",
       project: "Website Redesign",
@@ -32,7 +32,7 @@ const Contract = () => {
       description: "Agreement for marketing campaign execution.",
     },
     {
-      id: "CON00003",
+      id: "CON000032",
       subject: "Marketing Campaign Project Agreement",
       client: "Jennifer Ellison",
       project: "Website Redesign",
@@ -43,7 +43,7 @@ const Contract = () => {
       description: "Agreement for marketing campaign execution.",
     },
     {
-      id: "CON00003",
+      id: "CON000033",
       subject: "Marketing Campaign Project Agreement",
       client: "Jennifer Ellison",
       project: "Website Redesign",
@@ -54,7 +54,7 @@ const Contract = () => {
       description: "Agreement for marketing campaign execution.",
     },
     {
-      id: "CON00003",
+      id: "CON000034",
       subject: "Marketing Campaign Project Agreement",
       client: "Jennifer Ellison",
       project: "Website Redesign",
@@ -65,7 +65,7 @@ const Contract = () => {
       description: "Agreement for marketing campaign execution.",
     },
     {
-      id: "CON00003",
+      id: "CON000035",
       subject: "Marketing Campaign Project Agreement",
       client: "Jennifer Ellison",
       project: "Website Redesign",
@@ -76,7 +76,7 @@ const Contract = () => {
       description: "Agreement for marketing campaign execution.",
     },
     {
-      id: "CON00003",
+      id: "CON000036",
       subject: "Marketing Campaign Project Agreement",
       client: "Jennifer Ellison",
       project: "Website Redesign",
@@ -87,7 +87,7 @@ const Contract = () => {
       description: "Agreement for marketing campaign execution.",
     },
     {
-      id: "CON00003",
+      id: "CON000037",
       subject: "Marketing Campaign Project Agreement",
       client: "Jennifer Ellison",
       project: "Website Redesign",
@@ -98,7 +98,7 @@ const Contract = () => {
       description: "Agreement for marketing campaign execution.",
     },
     {
-      id: "CON00003",
+      id: "CON000038",
       subject: "Marketing Campaign Project Agreement",
       client: "Jennifer Ellison",
       project: "Website Redesign",
@@ -109,7 +109,7 @@ const Contract = () => {
       description: "Agreement for marketing campaign execution.",
     },
     {
-      id: "CON00003",
+      id: "CON000039",
       subject: "Marketing Campaign Project Agreement",
       client: "Jennifer Ellison",
       project: "Website Redesign",

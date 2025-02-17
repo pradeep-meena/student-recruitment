@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const students = [
   {
@@ -10,8 +10,8 @@ const students = [
     fatherName: "Emrys",
     dob: "02/06/2019",
     gender: "Male",
-    guardianName: "Emrys",
-    guardianPhone: "16514840184",
+    category: "General",
+    mobile: "16514840184",
   },
   {
     admissionNo: 1020,
@@ -21,47 +21,249 @@ const students = [
     fatherName: "Lester",
     dob: "05/22/2019",
     gender: "Female",
-    guardianName: "Lester",
-    guardianPhone: "6595084801",
+    category: "General",
+    mobile: "6595084801",
+  },
+  {
+    admissionNo: 120036,
+    name: "Ayan Desai",
+    rollNo: "23620",
+    class: "Class 1(A)",
+    fatherName: "Abhinand",
+    dob: "10/15/2015",
+    gender: "Male",
+    category: "General",
+    mobile: "9067875674",
+  },
+  {
+    admissionNo: 2152,
+    name: "Kaylen",
+    rollNo: "0205",
+    class: "Class 1(A)",
+    fatherName: "Lyndon",
+    dob: "06/19/2019",
+    gender: "Female",
+    category: "General",
+    mobile: "54180185420",
+  },
+  {
+    admissionNo: 7663,
+    name: "Paul S. Bealer",
+    rollNo: "6230",
+    class: "Class 1(A)",
+    fatherName: "McMahon",
+    dob: "08/13/2005",
+    gender: "Male",
+    category: "General",
+    mobile: "789067867",
+  },
+  {
+    admissionNo: 96302,
+    name: "Jacob Bethell",
+    rollNo: "221002",
+    class: "Class 1(A)",
+    fatherName: "Brydon",
+    dob: "08/19/2016",
+    gender: "Male",
+    category: "General",
+    mobile: "065758878",
   },
 ];
+
 function StudentDetailsPage() {
   const { admissionNo } = useParams();
   const selectedStudent = students.find(
     (student) => student.admissionNo.toString() === admissionNo
   );
 
+  if (!selectedStudent) {
+    return <div>Student not found</div>;
+  }
+
   return (
-    <div className="container mt-3">
-      <h2>Student Details</h2>
-      {selectedStudent ? (
-        <div className="card shadow-sm">
-          <div className="card-body">
-            <h5 className="card-title text-primary">{selectedStudent.name}</h5>
-            <p className="card-text">
-              <strong>Class:</strong> {selectedStudent.class}
-            </p>
-            <p className="card-text">
-              <strong>Admission No:</strong> {selectedStudent.admissionNo}
-            </p>
-            <p className="card-text">
-              <strong>Date of Birth:</strong> {selectedStudent.dob}
-            </p>
-            <p className="card-text">
-              <strong>Gender:</strong> {selectedStudent.gender}
-            </p>
-            <p className="card-text">
-              <strong>Guardian Name:</strong> {selectedStudent.guardianName}
-            </p>
-            <p className="card-text">
-              <strong>Guardian Phone:</strong> {selectedStudent.guardianPhone}
-            </p>
+    <>
+      <meta charSet="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Student Details - {selectedStudent.name}</title>
+      <link
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        rel="stylesheet"
+      />
+      <div className="container">
+        <div className="details-container">
+          <div className="row">
+            <div className="col-md-4 text-center">
+              <div className="row mt-5">
+                <div className="col-4 mb-3 align-content-center">
+                  <img
+                    src="https://i.ibb.co/QvjbvHzf/download.jpg"
+                    className="profile-image" 
+                    style={{width:80, height:100}}
+                  />
+                </div>
+                <div className="col-8">
+                  {selectedStudent.name} <br />
+                  Admission No: {selectedStudent.admissionNo} <br />
+                  Roll Number: {selectedStudent.rollNo}
+                </div>
+              </div>
+              <table className="mt-3 table table-borderless table-spacing">
+                <tbody>
+                  <tr>
+                    <td>
+                      <strong>Class:</strong>
+                    </td>
+                    <td>{selectedStudent.class}</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <strong>Section:</strong>
+                    </td>
+                    <td>B</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <strong>RTE:</strong>
+                    </td>
+                    <td>No</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <strong>Gender:</strong>
+                    </td>
+                    <td>{selectedStudent.gender}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div className="col-md-8">
+              <div className="navbar navbar-expand-lg navbar-light bg-light" style={{ zIndex:"0"}}>
+                
+                <div
+                  className="collapse navbar-collapse"
+                  id="navbarNavDropdown"
+                >
+                  <ul className="navbar-nav">
+                    <li className="nav-item active">
+                      <a className="nav-link" href="#">
+                        Profile
+                      </a>
+                    </li>
+                    <li className="nav-item">
+                      <a className="nav-link" href="#">
+                        Fees
+                      </a>
+                    </li>
+                    <li className="nav-item">
+                      <a className="nav-link" href="#">
+                        Exam
+                      </a>
+                    </li>
+                    <li className="nav-item">
+                      <a className="nav-link" href="#">
+                        CBSE Examination
+                      </a>
+                    </li>
+                    <li className="nav-item">
+                      <a className="nav-link" href="#">
+                        Documents
+                      </a>
+                    </li>
+                    <li className="nav-item">
+                      <a className="nav-link" href="#">
+                        Timeline
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+               <Link to="/studentDetails">
+               <button className="btn btn-dark">back</button>
+               </Link>
+              </div>
+              <div className="m-3 p-4 border">
+                <table className="table table-borderless table-spacing">
+                  <tbody>
+                    <tr>
+                      <td>
+                        <strong>Admission Date</strong>
+                      </td>
+                      <td>04/02/2024</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <strong>Date of Birth</strong>
+                      </td>
+                      <td>{selectedStudent.dob}</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <strong>Category</strong>
+                      </td>
+                      <td />
+                    </tr>
+                    <tr>
+                      <td>
+                        <strong>Mobile Number</strong>
+                      </td>
+                      <td>{selectedStudent.guardianPhone}</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <strong>Caste</strong>
+                      </td>
+                      <td />
+                    </tr>
+                    <tr>
+                      <td>
+                        <strong>Religion</strong>
+                      </td>
+                      <td />
+                    </tr>
+                    <tr>
+                      <td>
+                        <strong>Email</strong>
+                      </td>
+                      <td />
+                    </tr>
+                    <tr>
+                      <td>
+                        <strong>Medical History</strong>
+                      </td>
+                      <td />
+                    </tr>
+                    <tr>
+                      <td>
+                        <strong>Note</strong>
+                      </td>
+                      <td />
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div className="m-3 p-4 border">
+                <p className="fw-bold border-bottom bg-light">Address</p>
+                <table className="table table-borderless table-spacing">
+                  <tbody>
+                    <tr>
+                      <td>
+                        <strong>Current Address:</strong>
+                      </td>
+                      <td>[Current Address Placeholder]</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <strong>Permanent Address:</strong>
+                      </td>
+                      <td>[Permanent Address Placeholder]</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
-      ) : (
-        <p>No student selected.</p>
-      )}
-    </div>
+      </div>
+    </>
   );
 }
 

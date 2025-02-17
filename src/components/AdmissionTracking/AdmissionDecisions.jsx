@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Table, Container, Form, Button, Modal } from "react-bootstrap";
+import { Table, Container, Form, Button, Modal, Row, Col } from "react-bootstrap";
 
 const AdmissionDecisions = () => {
   const initialDecisions = [
@@ -95,74 +95,90 @@ const AdmissionDecisions = () => {
       <h2 className="mb-3">Admission Decisions</h2>
 
       {/* Search, Filter, and Sort Controls */}
-      <Form className="mb-3 d-flex gap-3">
-        <Form.Control
-          type="text"
-          placeholder="Search by student or university..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-        <Form.Select
-          onChange={(e) => setFilterStatus(e.target.value)}
-          value={filterStatus}
-        >
-          <option value="all">All Statuses</option>
-          <option value="accepted">Accepted</option>
-          <option value="rejected">Rejected</option>
-          <option value="waitlisted">Waitlisted</option>
-        </Form.Select>
-        <Form.Select
-          onChange={(e) => setSortByDate(e.target.value)}
-          value={sortByDate}
-        >
-          <option value="asc">Sort by Date (Oldest First)</option>
-          <option value="desc">Sort by Date (Newest First)</option>
-        </Form.Select>
-        <Button variant="success" onClick={() => setShowModal(true)}>
-          + Add Decision
-        </Button>
+      <Form className="mb-3">
+        <Row className="g-2">
+          <Col xs={12} md={6} lg={3}>
+            <Form.Control
+              type="text"
+              placeholder="Search by student or university..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </Col>
+          <Col xs={12} md={6} lg={3}>
+            <Form.Select
+              onChange={(e) => setFilterStatus(e.target.value)}
+              value={filterStatus}
+            >
+              <option value="all">All Statuses</option>
+              <option value="accepted">Accepted</option>
+              <option value="rejected">Rejected</option>
+              <option value="waitlisted">Waitlisted</option>
+            </Form.Select>
+          </Col>
+          <Col xs={12} md={6} lg={3}>
+            <Form.Select
+              onChange={(e) => setSortByDate(e.target.value)}
+              value={sortByDate}
+            >
+              <option value="asc">Sort by Date (Oldest First)</option>
+              <option value="desc">Sort by Date (Newest First)</option>
+            </Form.Select>
+          </Col>
+          <Col xs={12} md={6} lg={3}>
+            <Button
+              variant="success"
+              onClick={() => setShowModal(true)}
+              className="w-100"
+            >
+              + Add Decision
+            </Button>
+          </Col>
+        </Row>
       </Form>
 
       {/* Admission Decisions Table */}
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>Student Name</th>
-            <th>University</th>
-            <th>Status</th>
-            <th>Decision Date</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {sortedDecisions.map((dec) => (
-            <tr key={dec.id}>
-              <td>{dec.student}</td>
-              <td>{dec.university}</td>
-              <td>
-                <Form.Select
-                  value={dec.status}
-                  onChange={(e) => updateDecisionStatus(dec.id, e.target.value)}
-                >
-                  <option value="accepted">Accepted</option>
-                  <option value="rejected">Rejected</option>
-                  <option value="waitlisted">Waitlisted</option>
-                </Form.Select>
-              </td>
-              <td>{dec.date}</td>
-              <td>
-                <Button
-                  variant="danger"
-                  size="sm"
-                  onClick={() => deleteDecision(dec.id)}
-                >
-                  Delete
-                </Button>
-              </td>
+      <div className="table-responsive">
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>Student Name</th>
+              <th>University</th>
+              <th>Status</th>
+              <th>Decision Date</th>
+              <th>Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </Table>
+          </thead>
+          <tbody>
+            {sortedDecisions.map((dec) => (
+              <tr key={dec.id}>
+                <td>{dec.student}</td>
+                <td>{dec.university}</td>
+                <td>
+                  <Form.Select
+                    value={dec.status}
+                    onChange={(e) => updateDecisionStatus(dec.id, e.target.value)}
+                  >
+                    <option value="accepted">Accepted</option>
+                    <option value="rejected">Rejected</option>
+                    <option value="waitlisted">Waitlisted</option>
+                  </Form.Select>
+                </td>
+                <td>{dec.date}</td>
+                <td>
+                  <Button
+                    variant="danger"
+                    size="sm"
+                    onClick={() => deleteDecision(dec.id)}
+                  >
+                    Delete
+                  </Button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      </div>
 
       {/* Modal for Adding New Decision */}
       <Modal show={showModal} onHide={() => setShowModal(false)}>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Table, Container, Form, Button } from "react-bootstrap";
+import { Table, Container, Form, Button, Row, Col } from "react-bootstrap";
 
 const UniversitySubmissions = () => {
   const initialSubmissions = [
@@ -73,68 +73,81 @@ const UniversitySubmissions = () => {
       <h2 className="mb-3">University Submissions</h2>
 
       {/* Search & Filter Controls */}
-      <Form className="mb-3 d-flex gap-3">
-        <Form.Control
-          type="text"
-          placeholder="Search by name or university..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-        <Form.Select
-          onChange={(e) => setFilterStatus(e.target.value)}
-          value={filterStatus}
-        >
-          <option value="all">All Statuses</option>
-          <option value="pending">Pending</option>
-          <option value="submitted">Submitted</option>
-          <option value="reviewed">Reviewed</option>
-        </Form.Select>
-        <Form.Select onChange={(e) => setSortBy(e.target.value)} value={sortBy}>
-          <option value="date">Sort by Date</option>
-          <option value="university">Sort by University</option>
-        </Form.Select>
+      <Form className="mb-3">
+        <Row className="g-2">
+          <Col xs={12} md={6} lg={4}>
+            <Form.Control
+              type="text"
+              placeholder="Search by name or university..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </Col>
+          <Col xs={12} md={6} lg={4}>
+            <Form.Select
+              onChange={(e) => setFilterStatus(e.target.value)}
+              value={filterStatus}
+            >
+              <option value="all">All Statuses</option>
+              <option value="pending">Pending</option>
+              <option value="submitted">Submitted</option>
+              <option value="reviewed">Reviewed</option>
+            </Form.Select>
+          </Col>
+          <Col xs={12} md={6} lg={4}>
+            <Form.Select
+              onChange={(e) => setSortBy(e.target.value)}
+              value={sortBy}
+            >
+              <option value="date">Sort by Date</option>
+              <option value="university">Sort by University</option>
+            </Form.Select>
+          </Col>
+        </Row>
       </Form>
 
       {/* Submissions Table */}
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>Student Name</th>
-            <th>University</th>
-            <th>Status</th>
-            <th>Submission Date</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {sortedSubmissions.map((sub) => (
-            <tr key={sub.id}>
-              <td>{sub.student_name}</td>
-              <td>{sub.university}</td>
-              <td>
-                <Form.Select
-                  value={sub.status}
-                  onChange={(e) => updateStatus(sub.id, e.target.value)}
-                >
-                  <option value="pending">Pending</option>
-                  <option value="submitted">Submitted</option>
-                  <option value="reviewed">Reviewed</option>
-                </Form.Select>
-              </td>
-              <td>{sub.date}</td>
-              <td>
-                <Button
-                  variant="danger"
-                  size="sm"
-                  onClick={() => deleteSubmission(sub.id)}
-                >
-                  Delete
-                </Button>
-              </td>
+      <div className="table-responsive">
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>Student Name</th>
+              <th>University</th>
+              <th>Status</th>
+              <th>Submission Date</th>
+              <th>Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </Table>
+          </thead>
+          <tbody>
+            {sortedSubmissions.map((sub) => (
+              <tr key={sub.id}>
+                <td>{sub.student_name}</td>
+                <td>{sub.university}</td>
+                <td>
+                  <Form.Select
+                    value={sub.status}
+                    onChange={(e) => updateStatus(sub.id, e.target.value)}
+                  >
+                    <option value="pending">Pending</option>
+                    <option value="submitted">Submitted</option>
+                    <option value="reviewed">Reviewed</option>
+                  </Form.Select>
+                </td>
+                <td>{sub.date}</td>
+                <td>
+                  <Button
+                    variant="danger"
+                    size="sm"
+                    onClick={() => deleteSubmission(sub.id)}
+                  >
+                    Delete
+                  </Button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      </div>
     </Container>
   );
 };

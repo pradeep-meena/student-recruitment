@@ -1,18 +1,13 @@
-import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const StudentDetails = () => {
-  const [show, setShow] = useState(false);
-  const [selectedStudent, setSelectedStudent] = useState(null);
+  const [show, setShow] = useState(false); // State for modal visibility
+  const [selectedStudent, setSelectedStudent] = useState(null); // State for selected student
+  const [searchQuery, setSearchQuery] = useState(""); // State for search query
 
-  const handleShow = (student) => {
-    setSelectedStudent(student);
-    setShow(true);
-  };
-
-  const handleClose = () => setShow(false);
-
+  // Sample student data
   const students = [
     {
       admissionNo: 1001,
@@ -82,8 +77,24 @@ const StudentDetails = () => {
     },
   ];
 
+  // Function to handle search
+  const filteredStudents = students.filter((student) =>
+    student.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    student.rollNo.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    student.admissionNo.toString().includes(searchQuery)
+  );
+
+  // Function to handle modal show
+  const handleShow = (student) => {
+    setSelectedStudent(student);
+    setShow(true);
+  };
+
+  // Function to handle modal close
+  const handleClose = () => setShow(false);
+
   return (
-    <div className="container mt-3">
+    <div className="container mt-5 pt-4"> {/* Added padding-top to avoid navbar overlap */}
       <h5>Select Criteria</h5>
       <div className="row g-2 align-items-center">
         <div className="col-md-3">
@@ -112,6 +123,8 @@ const StudentDetails = () => {
             type="text"
             className="form-control"
             placeholder="Search By Student Name, Roll Number, Enroll Number, etc."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
 
@@ -121,7 +134,8 @@ const StudentDetails = () => {
           </button>
         </div>
       </div>
-      <ul className="nav nav-tabs">
+
+      <ul className="nav nav-tabs mt-4">
         <li className="nav-item">
           <Link className="nav-link active" to="/studentDetails">
             List View
@@ -138,6 +152,8 @@ const StudentDetails = () => {
         type="text"
         className="form-control my-3"
         placeholder="Search..."
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
       />
 
       <div className="table-responsive">
@@ -157,7 +173,7 @@ const StudentDetails = () => {
             </tr>
           </thead>
           <tbody>
-            {students.map((student, index) => (
+            {filteredStudents.map((student, index) => (
               <tr key={index}>
                 <td className="text-center">
                   <Link
@@ -171,7 +187,6 @@ const StudentDetails = () => {
                   </Link>
                 </td>
                 <td>{student.admissionNo}</td>
-
                 <td>{student.rollNo}</td>
                 <td>{student.class}</td>
                 <td>{student.fatherName}</td>
@@ -194,6 +209,35 @@ const StudentDetails = () => {
           </tbody>
         </table>
       </div>
+
+      {/* Modal for student details (if needed) */}
+      {selectedStudent && (
+        <div className={`modal ${show ? "show" : ""}`} style={{ display: show ? "block" : "none" }}>
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">{selectedStudent.name}'s Details</h5>
+                <button type="button" className="btn-close" onClick={handleClose}></button>
+              </div>
+              <div className="modal-body">
+                <p>Admission No: {selectedStudent.admissionNo}</p>
+                <p>Roll No: {selectedStudent.rollNo}</p>
+                <p>Class: {selectedStudent.class}</p>
+                <p>Father's Name: {selectedStudent.fatherName}</p>
+                <p>Date of Birth: {selectedStudent.dob}</p>
+                <p>Gender: {selectedStudent.gender}</p>
+                <p>Category: {selectedStudent.category}</p>
+                <p>Mobile: {selectedStudent.mobile}</p>
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-secondary" onClick={handleClose}>
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
