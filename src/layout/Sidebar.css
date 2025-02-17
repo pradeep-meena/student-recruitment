@@ -7,7 +7,8 @@
   margin-top: 85px;
   z-index: 1;
   position: fixed;
-  background-color: rgb(171, 171, 253);
+  background-color: black;
+  color: white;
 }
 .submenu {
   list-style: none;
@@ -19,7 +20,7 @@
   margin-left: 10px;
   cursor: pointer;
   font-size: 17px;
-  color: black !important;
+  color: white !important;
   display: block;
   padding: 7px !important;
 }
@@ -66,7 +67,7 @@
   align-items: center;
   padding: 10px;
   text-decoration: none;
-  color: black;
+  color: white;
   cursor: pointer;
   transition: background 0.3s ease;
 }

@@ -8,8 +8,8 @@ const Navbar = ({ toggleSidebar }) => {
         className="navbar"
         style={{
           position: "fixed",
-          backgroundColor: "rgb(171, 171, 253)",
-          color: "white",
+          backgroundColor: "white",
+          color: "black",
           
         }}
       >
