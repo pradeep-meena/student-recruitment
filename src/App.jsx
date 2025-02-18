@@ -10,6 +10,7 @@ import Dashboard from "./components/dashbord/Dashbord";
 import ChatBox from "./components/CommunicationFollowupManagement/ChatBox";
 import Contract from "./components/Lead & Inquiry Management/Contract";
 import Profile from "./components/Profile/Profile";
+import New from "./components/CourseUniversityDatabase/New";
 import StudentDetailsPage from "./components/Profile/StudentDetailsPage";
 import Lead from "./components/Lead & Inquiry Management/Lead";
 import Deal from "./components/Lead & Inquiry Management/Deal";
@@ -210,6 +211,7 @@ function App() {
             />
 
             {/* ReportingAnalytics */}
+            <Route path="/new" element={<New></New>}></Route>
 
             <Route
               path="/ReportingAnalytics"
