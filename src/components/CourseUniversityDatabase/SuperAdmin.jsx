@@ -10,7 +10,7 @@ const permissionsData = [
   },
   {
     module: "Leads & inquiries",
-    features: ["Contact", "Inquiry", "Lead", "Deal"],   
+    features: ["Contact", "Inquiry", "Lead", "Deal"],
   },
   {
     module: "Student Managenement",
@@ -51,7 +51,7 @@ const permissionsData = [
   },
 ];
 
-const PermissionsTable = () => {
+const SuperAdmin = () => {
   const { role } = useParams(); // Get the role from URL
   const [permissions, setPermissions] = useState(
     permissionsData.map((module) => ({
@@ -77,7 +77,7 @@ const PermissionsTable = () => {
   return (
     <Container className="mt-4">
       <div className="d-flex justify-content-between mb-3">
-        <h2>Assign Permission for {role}</h2>
+        <h2>Assign Permission for asfafh {role}</h2>
         <Link to="/RolesManagement" className="btn btn-secondary mb-3">
           Back to Roles
         </Link>
@@ -132,4 +132,4 @@ const PermissionsTable = () => {
   );
 };
 
-export default PermissionsTable;
+export default SuperAdmin;

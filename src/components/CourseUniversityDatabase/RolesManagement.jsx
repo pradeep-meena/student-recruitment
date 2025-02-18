@@ -15,6 +15,7 @@ import { TagFill, PencilFill, TrashFill } from "react-bootstrap-icons";
 const RolesManagement = () => {
   const [roles, setRoles] = useState([
     { name: "Admin", type: "System" },
+    { name: "SuperAdmin", type: "System" },
     { name: "Employee", type: "Customer" },
   ]);
   const [newRole, setNewRole] = useState("");

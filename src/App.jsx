@@ -10,7 +10,6 @@ import Dashboard from "./components/dashbord/Dashbord";
 import ChatBox from "./components/CommunicationFollowupManagement/ChatBox";
 import Contract from "./components/Lead & Inquiry Management/Contract";
 import Profile from "./components/Profile/Profile";
-import New from "./components/CourseUniversityDatabase/New";
 import StudentDetailsPage from "./components/Profile/StudentDetailsPage";
 import Lead from "./components/Lead & Inquiry Management/Lead";
 import Deal from "./components/Lead & Inquiry Management/Deal";
@@ -20,7 +19,7 @@ import LeadInquiryManagement from "./components/Lead & Inquiry Management/LeadIn
 import StudentDetails from "./components/Profile/StudentDetails";
 import AdmissionTracking from "./components/AdmissionTracking/AdmissionTracking";
 import TaskCalendarManagement from "./components/Task Calendar Management/TaskCalendarManagement";
-import CourseUniversityDatabase from "./components/CourseUniversityDatabase/CourseUniversityDatabase";
+
 import PaymentInvoiceManagement from "./components/PaymentInvoiceManagement/PaymentInvoiceManagement";
 import ReportingAnalytics from "./components/ReportingAnalytics/ReportingAnalytics";
 import UserRolesAccessControl from "./components/UserRolesAccessControl/UserRolesAccessControl";
@@ -39,6 +38,7 @@ import TaskAssignment from "./components/Task Calendar Management/TaskAssignment
 import TaskReminder from "./components/Task Calendar Management/TaskReminder";
 import RolesManagement from "./components/CourseUniversityDatabase/RolesManagement";
 import PermissionsTable from "./components/CourseUniversityDatabase/permissionsData";
+import CourseUniversityDatabase from "./components/CourseUniversityDatabase/CourseUniversityDatabase";
 
 function App() {
   // counseler
@@ -199,10 +199,8 @@ function App() {
               path="/CourseUniversityDatabase"
               element={<CourseUniversityDatabase></CourseUniversityDatabase>}
             ></Route>
-
             <Route path="/RolesManagement" element={<RolesManagement />} />
             <Route path="/permissions/:role" element={<PermissionsTable />} />
-
             {/* PaymentInvoiceManagement */}
 
             <Route
@@ -211,7 +209,6 @@ function App() {
             />
 
             {/* ReportingAnalytics */}
-            <Route path="/new" element={<New></New>}></Route>
 
             <Route
               path="/ReportingAnalytics"

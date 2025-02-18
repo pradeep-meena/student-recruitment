@@ -1,140 +1,227 @@
 import React, { useState } from "react";
-import { Bar, Line } from "react-chartjs-2";
-import "bootstrap/dist/css/bootstrap.min.css";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-  PointElement,
-  LineElement,
-} from "chart.js";
+// import "bootstrap/dist/css/bootstrap.min.css";
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-  PointElement,
-  LineElement
-);
+// // Sample data for universities and programs
+// const universities = [
+//   {
+//     id: 1,
+//     name: "University of California, Berkeley",
+//     programs: [
+//       {
+//         id: 101,
+//         name: "Computer Science",
+//         eligibility: "Bachelor's degree in related field",
+//         fee: "$15,000 per semester",
+//       },
+//       {
+//         id: 102,
+//         name: "Business Administration",
+//         eligibility: "Bachelor's degree, GMAT score",
+//         fee: "$20,000 per semester",
+//       },
+//     ],
+//   },
+//   {
+//     id: 2,
+//     name: "Massachusetts Institute of Technology",
+//     programs: [
+//       {
+//         id: 201,
+//         name: "Artificial Intelligence",
+//         eligibility: "Bachelor's degree in Computer Science",
+//         fee: "$18,000 per semester",
+//       },
+//       {
+//         id: 202,
+//         name: "Mechanical Engineering",
+//         eligibility: "Bachelor's degree in Engineering",
+//         fee: "$16,000 per semester",
+//       },
+//     ],
+//   },
+//   {
+//     id: 3,
+//     name: "Stanford University",
+//     programs: [
+//       {
+//         id: 301,
+//         name: "Data Science",
+//         eligibility: "Bachelor's degree in STEM field",
+//         fee: "$22,000 per semester",
+//       },
+//       {
+//         id: 302,
+//         name: "Law",
+//         eligibility: "Bachelor's degree, LSAT score",
+//         fee: "$25,000 per semester",
+//       },
+//     ],
+//   },
+// ];
 
-// Sample data for student pipeline
-const studentPipelineData = [
-  { stage: "Inquiries", count: 120 },
-  { stage: "Applications", count: 80 },
-  { stage: "Conversions", count: 40 },
-];
+// function CourseUniversityDatabase() {
+//   const [searchTerm, setSearchTerm] = useState("");
+//   const [filteredUniversities, setFilteredUniversities] = useState(
+//     universities
+//   );
 
-// Sample data for recruitment agent performance
-const agentPerformanceData = [
-  { name: "Agent A", applications: 50, conversions: 20 },
-  { name: "Agent B", applications: 40, conversions: 15 },
-  { name: "Agent C", applications: 30, conversions: 10 },
-];
+//   // Handle search input
+//   const handleSearch = (e) => {
+//     const term = e.target.value.toLowerCase();
+//     setSearchTerm(term);
 
-// 📌 Student Pipeline Component
-const StudentPipelineReport = () => {
-  const chartData = {
-    labels: studentPipelineData.map((item) => item.stage),
-    datasets: [
-      {
-        label: "Students",
-        data: studentPipelineData.map((item) => item.count),
-        backgroundColor: ["#3498db", "#f39c12", "#2ecc71"],
-      },
-    ],
-  };
+//     const filtered = universities.filter(
+//       (uni) =>
+//         uni.name.toLowerCase().includes(term) ||
+//         uni.programs.some((program) =>
+//           program.name.toLowerCase().includes(term)
+//         )
+//     );
+//     setFilteredUniversities(filtered);
+//   };
 
-  return (
-    <div className="card p-4 mb-4">
-      <h4>📊 Student Pipeline Report</h4>
-      <Bar data={chartData} />
-      <table className="table table-bordered mt-3">
-        <thead className="table-dark">
-          <tr>
-            <th>Stage</th>
-            <th>Count</th>
-          </tr>
-        </thead>
-        <tbody>
-          {studentPipelineData.map((item, index) => (
-            <tr key={index}>
-              <td>{item.stage}</td>
-              <td>{item.count}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
-};
+//   return (
+//     <div
+//       className="container mt-5"
+//       style={{
+//         backgroundColor: "#f8f9fa",
+//         padding: "20px",
+//         borderRadius: "10px",
+//       }}
+//     >
+//       <div className="container mt-4">
+//         <h2 className="text-center">
+//           <h1
+//             className="text-center mb-4"
+//             style={{ color: "#2c3e50", fontWeight: "bold" }}
+//           >
+//             Course & University Database
+//           </h1>
+//         </h2>
+//         {/* Search & Filter */}
+//         <div className="row mb-3">
+//           <div className="col-md-4">
+//             <input
+//               type="text"
+//               id="searchInput"
+//               className="form-control"
+//               placeholder="🔍 Search universities..."
+//               onkeyup="searchTable()"
+//             />
+//           </div>
+//           <div className="col-md-4">
+//             <select
+//               className="form-select"
+//               id="filterCategory"
+//               onchange="filterTable()"
+//             >
+//               <option value="">Filter by Program</option>
+//               <option value="Engineering">Engineering</option>
+//               <option value="Business">Business</option>
+//               <option value="Medicine">Medicine</option>
+//               <option value="Computer Science">Computer Science</option>
+//             </select>
+//           </div>
+//         </div>
+//         {/* Add Course Button */}
+//         <button className="btn btn-success mb-3" onclick="addRow()">
+//           ➕ Add Course
+//         </button>
+//         {/* Universities Table */}
+//         <div className="table-responsive">
+//           <table className="table table-bordered table-hover">
+//             <thead className="table-dark">
+//               <tr>
+//                 <th>🏫 University Name</th>
+//                 <th>🎓 Program</th>
+//                 <th>📜 Eligibility Criteria</th>
+//                 <th>💰 Fee</th>
+//                 <th>⚡ Actions</th>
+//               </tr>
+//             </thead>
+//             <tbody>
+//               {filteredUniversities.map((uni) =>
+//                 uni.programs.map((program) => (
+//                   <tr key={program.id}>
+//                     <td>{uni.name}</td>
+//                     <td>{program.name}</td>
+//                     <td>{program.eligibility}</td>
+//                     <td>{program.fee}</td>
+//                     <td>
+//                       <button className="btn btn-primary btn-sm me-2">
+//                         Apply
+//                       </button>
+//                       <button className="btn btn-danger btn-sm">Delete</button>
+//                     </td>
+//                   </tr>
+//                 ))
+//               )}
+//             </tbody>
+//           </table>
+//         </div>
+//       </div>
 
-// 📌 Recruitment Agent Performance Component
-const AgentPerformance = () => {
-  return (
-    <div className="card p-4 mb-4">
-      <h4>🔍 Recruitment Agent Performance</h4>
-      <table className="table table-bordered">
-        <thead className="table-dark">
-          <tr>
-            <th>Agent Name</th>
-            <th>Applications</th>
-            <th>Conversions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {agentPerformanceData.map((agent, index) => (
-            <tr key={index}>
-              <td>{agent.name}</td>
-              <td>{agent.applications}</td>
-              <td>{agent.conversions}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
-};
+//       {/* Search Bar */}
+//       <div className="mb-4">
+//         <input
+//           type="text"
+//           className="form-control"
+//           placeholder="Search by university or program..."
+//           value={searchTerm}
+//           onChange={handleSearch}
+//           style={{ borderRadius: "20px", border: "2px solid #3498db" }}
+//         />
+//       </div>
 
-// 📌 Customizable Analytics Dashboard Component
-const AnalyticsDashboard = () => {
-  const [activeTab, setActiveTab] = useState("pipeline");
+//       {/* University List */}
+//       {filteredUniversities.map((university) => (
+//         <div
+//           key={university.id}
+//           className="card mb-4"
+//           style={{ border: "none", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}
+//         >
+//           <div
+//             className="card-header"
+//             style={{ backgroundColor: "#3498db", color: "#fff" }}
+//           >
+//             <h3>{university.name}</h3>
+//           </div>
+//           <div className="card-body">
+//             {university.programs.map((program) => (
+//               <div
+//                 key={program.id}
+//                 className="mb-3 p-3"
+//                 style={{
+//                   backgroundColor: "#ecf0f1",
+//                   borderRadius: "10px",
+//                   borderLeft: "5px solid #3498db",
+//                 }}
+//               >
+//                 <h5 style={{ color: "#2c3e50" }}>{program.name}</h5>
+//                 <p style={{ color: "#34495e" }}>
+//                   <strong>Eligibility:</strong> {program.eligibility}
+//                 </p>
+//                 <p style={{ color: "#34495e" }}>
+//                   <strong>Fee:</strong> {program.fee}
+//                 </p>
+//                 <button
+//                   className="btn"
+//                   style={{
+//                     backgroundColor: "#3498db",
+//                     color: "#fff",
+//                     borderRadius: "20px",
+//                     padding: "5px 20px",
+//                   }}
+//                 >
+//                   Apply Now
+//                 </button>
+//               </div>
+//             ))}
+//           </div>
+//         </div>
+//       ))}
+//     </div>
+//   );
+// }
 
-  return (
-    <div className="container mt-5">
-      <h2 className="text-center mb-4">📈 Reporting & Analytics Dashboard</h2>
-
-      {/* Dashboard Navigation */}
-      <div className="d-flex justify-content-center mb-3">
-        <button
-          className={`btn btn-outline-primary me-2 ${
-            activeTab === "pipeline" && "active"
-          }`}
-          onClick={() => setActiveTab("pipeline")}
-        >
-          Student Pipeline
-        </button>
-        <button
-          className={`btn btn-outline-primary ${
-            activeTab === "agents" && "active"
-          }`}
-          onClick={() => setActiveTab("agents")}
-        >
-          Agent Performance
-        </button>
-      </div>
-
-      {/* Display Components Based on Active Tab */}
-      {activeTab === "pipeline" && <StudentPipelineReport />}
-      {activeTab === "agents" && <AgentPerformance />}
-    </div>
-  );
-};
-
-export default AnalyticsDashboard;
+// export default CourseUniversityDatabase;
