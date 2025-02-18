@@ -8,23 +8,7 @@ const TaskAssignment = ({ onTaskAssign, onLeadAssign }) => {
   const [lead, setLead] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [editingTask, setEditingTask] = useState(null);
-
-  // Dummy leads data
-  const leads = [
-    { name: "Lead 1", email: "lead1@example.com" },
-    { name: "Lead 2", email: "lead2@example.com" },
-    { name: "Lead 3", email: "lead3@example.com" },
-  ];
-
-  // Dummy counselors data
-  const counselors = [
-    { name: "Counselor 1", email: "counselor1@example.com" },
-    { name: "Counselor 2", email: "counselor2@example.com" },
-    { name: "Counselor 3", email: "counselor3@example.com" },
-  ];
-
-  // Dummy tasks data
-  const tasks = [
+  const [tasks, setTasks] = useState([
     {
       task: "Task 1",
       counselor: "Counselor 1",
@@ -43,62 +27,75 @@ const TaskAssignment = ({ onTaskAssign, onLeadAssign }) => {
       lead: "Lead 3",
       date: "2025-02-22",
     },
+  ]);
+
+  const leads = [
+    { name: "Lead 1", email: "lead1@example.com" },
+    { name: "Lead 2", email: "lead2@example.com" },
+    { name: "Lead 3", email: "lead3@example.com" },
+  ];
+
+  const counselors = [
+    { name: "Counselor 1", email: "counselor1@example.com" },
+    { name: "Counselor 2", email: "counselor2@example.com" },
+    { name: "Counselor 3", email: "counselor3@example.com" },
   ];
 
   const handleAssignTask = () => {
     if (task && counselor && date && lead) {
       const newTask = { task, counselor, date, lead };
-      // Call the parent function onTaskAssign to pass the task data
-      onTaskAssign(newTask);
-      onLeadAssign({ lead, counselor }); // Dummy logic for assigning lead
+      setTasks([...tasks, newTask]); // Update tasks state
+      onTaskAssign([...tasks, newTask]); // Pass updated tasks to parent
+      onLeadAssign({ lead, counselor });
+
       setTask("");
       setCounselor("");
       setDate("");
       setLead("");
+      setShowModal(false);
     }
   };
 
-  const handleEditTask = (taskIndex) => {
-    const taskToEdit = tasks[taskIndex];
+  const handleEditTask = (index) => {
+    const taskToEdit = tasks[index];
     setTask(taskToEdit.task);
     setCounselor(taskToEdit.counselor);
     setDate(taskToEdit.date);
     setLead(taskToEdit.lead);
-    setEditingTask(taskIndex);
+    setEditingTask(index);
     setShowModal(true);
-  };
-
-  const handleDeleteTask = (taskIndex) => {
-    const updatedTasks = tasks.filter((_, index) => index !== taskIndex);
-    setEditingTask(null); // Reset editing when a task is deleted
-    onTaskAssign(updatedTasks); // Pass the updated list back to the parent
   };
 
   const handleSaveEdit = () => {
     const updatedTasks = tasks.map((t, index) =>
-      index === editingTask ? { ...t, task, counselor, date, lead } : t
+      index === editingTask ? { task, counselor, date, lead } : t
     );
-    onTaskAssign(updatedTasks); // Pass the updated list back to the parent
-    setShowModal(false);
+    setTasks(updatedTasks);
+    onTaskAssign(updatedTasks);
+
     setTask("");
     setCounselor("");
     setDate("");
     setLead("");
     setEditingTask(null);
+    setShowModal(false);
+  };
+
+  const handleDeleteTask = (index) => {
+    const updatedTasks = tasks.filter((_, i) => i !== index);
+    setTasks(updatedTasks);
+    onTaskAssign(updatedTasks);
   };
 
   return (
     <div className="container mt-3">
       <h4 className="mb-3">Assign Tasks</h4>
-
-      {/* Add Task Button */}
       <div className="text-end mb-3">
         <button className="btn btn-primary" onClick={() => setShowModal(true)}>
           Add Task
         </button>
       </div>
 
-      {/* Tasks Table with Dummy Data */}
       <table className="table mt-3">
         <thead>
           <tr>
@@ -106,12 +103,12 @@ const TaskAssignment = ({ onTaskAssign, onLeadAssign }) => {
             <th>Lead</th>
             <th>Date</th>
             <th>Task</th>
-            <th>Actions</th> {/* Actions column */}
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
           {tasks.map((t, index) => (
-            <tr className="text-nowrap" key={index}>
+            <tr key={index}>
               <td>{t.counselor}</td>
               <td>{t.lead}</td>
               <td>{t.date}</td>
@@ -135,11 +132,9 @@ const TaskAssignment = ({ onTaskAssign, onLeadAssign }) => {
         </tbody>
       </table>
 
-      {/* Modal for adding/editing task */}
       {showModal && (
         <div
           className="modal show"
-          tabIndex="-1"
           style={{
             display: "block",
             position: "fixed",
@@ -148,7 +143,6 @@ const TaskAssignment = ({ onTaskAssign, onLeadAssign }) => {
             transform: "translate(-50%, -50%)",
             zIndex: 1050,
           }}
-          aria-hidden="false"
         >
           <div className="modal-dialog">
             <div className="modal-content">
@@ -157,13 +151,11 @@ const TaskAssignment = ({ onTaskAssign, onLeadAssign }) => {
                   {editingTask === null ? "Assign Task" : "Edit Task"}
                 </h5>
                 <button
-                  type="button"
                   className="btn-close"
                   onClick={() => setShowModal(false)}
                 ></button>
               </div>
               <div className="modal-body">
-                {/* Task input, Counselor select, Lead select, and Date input */}
                 <div className="row mb-3">
                   <div className="col-md-4">
                     <input
@@ -217,14 +209,12 @@ const TaskAssignment = ({ onTaskAssign, onLeadAssign }) => {
               </div>
               <div className="modal-footer">
                 <button
-                  type="button"
                   className="btn btn-secondary"
                   onClick={() => setShowModal(false)}
                 >
                   Close
                 </button>
                 <button
-                  type="button"
                   className="btn btn-success"
                   onClick={
                     editingTask === null ? handleAssignTask : handleSaveEdit

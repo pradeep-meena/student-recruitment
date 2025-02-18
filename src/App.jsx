@@ -37,6 +37,7 @@ import AddCounselor from "./components/Task Calendar Management/AddCounselor";
 import TaskAssignment from "./components/Task Calendar Management/TaskAssignment";
 import TaskReminder from "./components/Task Calendar Management/TaskReminder";
 import RolesManagement from "./components/CourseUniversityDatabase/RolesManagement";
+import PermissionsTable from "./components/CourseUniversityDatabase/permissionsData";
 
 function App() {
   // counseler
@@ -199,6 +200,7 @@ function App() {
             ></Route>
 
             <Route path="/RolesManagement" element={<RolesManagement />} />
+            <Route path="/permissions/:role" element={<PermissionsTable />} />
 
             {/* PaymentInvoiceManagement */}
 
