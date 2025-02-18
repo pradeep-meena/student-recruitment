@@ -173,7 +173,7 @@ const PermissionsTable = () => {
         </tbody>
         
       </Table>
-      <Link  className="btn btn-primary mb-3">
+      <Link  className="btn btn-primary mb-3" >
           Save
         </Link>
     </Container>
