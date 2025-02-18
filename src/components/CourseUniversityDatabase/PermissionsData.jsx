@@ -1,31 +1,100 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Table, Form, Container, Button } from "react-bootstrap";
+import { Table, Form, Container,  } from "react-bootstrap";
 import { useParams, Link } from "react-router-dom";
 
 const permissionsData = [
   {
-    module: "Student Information",
+    module: "Dashboard",
     features: [
-      "Student",
-      "Import Student",
-      "Student Categories",
-      "Student Houses",
-      "Disable Student",
-      "Student Timeline",
-      "Disable Reason",
+      "Dashboard",
+      
     ],
   },
   {
-    module: "Fees Collection",
+    module: "Leads & inquiries",
     features: [
-      "Collect Fees",
-      "Fees Carry Forward",
-      "Fees Master",
-      "Fees Group",
-      "Fees Group Assign",
-      "Fees Type",
+      "Contact",
+      "Inquiry",
+      "Lead",
+      "Deal",
+      
     ],
+    
+  },
+  {
+    module: "Student Managenement",
+    features: [
+      "Student Details",
+      "Student Admission",
+      "Communication",
+     
+    ],
+    
+  },
+  {
+    module: "Appication",
+    features: [
+      "Application Tracker",
+      "Document Upload",
+      "University Details",
+      "Admission Decision",
+     
+    ],
+    
+  },
+  {
+    module: "Communication",
+    features: [
+      "Follow Up",
+      "Reminder",
+      
+    ],
+    
+  },
+  {
+    module: "Tasks Management",
+    features: [
+      "Counselor",
+      "Tasks",
+      "Reminder",
+     
+    ],
+    
+  },
+  {
+    module: "Roles Permission",
+    features: [
+      "Roles Permission",
+      
+    ],
+    
+  },
+  {
+    module: "Reports & Analytics",
+    features: [
+      "Reports & Analytics",
+      
+     
+    ],
+    
+  },
+  {
+    module: "Payments & Invoices",
+    features: [
+      "Payments & Invoices",
+      
+     
+    ],
+    
+  },
+  {
+    module: "User Management",
+    features: [
+      "User Management",
+      
+    ],
+    
   },
 ];
 
@@ -102,7 +171,11 @@ const PermissionsTable = () => {
             </React.Fragment>
           ))}
         </tbody>
+        
       </Table>
+      <Link  className="btn btn-primary mb-3">
+          Save
+        </Link>
     </Container>
   );
 };
