@@ -10,7 +10,7 @@ const permissionsData = [
   },
   {
     module: "Leads & inquiries",
-    features: ["Contact", "Inquiry", "Lead", "Deal"],   
+    features: ["Contact", "Inquiry", "Lead", "Deal"],
   },
   {
     module: "Student Managenement",
@@ -51,7 +51,7 @@ const permissionsData = [
   },
 ];
 
-const PermissionsTable = () => {
+const Employee = () => {
   const { role } = useParams(); // Get the role from URL
   const [permissions, setPermissions] = useState(
     permissionsData.map((module) => ({
@@ -132,4 +132,4 @@ const PermissionsTable = () => {
   );
 };
 
-export default PermissionsTable;
+export default Employee;
