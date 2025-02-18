@@ -1,127 +1,132 @@
+import React, { useState } from "react";
 
+const CourseUniversityDatabase = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedUniversity, setSelectedUniversity] = useState("");
+  const [selectedCourse, setSelectedCourse] = useState("");
 
-export default function PaymentInvoiceManagement() {
-
-
-  const permissionsData = [
+  const universities = [
     {
-      module: 'Student Information',
-      features: [
-        'Student', 'Import Student', 'Student Categories', 'Student Houses', 'Disable Student', 'Student Timeline', 'Disable Reason'
-      ]
+      id: 1,
+      name: "University of XYZ",
+      programs: ["Engineering", "Medicine", "Arts"],
     },
-    {
-      module: 'Fees Collection',
-      features: [
-        'Collect Fees', 'Fees Carry Forward', 'Fees Master', 'Fees Group', 'Fees Group Assign', 'Fees Type'
-      ]
-    }
+    { id: 2, name: "ABC University", programs: ["Law", "Science", "Business"] },
+    // Add more universities as needed
   ];
 
+  const courseDetails = [
+    {
+      universityId: 1,
+      program: "Engineering",
+      eligibility: "10+2 with Physics, Chemistry, Mathematics",
+      fee: "$10,000/year",
+    },
+    {
+      universityId: 2,
+      program: "Law",
+      eligibility: "Undergraduate degree with minimum 50%",
+      fee: "$15,000/year",
+    },
+    // Add more courses as needed
+  ];
+
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const handleUniversityChange = (event) => {
+    setSelectedUniversity(event.target.value);
+  };
+
+  const handleCourseChange = (event) => {
+    setSelectedCourse(event.target.value);
+  };
+
+  const filteredUniversities = universities.filter((university) =>
+    university.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const filteredCourses = courseDetails.filter(
+    (course) =>
+      (selectedUniversity
+        ? course.universityId === parseInt(selectedUniversity)
+        : true) && (selectedCourse ? course.program === selectedCourse : true)
+  );
+
   return (
-    <div className="container mt-5">
-      <h2 className="text-center mb-4 text-primary">📄 Payment Invoice Management</h2>
+    <div className="container">
+      <h1>Course & University Database</h1>
 
-      {/* Summary Section */}
-      <div className="row mb-4">
-        <div className="col-md-4 mb-3">
-          <div className="card text-white bg-primary hover-effect">
-            <div className="card-body">
-              <h5 className="card-title">Total Amount</h5>
-              <p className="card-text">$ 15,000</p>
-            </div>
-          </div>
-        </div>
-        <div className="col-md-4 mb-3">
-          <div className="card text-white bg-success hover-effect">
-            <div className="card-body">
-              <h5 className="card-title">Paid Amount</h5>
-              <p className="card-text">$ 10,000</p>
-            </div>
-          </div>
-        </div>
-        <div className="col-md-4 mb-3">
-          <div className="card text-white bg-danger hover-effect">
-            <div className="card-body">
-              <h5 className="card-title">Pending Amount</h5>
-              <p className="card-text">$ 5,000</p>
-            </div>
-          </div>
-        </div>
+      {/* Search Bar */}
+      <div className="mb-4">
+        <input
+          type="text"
+          className="form-control"
+          placeholder="Search for a university"
+          value={searchTerm}
+          onChange={handleSearchChange}
+        />
       </div>
 
-      {/* Invoice Table */}
-      <div className="card">
-        <div className="card-header bg-dark text-white">Invoice Details</div>
-        <div className="card-body">
-          <div className="table-responsive">
-            <table className="table table-striped">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Invoice No</th>
-                  <th>Date</th>
-                  <th>Amount</th>
-                  <th>Status</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {[...Array(9)].map((_, index) => (
-                  <tr key={index} className="hover-effect">
-                    <td>{index + 1}</td>
-                    <td>INV-00{index + 1}</td>
-                    <td>2024-02-{10 - index}</td>
-                    <td>$ {5000 + index * 1000}</td>
-                    <td>
-                      <span
-                        className={`badge ${
-                          index % 2 === 0 ? "bg-success" : "bg-danger"
-                        }`}
-                      >
-                        {index % 2 === 0 ? "Paid" : "Pending"}
-                      </span>
-                    </td>
-                    <td>
-                      <button className="btn btn-sm btn-primary">View</button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
+      {/* University Selector */}
+      <div className="mb-4">
+        <select
+          className="form-control"
+          value={selectedUniversity}
+          onChange={handleUniversityChange}
+        >
+          <option value="">Select University</option>
+          {universities.map((university) => (
+            <option key={university.id} value={university.id}>
+              {university.name}
+            </option>
+          ))}
+        </select>
       </div>
 
-      {/* Pagination */}
-      <div className="d-flex justify-content-between align-items-center mt-4">
-        <p className="text-muted">Showing 1 to 10 items of 52</p>
-        <nav>
-          <ul className="pagination">
-            <li className="page-item">
-              <a className="page-link text-primary" href="#">
-                Previous
-              </a>
-            </li>
-            <li className="page-item">
-              <a className="page-link text-primary" href="#">
-                1
-              </a>
-            </li>
-            <li className="page-item">
-              <a className="page-link text-primary" href="#">
-                2
-              </a>
-            </li>
-            <li className="page-item">
-              <a className="page-link text-primary" href="#">
-                Next
-              </a>
-            </li>
+      {/* Program Selector */}
+      {selectedUniversity && (
+        <div className="mb-4">
+          <select
+            className="form-control"
+            value={selectedCourse}
+            onChange={handleCourseChange}
+          >
+            <option value="">Select Program</option>
+            {universities
+              .find((u) => u.id === parseInt(selectedUniversity))
+              .programs.map((program, idx) => (
+                <option key={idx} value={program}>
+                  {program}
+                </option>
+              ))}
+          </select>
+        </div>
+      )}
+
+      {/* Courses List */}
+      <div>
+        {filteredCourses.length > 0 ? (
+          <ul className="list-group">
+            {filteredCourses.map((course, idx) => (
+              <li key={idx} className="list-group-item">
+                <h5>{course.program}</h5>
+                <p>
+                  <strong>Eligibility:</strong> {course.eligibility}
+                </p>
+                <p>
+                  <strong>Fee:</strong> {course.fee}
+                </p>
+              </li>
+            ))}
           </ul>
-        </nav>
+        ) : (
+          <p>No courses found</p>
+        )}
       </div>
-      
     </div>
   );
-}
+};
+
+export default CourseUniversityDatabase;
