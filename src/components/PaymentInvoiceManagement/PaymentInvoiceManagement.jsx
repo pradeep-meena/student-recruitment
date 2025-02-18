@@ -1,132 +1,344 @@
 import React, { useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Modal, Button, Form } from "react-bootstrap";
 
-const CourseUniversityDatabase = () => {
+// Sample data for universities and programs
+const universities = [
+  {
+    id: 1,
+    name: "University of California, Berkeley",
+    programs: [
+      {
+        id: 101,
+        name: "Computer Science",
+        eligibility: "Bachelor's degree in related field",
+        fee: "$15,000 per semester",
+      },
+      {
+        id: 102,
+        name: "Business Administration",
+        eligibility: "Bachelor's degree, GMAT score",
+        fee: "$20,000 per semester",
+      },
+    ],
+  },
+  {
+    id: 2,
+    name: "Massachusetts Institute of Technology",
+    programs: [
+      {
+        id: 201,
+        name: "Artificial Intelligence",
+        eligibility: "Bachelor's degree in Computer Science",
+        fee: "$18,000 per semester",
+      },
+      {
+        id: 202,
+        name: "Mechanical Engineering",
+        eligibility: "Bachelor's degree in Engineering",
+        fee: "$16,000 per semester",
+      },
+    ],
+  },
+  {
+    id: 3,
+    name: "Stanford University",
+    programs: [
+      {
+        id: 301,
+        name: "Data Science",
+        eligibility: "Bachelor's degree in STEM field",
+        fee: "$22,000 per semester",
+      },
+      {
+        id: 302,
+        name: "Law",
+        eligibility: "Bachelor's degree, LSAT score",
+        fee: "$25,000 per semester",
+      },
+    ],
+  },
+];
+
+function CourseUniversityDatabase() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedUniversity, setSelectedUniversity] = useState("");
-  const [selectedCourse, setSelectedCourse] = useState("");
-
-  const universities = [
-    {
-      id: 1,
-      name: "University of XYZ",
-      programs: ["Engineering", "Medicine", "Arts"],
-    },
-    { id: 2, name: "ABC University", programs: ["Law", "Science", "Business"] },
-    // Add more universities as needed
-  ];
-
-  const courseDetails = [
-    {
-      universityId: 1,
-      program: "Engineering",
-      eligibility: "10+2 with Physics, Chemistry, Mathematics",
-      fee: "$10,000/year",
-    },
-    {
-      universityId: 2,
-      program: "Law",
-      eligibility: "Undergraduate degree with minimum 50%",
-      fee: "$15,000/year",
-    },
-    // Add more courses as needed
-  ];
-
-  const handleSearchChange = (event) => {
-    setSearchTerm(event.target.value);
-  };
-
-  const handleUniversityChange = (event) => {
-    setSelectedUniversity(event.target.value);
-  };
-
-  const handleCourseChange = (event) => {
-    setSelectedCourse(event.target.value);
-  };
-
-  const filteredUniversities = universities.filter((university) =>
-    university.name.toLowerCase().includes(searchTerm.toLowerCase())
+  const [filteredUniversities, setFilteredUniversities] = useState(
+    universities
   );
+  const [showModal, setShowModal] = useState(false);
+  const [showAddUniversityModal, setShowAddUniversityModal] = useState(false);
+  const [newProgram, setNewProgram] = useState({
+    universityId: 0,
+    name: "",
+    eligibility: "",
+    fee: "",
+  });
+  const [newUniversity, setNewUniversity] = useState({
+    name: "",
+  });
 
-  const filteredCourses = courseDetails.filter(
-    (course) =>
-      (selectedUniversity
-        ? course.universityId === parseInt(selectedUniversity)
-        : true) && (selectedCourse ? course.program === selectedCourse : true)
-  );
+  // Handle search input
+  const handleSearch = (e) => {
+    const term = e.target.value.toLowerCase();
+    setSearchTerm(term);
+
+    const filtered = universities.filter(
+      (uni) =>
+        uni.name.toLowerCase().includes(term) ||
+        uni.programs.some((program) =>
+          program.name.toLowerCase().includes(term)
+        )
+    );
+    setFilteredUniversities(filtered);
+  };
+
+  // Handle course deletion
+  const handleDelete = (universityId, programId) => {
+    setFilteredUniversities((prevUniversities) =>
+      prevUniversities.map((uni) =>
+        uni.id === universityId
+          ? {
+              ...uni,
+              programs: uni.programs.filter(
+                (program) => program.id !== programId
+              ),
+            }
+          : uni
+      )
+    );
+  };
+
+  // Handle adding new course
+  const handleAddCourse = () => {
+    const { universityId, name, eligibility, fee } = newProgram;
+    if (universityId && name && eligibility && fee) {
+      setFilteredUniversities((prevUniversities) =>
+        prevUniversities.map((uni) =>
+          uni.id === universityId
+            ? {
+                ...uni,
+                programs: [
+                  ...uni.programs,
+                  {
+                    id: Date.now(),
+                    name,
+                    eligibility,
+                    fee,
+                  },
+                ],
+              }
+            : uni
+        )
+      );
+      setShowModal(false); // Close modal after adding
+    }
+  };
+
+  // Handle adding new university
+  const handleAddUniversity = () => {
+    const { name } = newUniversity;
+    if (name) {
+      const newUni = {
+        id: Date.now(),
+        name,
+        programs: [],
+      };
+      universities.push(newUni);
+      setFilteredUniversities([...universities]);
+      setShowAddUniversityModal(false); // Close Add University modal after adding
+      setNewUniversity({ name: "" });
+    }
+  };
 
   return (
-    <div className="container">
-      <h1>Course & University Database</h1>
-
-      {/* Search Bar */}
-      <div className="mb-4">
-        <input
-          type="text"
-          className="form-control"
-          placeholder="Search for a university"
-          value={searchTerm}
-          onChange={handleSearchChange}
-        />
-      </div>
-
-      {/* University Selector */}
-      <div className="mb-4">
-        <select
-          className="form-control"
-          value={selectedUniversity}
-          onChange={handleUniversityChange}
+    <div
+      className="container mt-5"
+      style={{
+        backgroundColor: "#f8f9fa",
+        padding: "20px",
+        borderRadius: "10px",
+      }}
+    >
+      <div className="container mt-4">
+        <h1
+          className="text-center mb-4"
+          style={{ color: "#2c3e50", fontWeight: "bold" }}
         >
-          <option value="">Select University</option>
-          {universities.map((university) => (
-            <option key={university.id} value={university.id}>
-              {university.name}
-            </option>
-          ))}
-        </select>
-      </div>
+          Course & University Database
+        </h1>
 
-      {/* Program Selector */}
-      {selectedUniversity && (
+        {/* Search Bar */}
         <div className="mb-4">
-          <select
+          <input
+            type="text"
             className="form-control"
-            value={selectedCourse}
-            onChange={handleCourseChange}
-          >
-            <option value="">Select Program</option>
-            {universities
-              .find((u) => u.id === parseInt(selectedUniversity))
-              .programs.map((program, idx) => (
-                <option key={idx} value={program}>
-                  {program}
-                </option>
-              ))}
-          </select>
+            placeholder="Search by university or program..."
+            value={searchTerm}
+            onChange={handleSearch}
+            style={{ borderRadius: "20px", border: "2px solid #3498db" }}
+          />
         </div>
-      )}
 
-      {/* Courses List */}
-      <div>
-        {filteredCourses.length > 0 ? (
-          <ul className="list-group">
-            {filteredCourses.map((course, idx) => (
-              <li key={idx} className="list-group-item">
-                <h5>{course.program}</h5>
-                <p>
-                  <strong>Eligibility:</strong> {course.eligibility}
-                </p>
-                <p>
-                  <strong>Fee:</strong> {course.fee}
-                </p>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p>No courses found</p>
-        )}
+        {/* Add Course Button */}
+        <div className="d-flex justify-content-end mb-3">
+          <button
+            className="btn btn-success mb-3"
+            onClick={() => setShowModal(true)}
+          >
+            ➕ Add Course
+          </button>
+        </div>
+
+        {/* Universities Table */}
+        <div className="table-responsive">
+          <table className="table table-bordered table-hover">
+            <thead className="table-light">
+              <tr>
+                <th>University Name</th>
+                <th>Program</th>
+                <th>Eligibility Criteria</th>
+                <th>Fee</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filteredUniversities.map((uni) =>
+                uni.programs.map((program) => (
+                  <tr key={program.id}>
+                    <td>{uni.name}</td>
+                    <td>{program.name}</td>
+                    <td>{program.eligibility}</td>
+                    <td>{program.fee}</td>
+                    <td className="text-nowrap">
+                      <button className="btn btn-light btn-sm me-1">
+                        <i className="fa fa-paper-plane me-2"></i>
+                      </button>
+                      <button
+                        className="btn btn-light btn-sm me-1"
+                        onClick={() => handleDelete(uni.id, program.id)}
+                      >
+                        🗑️
+                      </button>
+                    </td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
+
+      {/* Add Course Modal */}
+      <Modal show={showModal} onHide={() => setShowModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Add New Course</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group className="mb-3">
+              <Form.Label>Select University</Form.Label>
+              <Form.Control
+                as="select"
+                value={newProgram.universityId}
+                onChange={(e) =>
+                  setNewProgram({
+                    ...newProgram,
+                    universityId: Number(e.target.value),
+                  })
+                }
+              >
+                <option value={0}>Select University</option>
+                {universities.map((uni) => (
+                  <option key={uni.id} value={uni.id}>
+                    {uni.name}
+                  </option>
+                ))}
+              </Form.Control>
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Program Name</Form.Label>
+              <Form.Control
+                type="text"
+                value={newProgram.name}
+                onChange={(e) =>
+                  setNewProgram({ ...newProgram, name: e.target.value })
+                }
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Eligibility</Form.Label>
+              <Form.Control
+                type="text"
+                value={newProgram.eligibility}
+                onChange={(e) =>
+                  setNewProgram({ ...newProgram, eligibility: e.target.value })
+                }
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Fee</Form.Label>
+              <Form.Control
+                type="text"
+                value={newProgram.fee}
+                onChange={(e) =>
+                  setNewProgram({ ...newProgram, fee: e.target.value })
+                }
+              />
+            </Form.Group>
+          </Form>
+          <Button
+            variant="link"
+            onClick={() => setShowAddUniversityModal(true)}
+          >
+            ➕ Add New University
+          </Button>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowModal(false)}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleAddCourse}>
+            Add Course
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      {/* Add University Modal */}
+      <Modal
+        show={showAddUniversityModal}
+        onHide={() => setShowAddUniversityModal(false)}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Add New University</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group className="mb-3">
+              <Form.Label>University Name</Form.Label>
+              <Form.Control
+                type="text"
+                value={newUniversity.name}
+                onChange={(e) =>
+                  setNewUniversity({ ...newUniversity, name: e.target.value })
+                }
+              />
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button
+            variant="secondary"
+            onClick={() => setShowAddUniversityModal(false)}
+          >
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleAddUniversity}>
+            Add University
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
-};
+}
 
 export default CourseUniversityDatabase;

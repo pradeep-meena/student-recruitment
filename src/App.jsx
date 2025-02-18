@@ -58,8 +58,6 @@ function App() {
   const handleTaskAssign = (task) => {
     setTasks([...tasks, task]);
   };
-  console.log(tasks);
-  console.log(counselors);
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const menusidebarcollaps = () => {
     setIsSidebarCollapsed(true);
