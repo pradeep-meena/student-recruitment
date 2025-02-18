@@ -10,7 +10,7 @@ import {
   InputGroup,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { TagFill, PencilFill, TrashFill } from "react-bootstrap-icons";
+import { TagFill,  TrashFill } from "react-bootstrap-icons";
 
 const RolesManagement = () => {
   const [roles, setRoles] = useState([
@@ -93,10 +93,7 @@ const RolesManagement = () => {
                         style={{ cursor: "pointer" }}
                       />
                     </Link>
-                    <PencilFill
-                      className="text-primary me-2"
-                      style={{ cursor: "pointer" }}
-                    />
+                    
                     <TrashFill
                       className="text-danger"
                       style={{ cursor: "pointer" }}
