@@ -1,7 +1,23 @@
-import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+
 
 export default function PaymentInvoiceManagement() {
+
+
+  const permissionsData = [
+    {
+      module: 'Student Information',
+      features: [
+        'Student', 'Import Student', 'Student Categories', 'Student Houses', 'Disable Student', 'Student Timeline', 'Disable Reason'
+      ]
+    },
+    {
+      module: 'Fees Collection',
+      features: [
+        'Collect Fees', 'Fees Carry Forward', 'Fees Master', 'Fees Group', 'Fees Group Assign', 'Fees Type'
+      ]
+    }
+  ];
+
   return (
     <div className="container mt-5">
       <h2 className="text-center mb-4 text-primary">📄 Payment Invoice Management</h2>
@@ -105,6 +121,7 @@ export default function PaymentInvoiceManagement() {
           </ul>
         </nav>
       </div>
+      
     </div>
   );
 }

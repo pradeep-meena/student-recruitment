@@ -8,8 +8,8 @@ const Navbar = ({ toggleSidebar }) => {
         className="navbar shadow-lg"
         style={{
           position: "fixed",
-          backgroundColor: "#fff",
-          color: "white",
+          backgroundColor: "white",
+          color: "black",
         }}
       >
         <div className="container-fluid nav-conte">

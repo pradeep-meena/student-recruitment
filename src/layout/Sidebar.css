@@ -7,8 +7,8 @@
   margin-top: 85px;
   z-index: 1;
   position: fixed;
-  color: #fff;
-  background-color: rgb(6, 6, 40);
+  background-color: black;
+  color: white;
 }
 .submenu {
   list-style: none;
@@ -20,7 +20,7 @@
   margin-left: 10px;
   cursor: pointer;
   font-size: 17px;
-  color: #fff !important;
+  color: white !important;
   display: block;
   padding: 7px !important;
 }
@@ -69,7 +69,7 @@
   align-items: center;
   padding: 10px;
   text-decoration: none;
-  color: black;
+  color: white;
   cursor: pointer;
   transition: background 0.3s ease;
 }
@@ -96,7 +96,7 @@
   max-height: 410px;
   visibility: visible;
   font-size: 17px;
-  background-color: #3b2005;
+  background-color: white;
   font-weight: 700;
   padding-left: 10px;
 }
@@ -121,7 +121,7 @@
   transform: rotate(360deg);
 }
 .menu-item.active .menu-link {
-  background-color: #000; /* Highlight active menu item */
+  background-color: white; /* Highlight active menu item */
   color: black; /* Active text color */
   border-radius: 12px;
 }
