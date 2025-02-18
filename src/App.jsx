@@ -41,7 +41,12 @@ import RolesManagement from "./components/CourseUniversityDatabase/RolesManageme
 function App() {
   // counseler
   const [counselors, setCounselors] = useState([]);
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState([
+    {
+      id: 1,
+      title: "Task 1",
+    },
+  ]);
 
   const handleAddCounselor = (name) => {
     setCounselors([...counselors, name]);
@@ -51,7 +56,8 @@ function App() {
   const handleTaskAssign = (task) => {
     setTasks([...tasks, task]);
   };
-
+  console.log(tasks);
+  console.log(counselors);
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const menusidebarcollaps = () => {
     setIsSidebarCollapsed(true);
@@ -175,6 +181,7 @@ function App() {
               element={
                 <TaskAssignment
                   counselors={counselors}
+                  tasks={tasks}
                   onTaskAssign={handleTaskAssign}
                 ></TaskAssignment>
               }
@@ -186,11 +193,12 @@ function App() {
             ></Route>
 
             {/* CourseUniversityDatabase */}
-
             <Route
               path="/CourseUniversityDatabase"
-              element={<RolesManagement />}
-            />
+              element={<CourseUniversityDatabase></CourseUniversityDatabase>}
+            ></Route>
+
+            <Route path="/RolesManagement" element={<RolesManagement />} />
 
             {/* PaymentInvoiceManagement */}
 

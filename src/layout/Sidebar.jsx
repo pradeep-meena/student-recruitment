@@ -342,6 +342,22 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
           {/* Course & University Database */}
           <li
             className={`menu-item ${
+              isActive("/RolesManagement") ? "active" : ""
+            }`}
+          >
+            <div
+              className="menu-link menu-i"
+              onClick={() => {
+                navigate("/RolesManagement");
+                menuItemClick();
+              }}
+            >
+              <i className="fa-solid fa-bolt"></i>
+              <span className="menu-text"> Roles Permissions</span>
+            </div>
+          </li>
+          <li
+            className={`menu-item ${
               isActive("/CourseUniversityDatabase") ? "active" : ""
             }`}
           >

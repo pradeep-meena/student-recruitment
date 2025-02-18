@@ -5,12 +5,11 @@ const Navbar = ({ toggleSidebar }) => {
   return (
     <>
       <nav
-        className="navbar"
+        className="navbar shadow-lg"
         style={{
           position: "fixed",
-          backgroundColor: "rgb(171, 171, 253)",
+          backgroundColor: "#fff",
           color: "white",
-          
         }}
       >
         <div className="container-fluid nav-conte">

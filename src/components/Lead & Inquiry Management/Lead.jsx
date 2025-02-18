@@ -8,36 +8,40 @@ const Lead = () => {
       name: "Encoure",
       subject: "Encoure",
       stage: "Open",
+      course: "it",
       learner: "Ravi, Rihan, Ram",
-      leadsource:"Watsapp",
+      leadsource: "Watsapp",
     },
     {
       name: "Alexandria",
       subject: "Alexandria",
       stage: "Open",
+      course: "it",
       learner: "Ravi, Rihan, Ram",
-      leadsource:"Watsapp",
+      leadsource: "Watsapp",
     },
     {
       name: "Netpoints",
       subject: "Netpoints",
       stage: "Open",
+      course: "it",
       learner: "Ravi, Rihan, Ram",
-      leadsource:"Watsapp",
+      leadsource: "Watsapp",
     },
     {
       name: "Starburst",
       subject: "Starburst",
       stage: "Open",
+      course: "it",
       learner: "Ravi, Rihan, Ram",
-      leadsource:"Watsapp",
+      leadsource: "Watsapp",
     },
     {
       name: "Sophia Francis",
       course: "Tasha Sanford",
       stage: "Open",
       learner: "Ravi, Rihan, Ram",
-      leadsource:"Watsapp",
+      leadsource: "Watsapp",
     },
   ];
 
@@ -51,7 +55,7 @@ const Lead = () => {
     stage: "",
     phone: "",
     leadsource: "",
-    learner:"",
+    learner: "",
   });
   const [editIndex, setEditIndex] = useState(null); // Track the index of the lead being edited
   const [leadSourceName, setLeadSourceName] = useState(""); // State for Lead Source Name
@@ -68,7 +72,7 @@ const Lead = () => {
       stage: "",
       phone: "",
       leadsource: "",
-      learner:""
+      learner: "",
     });
   };
 
@@ -116,7 +120,7 @@ const Lead = () => {
       stage: "",
       phone: "",
       leadsource: "",
-      learner:"", 
+      learner: "",
     });
     handleCloseLeadModal();
   };
@@ -142,14 +146,18 @@ const Lead = () => {
       course: lead.course,
       user: "", // You can set this if you have user data in the lead
       name: lead.name,
-      stage: "", // You can set this if you have email data in the lead
-      phone: "", // You can set this if you have phone data in the lead
+      stage: lead.stage, // You can set this if you have email data in the lead
+      phone: lead.phone, // You can set this if you have phone data in the lead
       leadsource: lead.leadsource,
+      learner: lead.learner || "",
     });
     setEditIndex(index);
     handleShowLeadModal();
   };
 
+  const allLearners = [
+    ...new Set(initialData.flatMap((item) => item.learner.split(", "))),
+  ];
   return (
     <div className="container p-3">
       <h4 className="fw-bold">Manage Leads - Plan</h4>
@@ -195,13 +203,13 @@ const Lead = () => {
 
       <Table responsive bordered hover className="text-center">
         <thead className="table-light">
-          <tr>
+          <tr className="text-nowrap">
             <th>NAME</th>
             <th>Course</th>
-            <th>STAGE</th>
+            <th>Stage</th>
             <th>Lead Source</th>
             <th>Learner</th>
-            <th>ACTION</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -211,8 +219,54 @@ const Lead = () => {
               <td>{item.course}</td>
               <td>{item.stage}</td>
               <td>{item.leadsource}</td>
-              <td>{item.learner}</td>
               <td>
+                <Dropdown>
+                  <Dropdown.Toggle
+                    variant="light"
+                    className="border w-100 text-start"
+                  >
+                    {item.learner ? item.learner : "Select Learner"}
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu style={{ width: "100%" }}>
+                    {allLearners.map((learner, idx) => (
+                      <Dropdown.Item
+                        key={idx}
+                        as="div"
+                        className="d-flex align-items-center"
+                      >
+                        <input
+                          type="checkbox"
+                          checked={item.learner.includes(learner)}
+                          onChange={() => {
+                            const updatedData = [...data];
+                            const selectedLearners = item.learner
+                              ? item.learner.split(", ")
+                              : [];
+
+                            if (selectedLearners.includes(learner)) {
+                              updatedData[
+                                index
+                              ].learner = selectedLearners
+                                .filter((l) => l !== learner)
+                                .join(", ");
+                            } else {
+                              updatedData[index].learner = [
+                                ...selectedLearners,
+                                learner,
+                              ].join(", ");
+                            }
+
+                            setData(updatedData);
+                          }}
+                        />
+                        <span className="ms-2">{learner}</span>
+                      </Dropdown.Item>
+                    ))}
+                  </Dropdown.Menu>
+                </Dropdown>
+              </td>
+
+              <td className="text-nowrap">
                 <Button size="sm" className="btn btn-light btn-sm me-1">
                   👁️
                 </Button>
@@ -249,7 +303,7 @@ const Lead = () => {
               <div className="col-md-6">
                 <Form.Group className="mb-3">
                   <Form.Label>
-                  course<span className="text-danger">*</span>
+                    course<span className="text-danger">*</span>
                   </Form.Label>
                   <Form.Control
                     type="text"
@@ -264,16 +318,54 @@ const Lead = () => {
               <div className="col-md-6">
                 <Form.Group className="mb-3">
                   <Form.Label>
-                  Learner<span className="text-danger">*</span>
+                    Learner<span className="text-danger">*</span>
                   </Form.Label>
-                  <Form.Control
-                    type="text"
-                    name="learner"
-                    placeholder="Enter learner Name"
-                    value={formData.learner}
-                    onChange={handleChange}
-                    required
-                  />
+                  <Dropdown>
+                    <Dropdown.Toggle
+                      variant="light"
+                      className="border w-100 text-start"
+                    >
+                      {formData.learner ? formData.learner : "Select Learner"}
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu style={{ width: "100%" }}>
+                      {allLearners.map((learner, idx) => (
+                        <Dropdown.Item
+                          key={idx}
+                          as="div"
+                          className="d-flex align-items-center"
+                        >
+                          <input
+                            type="checkbox"
+                            checked={formData.learner.includes(learner)}
+                            onChange={() => {
+                              const selectedLearners = formData.learner
+                                ? formData.learner.split(", ")
+                                : [];
+
+                              if (selectedLearners.includes(learner)) {
+                                // Remove the learner
+                                setFormData({
+                                  ...formData,
+                                  learner: selectedLearners
+                                    .filter((l) => l !== learner)
+                                    .join(", "),
+                                });
+                              } else {
+                                // Add the learner
+                                setFormData({
+                                  ...formData,
+                                  learner: [...selectedLearners, learner].join(
+                                    ", "
+                                  ),
+                                });
+                              }
+                            }}
+                          />
+                          <span className="ms-2">{learner}</span>
+                        </Dropdown.Item>
+                      ))}
+                    </Dropdown.Menu>
+                  </Dropdown>
                 </Form.Group>
               </div>
               <div className="col-md-6">
@@ -291,26 +383,11 @@ const Lead = () => {
                   />
                 </Form.Group>
               </div>
-             
+
               <div className="col-md-6">
                 <Form.Group className="mb-3">
                   <Form.Label>
-                    Phone No<span className="text-danger">*</span>
-                  </Form.Label>
-                  <Form.Control
-                    type="text"
-                    name="phone"
-                    placeholder="Enter Phone No"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    required
-                  />
-                </Form.Group>
-              </div>
-              <div className="col-md-6">
-                <Form.Group className="mb-3">
-                  <Form.Label>
-                  stage<span className="text-danger">*</span>
+                    stage<span className="text-danger">*</span>
                   </Form.Label>
                   <Form.Control
                     type="stage"
@@ -329,9 +406,8 @@ const Lead = () => {
                   </Form.Label>
                   <Button
                     variant="primary"
-                    style={{ marginLeft: "10px", marginBottom:"10px"}}
+                    style={{ marginLeft: "10px", marginBottom: "10px" }}
                     onClick={handleShowLeadSourceModal}
-                    
                   >
                     +
                   </Button>
@@ -392,4 +468,4 @@ const Lead = () => {
   );
 };
 
-export default Lead;  
+export default Lead;

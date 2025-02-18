@@ -1,6 +1,7 @@
 * {
   margin: 0px;
   padding: 0px;
+  /* background-color: rgb(216, 216, 216); */
 }
 .container {
   margin-top: 10px;
@@ -272,7 +273,7 @@ select.form-input {
 /* navbar start */
 .navbar {
   height: 85px;
-  border-bottom: 1px solid #949494;
+  /* border-bottom: 1px solid #949494; */
   position: fixed;
   z-index: 5;
   background-color: white;
