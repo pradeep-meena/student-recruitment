@@ -84,7 +84,7 @@ const StudentProfile = () => {
             <Button variant="primary" className="me-2">
               Student
             </Button>
-            <Button variant="primary" onClick={() => setShowModal(true)}>
+            <Button variant="primary" className="me-2" onClick={() => setShowModal(true)}>
               Edit profile
             </Button>
           </div>
