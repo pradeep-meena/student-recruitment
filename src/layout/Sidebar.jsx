@@ -405,6 +405,7 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
               <span className="menu-text"> Roles Permissions</span>
             </div>
           </li>
+          {/* Reporting & Analytics */}
           <li
             className={`menu-item ${
               isActive("/CourseUniversityDatabase") ? "active" : ""
@@ -417,7 +418,7 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
                 menuItemClick();
               }}
             >
-              <i className="fa-solid fa-university "></i>
+              <i className="fa-solid fa-receipt"></i>
               <span className="menu-text"> Reports & Analytics</span>
             </div>
           </li>
@@ -451,8 +452,8 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
                 menuItemClick();
               }}
             >
-              <i className="fa-solid fa-receipt"></i>
-              <span className="menu-text"> User Management</span>
+              <i className="fa-solid fa-university "></i>
+              <span className="menu-text">Course & University</span>
             </div>
           </li>
           {/* User Roles & Access Control */}

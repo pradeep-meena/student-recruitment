@@ -15,15 +15,15 @@ import { TagFill,  TrashFill } from "react-bootstrap-icons";
 const RolesManagement = () => {
   const [roles, setRoles] = useState([
     { name: "Admin", type: "System" },
-    { name: "SuperAdmin", type: "System" },
-    { name: "Employee", type: "Customer" },
+    { name: "Counsellor", type: "System" },
+    { name: "Student", type: "Customer" },
   ]);
   const [newRole, setNewRole] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleAddRole = () => {
     if (newRole.trim() !== "") {
-      setRoles([...roles, { name: newRole, type: "Custom" }]);
+      setRoles([...roles, { name: newRole, type: "Customer" }]);
       setNewRole("");
     }
   };

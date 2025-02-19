@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { FaUserShield, FaUserTie, FaUserGraduate } from "react-icons/fa"; // Import icons
 
 const Login = () => {
   const [showSignUp, setShowSignUp] = useState(false);
@@ -11,11 +12,11 @@ const Login = () => {
   return (
     <>
       <main>
-        <div className="login-container justify-content-center border">
+        <div className="login-container justify-content-center border p-4">
           <h1 className="fw-bold" style={{ color: "rgb(38, 29, 167)" }}>
             Student RECRUITMENT
           </h1>
-          <h4 className="text-center  mb-5 ">Welcome!</h4>
+          <h4 className="text-center mb-5">Welcome!</h4>
 
           {!showSignUp ? (
             // Login Form
@@ -59,6 +60,28 @@ const Login = () => {
                   className="px-4 py-2 ms-4 border border-primary"
                 >
                   Sign Up
+                </button>
+              </div>
+
+              {/* Additional Buttons */}
+              <div className="d-flex align-items-center mt-4 gap-2">
+                <button
+                  className="btn btn-outline-primary w-100 mb-3 d-flex align-items-center justify-content-center"
+                  style={{ height: "50px" }}
+                >
+                  <FaUserShield className="me-2" /> Admin
+                </button>
+                <button
+                  className="btn btn-outline-primary w-100 mb-3 d-flex align-items-center justify-content-center"
+                  style={{ height: "50px" }}
+                >
+                  <FaUserTie className="me-2" /> Counsellor
+                </button>
+                <button
+                  className="btn btn-outline-primary w-100 mb-3 d-flex align-items-center justify-content-center"
+                  style={{ height: "50px" }}
+                >
+                  <FaUserGraduate className="me-2" /> Student
                 </button>
               </div>
             </form>
