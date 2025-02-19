@@ -550,7 +550,7 @@ const Sidebar = ({ collapsed, menuItemClick, login, toggleSidebar }) => {
                   >
                     Application Tracker
                   </li>
-                  <li
+                  {/* <li
                     className={`menu-item submenu-item ${
                       isActive("/document") ? "active" : ""
                     }`}
@@ -560,7 +560,7 @@ const Sidebar = ({ collapsed, menuItemClick, login, toggleSidebar }) => {
                     }}
                   >
                     Document Upload
-                  </li>
+                  </li> */}
                   <li
                     className={`menu-item submenu-item ${
                       isActive("/university") ? "active" : ""
