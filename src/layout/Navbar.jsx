@@ -57,7 +57,7 @@ const Navbar = ({ toggleSidebar }) => {
                 </a>
               </div>
             </div>
-            <div className="nav-main-icon">
+            <div className="nav-main-icon ">
               {/* Notification Bell Icon */}
               <div className="notification-icon">
                 <a
@@ -75,7 +75,7 @@ const Navbar = ({ toggleSidebar }) => {
                 </a>
                 {/* Notification Dropdown */}
                 {showNotifications && (
-                  <div className="notification-dropdown">
+                  <div className="notification-dropdown" style={{marginRight:"-50px", marginTop:"20px"}}>
                     <div className="notification-header">
                       <h6>Notifications</h6>
                       <button

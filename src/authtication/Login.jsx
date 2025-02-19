@@ -72,16 +72,25 @@ const Login = ({
               </div>
 
               {/* Additional Buttons */}
+<<<<<<< HEAD
               <div className="d-flex align-items-center justify-content-center  mt-4 gap-2">
                 <Link to={"/dashboard"} className="text-decoration-none">
                   <button
                     className="btn btn-outline-success w-100 mb-3 d-flex align-items-center justify-content-center"
                     style={{ height: "50px" }}
+=======
+              <div className="d-flex align-items-center mt-4  w-100 justify-content-between">
+                <Link to={"/dashboard"}>
+                  <button
+                    className="btn btn-outline-primary  mb-3 d-flex align-items-center justify-content-center"
+                    style={{ height: "50px", width:"140px"}}
+>>>>>>> de0245db826eccd32d4f575f30b212e8975e26a7
                     onClick={() => handleAdmin()}
                   >
                     <FaUserShield className="me-2" /> Admin
                   </button>
                 </Link>
+<<<<<<< HEAD
                 <Link to={"/councelor"} className="text-decoration-none">
                   <button
                     className="btn btn-outline-danger w-100 mb-3 d-flex align-items-center justify-content-center"
@@ -92,9 +101,20 @@ const Login = ({
                   </button>
                 </Link>
                 <Link to={"/studentProfile"} className="text-decoration-none">
+=======
+
+                <button
+                  className="btn btn-outline-primary  mb-3 d-flex align-items-center justify-content-center"
+                  style={{ height: "50px",  width:"140px"}}
+                  onClick={() => handleCouncelor()}
+                >
+                  <FaUserTie className="me-2" /> Counsellor
+                </button>
+                <Link to={"/studentProfile"}>
+>>>>>>> de0245db826eccd32d4f575f30b212e8975e26a7
                   <button
-                    className="btn btn-outline-primary w-100 mb-3 d-flex align-items-center justify-content-center"
-                    style={{ height: "50px" }}
+                    className="btn btn-outline-primary  mb-3 d-flex align-items-center justify-content-center"
+                    style={{ height: "50px",  width:"140px" }}
                     onClick={() => handleStudent()}
                   >
                     <FaUserGraduate className="me-2" /> Student
