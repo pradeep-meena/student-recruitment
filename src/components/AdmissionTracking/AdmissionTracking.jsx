@@ -189,7 +189,9 @@ const AdmissionTracking = () => {
               />
             </div>
             <div className="col-md-6 mb-3">
-              <label htmlFor="undergraduate">Undergraduate (if applicable)</label>
+              <label htmlFor="undergraduate">
+                Undergraduate (if applicable)
+              </label>
               <input
                 type="text"
                 className="form-control"
@@ -200,7 +202,9 @@ const AdmissionTracking = () => {
               />
             </div>
             <div className="col-md-6 mb-3">
-              <label htmlFor="certifications">Additional Certifications/Courses</label>
+              <label htmlFor="certifications">
+                Additional Certifications/Courses
+              </label>
               <input
                 type="text"
                 className="form-control"
@@ -230,7 +234,9 @@ const AdmissionTracking = () => {
               />
             </div>
             <div className="col-md-6 mb-3">
-              <label htmlFor="preferredUniversity">Preferred University/College</label>
+              <label htmlFor="preferredUniversity">
+                Preferred University/College
+              </label>
               <input
                 type="text"
                 className="form-control"
@@ -258,7 +264,6 @@ const AdmissionTracking = () => {
 
         {/* Document Upload */}
         <h2>Document Upload</h2>
-        
         {/* Passport Upload */}
         <Form.Group className="mb-3">
           <Form.Label style={{ fontSize: "1.2rem", fontWeight: "bold" }}>
@@ -345,10 +350,6 @@ const AdmissionTracking = () => {
             ))}
           </ListGroup>
         </Form.Group>
-
-        <Button variant="primary mb-2" onClick={handleUpload}>
-          Upload Files
-        </Button>
 
         {/* Declaration & Consent */}
         <div className="card p-4 mb-4">
