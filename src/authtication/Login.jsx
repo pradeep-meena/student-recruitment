@@ -1,21 +1,28 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { FaUserShield, FaUserTie, FaUserGraduate } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = ({ login, setLogin, handleAdmin, handleStudent }) => {
   const [showSignUp, setShowSignUp] = useState(false);
 
   const toggleForm = () => {
     setShowSignUp(!showSignUp);
   };
+  const navigate = useNavigate();
 
+  const handleCouncelor = () => {
+    navigate("/dashboard");
+  };
+  console.log(login);
   return (
     <>
       <main>
-        <div className="login-container justify-content-center border">
+        <div className="login-container justify-content-center border p-4">
           <h1 className="fw-bold" style={{ color: "rgb(38, 29, 167)" }}>
             Student RECRUITMENT
           </h1>
-          <h4 className="text-center  mb-5 ">Welcome!</h4>
+          <h4 className="text-center mb-5">Welcome!</h4>
 
           {!showSignUp ? (
             // Login Form
@@ -60,6 +67,36 @@ const Login = () => {
                 >
                   Sign Up
                 </button>
+              </div>
+
+              {/* Additional Buttons */}
+              <div className="d-flex align-items-center mt-4 gap-2">
+                <Link to={"/dashboard"}>
+                  <button
+                    className="btn btn-outline-primary w-100 mb-3 d-flex align-items-center justify-content-center"
+                    style={{ height: "50px" }}
+                    onClick={() => handleAdmin()}
+                  >
+                    <FaUserShield className="me-2" /> Admin
+                  </button>
+                </Link>
+
+                <button
+                  className="btn btn-outline-primary w-100 mb-3 d-flex align-items-center justify-content-center"
+                  style={{ height: "50px" }}
+                  onClick={() => handleCouncelor()}
+                >
+                  <FaUserTie className="me-2" /> Counsellor
+                </button>
+                <Link to={"/dashboard"}>
+                  <button
+                    className="btn btn-outline-primary w-100 mb-3 d-flex align-items-center justify-content-center"
+                    style={{ height: "50px" }}
+                    onClick={() => handleStudent()}
+                  >
+                    <FaUserGraduate className="me-2" /> Student
+                  </button>
+                </Link>
               </div>
             </form>
           ) : (

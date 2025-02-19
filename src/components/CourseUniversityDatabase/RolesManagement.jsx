@@ -10,20 +10,20 @@ import {
   InputGroup,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { TagFill, PencilFill, TrashFill } from "react-bootstrap-icons";
+import { TagFill,  TrashFill } from "react-bootstrap-icons";
 
 const RolesManagement = () => {
   const [roles, setRoles] = useState([
     { name: "Admin", type: "System" },
-    { name: "SuperAdmin", type: "System" },
-    { name: "Employee", type: "Customer" },
+    { name: "Counsellor", type: "System" },
+    { name: "Student", type: "Customer" },
   ]);
   const [newRole, setNewRole] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleAddRole = () => {
     if (newRole.trim() !== "") {
-      setRoles([...roles, { name: newRole, type: "Custom" }]);
+      setRoles([...roles, { name: newRole, type: "Customer" }]);
       setNewRole("");
     }
   };
@@ -93,10 +93,7 @@ const RolesManagement = () => {
                         style={{ cursor: "pointer" }}
                       />
                     </Link>
-                    <PencilFill
-                      className="text-primary me-2"
-                      style={{ cursor: "pointer" }}
-                    />
+                    
                     <TrashFill
                       className="text-danger"
                       style={{ cursor: "pointer" }}

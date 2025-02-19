@@ -39,10 +39,22 @@ import TaskReminder from "./components/Task Calendar Management/TaskReminder";
 import RolesManagement from "./components/CourseUniversityDatabase/RolesManagement";
 import PermissionsTable from "./components/CourseUniversityDatabase/permissionsData";
 import CourseUniversityDatabase from "./components/CourseUniversityDatabase/CourseUniversityDatabase";
+import { useNavigate } from "react-router-dom";
 
 function App() {
+  //show details to admin
+  const [login, setLogin] = useState(null);
+
+  const handleAdmin = () => {
+    setLogin("admin");
+  };
+
+  const handleStudent = () => {
+    setLogin("student");
+  };
   // counseler
   const [counselors, setCounselors] = useState([]);
+
   const [tasks, setTasks] = useState([
     {
       id: 1,
@@ -80,6 +92,7 @@ function App() {
           <Sidebar
             collapsed={isSidebarCollapsed}
             menuItemClick={menusidebarcollaps}
+            login={login}
           />
         )}
         {/* sidebar end */}
@@ -91,7 +104,17 @@ function App() {
         >
           <Routes>
             {/* login signup */}
-            <Route path="/" element={<Login />} />
+            <Route
+              path="/"
+              element={
+                <Login
+                  login={login}
+                  setLogin={setLogin}
+                  handleAdmin={handleAdmin}
+                  handleStudent={handleStudent}
+                />
+              }
+            />
             {/* login signup */}
 
             {/* dashbord */}
@@ -197,6 +220,7 @@ function App() {
               path="/CourseUniversityDatabase"
               element={<CourseUniversityDatabase></CourseUniversityDatabase>}
             ></Route>
+
             <Route path="/RolesManagement" element={<RolesManagement />} />
             <Route path="/permissions/:role" element={<PermissionsTable />} />
             {/* PaymentInvoiceManagement */}
