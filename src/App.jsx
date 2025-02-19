@@ -39,6 +39,7 @@ import TaskReminder from "./components/Task Calendar Management/TaskReminder";
 import RolesManagement from "./components/CourseUniversityDatabase/RolesManagement";
 import PermissionsTable from "./components/CourseUniversityDatabase/permissionsData";
 import CourseUniversityDatabase from "./components/CourseUniversityDatabase/CourseUniversityDatabase";
+import StudentProfile from "./components/Profile/Dashboard";
 
 function App() {
   // counseler
@@ -132,6 +133,10 @@ function App() {
             <Route
               path="/manaDetails"
               element={<ManaDetails></ManaDetails>}
+            ></Route>
+            <Route
+              path="/StudentProfile"
+              element={<StudentProfile/>}
             ></Route>
             <Route
               path="/admission"

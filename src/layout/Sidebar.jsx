@@ -35,10 +35,26 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
               onClick={() => {
                 navigate("/dashboard");
                 menuItemClick();
+                
+              }}
+             
+            >
+              <i className="fa-solid fa-cubes"
+              
+                ></i>
+              <span className="menu-text">Dashboard</span>
+            </div>
+          </li>
+          <li className={`menu-item ${isActive("/StudentProfile") ? "active" : ""}`}>
+            <div
+              className="menu-link menu-i"
+              onClick={() => {
+                navigate("/StudentProfile");
+                menuItemClick();
               }}
             >
               <i className="fa-solid fa-cubes"></i>
-              <span className="menu-text">Dashboard</span>
+              <span className="menu-text">Student Dashboard</span>
             </div>
           </li>
           {/* Lead & Inquiry Management */}
@@ -148,6 +164,7 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
           <li
             className={`menu-item ${
               isSubmenuActive([
+               
                 "/studentDetails",
                 "/admission",
                 "/communication",
@@ -171,6 +188,7 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
 
             {openSubmenu === "student" && (
               <ul className={`submenu `}>
+               
                 <li
                   className={`menu-item submenu-item ${
                     isActive("/studentDetails") ? "active" : ""
@@ -225,7 +243,10 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
               onClick={() => toggleSubmenu("application")}
             >
               <i className="fa fa-user" aria-hidden="true"></i>
-              <span className="menu-text text-nowrap">Applications</span>
+              <span className="menu-text text-nowrap"
+              
+              
+              >Applications</span>
               <i
                 className={`fa-solid fa-chevron-${
                   openSubmenu === "application" ? "up" : "down"
@@ -275,6 +296,7 @@ const Sidebar = ({ collapsed, menuItemClick }) => {
                   onClick={() => {
                     navigate("/applications");
                     menuItemClick();
+                  
                   }}
                 >
                   Admission Decision
