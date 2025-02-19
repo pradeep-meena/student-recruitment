@@ -14,12 +14,12 @@ const Login = ({ login, setLogin, handleAdmin, handleStudent }) => {
   const handleCouncelor = () => {
     navigate("/dashboard");
   };
-  console.log(login);
+
   return (
     <>
-      <main>
-        <div className="login-container justify-content-center border p-4">
-          <h1 className="fw-bold" style={{ color: "rgb(38, 29, 167)" }}>
+      <main className="d-flex justify-content-center align-items-center vh-100">
+        <div className="login-container border p-4" style={{ maxWidth: "500px", width: "100%" }}>
+          <h1 className="fw-bold text-center" style={{ color: "rgb(38, 29, 167)" }}>
             Student RECRUITMENT
           </h1>
           <h4 className="text-center mb-5">Welcome!</h4>
@@ -36,7 +36,7 @@ const Login = ({ login, setLogin, handleAdmin, handleStudent }) => {
                   style={{ color: "#578e7e" }}
                 />
               </div>
-              <div className="mb-3 mt-3">
+              <div className="mb-3">
                 <input
                   type="password"
                   className="form-control p-3"
@@ -50,12 +50,11 @@ const Login = ({ login, setLogin, handleAdmin, handleStudent }) => {
                   Forgot Password?
                 </a>
               </div>
-              <div className="d-flex" style={{ justifyContent: "center" }}>
-                <Link style={{ color: "white" }} to="/dashboard">
+              <div className="d-flex justify-content-center">
+                <Link to="/dashboard" className="text-decoration-none">
                   <button
                     type="submit"
-                    className="px-4 py-2 ms-1 shadow text-white border border-primary"
-                    style={{ backgroundColor: "rgb(38, 29, 167)" }}
+                    className="btn btn-primary px-4 py-2 me-2"
                   >
                     Login
                   </button>
@@ -63,36 +62,37 @@ const Login = ({ login, setLogin, handleAdmin, handleStudent }) => {
                 <button
                   type="button"
                   onClick={toggleForm}
-                  className="px-4 py-2 ms-4 border border-primary"
+                  className="btn btn-outline-primary px-4 py-2"
                 >
                   Sign Up
                 </button>
               </div>
 
               {/* Additional Buttons */}
-              <div className="d-flex align-items-center mt-4  w-100 justify-content-between">
-                <Link to={"/dashboard"}>
+              <div className="d-flex flex-column flex-md-row justify-content-between mt-4">
+                <Link to="/dashboard" className="text-decoration-none mb-3 mb-md-0">
                   <button
-                    className="btn btn-outline-primary  mb-3 d-flex align-items-center justify-content-center"
-                    style={{ height: "50px", width:"140px"}}
-                    onClick={() => handleAdmin()}
+                    className="btn btn-outline-primary w-100 d-flex align-items-center justify-content-center"
+                    style={{ height: "50px" }}
+                    onClick={handleAdmin}
                   >
                     <FaUserShield className="me-2" /> Admin
                   </button>
                 </Link>
 
                 <button
-                  className="btn btn-outline-primary  mb-3 d-flex align-items-center justify-content-center"
-                  style={{ height: "50px",  width:"140px"}}
-                  onClick={() => handleCouncelor()}
+                  className="btn btn-outline-primary w-100 d-flex align-items-center justify-content-center mb-3 mb-md-0 mx-md-2"
+                  style={{ height: "50px" }}
+                  onClick={handleCouncelor}
                 >
                   <FaUserTie className="me-2" /> Counsellor
                 </button>
-                <Link to={"/studentProfile"}>
+
+                <Link to="/studentProfile" className="text-decoration-none">
                   <button
-                    className="btn btn-outline-primary  mb-3 d-flex align-items-center justify-content-center"
-                    style={{ height: "50px",  width:"140px" }}
-                    onClick={() => handleStudent()}
+                    className="btn btn-outline-primary w-100 d-flex align-items-center justify-content-center"
+                    style={{ height: "50px" }}
+                    onClick={handleStudent}
                   >
                     <FaUserGraduate className="me-2" /> Student
                   </button>
@@ -102,94 +102,111 @@ const Login = ({ login, setLogin, handleAdmin, handleStudent }) => {
           ) : (
             // Sign-Up Form
             <form className="signup-form">
-              <div className="form-row">
-                <input
-                  type="text"
-                  placeholder="First Name *"
-                  className="form-input"
-                />
-                <input
-                  type="text"
-                  placeholder="Last Name *"
-                  className="form-input"
-                />
+              <div className="row">
+                <div className="col-md-6 mb-3">
+                  <input
+                    type="text"
+                    placeholder="First Name *"
+                    className="form-control p-3"
+                  />
+                </div>
+                <div className="col-md-6 mb-3">
+                  <input
+                    type="text"
+                    placeholder="Last Name *"
+                    className="form-control p-3"
+                  />
+                </div>
               </div>
-              <div className="form-row">
-                <input
-                  type="email"
-                  placeholder="Email *"
-                  className="form-input"
-                />
-                <input
-                  type="text"
-                  placeholder="Phone Number *"
-                  className="form-input"
-                />
+              <div className="row">
+                <div className="col-md-6 mb-3">
+                  <input
+                    type="email"
+                    placeholder="Email *"
+                    className="form-control p-3"
+                  />
+                </div>
+                <div className="col-md-6 mb-3">
+                  <input
+                    type="text"
+                    placeholder="Phone Number *"
+                    className="form-control p-3"
+                  />
+                </div>
               </div>
-              <div className="form-row">
-                <select className="form-input">
-                  <option value="" disabled selected>
-                    Gender *
-                  </option>
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
-                  <option value="other">Other</option>
-                </select>
-                <input
-                  type="text"
-                  placeholder="City *"
-                  className="form-input "
-                />
+              <div className="row">
+                <div className="col-md-6 mb-3">
+                  <select className="form-control p-3">
+                    <option value="" disabled selected>
+                      Gender *
+                    </option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <div className="col-md-6 mb-3">
+                  <input
+                    type="text"
+                    placeholder="City *"
+                    className="form-control p-3"
+                  />
+                </div>
               </div>
-              <div className="form-row ">
-                <input
-                  type="text"
-                  placeholder="State *"
-                  className="form-input "
-                />
-                <input
-                  type="text"
-                  placeholder="Country *"
-                  className="form-input"
-                />
+              <div className="row">
+                <div className="col-md-6 mb-3">
+                  <input
+                    type="text"
+                    placeholder="State *"
+                    className="form-control p-3"
+                  />
+                </div>
+                <div className="col-md-6 mb-3">
+                  <input
+                    type="text"
+                    placeholder="Country *"
+                    className="form-control p-3"
+                  />
+                </div>
               </div>
-              <div className="form-row">
-                <select className="form-input">
-                  <option value="" disabled selected>
-                    User Type *
-                  </option>
-                  <option value="admin">Admin</option>
-                  <option value="user">User</option>
-                </select>
-                <input
-                  type="password"
-                  placeholder="Password *"
-                  className="form-input"
-                />
+              <div className="row">
+                <div className="col-md-6 mb-3">
+                  <select className="form-control p-3">
+                    <option value="" disabled selected>
+                      User Type *
+                    </option>
+                    <option value="admin">Admin</option>
+                    <option value="user">User</option>
+                  </select>
+                </div>
+                <div className="col-md-6 mb-3">
+                  <input
+                    type="password"
+                    placeholder="Password *"
+                    className="form-control p-3"
+                  />
+                </div>
               </div>
-              <div className="form-row ">
-                <input
-                  type="password"
-                  placeholder="Confirm Password *"
-                  className="form-input"
-                />
+              <div className="row">
+                <div className="col-12 mb-3">
+                  <input
+                    type="password"
+                    placeholder="Confirm Password *"
+                    className="form-control p-3"
+                  />
+                </div>
               </div>
-              <div className="d-flex" style={{ justifyContent: "center" }}>
+              <div className="d-flex justify-content-center">
                 <button
                   type="submit"
-                  className="px-4 py-2 ms-1 btn-primary shadow"
-                  style={{ border: "none" }}
+                  className="btn btn-primary px-4 py-2 me-2"
                 >
                   Sign Up
                 </button>
                 <button
                   type="button"
                   onClick={toggleForm}
-                  className="px-4 py-2 ms-4 "
-                  style={{
-                    border: "2px solid rgb(38, 29, 167)",
-                    color: "rgb(38, 29, 167)",
-                  }}
+                  className="btn btn-outline-primary px-4 py-2"
                 >
                   Login
                 </button>
