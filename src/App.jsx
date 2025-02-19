@@ -200,7 +200,6 @@ function App() {
             <Route path="/RolesManagement" element={<RolesManagement />} />
             <Route path="/permissions/:role" element={<PermissionsTable />} />
             {/* PaymentInvoiceManagement */}
-
             <Route
               path="/PaymentInvoiceManagement"
               element={<PaymentInvoiceManagement />}
