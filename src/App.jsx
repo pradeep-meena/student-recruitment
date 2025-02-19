@@ -41,6 +41,7 @@ import PermissionsTable from "./components/CourseUniversityDatabase/permissionsD
 import CourseUniversityDatabase from "./components/CourseUniversityDatabase/CourseUniversityDatabase";
 import StudentProfile from "./components/Profile/Dashboard";
 import StudentUniversity from "./components/PaymentInvoiceManagement/StudentUniversity";
+import Councelor from "./components/dashbord/Councelor";
 
 function App() {
   //show details to admin
@@ -52,6 +53,10 @@ function App() {
 
   const handleStudent = () => {
     setLogin("student");
+  };
+
+  const handleCounselor = () => {
+    setLogin("counselor");
   };
   // counseler
   const [counselors, setCounselors] = useState([]);
@@ -94,6 +99,7 @@ function App() {
             collapsed={isSidebarCollapsed}
             menuItemClick={menusidebarcollaps}
             login={login}
+            toggleSidebar={toggleSidebar}
           />
         )}
         {/* sidebar end */}
@@ -113,6 +119,7 @@ function App() {
                   setLogin={setLogin}
                   handleAdmin={handleAdmin}
                   handleStudent={handleStudent}
+                  handleCounselor={handleCounselor}
                 />
               }
             />
@@ -120,6 +127,7 @@ function App() {
 
             {/* dashbord */}
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/councelor" element={<Councelor></Councelor>}></Route>
             {/* dashbord */}
 
             <Route
