@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { Card, Button, ListGroup, ProgressBar, Modal, Form } from "react-bootstrap";
-import { FaEnvelope, FaPhone, FaUser } from "react-icons/fa";
+import { Card, Button, ListGroup, Modal, Form } from "react-bootstrap";
+import { FaEnvelope, FaPhone } from "react-icons/fa";
 import { Pie, Bar } from "react-chartjs-2";
 import "chart.js/auto";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 
 const StudentProfile = () => {
   const [showModal, setShowModal] = useState(false); // State to control modal visibility
@@ -64,12 +64,22 @@ const StudentProfile = () => {
     setShowModal(false); // Close the modal after saving
   };
 
+  // Mock student data for demonstration
+  const student = {
+    admissionNo: "12345", // Example admission number
+  };
+
   return (
     <div className="container mt-4">
       {/* Profile Card */}
       <Card className="shadow-lg p-4">
         <div className="d-flex align-items-center">
-          <img src={profilePic} alt="Profile" className="profile-img me-3" style={{ width: "100px", height: "100px", borderRadius: "50%" }} />
+          <img
+            src={profilePic}
+            alt="Profile"
+            className="profile-img me-3"
+            style={{ width: "100px", height: "100px", borderRadius: "50%" }}
+          />
           <div>
             <h3>{name}</h3>
             <p>
@@ -78,13 +88,25 @@ const StudentProfile = () => {
             <p>
               <FaPhone /> {phone}
             </p>
-            <Button variant="primary" className="me-2">
-              Instructor
-            </Button>
+
+            {/* Link to view student profile */}
+            <Link
+              to="#"
+              className="text-decoration-none text-nowrap"
+            >
+              <Button variant="primary" className="me-2">
+                View
+              </Button>
+            </Link>
+
             <Button variant="primary" className="me-2">
               Student
             </Button>
-            <Button variant="primary" className="me-2" onClick={() => setShowModal(true)}>
+            <Button
+              variant="primary"
+              className="me-2"
+              onClick={() => setShowModal(true)}
+            >
               Edit profile
             </Button>
           </div>
@@ -135,7 +157,10 @@ const StudentProfile = () => {
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Profile Picture</Form.Label>
-              <Form.Control type="file" onChange={handleProfilePicChange} />
+              <Form.Control
+                type="file"
+                onChange={handleProfilePicChange}
+              />
             </Form.Group>
           </Form>
         </Modal.Body>

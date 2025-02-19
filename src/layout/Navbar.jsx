@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.jpeg";
-import "../layout/Navbar.css"
+import "../layout/Navbar.css";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = ({ toggleSidebar }) => {
   const [showNotifications, setShowNotifications] = useState(false); // State to manage notification dropdown visibility
@@ -11,6 +12,11 @@ const Navbar = ({ toggleSidebar }) => {
     "Reminder: Meeting at 3 PM",
   ]); // Sample notifications
 
+  const navigate = useNavigate();
+
+  const handleChange = () => {
+    navigate("/");
+  };
   // Toggle notification dropdown
   const toggleNotifications = () => {
     setShowNotifications(!showNotifications);
@@ -123,9 +129,12 @@ const Navbar = ({ toggleSidebar }) => {
                     <hr className="dropdown-divider" />
                   </li>
                   <li>
-                    <Link className="dropdown-item" to="/">
+                    <button
+                      className="dropdown-item"
+                      onClick={() => handleChange()}
+                    >
                       Logout
-                    </Link>
+                    </button>
                   </li>
                 </ul>
               </div>

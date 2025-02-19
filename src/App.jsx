@@ -40,11 +40,22 @@ import RolesManagement from "./components/CourseUniversityDatabase/RolesManageme
 import PermissionsTable from "./components/CourseUniversityDatabase/permissionsData";
 import CourseUniversityDatabase from "./components/CourseUniversityDatabase/CourseUniversityDatabase";
 import StudentProfile from "./components/Profile/Dashboard";
+import StudentUniversity from "./components/PaymentInvoiceManagement/StudentUniversity";
 
 function App() {
+  //show details to admin
+  const [login, setLogin] = useState(null);
+
+  const handleAdmin = () => {
+    setLogin("admin");
+  };
+
+  const handleStudent = () => {
+    setLogin("student");
+  };
   // counseler
   const [counselors, setCounselors] = useState([]);
-  
+
   const [tasks, setTasks] = useState([
     {
       id: 1,
@@ -82,6 +93,7 @@ function App() {
           <Sidebar
             collapsed={isSidebarCollapsed}
             menuItemClick={menusidebarcollaps}
+            login={login}
           />
         )}
         {/* sidebar end */}
@@ -93,12 +105,27 @@ function App() {
         >
           <Routes>
             {/* login signup */}
-            <Route path="/" element={<Login />} />
+            <Route
+              path="/"
+              element={
+                <Login
+                  login={login}
+                  setLogin={setLogin}
+                  handleAdmin={handleAdmin}
+                  handleStudent={handleStudent}
+                />
+              }
+            />
             {/* login signup */}
 
             {/* dashbord */}
             <Route path="/dashboard" element={<Dashboard />} />
             {/* dashbord */}
+
+            <Route
+              path="/studentProfile"
+              element={<StudentProfile></StudentProfile>}
+            ></Route>
 
             <Route path="/Profile" element={<Profile />} />
             <Route
@@ -134,10 +161,7 @@ function App() {
               path="/manaDetails"
               element={<ManaDetails></ManaDetails>}
             ></Route>
-            <Route
-              path="/StudentProfile"
-              element={<StudentProfile/>}
-            ></Route>
+            <Route path="/StudentProfile" element={<StudentProfile />}></Route>
             <Route
               path="/admission"
               element={<AdmissionTracking></AdmissionTracking>}
@@ -203,10 +227,14 @@ function App() {
               path="/CourseUniversityDatabase"
               element={<CourseUniversityDatabase></CourseUniversityDatabase>}
             ></Route>
+
             <Route path="/RolesManagement" element={<RolesManagement />} />
             <Route path="/permissions/:role" element={<PermissionsTable />} />
             {/* PaymentInvoiceManagement */}
-
+            <Route
+              path="/StudentUniversity"
+              element={<StudentUniversity></StudentUniversity>}
+            ></Route>
             <Route
               path="/PaymentInvoiceManagement"
               element={<PaymentInvoiceManagement />}
