@@ -29,18 +29,44 @@ const Sidebar = ({ collapsed, menuItemClick, login }) => {
       <div className="sidebar">
         <ul className="menu">
           {/* Dashboard Section */}
-          <li className={`menu-item ${isActive("/dashboard") ? "active" : ""}`}>
-            <div
-              className="menu-link menu-i"
-              onClick={() => {
-                navigate("/dashboard");
-                menuItemClick();
-              }}
+          {login == "admin" ? (
+            <li
+              className={`menu-item ${isActive("/dashboard") ? "active" : ""}`}
             >
-              <i className="fa-solid fa-cubes"></i>
-              <span className="menu-text">Dashboard</span>
-            </div>
-          </li>
+              <div
+                className="menu-link menu-i"
+                onClick={() => {
+                  navigate("/dashboard");
+                  menuItemClick();
+                }}
+              >
+                <i className="fa-solid fa-cubes"></i>
+                <span className="menu-text">Dashboard</span>
+              </div>
+            </li>
+          ) : (
+            ""
+          )}
+          {login == "student" ? (
+            <li
+              className={`menu-item ${
+                isActive("/studentProfile") ? "active" : ""
+              }`}
+            >
+              <div
+                className="menu-link menu-i"
+                onClick={() => {
+                  navigate("/studentProfile");
+                  menuItemClick();
+                }}
+              >
+                <i className="fa-solid fa-cubes"></i>
+                <span className="menu-text">Dashboard</span>
+              </div>
+            </li>
+          ) : (
+            ""
+          )}
           {/* Lead & Inquiry Management */}
           {login == "admin" ? (
             <li
@@ -547,7 +573,26 @@ const Sidebar = ({ collapsed, menuItemClick, login }) => {
           ) : (
             ""
           )}
-
+          {login == "student" ? (
+            <li
+              className={`menu-item ${
+                isActive("/StudentUniversity") ? "active" : ""
+              }`}
+            >
+              <div
+                className="menu-link menu-i"
+                onClick={() => {
+                  navigate("/StudentUniversity");
+                  menuItemClick();
+                }}
+              >
+                <i className="fa-solid fa-university "></i>
+                <span className="menu-text">Course & University</span>
+              </div>
+            </li>
+          ) : (
+            ""
+          )}
           {/* User Roles & Access Control */}
           {/* <li
             className={`menu-item ${

@@ -88,7 +88,7 @@ const Login = ({ login, setLogin, handleAdmin, handleStudent }) => {
                 >
                   <FaUserTie className="me-2" /> Counsellor
                 </button>
-                <Link to={"/dashboard"}>
+                <Link to={"/studentProfile"}>
                   <button
                     className="btn btn-outline-primary w-100 mb-3 d-flex align-items-center justify-content-center"
                     style={{ height: "50px" }}

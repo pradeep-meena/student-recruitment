@@ -39,7 +39,8 @@ import TaskReminder from "./components/Task Calendar Management/TaskReminder";
 import RolesManagement from "./components/CourseUniversityDatabase/RolesManagement";
 import PermissionsTable from "./components/CourseUniversityDatabase/permissionsData";
 import CourseUniversityDatabase from "./components/CourseUniversityDatabase/CourseUniversityDatabase";
-import { useNavigate } from "react-router-dom";
+import StudentProfile from "./components/Profile/Dashboard";
+import StudentUniversity from "./components/PaymentInvoiceManagement/StudentUniversity";
 
 function App() {
   //show details to admin
@@ -121,6 +122,11 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             {/* dashbord */}
 
+            <Route
+              path="/studentProfile"
+              element={<StudentProfile></StudentProfile>}
+            ></Route>
+
             <Route path="/Profile" element={<Profile />} />
             <Route
               path="/Profiledetails"
@@ -155,6 +161,7 @@ function App() {
               path="/manaDetails"
               element={<ManaDetails></ManaDetails>}
             ></Route>
+            <Route path="/StudentProfile" element={<StudentProfile />}></Route>
             <Route
               path="/admission"
               element={<AdmissionTracking></AdmissionTracking>}
@@ -224,6 +231,10 @@ function App() {
             <Route path="/RolesManagement" element={<RolesManagement />} />
             <Route path="/permissions/:role" element={<PermissionsTable />} />
             {/* PaymentInvoiceManagement */}
+            <Route
+              path="/StudentUniversity"
+              element={<StudentUniversity></StudentUniversity>}
+            ></Route>
             <Route
               path="/PaymentInvoiceManagement"
               element={<PaymentInvoiceManagement />}
