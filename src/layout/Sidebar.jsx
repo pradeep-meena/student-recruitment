@@ -4,7 +4,7 @@ import "./Sidebar.css";
 import { FaUsers, FaRegFileAlt } from "react-icons/fa"; // FontAwesome
 import { BsFillPersonLinesFill } from "react-icons/bs"; // Bootstrap
 
-const Sidebar = ({ collapsed, menuItemClick, login }) => {
+const Sidebar = ({ collapsed, menuItemClick, login, toggleSidebar }) => {
   console.log(login);
   const [openSubmenu, setOpenSubmenu] = useState(null); // Tracks the open submenu
   const navigate = useNavigate();
@@ -37,10 +37,36 @@ const Sidebar = ({ collapsed, menuItemClick, login }) => {
                 className="menu-link menu-i"
                 onClick={() => {
                   navigate("/dashboard");
-                  menuItemClick();
+                  //  menuItemClick();
+                  // toggleSidebar();
                 }}
               >
-                <i className="fa-solid fa-cubes"></i>
+                <i
+                  onClick={() => toggleSidebar()}
+                  className="fa-solid fa-cubes"
+                ></i>
+                <span className="menu-text">Dashboard</span>
+              </div>
+            </li>
+          ) : (
+            ""
+          )}
+          {login == "counselor" ? (
+            <li
+              className={`menu-item ${isActive("/councelor") ? "active" : ""}`}
+            >
+              <div
+                className="menu-link menu-i"
+                onClick={() => {
+                  navigate("/councelor");
+                  // menuItemClick();
+                  // toggleSidebar();
+                }}
+              >
+                <i
+                  onClick={() => toggleSidebar()}
+                  className="fa-solid fa-cubes"
+                ></i>
                 <span className="menu-text">Dashboard</span>
               </div>
             </li>
@@ -57,10 +83,14 @@ const Sidebar = ({ collapsed, menuItemClick, login }) => {
                 className="menu-link menu-i"
                 onClick={() => {
                   navigate("/studentProfile");
-                  menuItemClick();
+                  // menuItemClick();
+                  // toggleSidebar();
                 }}
               >
-                <i className="fa-solid fa-cubes"></i>
+                <i
+                  onClick={() => toggleSidebar()}
+                  className="fa-solid fa-cubes"
+                ></i>
                 <span className="menu-text">Dashboard</span>
               </div>
             </li>
@@ -87,9 +117,15 @@ const Sidebar = ({ collapsed, menuItemClick, login }) => {
             >
               <div
                 className="menu-link menu-i"
-                onClick={() => toggleSubmenu("leadInquiry")}
+                onClick={() => {
+                  toggleSubmenu("leadInquiry");
+                  // toggleSidebar();
+                }}
               >
-                <i className="fa-solid fa-file-contract"></i>
+                <i
+                  onClick={() => toggleSidebar()}
+                  className="fa-solid fa-file-contract"
+                ></i>
                 <span className="menu-text">Leads & Inquiries</span>
                 <i
                   className={`fa-solid fa-chevron-${
@@ -175,6 +211,116 @@ const Sidebar = ({ collapsed, menuItemClick, login }) => {
             ""
           )}
 
+          {login == "counselor" ? (
+            <li
+              className={`menu-item ${
+                isSubmenuActive([
+                  "/LeadInquiryManagement",
+                  "/inquiry",
+                  "/lead",
+                  "/deal",
+                  // "/dashboard",
+                  "/contract",
+                  "/quotes",
+                  "/analytics",
+                ])
+                  ? "active"
+                  : ""
+              }`}
+            >
+              <div
+                className="menu-link menu-i"
+                onClick={() => toggleSubmenu("leadInquiry")}
+              >
+                <i
+                  onClick={() => toggleSidebar()}
+                  className="fa-solid fa-file-contract"
+                ></i>
+                <span className="menu-text">Leads & Inquiries</span>
+                <i
+                  className={`fa-solid fa-chevron-${
+                    openSubmenu === "leadInquiry" ? "up" : "down"
+                  } submenu-arrow`}
+                ></i>
+              </div>
+
+              {openSubmenu === "leadInquiry" && (
+                <ul className={`submenu `}>
+                  {/* <li
+                  className={`menu-item submenu-item ${
+                    isActive("/dashboard") ? "active" : ""
+                  }`}
+                  onClick={() => navigate("/dashboard")}
+                >
+                  Dashboard
+                </li> */}
+                  {/* <li
+                    className={`menu-item submenu-item ${
+                      isActive("/contract") ? "active" : ""
+                    }`}
+                    onClick={() => {
+                      navigate("/contract");
+                      menuItemClick();
+                    }}
+                  >
+                    Contact
+                  </li> */}
+                  <li
+                    className={`menu-item submenu-item ${
+                      isActive("/inquiry") ? "active" : ""
+                    }`}
+                    onClick={() => {
+                      navigate("/inquiry");
+                      menuItemClick();
+                    }}
+                  >
+                    Inquiry
+                  </li>
+                  <li
+                    className={`menu-item submenu-item ${
+                      isActive("/lead") ? "active" : ""
+                    }`}
+                    onClick={() => {
+                      navigate("/lead");
+                      menuItemClick();
+                    }}
+                  >
+                    Lead
+                  </li>
+                  {/* <li
+                    className={`menu-item submenu-item ${
+                      isActive("/deal") ? "active" : ""
+                    }`}
+                    onClick={() => {
+                      navigate("/deal");
+                      menuItemClick();
+                    }}
+                  >
+                    Deal
+                  </li> */}
+                  {/* <li
+                  className={`menu-item submenu-item ${
+                    isActive("/quotes") ? "active" : ""
+                  }`}
+                  onClick={() => navigate("/quotes")}
+                >
+                  Quotes
+                </li>
+                <li
+                  className={`menu-item submenu-item ${
+                    isActive("/analytics") ? "active" : ""
+                  }`}
+                  onClick={() => navigate("/analytics")}
+                >
+                  Analytics
+                </li> */}
+                </ul>
+              )}
+            </li>
+          ) : (
+            ""
+          )}
+
           {/* Student Management */}
           {login == "admin" ? (
             <li
@@ -192,7 +338,72 @@ const Sidebar = ({ collapsed, menuItemClick, login }) => {
                 className="menu-link menu-i"
                 onClick={() => toggleSubmenu("student")}
               >
-                <i className="fa fa-graduation-cap" aria-hidden="true"></i>
+                <i
+                  onClick={() => toggleSidebar()}
+                  className="fa fa-graduation-cap"
+                  aria-hidden="true"
+                ></i>
+                <span className="menu-text text-nowrap">
+                  Student Management
+                </span>
+                <i
+                  className={`fa-solid fa-chevron-${
+                    openSubmenu === "student" ? "up" : "down"
+                  } submenu-arrow`}
+                ></i>
+              </div>
+
+              {openSubmenu === "student" && (
+                <ul className={`submenu `}>
+                  <li
+                    className={`menu-item submenu-item ${
+                      isActive("/studentDetails") ? "active" : ""
+                    }`}
+                    onClick={() => {
+                      navigate("/studentDetails");
+                      menuItemClick();
+                    }}
+                  >
+                    Student Details
+                  </li>
+                  <li
+                    className={`menu-item submenu-item ${
+                      isActive("/communication") ? "active" : ""
+                    }`}
+                    onClick={() => {
+                      navigate("/communication");
+                      menuItemClick();
+                    }}
+                  >
+                    Communication
+                  </li>
+                </ul>
+              )}
+            </li>
+          ) : (
+            ""
+          )}
+          {login == "counselor" ? (
+            <li
+              className={`menu-item ${
+                isSubmenuActive([
+                  "/studentDetails",
+                  "/admission",
+                  "/communication",
+                ])
+                  ? "active"
+                  : ""
+              }`}
+            >
+              <div
+                className="menu-link menu-i"
+                onClick={() => toggleSubmenu("student")}
+              >
+                <i
+                  onClick={() => toggleSidebar()}
+                  className="fa fa-graduation-cap"
+                  aria-hidden="true"
+                ></i>
                 <span className="menu-text text-nowrap">
                   Student Management
                 </span>
@@ -249,7 +460,11 @@ const Sidebar = ({ collapsed, menuItemClick, login }) => {
                 className="menu-link menu-i"
                 onClick={() => toggleSubmenu("student")}
               >
-                <i className="fa fa-graduation-cap" aria-hidden="true"></i>
+                <i
+                  onClick={() => toggleSidebar()}
+                  className="fa fa-graduation-cap"
+                  aria-hidden="true"
+                ></i>
                 <span className="menu-text text-nowrap">
                   Student Management
                 </span>
@@ -309,7 +524,11 @@ const Sidebar = ({ collapsed, menuItemClick, login }) => {
                 className="menu-link menu-i"
                 onClick={() => toggleSubmenu("application")}
               >
-                <i className="fa fa-user" aria-hidden="true"></i>
+                <i
+                  onClick={() => toggleSidebar()}
+                  className="fa fa-user"
+                  aria-hidden="true"
+                ></i>
                 <span className="menu-text text-nowrap">Applications</span>
                 <i
                   className={`fa-solid fa-chevron-${
@@ -382,7 +601,10 @@ const Sidebar = ({ collapsed, menuItemClick, login }) => {
                 className="menu-link menu-i"
                 onClick={() => toggleSubmenu("communication")}
               >
-                <i className="fa-solid fa-comments"></i>
+                <i
+                  onClick={() => toggleSidebar()}
+                  className="fa-solid fa-comments"
+                ></i>
                 <span className="menu-text text-nowrap">Communication</span>
                 <i
                   className={`fa-solid fa-chevron-${
@@ -435,7 +657,10 @@ const Sidebar = ({ collapsed, menuItemClick, login }) => {
                 className="menu-link menu-i"
                 onClick={() => toggleSubmenu("tasks")}
               >
-                <i className="fa-solid fa-calendar-check"></i>
+                <i
+                  onClick={() => toggleSidebar()}
+                  className="fa-solid fa-calendar-check"
+                ></i>
                 <span className="menu-text text-nowrap">Task Management</span>
                 <i
                   className={`fa-solid fa-chevron-${
@@ -497,10 +722,13 @@ const Sidebar = ({ collapsed, menuItemClick, login }) => {
                 className="menu-link menu-i"
                 onClick={() => {
                   navigate("/RolesManagement");
-                  menuItemClick();
+                  // menuItemClick();
                 }}
               >
-                <i className="fa-solid fa-bolt"></i>
+                <i
+                  onClick={() => toggleSidebar()}
+                  className="fa-solid fa-bolt"
+                ></i>
                 <span className="menu-text"> Roles Permissions</span>
               </div>
             </li>
@@ -519,10 +747,13 @@ const Sidebar = ({ collapsed, menuItemClick, login }) => {
                 className="menu-link menu-i"
                 onClick={() => {
                   navigate("/CourseUniversityDatabase");
-                  menuItemClick();
+                  // menuItemClick();
                 }}
               >
-                <i className="fa-solid fa-receipt"></i>
+                <i
+                  onClick={() => toggleSidebar()}
+                  className="fa-solid fa-receipt"
+                ></i>
                 <span className="menu-text"> Reports & Analytics</span>
               </div>
             </li>
@@ -541,10 +772,13 @@ const Sidebar = ({ collapsed, menuItemClick, login }) => {
                 className="menu-link menu-i"
                 onClick={() => {
                   navigate("/ReportingAnalytics");
-                  menuItemClick();
+                  // menuItemClick();
                 }}
               >
-                <i className="fa-solid fa-chart-line "></i>
+                <i
+                  onClick={() => toggleSidebar()}
+                  className="fa-solid fa-chart-line "
+                ></i>
                 <span className="menu-text">Payments & Invoices</span>
               </div>
             </li>
@@ -563,10 +797,13 @@ const Sidebar = ({ collapsed, menuItemClick, login }) => {
                 className="menu-link menu-i"
                 onClick={() => {
                   navigate("/PaymentInvoiceManagement");
-                  menuItemClick();
+                  // menuItemClick();
                 }}
               >
-                <i className="fa-solid fa-university "></i>
+                <i
+                  onClick={() => toggleSidebar()}
+                  className="fa-solid fa-university "
+                ></i>
                 <span className="menu-text">Course & University</span>
               </div>
             </li>
@@ -583,10 +820,36 @@ const Sidebar = ({ collapsed, menuItemClick, login }) => {
                 className="menu-link menu-i"
                 onClick={() => {
                   navigate("/StudentUniversity");
-                  menuItemClick();
+                  // menuItemClick();
                 }}
               >
-                <i className="fa-solid fa-university "></i>
+                <i
+                  onClick={() => toggleSidebar()}
+                  className="fa-solid fa-university "
+                ></i>
+                <span className="menu-text">Course & University</span>
+              </div>
+            </li>
+          ) : (
+            ""
+          )}
+          {login == "counselor" ? (
+            <li
+              className={`menu-item ${
+                isActive("/StudentUniversity") ? "active" : ""
+              }`}
+            >
+              <div
+                className="menu-link menu-i"
+                onClick={() => {
+                  navigate("/StudentUniversity");
+                  // menuItemClick();
+                }}
+              >
+                <i
+                  onClick={() => toggleSidebar()}
+                  className="fa-solid fa-university "
+                ></i>
                 <span className="menu-text">Course & University</span>
               </div>
             </li>
