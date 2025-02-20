@@ -10,7 +10,7 @@ import {
   InputGroup,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { TagFill,  TrashFill } from "react-bootstrap-icons";
+import { TagFill, TrashFill } from "react-bootstrap-icons";
 
 const RolesManagement = () => {
   const [roles, setRoles] = useState([
@@ -37,11 +37,11 @@ const RolesManagement = () => {
   );
 
   return (
-    <Container className="p-4" style={{marginRight:"35px"}}>
+    <Container className="p-4">
       <Row>
         {/* Left Side - Role Form */}
         <Col md={4} sm={12} className="mb-3">
-          <h5>Create Role</h5>
+          <h4>Create Role</h4>
           <Form>
             <Form.Group controlId="roleName">
               <Form.Label>
@@ -63,7 +63,7 @@ const RolesManagement = () => {
 
         {/* Right Side - Role List */}
         <Col md={8} sm={12}>
-          <h5>Manage Roles</h5>
+          <h4>Manage Roles</h4>
           <InputGroup className="mb-4">
             <Form.Control
               placeholder="Search roles..."
@@ -93,7 +93,7 @@ const RolesManagement = () => {
                         style={{ cursor: "pointer" }}
                       />
                     </Link>
-                    
+
                     <TrashFill
                       className="text-danger"
                       style={{ cursor: "pointer" }}

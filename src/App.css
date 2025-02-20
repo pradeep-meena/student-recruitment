@@ -267,6 +267,7 @@ select.form-input {
 /* maindashbord start */
 .main-content {
   display: flex;
+  padding: 0px;
 }
 
 /* maindashbord end */

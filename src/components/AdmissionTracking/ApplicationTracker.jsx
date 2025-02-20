@@ -27,8 +27,8 @@ const ApplicationTracker = () => {
   };
 
   return (
-    <Container className="mt-4" style={{marginRight:"35px"}}>
-      <h2 className="mb-3">Application Tracker</h2>
+    <Container className="p-3"  >
+      <h4 className="fw-bold mb-4">Application Tracker</h4>
 
       {/* Filter Dropdown */}
       <Form.Group className="mb-3">

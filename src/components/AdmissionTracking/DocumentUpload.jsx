@@ -29,7 +29,7 @@ const DocumentUpload = () => {
   };
 
   return (
-    <Container className="mt-4" style={{marginRight:"35px"}}>
+    <Container className="mt-4"  >
       <h2>Document Upload</h2>
       <Alert variant="info">
         Upload Passport, Academic Records, and Visa Documents.

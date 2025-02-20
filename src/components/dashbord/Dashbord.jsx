@@ -1,13 +1,26 @@
-import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Bar, Doughnut } from "react-chartjs-2";
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, ArcElement, Tooltip, Legend } from "chart.js";
-
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  ArcElement,
+  Tooltip,
+  Legend,
+} from "chart.js";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 // Register Chart.js components only once
-ChartJS.register(CategoryScale, LinearScale, BarElement, ArcElement, Tooltip, Legend);
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  ArcElement,
+  Tooltip,
+  Legend
+);
 
 const Dashboard = () => {
   const metrics = [
@@ -64,11 +77,10 @@ const Dashboard = () => {
       },
     ],
   });
- 
 
   return (
-    <div className="container mt-5" style={{marginRight:"35px"}}> 
-      <h2 className="text-center mb-4">📊  Learner Recruitment Dashboard</h2>
+    <div className="container p-3">
+      <h2 className="text-center mb-4">📊 Learner Recruitment Dashboard</h2>
 
       {/* Metrics Overview */}
       <div className="row text-center">
@@ -77,7 +89,12 @@ const Dashboard = () => {
             <div className="card shadow-sm border-0">
               <div className="card-body">
                 <h5 className="card-title">{metric.label}</h5>
-                <p className="display-6 fw-bold " style={{color:"rgb(38 29 167)"}}>{metric.value}</p>
+                <p
+                  className="display-6 fw-bold "
+                  style={{ color: "rgb(38 29 167)" }}
+                >
+                  {metric.value}
+                </p>
               </div>
             </div>
           </div>
@@ -88,7 +105,7 @@ const Dashboard = () => {
       <div className="row">
         <div className="col-md-8">
           <div className="card shadow-sm p-3">
-            <h5 className="text-center">📌  Learner Overview</h5>
+            <h5 className="text-center">📌 Learner Overview</h5>
             <Bar data={barChartData} />
           </div>
         </div>
@@ -101,80 +118,97 @@ const Dashboard = () => {
         </div>
       </div>
       <div className="container mt-4">
-      <div className="row g-4">
-        {/* Total Leads */}
-        <div className="col-md-6">
-          <div className="card p-3 shadow-sm hover-effect">
-            <h5>Total Learner <span className="badge bg-primary">{data.leads}</span></h5>
-            <div className="mt-3">
-              <div className="d-flex align-items-center mb-2">
-                <div className="icon-box me-2"><i className="bi bi-briefcase-fill"></i></div>
-                <span>{data.organizations} Total organizations</span>
-              </div>
-              <div className="d-flex align-items-center mb-2">
-                <div className="icon-box me-2"><i className="bi bi-people-fill"></i></div>
-                <span>{data.people} People</span>
-              </div>
-              <div className="d-flex align-items-center">
-                <div className="icon-box me-2"><i className="bi bi-chat-dots-fill"></i></div>
-                <span>{data.participants} Total participants</span>
+        <div className="row g-4">
+          {/* Total Leads */}
+          <div className="col-md-6">
+            <div className="card p-3 shadow-sm hover-effect">
+              <h5>
+                Total Learner{" "}
+                <span className="badge bg-primary">{data.leads}</span>
+              </h5>
+              <div className="mt-3">
+                <div className="d-flex align-items-center mb-2">
+                  <div className="icon-box me-2">
+                    <i className="bi bi-briefcase-fill"></i>
+                  </div>
+                  <span>{data.organizations} Total organizations</span>
+                </div>
+                <div className="d-flex align-items-center mb-2">
+                  <div className="icon-box me-2">
+                    <i className="bi bi-people-fill"></i>
+                  </div>
+                  <span>{data.people} People</span>
+                </div>
+                <div className="d-flex align-items-center">
+                  <div className="icon-box me-2">
+                    <i className="bi bi-chat-dots-fill"></i>
+                  </div>
+                  <span>{data.participants} Total participants</span>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className="col-md-3 ">
-          <div className="card p-3 shadow-sm hover-effect h-100">
-            <h3>{data.sentProposals}</h3>
-            <br/>
-            <span>Total sent proposal</span>
+          <div className="col-md-3 ">
+            <div className="card p-3 shadow-sm hover-effect h-100">
+              <h3>{data.sentProposals}</h3>
+              <br />
+              <span>Total sent proposal</span>
+            </div>
           </div>
-        </div>
-        <div className="col-md-3">
-          <div className="card p-3 shadow-sm hover-effect h-100 ">
-            <h3>{data.acceptedProposals}</h3>
-            <br/>
-            <span>Total accepted proposal</span>
+          <div className="col-md-3">
+            <div className="card p-3 shadow-sm hover-effect h-100 ">
+              <h3>{data.acceptedProposals}</h3>
+              <br />
+              <span>Total accepted proposal</span>
+            </div>
           </div>
-        </div>
-        {/* Total Employees */}
-        
+          {/* Total Employees */}
 
-        {/* Proposals */}
-        
-        <div className="col-md-6">
-          <div className="card p-3 shadow-sm hover-effect">
-            <h5>Total Employees <span className="badge bg-primary">{data.employees}</span></h5>
-            <div className="mt-3">
-              <div className="d-flex align-items-center mb-2">
-                <div className="icon-box me-2"><i className="bi bi-person-badge-fill"></i></div>
-                <span>{data.owner} Work as owner</span>
-              </div>
-              <div className="d-flex align-items-center mb-2">
-                <div className="icon-box me-2"><i className="bi bi-person-plus-fill"></i></div>
-                <span>{data.collaborator} Work as collaborator</span>
-              </div>
-              <div className="d-flex align-items-center">
-                <div className="icon-box me-2"><i className="bi bi-people-fill"></i></div>
-                <span>{data.both} Work as both owner and collaborator</span>
+          {/* Proposals */}
+
+          <div className="col-md-6">
+            <div className="card p-3 shadow-sm hover-effect">
+              <h5>
+                Total Employees{" "}
+                <span className="badge bg-primary">{data.employees}</span>
+              </h5>
+              <div className="mt-3">
+                <div className="d-flex align-items-center mb-2">
+                  <div className="icon-box me-2">
+                    <i className="bi bi-person-badge-fill"></i>
+                  </div>
+                  <span>{data.owner} Work as owner</span>
+                </div>
+                <div className="d-flex align-items-center mb-2">
+                  <div className="icon-box me-2">
+                    <i className="bi bi-person-plus-fill"></i>
+                  </div>
+                  <span>{data.collaborator} Work as collaborator</span>
+                </div>
+                <div className="d-flex align-items-center">
+                  <div className="icon-box me-2">
+                    <i className="bi bi-people-fill"></i>
+                  </div>
+                  <span>{data.both} Work as both owner and collaborator</span>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        {/* Progress Charts */}
-        <div className="col-md-3 ">
-          <div className="card p-3 shadow-sm hover-effect text-center">
-            <Doughnut data={doughnutData(data.sendingRate)} />
-            <p className="mt-2">Sending rate</p>
+          {/* Progress Charts */}
+          <div className="col-md-3 ">
+            <div className="card p-3 shadow-sm hover-effect text-center">
+              <Doughnut data={doughnutData(data.sendingRate)} />
+              <p className="mt-2">Sending rate</p>
+            </div>
           </div>
-        </div>
-        <div className="col-md-3 ">
-          <div className="card p-3 shadow-sm hover-effect text-center">
-            <Doughnut data={doughnutData(data.acceptanceRate)} />
-            <p className="mt-2">Acceptance rate</p>
+          <div className="col-md-3 ">
+            <div className="card p-3 shadow-sm hover-effect text-center">
+              <Doughnut data={doughnutData(data.acceptanceRate)} />
+              <p className="mt-2">Acceptance rate</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
     </div>
   );
 };

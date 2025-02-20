@@ -18,7 +18,7 @@ const TaskCalendarManagement = () => {
   };
 
   return (
-    <div className="container mt-4" style={{marginRight:"35px"}}>
+    <div className="container mt-4"  >
       <FullCalendar
         plugins={[dayGridPlugin, interactionPlugin]}
         initialView="dayGridMonth"

@@ -119,8 +119,12 @@ const StudentDetails = () => {
       student.rollNo.toLowerCase().includes(searchQuery.toLowerCase()) ||
       student.admissionNo.toString().includes(searchQuery);
 
-    const matchesClass = selectedClass ? student.class.includes(selectedClass) : true;
-    const matchesSection = selectedSection ? student.class.includes(`(${selectedSection})`) : true;
+    const matchesClass = selectedClass
+      ? student.class.includes(selectedClass)
+      : true;
+    const matchesSection = selectedSection
+      ? student.class.includes(`(${selectedSection})`)
+      : true;
 
     return matchesSearchQuery && matchesClass && matchesSection;
   });
@@ -135,8 +139,8 @@ const StudentDetails = () => {
   const handleClose = () => setShow(false);
 
   return (
-    <div className="container mt-5 pt-4" style={{marginRight:"35px"}}>
-      <h5>Select Criteria</h5>
+    <div className="container pt-3">
+      <h4 className="fw-bold mb-4">Select Criteria</h4>
       <div className="row g-2 align-items-center">
         <div className="col-md-3">
           <label className="form-label">
@@ -208,8 +212,8 @@ const StudentDetails = () => {
       />
 
       <div className="table-responsive">
-        <table className="table table-striped table-bordered">
-          <thead className="table-light">
+        <table className="table table-striped table-bordered text-center">
+          <thead className="table-light text-nowrap">
             <tr>
               <th>Student Name</th>
               <th>Admission No</th>
@@ -225,8 +229,8 @@ const StudentDetails = () => {
           </thead>
           <tbody>
             {filteredStudents.map((student, index) => (
-              <tr key={index}>
-                <td className="text-center">
+              <tr key={index} className="text-nowrap">
+                <td>
                   <Link
                     to={{
                       pathname: `/studentProfile/${student.admissionNo}`,
@@ -253,7 +257,6 @@ const StudentDetails = () => {
                     ☰
                   </button>
                   <button className="btn btn-light btn-sm me-1">✎</button>
-                  <button className="btn btn-light btn-sm">$</button>
                 </td>
               </tr>
             ))}
@@ -263,12 +266,21 @@ const StudentDetails = () => {
 
       {/* Modal for student details (if needed) */}
       {selectedStudent && (
-        <div className={`modal ${show ? "show" : ""}`} style={{ display: show ? "block" : "none" }}>
+        <div
+          className={`modal ${show ? "show" : ""}`}
+          style={{ display: show ? "block" : "none" }}
+        >
           <div className="modal-dialog">
             <div className="modal-content">
               <div className="modal-header">
-                <h5 className="modal-title">{selectedStudent.name}'s Details</h5>
-                <button type="button" className="btn-close" onClick={handleClose}></button>
+                <h5 className="modal-title">
+                  {selectedStudent.name}'s Details
+                </h5>
+                <button
+                  type="button"
+                  className="btn-close"
+                  onClick={handleClose}
+                ></button>
               </div>
               <div className="modal-body">
                 <p>Admission No: {selectedStudent.admissionNo}</p>
@@ -281,7 +293,11 @@ const StudentDetails = () => {
                 <p>Mobile: {selectedStudent.mobile}</p>
               </div>
               <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" onClick={handleClose}>
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  onClick={handleClose}
+                >
                   Close
                 </button>
               </div>

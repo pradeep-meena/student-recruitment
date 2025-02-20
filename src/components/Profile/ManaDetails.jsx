@@ -48,8 +48,8 @@ function ManaDetails() {
   ];
 
   return (
-    <div className="container mt-3" style={{marginRight:"35px"}}>
-      <h5>Select Criteria</h5>
+    <div className="container pt-3">
+      <h4 className="fw-bold mb-4">Select Criteria</h4>
       <div className="row g-2 align-items-center">
         <div className="col-md-3">
           <label className="form-label">
@@ -87,7 +87,7 @@ function ManaDetails() {
         </div>
       </div>
 
-      <ul className="nav nav-tabs">
+      <ul className="nav nav-tabs mt-4">
         <li className="nav-item">
           <Link className="nav-link active" to="/studentDetails">
             List View
@@ -138,15 +138,7 @@ function ManaDetails() {
                       <strong>Gender:</strong> {student.gender}
                     </p>
                   </div>
-                  <Button
-                    variant="info"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleShow(student);
-                    }}
-                  >
-                    View Details
-                  </Button>
+                  <Button variant="info">View Details</Button>
                 </Card.Body>
               </Card>
             </Link>

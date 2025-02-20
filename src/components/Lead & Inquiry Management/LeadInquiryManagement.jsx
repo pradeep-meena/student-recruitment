@@ -23,7 +23,7 @@ const LeadInquiryManagement = () => {
   };
 
   return (
-    <div className="container py-5" style={{marginRight:"35px"}}>
+    <div className="container py-5"  >
       <div className="bg-white p-5 shadow-sm rounded-3">
         {/* Header Section */}
         <div className="d-flex justify-content-between align-items-center mb-4">
