@@ -62,7 +62,7 @@ const AdmissionTracking = () => {
   };
 
   return (
-    <div className="container mt-5">
+    <div className="container mt-5" style={{marginRight:"35px"}}> 
       <h2 className="mb-4">Admission Form</h2>
       <form onSubmit={handleSubmit}>
         {/* Personal Information */}

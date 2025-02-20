@@ -164,7 +164,7 @@ const Payments = () => {
   };
 
   return (
-    <Container>
+    <Container style={{marginRight:"35px"}}>
       <div className="d-flex justify-content-between align-items-center mb-4">
         <h2>Payment Management</h2>
         <Button variant="primary" onClick={handleAddNew}>

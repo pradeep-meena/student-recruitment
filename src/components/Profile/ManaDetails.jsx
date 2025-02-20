@@ -48,7 +48,7 @@ function ManaDetails() {
   ];
 
   return (
-    <div className="container mt-3">
+    <div className="container mt-3" style={{marginRight:"35px"}}>
       <h5>Select Criteria</h5>
       <div className="row g-2 align-items-center">
         <div className="col-md-3">

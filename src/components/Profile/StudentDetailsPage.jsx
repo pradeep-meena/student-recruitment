@@ -17,7 +17,7 @@ const students = [
     admissionNo: 1020,
     name: "Marlie",
     rollNo: "0204",
-    class: "Class 1(A)",
+    class: "Class 1(B)",
     fatherName: "Lester",
     dob: "05/22/2019",
     gender: "Female",
@@ -28,7 +28,7 @@ const students = [
     admissionNo: 120036,
     name: "Ayan Desai",
     rollNo: "23620",
-    class: "Class 1(A)",
+    class: "Class 1(C)",
     fatherName: "Abhinand",
     dob: "10/15/2015",
     gender: "Male",
@@ -39,7 +39,7 @@ const students = [
     admissionNo: 2152,
     name: "Kaylen",
     rollNo: "0205",
-    class: "Class 1(A)",
+    class: "Class 2(A)",
     fatherName: "Lyndon",
     dob: "06/19/2019",
     gender: "Female",
@@ -50,7 +50,7 @@ const students = [
     admissionNo: 7663,
     name: "Paul S. Bealer",
     rollNo: "6230",
-    class: "Class 1(A)",
+    class: "Class 2(B)",
     fatherName: "McMahon",
     dob: "08/13/2005",
     gender: "Male",
@@ -61,7 +61,40 @@ const students = [
     admissionNo: 96302,
     name: "Jacob Bethell",
     rollNo: "221002",
-    class: "Class 1(A)",
+    class: "Class 2(C)",
+    fatherName: "Brydon",
+    dob: "08/19/2016",
+    gender: "Male",
+    category: "General",
+    mobile: "065758878",
+  },
+  {
+    admissionNo: 96302,
+    name: "Jacob Bethell",
+    rollNo: "221002",
+    class: "Class 3(A)",
+    fatherName: "Brydon",
+    dob: "08/19/2016",
+    gender: "Male",
+    category: "General",
+    mobile: "065758878",
+  },
+  {
+    admissionNo: 96302,
+    name: "Jacob Bethell",
+    rollNo: "221002",
+    class: "Class 3(B)",
+    fatherName: "Brydon",
+    dob: "08/19/2016",
+    gender: "Male",
+    category: "General",
+    mobile: "065758878",
+  },
+  {
+    admissionNo: 96302,
+    name: "Jacob Bethell",
+    rollNo: "221002",
+    class: "Class 3(C)",
     fatherName: "Brydon",
     dob: "08/19/2016",
     gender: "Male",
@@ -89,7 +122,7 @@ function StudentDetailsPage() {
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         rel="stylesheet"
       />
-      <div className="container">
+      <div className="container" style={{marginRight:"35px"}}>
         <div className="details-container">
           <div className="row">
             <div className="col-md-4 text-center">
@@ -115,12 +148,12 @@ function StudentDetailsPage() {
                     </td>
                     <td>{selectedStudent.class}</td>
                   </tr>
-                  <tr>
+                  {/* <tr>
                     <td>
                       <strong>Section:</strong>
                     </td>
                     <td>B</td>
-                  </tr>
+                  </tr> */}
                   <tr>
                     <td>
                       <strong>RTE:</strong>

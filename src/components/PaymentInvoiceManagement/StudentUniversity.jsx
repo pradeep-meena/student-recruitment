@@ -104,6 +104,7 @@ function StudentUniversity() {
         backgroundColor: "#f8f9fa",
         padding: "20px",
         borderRadius: "10px",
+        marginRight:"35px"
       }}
     >
       <div className="container mt-4">

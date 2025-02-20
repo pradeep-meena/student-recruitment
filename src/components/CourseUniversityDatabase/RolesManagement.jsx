@@ -37,7 +37,7 @@ const RolesManagement = () => {
   );
 
   return (
-    <Container className="p-4">
+    <Container className="p-4" style={{marginRight:"35px"}}>
       <Row>
         {/* Left Side - Role Form */}
         <Col md={4} sm={12} className="mb-3">

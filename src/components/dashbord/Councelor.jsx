@@ -51,7 +51,7 @@ const CounselorDashboard = () => {
   };
 
   return (
-    <Container className="mt-4">
+    <Container className="mt-4" style={{marginRight:"35px"}}>
       <Row className="mb-4">
         <Col md={3}>
           <Card className="p-4 text-center shadow-lg bg-light">

@@ -116,7 +116,7 @@ const Inquriy = () => {
   };
 
   return (
-    <div className="container p-3">
+    <div className="container p-3" style={{marginRight:"35px"}}>
       <h4 className="fw-bold">Admission Enquiry</h4>
       <nav aria-label="breadcrumb">
         <ol className="breadcrumb">

@@ -36,7 +36,7 @@ const Profile = () => {
     },
   ];
   return (
-    <div className="container p-5 mt-5">
+    <div className="container p-5 mt-5" style={{marginRight:"35px"}}>
       <table className="table table-striped">
         <thead>
           <tr>

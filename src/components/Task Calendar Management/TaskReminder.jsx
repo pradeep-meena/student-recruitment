@@ -33,7 +33,7 @@ const TaskReminders = ({ tasks }) => {
   };
 
   return (
-    <div className="container p-3 mt-3">
+    <div className="container p-3 mt-3" style={{marginRight:"35px"}}>
       <h4>Task Reminders</h4>
       <p>Get notified for upcoming tasks.</p>
 

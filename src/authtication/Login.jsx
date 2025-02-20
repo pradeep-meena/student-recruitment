@@ -11,197 +11,98 @@ const Login = ({
   handleCounselor,
 }) => {
   const [showSignUp, setShowSignUp] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const toggleForm = () => {
     setShowSignUp(!showSignUp);
   };
 
-  console.log(login);
+  const handleLogin = (e) => {
+    e.preventDefault();
+    console.log("Login with:", email, password);
+    navigate("/dashboard"); // Redirect after login
+  };
+
   return (
-    <>
-      <main>
-        <div className="login-container justify-content-center border p-4">
-          <h1 className="fw-bold" style={{ color: "rgb(38, 29, 167)" }}>
-            Student RECRUITMENT
-          </h1>
-          <h4 className="text-center mb-5">Welcome!</h4>
+    <main className="justify-content-center align-items-center" >
+      <div className="login-container border rounded shadow " style={{marginLeft:"-20px"}} >
+        <h1 className="fw-bold text-center text-primary">Student RECRUITMENT</h1>
+        <h4 className="text-center mb-4">{showSignUp ? "Sign Up" : "Welcome!"}</h4>
 
-          {!showSignUp ? (
-            // Login Form
-            <form>
-              <div className="mb-3">
-                <input
-                  type="email"
-                  className="form-control p-3"
-                  placeholder="Email"
-                  required=""
-                  style={{ color: "#578e7e" }}
-                />
-              </div>
-              <div className="mb-3 mt-3">
-                <input
-                  type="password"
-                  className="form-control p-3"
-                  placeholder="Password"
-                  required=""
-                  style={{ color: "#578e7e" }}
-                />
-              </div>
-              <div className="d-flex justify-content-end mb-4">
-                <a href="#" className="text-decoration-none text-secondary">
-                  Forgot Password?
-                </a>
-              </div>
-              <div className="d-flex" style={{ justifyContent: "center" }}>
-                <Link style={{ color: "white" }} to="/dashboard">
-                  <button
-                    type="submit"
-                    className="px-4 py-2 ms-1 shadow text-white border border-primary"
-                    style={{ backgroundColor: "rgb(38, 29, 167)" }}
-                  >
-                    Login
-                  </button>
-                </Link>
-                <button
-                  type="button"
-                  onClick={toggleForm}
-                  className="px-4 py-2 ms-4 border border-primary"
-                >
-                  Sign Up
-                </button>
-              </div>
+        {!showSignUp ? (
+          // Login Form
+          <form onSubmit={handleLogin}>
+            <div className="mb-3">
+              <input
+                type="email"
+                className="form-control"
+                placeholder="Email Address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <input
+                type="password"
+                className="form-control"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
+            <button type="submit" className="btn btn-primary w-100">Login</button>
+          </form>
+        ) : (
+          // Signup Form
+          <form>
+            <div className="mb-3">
+              <input type="text" className="form-control" placeholder="Full Name" required />
+            </div>
+            <div className="mb-3">
+              <input type="email" className="form-control" placeholder="Email Address" required />
+            </div>
+            <div className="mb-3">
+              <input type="password" className="form-control" placeholder="Create Password" required />
+            </div>
+            <button type="submit" className="btn btn-success w-100">Sign Up</button>
+          </form>
+        )}
 
-              {/* Additional Buttons */}
-              <div className="d-flex align-items-center justify-content-center  mt-4 gap-2">
-                <Link to={"/dashboard"} className="text-decoration-none">
-                  <button
-                    className="btn btn-outline-success w-100 mb-3 d-flex align-items-center justify-content-center"
-                    style={{ height: "50px" }}
-                    onClick={() => handleAdmin()}
-                  >
-                    <FaUserShield className="me-2" /> Admin
-                  </button>
-                </Link>
-                <Link to={"/councelor"} className="text-decoration-none">
-                  <button
-                    className="btn btn-outline-danger w-100 mb-3 d-flex align-items-center justify-content-center"
-                    style={{ height: "50px" }}
-                    onClick={() => handleCounselor()}
-                  >
-                    <FaUserTie className="me-2" /> Counsellor
-                  </button>
-                </Link>
-                <Link to={"/studentProfile"} className="text-decoration-none">
-                  <button
-                    className="btn btn-outline-primary  mb-3 d-flex align-items-center justify-content-center"
-                    style={{ height: "50px",  width:"140px" }}
-                    onClick={() => handleStudent()}
-                  >
-                    <FaUserGraduate className="me-2" /> Student
-                  </button>
-                </Link>
-              </div>
-            </form>
-          ) : (
-            // Sign-Up Form
-            <form className="signup-form">
-              <div className="form-row">
-                <input
-                  type="text"
-                  placeholder="First Name *"
-                  className="form-input"
-                />
-                <input
-                  type="text"
-                  placeholder="Last Name *"
-                  className="form-input"
-                />
-              </div>
-              <div className="form-row">
-                <input
-                  type="email"
-                  placeholder="Email *"
-                  className="form-input"
-                />
-                <input
-                  type="text"
-                  placeholder="Phone Number *"
-                  className="form-input"
-                />
-              </div>
-              <div className="form-row">
-                <select className="form-input">
-                  <option value="" disabled selected>
-                    Gender *
-                  </option>
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
-                  <option value="other">Other</option>
-                </select>
-                <input
-                  type="text"
-                  placeholder="City *"
-                  className="form-input "
-                />
-              </div>
-              <div className="form-row ">
-                <input
-                  type="text"
-                  placeholder="State *"
-                  className="form-input "
-                />
-                <input
-                  type="text"
-                  placeholder="Country *"
-                  className="form-input"
-                />
-              </div>
-              <div className="form-row">
-                <select className="form-input">
-                  <option value="" disabled selected>
-                    User Type *
-                  </option>
-                  <option value="admin">Admin</option>
-                  <option value="user">User</option>
-                </select>
-                <input
-                  type="password"
-                  placeholder="Password *"
-                  className="form-input"
-                />
-              </div>
-              <div className="form-row ">
-                <input
-                  type="password"
-                  placeholder="Confirm Password *"
-                  className="form-input"
-                />
-              </div>
-              <div className="d-flex" style={{ justifyContent: "center" }}>
-                <button
-                  type="submit"
-                  className="px-4 py-2 ms-1 btn-primary shadow"
-                  style={{ border: "none" }}
-                >
-                  Sign Up
-                </button>
-                <button
-                  type="button"
-                  onClick={toggleForm}
-                  className="px-4 py-2 ms-4 "
-                  style={{
-                    border: "2px solid rgb(38, 29, 167)",
-                    color: "rgb(38, 29, 167)",
-                  }}
-                >
-                  Login
-                </button>
-              </div>
-            </form>
-          )}
+        {/* Role Selection */}
+        <div className="mt-4 text-center">
+          <h6>Select Role:</h6>
+          <div className="d-flex justify-content-center gap-3">
+            <button className="btn btn-outline-primary" onClick={handleAdmin}>
+              <FaUserShield size={20} className="me-2" /> Admin
+            </button>
+            <button className="btn btn-outline-success" onClick={handleStudent}>
+              <FaUserGraduate size={20} className="me-2" /> Student
+            </button>
+            <button className="btn btn-outline-warning" onClick={handleCounselor}>
+              <FaUserTie size={20} className="me-2" /> Counselor
+            </button>
+          </div>
         </div>
-      </main>
-    </>
+
+        {/* Toggle between Login & Signup */}
+        <div className="mt-4 text-center">
+          <p>
+            {showSignUp ? "Already have an account?" : "Don't have an account?"}{" "}
+            <span className="text-primary cursor-pointer" onClick={toggleForm} style={{ cursor: "pointer" }}>
+              {showSignUp ? "Login" : "Sign Up"}
+            </span>
+          </p>
+        </div>
+
+        <div className="text-center mt-3">
+          <Link to="/forgot-password" className="text-secondary">Forgot Password?</Link>
+        </div>
+      </div>
+    </main>
   );
 };
 

@@ -6,6 +6,8 @@ const StudentDetails = () => {
   const [show, setShow] = useState(false); // State for modal visibility
   const [selectedStudent, setSelectedStudent] = useState(null); // State for selected student
   const [searchQuery, setSearchQuery] = useState(""); // State for search query
+  const [selectedClass, setSelectedClass] = useState(""); // State for selected class
+  const [selectedSection, setSelectedSection] = useState(""); // State for selected section
 
   // Sample student data
   const students = [
@@ -24,7 +26,7 @@ const StudentDetails = () => {
       admissionNo: 1020,
       name: "Marlie",
       rollNo: "0204",
-      class: "Class 1(A)",
+      class: "Class 1(B)",
       fatherName: "Lester",
       dob: "05/22/2019",
       gender: "Female",
@@ -35,7 +37,7 @@ const StudentDetails = () => {
       admissionNo: 120036,
       name: "Ayan Desai",
       rollNo: "23620",
-      class: "Class 1(A)",
+      class: "Class 1(C)",
       fatherName: "Abhinand",
       dob: "10/15/2015",
       gender: "Male",
@@ -46,7 +48,7 @@ const StudentDetails = () => {
       admissionNo: 2152,
       name: "Kaylen",
       rollNo: "0205",
-      class: "Class 1(A)",
+      class: "Class 2(A)",
       fatherName: "Lyndon",
       dob: "06/19/2019",
       gender: "Female",
@@ -57,7 +59,7 @@ const StudentDetails = () => {
       admissionNo: 7663,
       name: "Paul S. Bealer",
       rollNo: "6230",
-      class: "Class 1(A)",
+      class: "Class 2(B)",
       fatherName: "McMahon",
       dob: "08/13/2005",
       gender: "Male",
@@ -68,7 +70,40 @@ const StudentDetails = () => {
       admissionNo: 96302,
       name: "Jacob Bethell",
       rollNo: "221002",
-      class: "Class 1(A)",
+      class: "Class 2(C)",
+      fatherName: "Brydon",
+      dob: "08/19/2016",
+      gender: "Male",
+      category: "General",
+      mobile: "065758878",
+    },
+    {
+      admissionNo: 96302,
+      name: "Jacob Bethell",
+      rollNo: "221002",
+      class: "Class 3(A)",
+      fatherName: "Brydon",
+      dob: "08/19/2016",
+      gender: "Male",
+      category: "General",
+      mobile: "065758878",
+    },
+    {
+      admissionNo: 96302,
+      name: "Jacob Bethell",
+      rollNo: "221002",
+      class: "Class 3(B)",
+      fatherName: "Brydon",
+      dob: "08/19/2016",
+      gender: "Male",
+      category: "General",
+      mobile: "065758878",
+    },
+    {
+      admissionNo: 96302,
+      name: "Jacob Bethell",
+      rollNo: "221002",
+      class: "Class 3(C)",
       fatherName: "Brydon",
       dob: "08/19/2016",
       gender: "Male",
@@ -78,11 +113,17 @@ const StudentDetails = () => {
   ];
 
   // Function to handle search
-  const filteredStudents = students.filter((student) =>
-    student.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    student.rollNo.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    student.admissionNo.toString().includes(searchQuery)
-  );
+  const filteredStudents = students.filter((student) => {
+    const matchesSearchQuery =
+      student.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      student.rollNo.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      student.admissionNo.toString().includes(searchQuery);
+
+    const matchesClass = selectedClass ? student.class.includes(selectedClass) : true;
+    const matchesSection = selectedSection ? student.class.includes(`(${selectedSection})`) : true;
+
+    return matchesSearchQuery && matchesClass && matchesSection;
+  });
 
   // Function to handle modal show
   const handleShow = (student) => {
@@ -94,14 +135,19 @@ const StudentDetails = () => {
   const handleClose = () => setShow(false);
 
   return (
-    <div className="container mt-5 pt-4"> {/* Added padding-top to avoid navbar overlap */}
+    <div className="container mt-5 pt-4" style={{marginRight:"35px"}}>
       <h5>Select Criteria</h5>
       <div className="row g-2 align-items-center">
         <div className="col-md-3">
           <label className="form-label">
             Class <span className="text-danger">*</span>
           </label>
-          <select className="form-select">
+          <select
+            className="form-select"
+            value={selectedClass}
+            onChange={(e) => setSelectedClass(e.target.value)}
+          >
+            <option value="">All Classes</option>
             <option>Class 1</option>
             <option>Class 2</option>
             <option>Class 3</option>
@@ -110,7 +156,12 @@ const StudentDetails = () => {
 
         <div className="col-md-3">
           <label className="form-label">Section</label>
-          <select className="form-select">
+          <select
+            className="form-select"
+            value={selectedSection}
+            onChange={(e) => setSelectedSection(e.target.value)}
+          >
+            <option value="">All Sections</option>
             <option>A</option>
             <option>B</option>
             <option>C</option>

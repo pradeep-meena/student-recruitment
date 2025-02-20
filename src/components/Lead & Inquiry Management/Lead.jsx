@@ -159,7 +159,7 @@ const Lead = () => {
     ...new Set(initialData.flatMap((item) => item.learner.split(", "))),
   ];
   return (
-    <div className="container p-3">
+    <div className="container p-3" style={{marginRight:"35px"}}>
       <h4 className="fw-bold">Manage Leads - Plan</h4>
 
       <div className="d-flex justify-content-between align-items-center flex-wrap">
