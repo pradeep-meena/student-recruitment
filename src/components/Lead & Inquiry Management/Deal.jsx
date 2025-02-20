@@ -145,7 +145,7 @@ const Deal = () => {
 
   return (
     <>
-      <div className="container p-3">
+      <div className="container p-3" style={{marginRight:"35px"}}>
         <h4 className="fw-bold">Manage Deals - Plan</h4>
         <div className="d-flex justify-content-between align-items-center flex-wrap">
           <nav aria-label="breadcrumb">

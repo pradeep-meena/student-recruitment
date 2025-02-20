@@ -278,7 +278,7 @@ const Contract = () => {
   };
 
   return (
-    <div className="container p-3">
+    <div className="container p-3" style={{marginRight:"35px"}}>
       {/* Breadcrumb Navigation */}
       <h4 className="fw-bold">Contact</h4>
       <nav aria-label="breadcrumb">

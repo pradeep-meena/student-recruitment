@@ -69,7 +69,7 @@ const UniversitySubmissions = () => {
   };
 
   return (
-    <Container className="mt-4">
+    <Container className="mt-4" style={{marginRight:"35px"}}>
       <h2 className="mb-3">University Submissions</h2>
 
       {/* Search & Filter Controls */}

@@ -10,6 +10,7 @@ const EmailModal = () => {
       tabIndex="-1"
       aria-labelledby="emailModalLabel"
       aria-hidden="true"
+      marginRight="35px"
     >
       <div className="modal-dialog">
         <div className="modal-content">

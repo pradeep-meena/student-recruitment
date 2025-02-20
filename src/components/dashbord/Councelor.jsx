@@ -51,7 +51,7 @@ const CounselorDashboard = () => {
   };
 
   return (
-    <Container className="mt-4">
+    <Container className="mt-4" style={{marginRight:"35px"}}>
       <Row className="mb-4">
         <Col md={3}>
           <Card className="p-4 text-center shadow-lg bg-light">
@@ -79,17 +79,17 @@ const CounselorDashboard = () => {
         </Col>
       </Row>
 
-      <Row className="mb-4">
+      <Row className="mb-5">
         <Col md={6}>
-          <Card className="p-4 text-center shadow-lg">
+          <Card className="p-4 text-center shadow-lg" style={{height:"650px"}}>
             <h5>Lead Distribution</h5>
-            <Pie data={pieChartData} />
+            <Pie style={{height:"500px"}}  data={pieChartData} />
           </Card>
         </Col>
         <Col md={6}>
-          <Card className="p-4 text-center shadow-lg">
+          <Card className="p-4 text-center shadow-lg"style={{height:"650px"}}>
             <h5>Lead Status Overview</h5>
-            <Bar data={barChartData} />
+            <Bar style={{height:"500px"}} data={barChartData} />
           </Card>
         </Col>
         
