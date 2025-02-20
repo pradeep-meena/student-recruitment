@@ -41,7 +41,7 @@ const statistics = [
 const ProfileDetails = () => {
   const navigate = useNavigate();
   return (
-    <div className="container mt-4" style={{marginRight:"35px"}}>
+    <div className="container mt-4"  >
       {/* back button */}
       <div className="border-black d-flex justify-content-end">
         <button

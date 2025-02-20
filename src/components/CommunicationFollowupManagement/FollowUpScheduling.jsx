@@ -47,7 +47,7 @@ const FollowUpScheduling = () => {
   };
 
   return (
-    <Container className="mt-4" style={{marginRight:"35px"}}>
+    <Container className="mt-4"  >
       <h2>Follow-up Scheduling</h2>
       {status && <Alert variant="info">{status}</Alert>}
 

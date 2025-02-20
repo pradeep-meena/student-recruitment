@@ -122,7 +122,7 @@ function StudentDetailsPage() {
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         rel="stylesheet"
       />
-      <div className="container" style={{marginRight:"35px"}}>
+      <div className="container"  >
         <div className="details-container">
           <div className="row">
             <div className="col-md-4 text-center">

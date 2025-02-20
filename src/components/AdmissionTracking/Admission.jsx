@@ -143,7 +143,7 @@ function AdmissionTracking() {
   );
 
   return (
-    <div className="container mt-5" style={{marginRight:"35px"}}>
+    <div className="container mt-5"  >
       <h2 className="text-center mb-4">📋 Application & Admission Tracking</h2>
 
       {/* Search Input */}

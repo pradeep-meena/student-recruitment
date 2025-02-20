@@ -2,7 +2,7 @@ import React from "react";
 
 function UserRolesAccessControl() {
   return (
-    <div style={{marginRight:"35px"}}>
+    <div  >
       <>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,7 +14,7 @@ function UserRolesAccessControl() {
         />
         {/* Custom CSS */}
         <style dangerouslySetInnerHTML={{ __html: "\n   \n  " }} />
-        <div className="container mt-5" style={{marginRight:"35px"}}>
+        <div className="container mt-5"  >
           {/* Page Header */}
           <h2 className="mb-4">Users &amp; Roles Management</h2>
           {/* Action Buttons */}

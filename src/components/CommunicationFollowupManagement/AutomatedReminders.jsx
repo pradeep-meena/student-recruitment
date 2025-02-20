@@ -72,7 +72,7 @@ const AutomatedReminders = () => {
   };
 
   return (
-    <Container className="mt-4" style={{marginRight:"35px"}}>
+    <Container className="mt-4"  >
       <h2>Automated Reminders & Notifications</h2>
       {status && <Alert variant="info">{status}</Alert>}
 

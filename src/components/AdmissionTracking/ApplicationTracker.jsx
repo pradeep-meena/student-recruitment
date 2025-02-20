@@ -27,7 +27,7 @@ const ApplicationTracker = () => {
   };
 
   return (
-    <Container className="mt-4" style={{marginRight:"35px"}}>
+    <Container className="mt-4"  >
       <h2 className="mb-3">Application Tracker</h2>
 
       {/* Filter Dropdown */}

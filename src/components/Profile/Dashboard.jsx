@@ -70,7 +70,7 @@ const StudentProfile = () => {
   };
 
   return (
-    <div className="container mt-4" style={{marginRight:"35px"}}>
+    <div className="container mt-4"  >
       {/* Profile Card */}
       <Card className="shadow-lg p-4">
         <div className="d-flex align-items-center">

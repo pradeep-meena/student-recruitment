@@ -135,7 +135,7 @@ const StudentDetails = () => {
   const handleClose = () => setShow(false);
 
   return (
-    <div className="container mt-5 pt-4" style={{marginRight:"35px"}}>
+    <div className="container mt-5 pt-4"  >
       <h5>Select Criteria</h5>
       <div className="row g-2 align-items-center">
         <div className="col-md-3">

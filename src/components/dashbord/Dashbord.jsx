@@ -67,7 +67,7 @@ const Dashboard = () => {
  
 
   return (
-    <div className="container mt-5" style={{marginRight:"35px"}}> 
+    <div className="container mt-5" > 
       <h2 className="text-center mb-4">📊  Learner Recruitment Dashboard</h2>
 
       {/* Metrics Overview */}

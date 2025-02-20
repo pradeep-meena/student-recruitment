@@ -27,7 +27,7 @@ const ChatBox = () => {
   };
 
   return (
-    <div className="d-flex flex-column mt-4 vh-100 vw-99" style={{marginRight:"35px"}}>
+    <div className="d-flex flex-column mt-4 vh-100 vw-99"  >
       <div className="card shadow-lg border-0">
         {/* Header */}
         <div className="border p-2 shadow-lg d-flex justify-content-between">

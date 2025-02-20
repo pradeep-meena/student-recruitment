@@ -112,7 +112,7 @@ const Reports = () => {
   };
 
   return (
-    <Container className="mt-3" style={{marginRight:"35px"}}>
+    <Container className="mt-3"  >
       <div className="d-flex justify-content-between align-items-center mb-4">
         <h2>Reports & Analytics</h2>
         <div className="d-flex gap-3">
