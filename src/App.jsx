@@ -14,7 +14,6 @@ import StudentDetailsPage from "./components/Profile/StudentDetailsPage";
 import Lead from "./components/Lead & Inquiry Management/Lead";
 import Deal from "./components/Lead & Inquiry Management/Deal";
 import ProfileDetails from "./components/Profile/ProfileDetails";
-import Analytics from "./components/Lead & Inquiry Management/Analytics";
 import LeadInquiryManagement from "./components/Lead & Inquiry Management/LeadInquiryManagement";
 import StudentDetails from "./components/Profile/StudentDetails";
 import AdmissionTracking from "./components/AdmissionTracking/AdmissionTracking";
@@ -25,7 +24,6 @@ import ReportingAnalytics from "./components/ReportingAnalytics/ReportingAnalyti
 import UserRolesAccessControl from "./components/UserRolesAccessControl/UserRolesAccessControl";
 import CommunicationFollowupManagement from "./components/CommunicationFollowupManagement/CommunicationFollowupManagement";
 import Inquriy from "./components/Lead & Inquiry Management/Inquriy";
-import Quotes from "./components/Lead & Inquiry Management/Quotes";
 import ApplicationTracker from "./components/AdmissionTracking/ApplicationTracker";
 import DocumentUpload from "./components/AdmissionTracking/DocumentUpload";
 import UniversitySubmissions from "./components/AdmissionTracking/UniversitySubmissions";
@@ -42,6 +40,7 @@ import CourseUniversityDatabase from "./components/CourseUniversityDatabase/Cour
 import StudentProfile from "./components/Profile/Dashboard";
 import StudentUniversity from "./components/PaymentInvoiceManagement/StudentUniversity";
 import Councelor from "./components/dashbord/Councelor";
+import Home from "./authtication/Home";
 
 function App() {
   //show details to admin
@@ -86,7 +85,8 @@ function App() {
   };
   const location = useLocation();
 
-  const hideLayout = location.pathname === "/";
+  const hideLayout =
+    location.pathname === "/" || location.pathname === "/login";
   return (
     <>
       {/* navbar */}
@@ -110,9 +110,11 @@ function App() {
           }`}
         >
           <Routes>
+            <Route path="/" element={<Home></Home>}></Route>
+
             {/* login signup */}
             <Route
-              path="/"
+              path="/login"
               element={
                 <Login
                   login={login}
@@ -155,10 +157,6 @@ function App() {
             <Route path="/deal" element={<Deal></Deal>}></Route>
 
             <Route path="/contract" element={<Contract></Contract>}></Route>
-
-            <Route path="/analytics" element={<Analytics></Analytics>}></Route>
-
-            <Route path="/quotes" element={<Quotes></Quotes>}></Route>
 
             {/* student management */}
             <Route

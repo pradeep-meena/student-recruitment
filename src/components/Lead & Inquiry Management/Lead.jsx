@@ -1,6 +1,7 @@
 import { Dropdown, Button, Table, Modal, Form } from "react-bootstrap";
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Link } from "react-router-dom";
 
 const Lead = () => {
   const initialData = [
@@ -11,6 +12,7 @@ const Lead = () => {
       course: "it",
       learner: "Ravi, Rihan, Ram",
       leadsource: "Watsapp",
+      status: "Active",
     },
     {
       name: "Alexandria",
@@ -19,6 +21,7 @@ const Lead = () => {
       course: "it",
       learner: "Ravi, Rihan, Ram",
       leadsource: "Watsapp",
+      status: "Active",
     },
     {
       name: "Netpoints",
@@ -27,11 +30,13 @@ const Lead = () => {
       course: "it",
       learner: "Ravi, Rihan, Ram",
       leadsource: "Watsapp",
+      status: "Active",
     },
     {
       name: "Starburst",
       subject: "Starburst",
       stage: "Open",
+      status: "Active",
       course: "it",
       learner: "Ravi, Rihan, Ram",
       leadsource: "Watsapp",
@@ -42,10 +47,19 @@ const Lead = () => {
       stage: "Open",
       learner: "Ravi, Rihan, Ram",
       leadsource: "Watsapp",
+      status: "Active",
     },
   ];
 
   const [data, setData] = useState(initialData);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const filteredData = data.filter((item) =>
+    Object.values(item).some((value) =>
+      value.toString().toLowerCase().includes(searchQuery.toLowerCase())
+    )
+  );
+
   const [showLeadModal, setShowLeadModal] = useState(false); // State for Create/Edit Lead modal
   const [showLeadSourceModal, setShowLeadSourceModal] = useState(false); // State for Create Lead Source modal
   const [formData, setFormData] = useState({
@@ -54,6 +68,7 @@ const Lead = () => {
     name: "",
     stage: "",
     phone: "",
+    status: "",
     leadsource: "",
     learner: "",
   });
@@ -70,6 +85,7 @@ const Lead = () => {
       user: "",
       name: "",
       stage: "",
+      status: "",
       phone: "",
       leadsource: "",
       learner: "",
@@ -101,6 +117,7 @@ const Lead = () => {
       users: "", // Default users for new leads
       leadsource: formData.leadsource,
       learner: formData.learner,
+      status: formData.status,
     };
 
     if (editIndex !== null) {
@@ -118,6 +135,7 @@ const Lead = () => {
       user: "",
       name: "",
       stage: "",
+      status: "",
       phone: "",
       leadsource: "",
       learner: "",
@@ -150,6 +168,7 @@ const Lead = () => {
       phone: lead.phone, // You can set this if you have phone data in the lead
       leadsource: lead.leadsource,
       learner: lead.learner || "",
+      status: lead.status,
     });
     setEditIndex(index);
     handleShowLeadModal();
@@ -166,30 +185,28 @@ const Lead = () => {
         <nav aria-label="breadcrumb">
           <ol className="breadcrumb">
             <li className="breadcrumb-item">
-              <a href="/" className="text-success text-decoration-none">
+              <Link
+                to="/dashboard"
+                className="text-success text-decoration-none"
+              >
                 Home
-              </a>
+              </Link>
             </li>
-            <li className="breadcrumb-item active" aria-current="page">
-              Leads
-            </li>
+            <Link
+              to={"/deal"}
+              className="breadcrumb-item active text-decoration-none"
+              aria-current="page"
+            >
+              Deals
+            </Link>
           </ol>
         </nav>
-        <div className="d-flex gap-2">
-          <Dropdown>
-            <Dropdown.Toggle variant="light" className="border">
-              Plan
-            </Dropdown.Toggle>
-            <Dropdown.Menu>
-              <Dropdown.Item href="#">Basic</Dropdown.Item>
-              <Dropdown.Item href="#">Premium</Dropdown.Item>
-              <Dropdown.Item href="#">Enterprise</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-          <Button variant="outline-dark" onClick={handleShowLeadModal}>
-            + Add
-          </Button>
-        </div>
+        <Button
+          style={{ backgroundColor: "#0f3093a8", color: "black" }}
+          onClick={handleShowLeadModal}
+        >
+          + Add
+        </Button>
       </div>
       <br />
       <div className="d-flex justify-content-between align-items-center mb-3">
@@ -198,7 +215,13 @@ const Lead = () => {
           <option>20</option>
           <option>50</option>
         </Form.Select>
-        <Form.Control type="text" placeholder="Search..." className="w-25" />
+        <Form.Control
+          type="text"
+          placeholder="Search..."
+          className="w-25"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
       </div>
 
       <Table responsive bordered hover className="text-center">
@@ -209,11 +232,12 @@ const Lead = () => {
             <th>Stage</th>
             <th>Lead Source</th>
             <th>Learner</th>
+            <th>Status</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          {data.map((item, index) => (
+          {filteredData.map((item, index) => (
             <tr key={index}>
               <td>{item.name}</td>
               <td>{item.course}</td>
@@ -265,7 +289,7 @@ const Lead = () => {
                   </Dropdown.Menu>
                 </Dropdown>
               </td>
-
+              <td>{item.status}</td>
               <td className="text-nowrap">
                 <Button size="sm" className="btn btn-light btn-sm me-1">
                   👁️
@@ -423,6 +447,24 @@ const Lead = () => {
                         {source}
                       </option>
                     ))}
+                  </Form.Select>
+                </Form.Group>
+              </div>
+
+              <div className="col-md-6">
+                <Form.Group className="mb-3">
+                  <Form.Label>
+                    Status<span className="text-danger">*</span>
+                  </Form.Label>
+                  <Form.Select
+                    name="status"
+                    value={formData.status}
+                    onChange={handleChange}
+                    required
+                  >
+                    <option value="">Select Status</option>
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
                   </Form.Select>
                 </Form.Group>
               </div>
