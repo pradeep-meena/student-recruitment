@@ -7,7 +7,7 @@
   margin-top: 85px;
   z-index: 1;
   position: fixed;
-  background-color: #0f3093a8;
+  background-color:rgb(192, 191, 191);
   color: white;
  
 }
@@ -38,6 +38,7 @@
 
 .sidebar-container.collapsed {
   width: 80px;
+  
 }
 .sidebar-container.collapsed .submenu {
   display: none;
@@ -145,6 +146,8 @@
 @media (max-width: 820px) {
   .sidebar-container.collapsed {
     width: 0px;
+    z-index: 999;
+    position: absolute;
 
   }
 }

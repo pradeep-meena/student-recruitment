@@ -449,6 +449,8 @@ const Payments = () => {
               <Col md={6} sm={12}>
                 <Form.Group className="mb-3">
                   <Form.Label>Due Date</Form.Label>
+
+                  
                   <Form.Control
                     type="date"
                     name="dueDate"

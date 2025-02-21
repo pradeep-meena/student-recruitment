@@ -25,14 +25,15 @@ const Navbar = ({ toggleSidebar }) => {
           backgroundColor: "white",
           color: "black",
           width: "100%",
-          zIndex: 1000,
+        
+         
         }}
       >
-        <div className="container-fluid nav-conter">
+        <div className="container-fluid nav-conter" >
           <div className="nav-content">
             <div className="nav-bran">
               <img
-                src=".public/img/logo.png"
+                src="./public/img/logo.png"
                 alt="Logo"
                 height={"90px"}
                 width={"140px"}

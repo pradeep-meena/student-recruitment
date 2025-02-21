@@ -112,10 +112,18 @@ const Reports = () => {
   };
 
   return (
+<<<<<<< HEAD
     <Container className="p-3">
       <div className="d-flex justify-content-between align-items-center mb-4">
         <h4 className="mb-4 fw-bold">Reports & Analytics</h4>
         <div className="d-flex gap-3">
+=======
+    <Container className="mt-3">
+      {/* Header with Filters */}
+      <div className="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
+        <h2>Reports & Analytics</h2>
+        <div className="d-flex flex-wrap gap-3">
+>>>>>>> 2da771bc0fd9af13c33493bc32a5fbb4a421e782
           <Form.Select
             value={dateRange}
             onChange={(e) => setDateRange(e.target.value)}
@@ -135,14 +143,16 @@ const Reports = () => {
         </div>
       </div>
 
+      {/* Tabs for Different Reports */}
       <Tabs
         activeKey={activeTab}
         onSelect={(k) => setActiveTab(k)}
         className="mb-4"
       >
+        {/* Overview Tab */}
         <Tab eventKey="overview" title="Overview">
           <Row className="g-4 mb-4">
-            <Col md={3}>
+            <Col xs={12} md={6} lg={3}>
               <Card className="h-100">
                 <Card.Body>
                   <h6 className="text-muted">Total Inquiries</h6>
@@ -155,7 +165,7 @@ const Reports = () => {
                 </Card.Body>
               </Card>
             </Col>
-            <Col md={3}>
+            <Col xs={12} md={6} lg={3}>
               <Card className="h-100">
                 <Card.Body>
                   <h6 className="text-muted">Conversion Rate</h6>
@@ -168,7 +178,7 @@ const Reports = () => {
                 </Card.Body>
               </Card>
             </Col>
-            <Col md={3}>
+            <Col xs={12} md={6} lg={3}>
               <Card className="h-100">
                 <Card.Body>
                   <h6 className="text-muted">Active Applications</h6>
@@ -179,7 +189,7 @@ const Reports = () => {
                 </Card.Body>
               </Card>
             </Col>
-            <Col md={3}>
+            <Col xs={12} md={6} lg={3}>
               <Card className="h-100">
                 <Card.Body>
                   <h6 className="text-muted">Follow-up Completion</h6>
@@ -202,7 +212,11 @@ const Reports = () => {
           </Row>
 
           {/* <Row className="g-4">
+<<<<<<< HEAD
             <Col md={8}>
+=======
+            <Col xs={12} lg={8}>
+>>>>>>> 2da771bc0fd9af13c33493bc32a5fbb4a421e782
               <Card className="h-100">
                 <Card.Body>
                   <h5 className="mb-4">Inquiry Funnel Trends</h5>
@@ -222,7 +236,7 @@ const Reports = () => {
                 </Card.Body>
               </Card>
             </Col>
-            <Col md={4}>
+            <Col xs={12} lg={4}>
               <Card className="h-100">
                 <Card.Body>
                   <h5 className="mb-4">Lead Sources</h5>
@@ -245,9 +259,10 @@ const Reports = () => {
           </Row> */}
         </Tab>
 
+        {/* Counselor Performance Tab */}
         <Tab eventKey="counselors" title="Counselor Performance">
           <Row className="g-4">
-            <Col md={12}>
+            <Col xs={12}>
               <Card>
                 <Card.Body>
                   <h5 className="mb-4">Conversion Rate by Counselor</h5>
@@ -269,7 +284,7 @@ const Reports = () => {
           </Row>
 
           <Row className="mt-4">
-            <Col md={12}>
+            <Col xs={12}>
               <Card>
                 <Card.Body>
                   <div className="d-flex justify-content-between align-items-center mb-4">
@@ -315,9 +330,10 @@ const Reports = () => {
           </Row>
         </Tab>
 
+        {/* Application Trends Tab */}
         <Tab eventKey="trends" title="Application Trends">
           <Row className="g-4">
-            <Col md={12}>
+            <Col xs={12}>
               <Card>
                 <Card.Body>
                   <h5 className="mb-4">Popular Courses</h5>
@@ -339,7 +355,7 @@ const Reports = () => {
           </Row>
 
           <Row className="mt-4">
-            <Col md={12}>
+            <Col xs={12}>
               <Card>
                 <Card.Body>
                   <h5 className="mb-4">Application Pipeline</h5>
@@ -393,9 +409,10 @@ const Reports = () => {
           </Row>
         </Tab>
 
+        {/* Follow-up Analytics Tab */}
         <Tab eventKey="followups" title="Follow-up Analytics">
           <Row className="g-4">
-            <Col md={8}>
+            <Col xs={12} lg={8}>
               <Card>
                 <Card.Body>
                   <div className="d-flex justify-content-between align-items-center mb-4">
@@ -435,7 +452,7 @@ const Reports = () => {
                 </Card.Body>
               </Card>
             </Col>
-            <Col md={4}>
+            <Col xs={12} lg={4}>
               <Card className="h-100">
                 <Card.Body>
                   <h5 className="mb-4">Follow-up Completion</h5>

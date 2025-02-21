@@ -27,7 +27,7 @@ const Login = ({
 
   return (
     <main className="justify-content-center align-items-center" >
-      <div className="login-container border rounded shadow " style={{marginLeft:"-20px"}} >
+      <div className="login-container border rounded shadow " >
         <h1 className="fw-bold text-center text-primary">Student RECRUITMENT</h1>
         <h4 className="text-center mb-4">{showSignUp ? "Sign Up" : "Welcome!"}</h4>
 
@@ -75,7 +75,7 @@ const Login = ({
         {/* Role Selection */}
         <div className="mt-4 text-center">
           <h6>Select Role:</h6>
-          <div className="d-flex justify-content-center gap-3">
+          <div className="buttons d-flex justify-content-center gap-3">
             <button className="btn btn-outline-primary" onClick={handleAdmin}>
               <FaUserShield size={20} className="me-2" /> Admin
             </button>

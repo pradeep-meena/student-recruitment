@@ -145,6 +145,30 @@ const AdmissionTracking = () => {
                 required
               />
             </div>
+            <div className="col-md-6 mb-3">
+              <label htmlFor="address">Father Name</label>
+              <input
+                type="text"
+                className="form-control"
+                id="address"
+                name="address"
+                value={formData.address}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="col-md-6 mb-3">
+              <label htmlFor="address">Category</label>
+              <input
+                type="text"
+                className="form-control"
+                id="address"
+                name="address"
+                value={formData.address}
+                onChange={handleChange}
+                required
+              />
+            </div>
           </div>
         </div>
 
