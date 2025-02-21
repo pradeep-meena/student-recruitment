@@ -2,13 +2,14 @@ import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Table, Button, Form, Breadcrumb, Row, Col } from "react-bootstrap";
 import { Modal } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const Contract = () => {
   const [show, setShowModal] = useState(false);
   const [selectedContract, setSelectedContract] = useState(null);
 
   // State for contracts
-  const [contracts, setContracts] = useState([              
+  const [contracts, setContracts] = useState([
     {
       id: "CON00001",
       subject: "Software Development Contract",
@@ -119,7 +120,61 @@ const Contract = () => {
       endDate: "2024-03-23",
       description: "Agreement for marketing campaign execution.",
     },
-
+    {
+      id: "CON000039",
+      subject: "Marketing Campaign Project Agreement",
+      client: "Jennifer Ellison",
+      project: "Website Redesign",
+      contractType: "Planning",
+      value: "USD 5,000",
+      startDate: "2024-09-20",
+      endDate: "2024-03-23",
+      description: "Agreement for marketing campaign execution.",
+    },
+    {
+      id: "CON000039",
+      subject: "Marketing Campaign Project Agreement",
+      client: "Jennifer Ellison",
+      project: "Website Redesign",
+      contractType: "Planning",
+      value: "USD 5,000",
+      startDate: "2024-09-20",
+      endDate: "2024-03-23",
+      description: "Agreement for marketing campaign execution.",
+    },
+    {
+      id: "CON000039",
+      subject: "Marketing Campaign Project Agreement",
+      client: "Jennifer Ellison",
+      project: "Website Redesign",
+      contractType: "Planning",
+      value: "USD 5,000",
+      startDate: "2024-09-20",
+      endDate: "2024-03-23",
+      description: "Agreement for marketing campaign execution.",
+    },
+    {
+      id: "CON000039",
+      subject: "Marketing Campaign Project Agreement",
+      client: "Jennifer Ellison",
+      project: "Website Redesign",
+      contractType: "Planning",
+      value: "USD 5,000",
+      startDate: "2024-09-20",
+      endDate: "2024-03-23",
+      description: "Agreement for marketing campaign execution.",
+    },
+    {
+      id: "CON000039",
+      subject: "Marketing Campaign Project Agreement",
+      client: "Jennifer Ellison",
+      project: "Website Redesign",
+      contractType: "Planning",
+      value: "USD 5,000",
+      startDate: "2024-09-20",
+      endDate: "2024-03-23",
+      description: "Agreement for marketing campaign execution.",
+    },
   ]);
 
   const [contractData, setContractData] = useState({
@@ -132,6 +187,26 @@ const Contract = () => {
     endDate: "",
     description: "",
   });
+
+  //pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = contracts.slice(indexOfFirstItem, indexOfLastItem);
+
+  const nextPage = () => {
+    if (currentPage < Math.ceil(contracts.length / itemsPerPage)) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
 
   // Handle Input Change
   const handleChange = (e) => {
@@ -203,30 +278,41 @@ const Contract = () => {
   };
 
   return (
-    <div className="container "  >
+    <div className="container p-3"  >
       {/* Breadcrumb Navigation */}
       <h4 className="fw-bold">Contact</h4>
       <nav aria-label="breadcrumb">
         <ol className="breadcrumb">
           <li className="breadcrumb-item">
-            <a href="/" className="text-success text-decoration-none">
+            <Link to="/dashboard" className="text-success text-decoration-none">
               Home
-            </a>
+            </Link>
           </li>
-          <li className="breadcrumb-item active" aria-current="page">
-            Leads
-          </li>
+          <Link
+            to={"/inquiry"}
+            className="breadcrumb-item active text-decoration-none"
+            aria-current="page"
+          >
+            Inquiry
+          </Link>
         </ol>
       </nav>
       <Row className="mb-3">
-        <Form.Select className="w-auto">
+        <Form.Select
+          className="w-auto"
+          // value={entriesPerPage}
+          // onChange={(e) => setEntriesPerPage(Number(e.target.value))}
+        >
+          <option>5</option>
           <option>10</option>
           <option>20</option>
-          <option>50</option>
         </Form.Select>
 
         <Col className="text-end gap-2 w-100">
-          <Button  onClick={handleShow} style={{backgroundColor:" rgb(171, 171, 253)", color:"black"}}>
+          <Button
+            onClick={handleShow}
+            style={{ backgroundColor: "#0f3093a8", color: "black" }}
+          >
             + Add
           </Button>
         </Col>
@@ -234,9 +320,9 @@ const Contract = () => {
 
       {/* Table */}
       <Table striped bordered hover responsive>
-        <thead className="table-light text-nowrap">
+        <thead className="table-light text-nowrap text-center">
           <tr>
-            <th>#</th>
+            <th>ID</th>
             <th>SUBJECT</th>
             <th>LEARNER</th>
             <th>PROJECT</th>
@@ -249,7 +335,7 @@ const Contract = () => {
           </tr>
         </thead>
         <tbody>
-          {contracts.map((contract) => (
+          {currentItems.map((contract) => (
             <tr key={contract.id}>
               <td>
                 <span className="badge bg-success text-white">
@@ -287,6 +373,21 @@ const Contract = () => {
           ))}
         </tbody>
       </Table>
+
+      <div className="d-flex justify-content-between">
+        <Button onClick={prevPage} disabled={currentPage === 1}>
+          Previous
+        </Button>
+        <span>
+          Page {currentPage} of {Math.ceil(contracts.length / itemsPerPage)}
+        </span>
+        <Button
+          onClick={nextPage}
+          disabled={currentPage >= Math.ceil(contracts.length / itemsPerPage)}
+        >
+          Next
+        </Button>
+      </div>
 
       {/* Modal */}
       <Modal show={show} onHide={handleClose} centered>

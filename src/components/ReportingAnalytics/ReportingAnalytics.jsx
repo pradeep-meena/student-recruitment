@@ -164,9 +164,9 @@ const Payments = () => {
   };
 
   return (
-    <Container  >
+    <Container className="p-3">
       <div className="d-flex justify-content-between align-items-center mb-4">
-        <h2>Payment Management</h2>
+        <h4 className="fw-bold mb-4">Payment Management</h4>
         <Button variant="primary" onClick={handleAddNew}>
           <FaFileInvoice className="me-2" /> Create New Payment
         </Button>
@@ -449,6 +449,8 @@ const Payments = () => {
               <Col md={6} sm={12}>
                 <Form.Group className="mb-3">
                   <Form.Label>Due Date</Form.Label>
+
+                  
                   <Form.Control
                     type="date"
                     name="dueDate"

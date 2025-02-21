@@ -3,6 +3,7 @@ import { Table, FormControl, InputGroup } from "react-bootstrap";
 import { Card, Button, Row, Col, Dropdown } from "react-bootstrap";
 import { Modal, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Link } from "react-router-dom";
 
 const dealsData = [
   {
@@ -78,6 +79,13 @@ const Deal = () => {
   const [data, setData] = useState(initialData);
   const [editIndex, setEditIndex] = useState(null);
   const [showEditModal, setShowEditModal] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const filteredData = data.filter((item) =>
+    Object.values(item).some((value) =>
+      value.toString().toLowerCase().includes(searchQuery.toLowerCase())
+    )
+  );
 
   const handleShow = () => setShowModal(true);
   const handleClose = () => setShowModal(false);
@@ -143,30 +151,28 @@ const Deal = () => {
           <nav aria-label="breadcrumb">
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
-                <a href="/" className="text-success text-decoration-none">
+                <Link
+                  to="/dashboard"
+                  className="text-success text-decoration-none"
+                >
                   Home
-                </a>
+                </Link>
               </li>
-              <li className="breadcrumb-item active" aria-current="page">
-                Leads
-              </li>
+              <Link
+                to={"/contract"}
+                className="breadcrumb-item active text-decoration-none"
+                aria-current="page"
+              >
+                Contact
+              </Link>
             </ol>
           </nav>
-          <div className="d-flex gap-2">
-            <Dropdown>
-              <Dropdown.Toggle variant="light" className="border">
-                Plan
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                <Dropdown.Item href="#">Basic</Dropdown.Item>
-                <Dropdown.Item href="#">Premium</Dropdown.Item>
-                <Dropdown.Item href="#">Enterprise</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-            <Button variant="outline-dark" onClick={handleShow}>
-              + Add
-            </Button>
-          </div>
+          <Button
+            style={{ backgroundColor: "#0f3093a8", color: "black" }}
+            onClick={handleShow}
+          >
+            + Add
+          </Button>
         </div>
         <br />
         <Row className="mt-3">
@@ -185,7 +191,11 @@ const Deal = () => {
           ))}
         </Row>
         <InputGroup className="mb-3 w-50">
-          <FormControl placeholder="Search..." />
+          <FormControl
+            placeholder="Search..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
         </InputGroup>
 
         <Table responsive bordered hover className="table text-center">
@@ -200,7 +210,7 @@ const Deal = () => {
             </tr>
           </thead>
           <tbody>
-            {data.map((row, index) => (
+            {filteredData.map((row, index) => (
               <tr key={index}>
                 <td>{row.name}</td>
                 <td>{row.price}</td>

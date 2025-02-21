@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Modal, Button, Form } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 // Sample data for universities and programs
 const universities = [
@@ -211,9 +212,11 @@ function CourseUniversityDatabase() {
                     <td>{program.eligibility}</td>
                     <td>{program.fee}</td>
                     <td className="text-nowrap">
-                      <button className="btn btn-light btn-sm me-1">
-                        <i className="fa fa-paper-plane me-2"></i>
-                      </button>
+                      <Link to={"/admission"}>
+                        <button className="btn btn-light btn-sm me-1">
+                          <i className="fa fa-paper-plane me-2"></i>
+                        </button>
+                      </Link>
                       <button
                         className="btn btn-light btn-sm me-1"
                         onClick={() => handleDelete(uni.id, program.id)}

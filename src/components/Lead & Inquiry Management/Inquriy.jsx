@@ -1,6 +1,7 @@
 import { Dropdown, Button, Table, Modal, Form } from "react-bootstrap";
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Link } from "react-router-dom";
 
 const Inquriy = () => {
   const initialData = [
@@ -121,13 +122,17 @@ const Inquriy = () => {
       <nav aria-label="breadcrumb">
         <ol className="breadcrumb">
           <li className="breadcrumb-item">
-            <a href="/" className="text-success text-decoration-none">
+            <Link to="/dashboard" className="text-success text-decoration-none">
               Home
-            </a>
+            </Link>
           </li>
-          <li className="breadcrumb-item active" aria-current="page">
+          <Link
+            to={"/lead"}
+            className="breadcrumb-item active text-decoration-none"
+            aria-current="page"
+          >
             Leads
-          </li>
+          </Link>
         </ol>
       </nav>
       <div className="row g-2">
@@ -177,21 +182,12 @@ const Inquriy = () => {
           <option>20</option>
           <option>50</option>
         </Form.Select>
-        <div className="d-flex gap-2">
-          <Dropdown>
-            <Dropdown.Toggle variant="light" className="border">
-              Plan
-            </Dropdown.Toggle>
-            <Dropdown.Menu>
-              <Dropdown.Item href="#">Basic</Dropdown.Item>
-              <Dropdown.Item href="#">Premium</Dropdown.Item>
-              <Dropdown.Item href="#">Enterprise</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-          <Button variant="outline-dark" onClick={handleShow}>
-            + Add
-          </Button>
-        </div>
+        <Button
+          style={{ backgroundColor: "#0f3093a8", color: "black" }}
+          onClick={handleShow}
+        >
+          + Add
+        </Button>
       </div>
 
       <Table responsive bordered hover className="text-center">
@@ -346,7 +342,7 @@ const Inquriy = () => {
               <div className="col-md-6">
                 <Form.Group className="mb-3">
                   <Form.Label>
-                    Source<span className="text-danger">*</span>
+                    Status<span className="text-danger">*</span>
                   </Form.Label>
                   <Form.Select
                     name="status"

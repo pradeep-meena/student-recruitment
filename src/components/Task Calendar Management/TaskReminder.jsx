@@ -33,8 +33,8 @@ const TaskReminders = ({ tasks }) => {
   };
 
   return (
-    <div className="container p-3 mt-3"  >
-      <h4>Task Reminders</h4>
+    <div className="container p-3">
+      <h4 className="fw-bold mb-4">Task Reminders</h4>
       <p>Get notified for upcoming tasks.</p>
 
       <ul className="list-group">

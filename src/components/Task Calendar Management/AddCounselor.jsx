@@ -91,7 +91,7 @@ const AddCounselor = ({ onAdd }) => {
   return (
     <div className="container p-3"  >
       {/* Search input on the left and Add button on the right */}
-      <h2 className="mb-3">Add Counselor</h2>
+      <h4 className="fw-bold mb-4">Add Counselor</h4>
       <div className="row">
         <div className="col-md-6">
           <input

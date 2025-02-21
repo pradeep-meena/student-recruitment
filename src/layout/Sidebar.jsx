@@ -368,6 +368,17 @@ const Sidebar = ({ collapsed, menuItemClick, login, toggleSidebar }) => {
                   </li>
                   <li
                     className={`menu-item submenu-item ${
+                      isActive("/admission") ? "active" : ""
+                    }`}
+                    onClick={() => {
+                      navigate("/admission");
+                      menuItemClick();
+                    }}
+                  >
+                    Student Admission
+                  </li>
+                  <li
+                    className={`menu-item submenu-item ${
                       isActive("/communication") ? "active" : ""
                     }`}
                     onClick={() => {
@@ -426,6 +437,17 @@ const Sidebar = ({ collapsed, menuItemClick, login, toggleSidebar }) => {
                     }}
                   >
                     Student Details
+                  </li>
+                  <li
+                    className={`menu-item submenu-item ${
+                      isActive("/admission") ? "active" : ""
+                    }`}
+                    onClick={() => {
+                      navigate("/admission");
+                      menuItemClick();
+                    }}
+                  >
+                    Student Admission
                   </li>
                   <li
                     className={`menu-item submenu-item ${

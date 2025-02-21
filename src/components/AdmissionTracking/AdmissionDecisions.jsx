@@ -91,8 +91,8 @@ const AdmissionDecisions = () => {
   };
 
   return (
-    <Container className="mt-4"  >
-      <h2 className="mb-3">Admission Decisions</h2>
+    <Container className="p-3"  >
+      <h4 className="fw-bold mb-4">Admission Decisions</h4>
 
       {/* Search, Filter, and Sort Controls */}
       <Form className="mb-3">

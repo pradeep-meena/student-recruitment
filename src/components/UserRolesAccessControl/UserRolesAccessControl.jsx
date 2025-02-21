@@ -25,7 +25,7 @@ function UserRolesAccessControl() {
           {/* Users and Roles Section */}
           <div className="row">
             {/* Users List */}
-            <div className="col-md-6 mb-4 p-3 bg-light rounded-5 gap-3 ">
+            <div className=" mb-4 p-3 bg-light rounded-5 gap-3 ">
               <div className="user-list">
                 <div className="d-flex justify-content-between align-items-center mb-3">
                   <h4>Users</h4>

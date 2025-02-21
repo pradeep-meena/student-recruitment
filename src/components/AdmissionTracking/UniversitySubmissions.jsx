@@ -69,8 +69,8 @@ const UniversitySubmissions = () => {
   };
 
   return (
-    <Container className="mt-4"  >
-      <h2 className="mb-3">University Submissions</h2>
+    <Container className="p-3"  >
+      <h4 className="fw-bold mb-4">University Submissions</h4>
 
       {/* Search & Filter Controls */}
       <Form className="mb-3">

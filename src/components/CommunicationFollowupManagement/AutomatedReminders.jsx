@@ -72,8 +72,8 @@ const AutomatedReminders = () => {
   };
 
   return (
-    <Container className="mt-4"  >
-      <h2>Automated Reminders & Notifications</h2>
+    <Container className="p-3">
+      <h4 className="fw-bold mb-4">Automated Reminders & Notifications</h4>
       {status && <Alert variant="info">{status}</Alert>}
 
       <Form>
