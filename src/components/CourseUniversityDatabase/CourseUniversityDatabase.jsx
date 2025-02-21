@@ -112,9 +112,9 @@ const Reports = () => {
   };
 
   return (
-    <Container className="mt-3"  >
+    <Container className="p-3">
       <div className="d-flex justify-content-between align-items-center mb-4">
-        <h2>Reports & Analytics</h2>
+        <h4 className="mb-4 fw-bold">Reports & Analytics</h4>
         <div className="d-flex gap-3">
           <Form.Select
             value={dateRange}
@@ -201,7 +201,7 @@ const Reports = () => {
             </Col>
           </Row>
 
-          <Row className="g-4">
+          {/* <Row className="g-4">
             <Col md={8}>
               <Card className="h-100">
                 <Card.Body>
@@ -242,7 +242,7 @@ const Reports = () => {
                 </Card.Body>
               </Card>
             </Col>
-          </Row>
+          </Row> */}
         </Tab>
 
         <Tab eventKey="counselors" title="Counselor Performance">

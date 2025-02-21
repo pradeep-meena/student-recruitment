@@ -130,24 +130,14 @@ function App() {
             {/* dashbord */}
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/councelor" element={<Councelor></Councelor>}></Route>
-            {/* dashbord */}
-
+            {/* student dashboard */}
             <Route
               path="/studentProfile"
               element={<StudentProfile></StudentProfile>}
             ></Route>
-
-            <Route path="/Profile" element={<Profile />} />
-            <Route
-              path="/Profiledetails"
-              element={<ProfileDetails></ProfileDetails>}
-            ></Route>
+            {/* dashbord */}
 
             {/* LeadInquiryManagement */}
-            <Route
-              path="/LeadInquiryManagement"
-              element={<LeadInquiryManagement />}
-            />
             {/* Inquriy */}
             <Route path="/inquiry" element={<Inquriy></Inquriy>}></Route>
             {/* lead   */}
@@ -163,55 +153,70 @@ function App() {
               path="/studentDetails"
               element={<StudentDetails></StudentDetails>}
             ></Route>
+            {/* student details page */}
             <Route
               path="/manaDetails"
               element={<ManaDetails></ManaDetails>}
             ></Route>
-            <Route path="/StudentProfile" element={<StudentProfile />}></Route>
+
+            {/* student addmission */}
             <Route
               path="/admission"
               element={<AdmissionTracking></AdmissionTracking>}
             ></Route>
+
+            {/* student detail single page */}
             <Route
               path="/studentProfile/:admissionNo"
               element={<StudentDetailsPage></StudentDetailsPage>}
             ></Route>
+
+            {/* comunication */}
             <Route
               path="/communication"
               element={
                 <CommunicationFollowupManagement></CommunicationFollowupManagement>
               }
             ></Route>
-            {/* AdmissionTracking */}
+
+            {/* ApplicationTracking */}
             <Route
               path="/tracker"
               element={<ApplicationTracker></ApplicationTracker>}
             ></Route>
-            <Route
-              path="/document"
-              element={<DocumentUpload></DocumentUpload>}
-            ></Route>
+
+            {/* university details */}
             <Route
               path="/university"
               element={<UniversitySubmissions></UniversitySubmissions>}
             ></Route>
+
+            {/* Admission decisions */}
             <Route
               path="/applications"
               element={<AdmissionDecisions></AdmissionDecisions>}
             ></Route>
             <Route path="/AdmissionTracking" element={<AdmissionTracking />} />
 
-            {/* TaskCalendarManagement */}
-
+            {/* follow up */}
             <Route
-              path="/TaskCalendarManagement"
-              element={<TaskCalendarManagement />}
-            />
+              path="/followup"
+              element={<FollowUpScheduling></FollowUpScheduling>}
+            ></Route>
+
+            {/* automated reminder */}
+            <Route
+              path="/reminder"
+              element={<AutomatedReminders></AutomatedReminders>}
+            ></Route>
+
+            {/* add councelor */}
             <Route
               path="/addcounselor"
               element={<AddCounselor onAdd={handleAddCounselor}></AddCounselor>}
             ></Route>
 
+            {/* tasks */}
             <Route
               path="/tasks"
               element={
@@ -223,19 +228,29 @@ function App() {
               }
             ></Route>
 
+            {/* reminder */}
             <Route
               path="/tasksreminder"
               element={<TaskReminder tasks={tasks}></TaskReminder>}
             ></Route>
 
-            {/* CourseUniversityDatabase */}
+            {/* roles permissions */}
+            <Route path="/RolesManagement" element={<RolesManagement />} />
+
+            <Route path="/permissions/:role" element={<PermissionsTable />} />
+
+            {/* reports & analytics */}
             <Route
               path="/CourseUniversityDatabase"
               element={<CourseUniversityDatabase></CourseUniversityDatabase>}
             ></Route>
 
-            <Route path="/RolesManagement" element={<RolesManagement />} />
-            <Route path="/permissions/:role" element={<PermissionsTable />} />
+            {/* payment & invoices*/}
+            <Route
+              path="/ReportingAnalytics"
+              element={<ReportingAnalytics />}
+            />
+
             {/* PaymentInvoiceManagement */}
             <Route
               path="/StudentUniversity"
@@ -245,30 +260,6 @@ function App() {
               path="/PaymentInvoiceManagement"
               element={<PaymentInvoiceManagement />}
             />
-
-            {/* ReportingAnalytics */}
-
-            <Route
-              path="/ReportingAnalytics"
-              element={<ReportingAnalytics />}
-            />
-
-            {/* UserRolesAccessControl */}
-
-            <Route
-              path="/UserRolesAccessControl"
-              element={<UserRolesAccessControl />}
-            />
-
-            {/* CommunicationFollowupManagement          */}
-            <Route
-              path="/followup"
-              element={<FollowUpScheduling></FollowUpScheduling>}
-            ></Route>
-            <Route
-              path="/reminder"
-              element={<AutomatedReminders></AutomatedReminders>}
-            ></Route>
 
             {/* chatbox route */}
             <Route path="/chatbox" element={<ChatBox />} />
