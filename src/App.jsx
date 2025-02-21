@@ -13,6 +13,7 @@ import Profile from "./components/Profile/Profile";
 import StudentDetailsPage from "./components/Profile/StudentDetailsPage";
 import Lead from "./components/Lead & Inquiry Management/Lead";
 import Deal from "./components/Lead & Inquiry Management/Deal";
+import AdmissionNew from "./components/AdmissionTracking/AdmissionNew";
 import ProfileDetails from "./components/Profile/ProfileDetails";
 import LeadInquiryManagement from "./components/Lead & Inquiry Management/LeadInquiryManagement";
 import StudentDetails from "./components/Profile/StudentDetails";
@@ -162,9 +163,13 @@ function App() {
             {/* student addmission */}
             <Route
               path="/admission"
-              element={<AdmissionTracking></AdmissionTracking>}
+              element={<AdmissionNew></AdmissionNew>}
             ></Route>
 
+            <Route
+              path="/new"
+              element={<AdmissionTracking></AdmissionTracking>}
+            ></Route>
             {/* student detail single page */}
             <Route
               path="/studentProfile/:admissionNo"

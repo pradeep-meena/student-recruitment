@@ -112,18 +112,11 @@ const Reports = () => {
   };
 
   return (
-<<<<<<< HEAD
-    <Container className="p-3">
-      <div className="d-flex justify-content-between align-items-center mb-4">
-        <h4 className="mb-4 fw-bold">Reports & Analytics</h4>
-        <div className="d-flex gap-3">
-=======
     <Container className="mt-3">
       {/* Header with Filters */}
       <div className="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
         <h2>Reports & Analytics</h2>
         <div className="d-flex flex-wrap gap-3">
->>>>>>> 2da771bc0fd9af13c33493bc32a5fbb4a421e782
           <Form.Select
             value={dateRange}
             onChange={(e) => setDateRange(e.target.value)}
